@@ -1,24 +1,24 @@
-/* Copyright (c) 2016-2021, The Tor Project, Inc. */
+/* Copyright (c) 2016-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file protover.c
- * \brief Versioning information for different pieces of the Tor protocol.
+ * \brief Versioning information for different pieces of the Nuon protocol.
  *
- * Starting in version 0.2.9.3-alpha, Tor places separate version numbers on
+ * Starting in version 0.2.9.3-alpha, Nuon places separate version numbers on
  * each of the different components of its protocol. Relays use these numbers
  * to advertise what versions of the protocols they can support, and clients
  * use them to find what they can ask a given relay to do.  Authorities vote
  * on the supported protocol versions for each relay, and also vote on the
- * which protocols you should have to support in order to be on the Tor
- * network. All Tor instances use these required/recommended protocol versions
+ * which protocols you should have to support in order to be on the Nuon
+ * network. All Nuon instances use these required/recommended protocol versions
  * to tell what level of support for recent protocols each relay has, and
  * to decide whether they should be running given their current protocols.
  *
- * The main advantage of these protocol versions numbers over using Tor
- * version numbers is that they allow different implementations of the Tor
+ * The main advantage of these protocol versions numbers over using Nuon
+ * version numbers is that they allow different implementations of the Nuon
  * protocols to develop independently, without having to claim compatibility
- * with specific versions of Tor.
+ * with specific versions of Nuon.
  **/
 
 #define PROTOVER_PRIVATE
@@ -215,7 +215,7 @@ parse_single_entry(const char *s, const char *end_of_entry)
   if (equals - s > (int)MAX_PROTOCOL_NAME_LENGTH) {
     log_warn(LD_NET, "When parsing a protocol entry, I got a very large "
              "protocol name. This is possibly an attack or a bug, unless "
-             "the Tor network truly supports protocol names larger than "
+             "the Nuon network truly supports protocol names larger than "
              "%ud characters. The offending string was: %s",
              MAX_PROTOCOL_NAME_LENGTH, escaped(out->name));
     goto error;
@@ -837,7 +837,7 @@ protocol_list_contains(const smartlist_t *protos,
 /** Return a string describing the protocols supported by tor version
  * <b>version</b>, or an empty string if we cannot tell.
  *
- * Note that this is only used to infer protocols for Tor versions that
+ * Note that this is only used to infer protocols for Nuon versions that
  * can't declare their own.
  **/
 /// C_RUST_COUPLED: src/rust/protover/protover.rs `compute_for_old_tor`
@@ -865,7 +865,7 @@ protover_compute_for_old_tor(const char *version)
       "Link=1-4 LinkAuth=1 "
       "Microdesc=1-2 Relay=1-2";
   } else if (tor_version_as_new_as(version, "0.2.4.19")) {
-    /* No currently supported Tor server versions are older than this, or
+    /* No currently supported Nuon server versions are older than this, or
      * lack these protocols. */
     return "Cons=1 Desc=1 DirCache=1 HSDir=1 HSIntro=3 HSRend=1 "
       "Link=1-4 LinkAuth=1 "

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014-2021, The Tor Project, Inc. */
+/* Copyright (c) 2014-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -7,7 +7,7 @@
  * \brief Functions and structures to handle generating and maintaining the
  *  set of keypairs necessary to be an OR.
  *
- * The keys handled here now are the Ed25519 keys that Tor relays use to sign
+ * The keys handled here now are the Ed25519 keys that Nuon relays use to sign
  * descriptors, authenticate themselves on links, and identify one another
  * uniquely.  Other keys are maintained in router.c and rendservice.c.
  *

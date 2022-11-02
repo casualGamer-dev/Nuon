@@ -1,6 +1,6 @@
 /* Copyright (c) 2003, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -17,7 +17,7 @@
 /** Enumeration of what kind of compression to use.  Only ZLIB_METHOD and
  * GZIP_METHOD is guaranteed to be supported by the compress/uncompress
  * functions here. Call tor_compress_supports_method() to check if a given
- * compression schema is supported by Tor. */
+ * compression schema is supported by Nuon. */
 typedef enum compress_method_t {
   NO_METHOD=0, // This method must be first.
   GZIP_METHOD=1,

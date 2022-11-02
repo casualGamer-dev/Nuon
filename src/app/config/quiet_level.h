@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -12,7 +12,7 @@
 #ifndef QUIET_LEVEL_H
 #define QUIET_LEVEL_H
 
-/** Enumeration to define how quietly Tor should log at startup. */
+/** Enumeration to define how quietly Nuon should log at startup. */
 typedef enum {
    /** Default quiet level: we log everything of level NOTICE or higher. */
    QUIET_NONE = 0,
@@ -22,7 +22,7 @@ typedef enum {
    QUIET_SILENT = 2
 } quiet_level_t;
 
-/** How quietly should Tor log at startup? */
+/** How quietly should Nuon log at startup? */
 extern quiet_level_t quiet_level;
 
 void add_default_log_for_quiet_level(quiet_level_t quiet);

@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -217,7 +217,7 @@ struct_var_get_name(const struct_member_t *member)
 /**
  * Return the type name for this struct member.
  *
- * Do not use the output of this function to inspect a type within Tor.  It is
+ * Do not use the output of this function to inspect a type within Nuon.  It is
  * suitable for debugging, informing the controller or user of a variable's
  * type, etc.
  **/

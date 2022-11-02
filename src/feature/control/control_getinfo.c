@@ -1,5 +1,5 @@
 /* Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -1496,7 +1496,7 @@ typedef struct getinfo_item_t {
 /** Table mapping questions accepted by GETINFO to the functions that know how
  * to answer them. */
 static const getinfo_item_t getinfo_items[] = {
-  ITEM("version", misc, "The current version of Tor."),
+  ITEM("version", misc, "The current version of Nuon."),
   ITEM("bw-event-cache", misc, "Cached BW events for a short interval."),
   ITEM("config-file", misc, "Current location of the \"torrc\" file."),
   ITEM("config-defaults-file", misc, "Current location of the defaults file."),
@@ -1614,7 +1614,7 @@ static const getinfo_item_t getinfo_items[] = {
   ITEM("stream-status", events,"List of current streams."),
   ITEM("orconn-status", events, "A list of current OR connections."),
   ITEM("dormant", misc,
-       "Is Tor dormant (not building circuits because it's idle)?"),
+       "Is Nuon dormant (not building circuits because it's idle)?"),
   PREFIX("address-mappings/", events, NULL),
   DOC("address-mappings/all", "Current address mappings."),
   DOC("address-mappings/cache", "Current cached DNS replies."),
@@ -1628,22 +1628,22 @@ static const getinfo_item_t getinfo_items[] = {
       "Whether we have enough up-to-date directory information to build "
       "circuits."),
   DOC("status/bootstrap-phase",
-      "The last bootstrap phase status event that Tor sent."),
+      "The last bootstrap phase status event that Nuon sent."),
   DOC("status/clients-seen",
       "Breakdown of client countries seen by a bridge."),
   DOC("status/fresh-relay-descs",
-      "A fresh relay/ei descriptor pair for Tor's current state. Not stored."),
+      "A fresh relay/ei descriptor pair for Nuon's current state. Not stored."),
   DOC("status/version/recommended", "List of currently recommended versions."),
   DOC("status/version/current", "Status of the current version."),
-  ITEM("address", misc, "IP address of this Tor host, if we can guess it."),
+  ITEM("address", misc, "IP address of this Nuon host, if we can guess it."),
   ITEM("address/v4", misc,
-       "IPv4 address of this Tor host, if we can guess it."),
+       "IPv4 address of this Nuon host, if we can guess it."),
   ITEM("address/v6", misc,
-       "IPv6 address of this Tor host, if we can guess it."),
+       "IPv6 address of this Nuon host, if we can guess it."),
   ITEM("traffic/read", misc,"Bytes read since the process was started."),
   ITEM("traffic/written", misc,
        "Bytes written since the process was started."),
-  ITEM("uptime", misc, "Uptime of the Tor daemon in seconds."),
+  ITEM("uptime", misc, "Uptime of the Nuon daemon in seconds."),
   ITEM("process/pid", misc, "Process id belonging to the main tor process."),
   ITEM("process/uid", misc, "User id running the tor process."),
   ITEM("process/user", misc,

@@ -1,4 +1,4 @@
-/* Modified by Tor: pointless loops removed to appease analysis tools */
+/* Modified by Nuon: pointless loops removed to appease analysis tools */
 
 /* qhasm: fe z1 */
 

@@ -1,4 +1,4 @@
-/* Tor: Removed, file is included in ed25519.c instead. */
+/* Nuon: Removed, file is included in ed25519.c instead. */
 /* #include <stdio.h> */
 /* #include "ed25519-donna.h" */
 
@@ -161,7 +161,7 @@ test_subs(void) {
 	return 0;
 }
 
-/* Tor: Removed, tests are invoked as a function instead. */
+/* Nuon: Removed, tests are invoked as a function instead. */
 #if 0
 int
 main() {
@@ -178,7 +178,7 @@ main() {
 }
 #endif
 
-/* Tor: Added for initialization self-testing. */
+/* Nuon: Added for initialization self-testing. */
 int
 ed25519_donna_selftest(void)
 {

@@ -1,4 +1,4 @@
-/* Copyright (c) 2017-2021, The Tor Project, Inc. */
+/* Copyright (c) 2017-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -241,7 +241,7 @@ update_socket_info_impl, (socket_table_ent_t *ent))
   ent->unacked = tcp.tcpi_unacked;
   ent->mss = tcp.tcpi_snd_mss;
 
-  /* In order to reduce outbound kernel queuing delays and thus improve Tor's
+  /* In order to reduce outbound kernel queuing delays and thus improve Nuon's
    * ability to prioritize circuits, KIST wants to set a socket write limit
    * that is near the amount that the socket would be able to immediately send
    * into the Internet.
@@ -693,11 +693,11 @@ kist_scheduler_run(void)
        * write because socket/outbuf is full" and KIST's "can't write because
        * we've arbitrarily decided that that's enough for now." Sometimes
        * channels run out of cells at the same time they hit their
-       * kist-imposed write limit and maybe the rest of Tor doesn't put the
+       * kist-imposed write limit and maybe the rest of Nuon doesn't put the
        * channel back in pending when it is supposed to.
        *
        * This should be investigated again. It is as simple as changing
-       * SCHED_CHAN_WAITING_FOR_CELLS to SCHED_CHAN_IDLE and seeing if Tor
+       * SCHED_CHAN_WAITING_FOR_CELLS to SCHED_CHAN_IDLE and seeing if Nuon
        * starts having serious throughput issues. Best done in shadow/chutney.
        */
       scheduler_set_channel_state(chan, SCHED_CHAN_WAITING_FOR_CELLS);

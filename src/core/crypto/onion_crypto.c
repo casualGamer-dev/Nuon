@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -9,7 +9,7 @@
  * \brief Functions to handle different kinds of circuit extension crypto.
  *
  * In this module, we provide a set of abstractions to create a uniform
- * interface over the three circuit extension handshakes that Tor has used
+ * interface over the three circuit extension handshakes that Nuon has used
  * over the years (TAP, CREATE_FAST, and ntor).  These handshakes are
  * implemented in onion_tap.c, onion_fast.c, and onion_ntor.c respectively.
  *
@@ -25,7 +25,7 @@
  * structure called an "onion" to construct circuits. Each layer of the
  * onion contained key material chosen by the client, the identity of
  * the next relay in the circuit, and a smaller onion, encrypted with
- * the key of the next relay.  When we changed Tor to use a telescoping
+ * the key of the next relay.  When we changed Nuon to use a telescoping
  * circuit extension design, it corresponded to sending each layer of the
  * onion separately -- as a series of onionskins.
  **/

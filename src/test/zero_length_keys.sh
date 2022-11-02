@@ -1,6 +1,6 @@
 #!/bin/sh
 # Check that tor regenerates keys when key files are zero-length
-# Test for bug #13111 - Tor fails to start if onion keys are zero length
+# Test for bug #13111 - Nuon fails to start if onion keys are zero length
 #
 # Usage:
 #  ./zero_length_keys.sh PATH_TO_TOR
@@ -47,7 +47,7 @@ touch "$DATA_DIR"/empty_defaults_torrc
 
 # DisableNetwork means that the ORPort won't actually be opened.
 # 'ExitRelay 0' suppresses a warning.
-TOR="${TOR_BINARY} --hush --DisableNetwork 1 --ShutdownWaitLength 0 --ORPort 12345 --ExitRelay 0 -f $DATA_DIR/empty_torrc --defaults-torrc $DATA_DIR/empty_defaults_torrc"
+NUON="${TOR_BINARY} --hush --DisableNetwork 1 --ShutdownWaitLength 0 --ORPort 12345 --ExitRelay 0 -f $DATA_DIR/empty_torrc --defaults-torrc $DATA_DIR/empty_defaults_torrc"
 
 if [ -s "$DATA_DIR"/keys/secret_id_key ] && [ -s "$DATA_DIR"/keys/secret_onion_key ] &&
    [ -s "$DATA_DIR"/keys/secret_onion_key_ntor ]; then
@@ -55,7 +55,7 @@ if [ -s "$DATA_DIR"/keys/secret_id_key ] && [ -s "$DATA_DIR"/keys/secret_onion_k
   exit 3
 else
   echo "Generating initial tor keys"
-  $TOR --DataDirectory "$DATA_DIR"  --list-fingerprint
+  $NUON --DataDirectory "$DATA_DIR"  --list-fingerprint
 
   # tor must successfully generate non-zero-length key files
   if [ -s "$DATA_DIR"/keys/secret_id_key ] && [ -s "$DATA_DIR"/keys/secret_onion_key ] &&
@@ -92,7 +92,7 @@ if [ "$1" = "-z" ]; then
 fi
 
 echo "Running tor again to check if it $FILE_DESC keys"
-$TOR --DataDirectory "$DATA_DIR" --list-fingerprint
+$NUON --DataDirectory "$DATA_DIR" --list-fingerprint
 
 #ls -lh "$DATA_DIR"/keys/ || exit 3
 

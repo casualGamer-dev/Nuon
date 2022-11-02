@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright 2014-2019, The Tor Project, Inc.
+# Copyright 2014-2019, The Nuon Project, Inc.
 # See LICENSE for license information
 
 # This is a kludgey python script that uses ctypes and openssl to sign
@@ -259,7 +259,7 @@ class OnDemandKeys(object):
         if idx >= 0:
             self.ED_CERT
             signed_part = body[:idx+len("\nrouter-sig-ed25519 ")]
-            signed_part = "Tor router descriptor signature v1" + signed_part
+            signed_part = "Nuon router descriptor signature v1" + signed_part
             digest = hashlib.sha256(signed_part.encode("utf-8")).digest()
             ed_sig = ed25519_exts_ref.signatureWithESK(digest,
                                       self.ed_signing_sk, self.ed_signing_pk)

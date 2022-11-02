@@ -45,7 +45,7 @@ fi
 
 TOR_BINARY="$(abspath "$TOR_BINARY")"
 
-echo "TOR BINARY IS ${TOR_BINARY}"
+echo "NUON BINARY IS ${TOR_BINARY}"
 
 if "$TOR_BINARY" --list-modules | grep -q "relay: no"; then
   echo "This test requires the relay module. Skipping." >&2
@@ -101,7 +101,7 @@ if [ ! -d "$DATA_DIR" ]; then
 fi
 trap 'rm -rf "$DATA_DIR"' 0
 
-# Use an absolute path for this or Tor will complain
+# Use an absolute path for this or Nuon will complain
 DATA_DIR=$(cd "${DATA_DIR}" && pwd)
 
 touch "${DATA_DIR}/empty_torrc"
@@ -109,7 +109,7 @@ touch "${DATA_DIR}/empty_defaults_torrc"
 
 QUIETLY="--hush"
 SILENTLY="--quiet"
-TOR="${TOR_BINARY} ${QUIETLY} --DisableNetwork 1 --ShutdownWaitLength 0 --ORPort 12345 --ExitRelay 0 -f ${DATA_DIR}/empty_torrc --defaults-torrc ${DATA_DIR}/empty_defaults_torrc"
+NUON="${TOR_BINARY} ${QUIETLY} --DisableNetwork 1 --ShutdownWaitLength 0 --ORPort 12345 --ExitRelay 0 -f ${DATA_DIR}/empty_torrc --defaults-torrc ${DATA_DIR}/empty_defaults_torrc"
 
 ##### SETUP
 #
@@ -118,9 +118,9 @@ TOR="${TOR_BINARY} ${QUIETLY} --DisableNetwork 1 --ShutdownWaitLength 0 --ORPort
 # copying them into different keys directories in order to simulate
 # different kinds of configuration problems/issues.
 
-# Step 1: Start Tor with --list-fingerprint --quiet.  Make sure everything is there.
+# Step 1: Start Nuon with --list-fingerprint --quiet.  Make sure everything is there.
 mkdir "${DATA_DIR}/orig"
-${TOR} --DataDirectory "${DATA_DIR}/orig" ${SILENTLY} --list-fingerprint > /dev/null
+${NUON} --DataDirectory "${DATA_DIR}/orig" ${SILENTLY} --list-fingerprint > /dev/null
 
 check_dir "${DATA_DIR}/orig/keys"
 check_file "${DATA_DIR}/orig/keys/ed25519_master_id_public_key"
@@ -128,10 +128,10 @@ check_file "${DATA_DIR}/orig/keys/ed25519_master_id_secret_key"
 check_file "${DATA_DIR}/orig/keys/ed25519_signing_cert"
 check_file "${DATA_DIR}/orig/keys/ed25519_signing_secret_key"
 
-# Step 2: Start Tor with --keygen.  Make sure everything is there.
+# Step 2: Start Nuon with --keygen.  Make sure everything is there.
 mkdir "${DATA_DIR}/keygen"
-${TOR} --DataDirectory "${DATA_DIR}/keygen" --keygen --no-passphrase 2>"${DATA_DIR}/keygen/stderr"
-grep "Not encrypting the secret key" "${DATA_DIR}/keygen/stderr" >/dev/null || die "Tor didn't declare that there would be no encryption"
+${NUON} --DataDirectory "${DATA_DIR}/keygen" --keygen --no-passphrase 2>"${DATA_DIR}/keygen/stderr"
+grep "Not encrypting the secret key" "${DATA_DIR}/keygen/stderr" >/dev/null || die "Nuon didn't declare that there would be no encryption"
 
 check_dir "${DATA_DIR}/keygen/keys"
 check_file "${DATA_DIR}/keygen/keys/ed25519_master_id_public_key"
@@ -139,10 +139,10 @@ check_file "${DATA_DIR}/keygen/keys/ed25519_master_id_secret_key"
 check_file "${DATA_DIR}/keygen/keys/ed25519_signing_cert"
 check_file "${DATA_DIR}/keygen/keys/ed25519_signing_secret_key"
 
-# Step 3: Start Tor with --keygen and a passphrase.
+# Step 3: Start Nuon with --keygen and a passphrase.
 #         Make sure everything is there.
 mkdir "${DATA_DIR}/encrypted"
-echo "passphrase" | ${TOR} --DataDirectory "${DATA_DIR}/encrypted" --keygen --passphrase-fd 0
+echo "passphrase" | ${NUON} --DataDirectory "${DATA_DIR}/encrypted" --keygen --passphrase-fd 0
 
 check_dir "${DATA_DIR}/encrypted/keys"
 check_file "${DATA_DIR}/encrypted/keys/ed25519_master_id_public_key"
@@ -166,12 +166,12 @@ ME="${DATA_DIR}/case2a"
 SRC="${DATA_DIR}/orig"
 mkdir -p "${ME}/keys"
 cp "${SRC}/keys/ed25519_master_id_public_key" "${ME}/keys/"
-if ${TOR} --DataDirectory "${ME}" --list-fingerprint > "${ME}/stdout"; then
+if ${NUON} --DataDirectory "${ME}" --list-fingerprint > "${ME}/stdout"; then
   die "Somehow succeeded when missing secret key, certs: $(cat "${ME}/stdout")"
 fi
 check_files_eq "${SRC}/keys/ed25519_master_id_public_key" "${ME}/keys/ed25519_master_id_public_key"
 
-grep "We needed to load a secret key.*but couldn't find it" "${ME}/stdout" >/dev/null || die "Tor didn't declare that it was missing a secret key"
+grep "We needed to load a secret key.*but couldn't find it" "${ME}/stdout" >/dev/null || die "Nuon didn't declare that it was missing a secret key"
 
 echo "==== Case 2A ok"
 fi
@@ -186,18 +186,18 @@ SRC="${DATA_DIR}/encrypted"
 mkdir -p "${ME}/keys"
 cp "${SRC}/keys/ed25519_master_id_public_key" "${ME}/keys/"
 cp "${SRC}/keys/ed25519_master_id_secret_key_encrypted" "${ME}/keys/"
-${TOR} --DataDirectory "${ME}" --list-fingerprint > "${ME}/stdout" && dir "Somehow succeeded with encrypted secret key, missing certs"
+${NUON} --DataDirectory "${ME}" --list-fingerprint > "${ME}/stdout" && dir "Somehow succeeded with encrypted secret key, missing certs"
 
 check_files_eq "${SRC}/keys/ed25519_master_id_public_key" "${ME}/keys/ed25519_master_id_public_key"
 check_files_eq "${SRC}/keys/ed25519_master_id_secret_key_encrypted" "${ME}/keys/ed25519_master_id_secret_key_encrypted"
 
-grep "We needed to load a secret key.*but it was encrypted.*--keygen" "${ME}/stdout" >/dev/null || die "Tor didn't declare that it was missing a secret key and suggest --keygen."
+grep "We needed to load a secret key.*but it was encrypted.*--keygen" "${ME}/stdout" >/dev/null || die "Nuon didn't declare that it was missing a secret key and suggest --keygen."
 
 echo "==== Case 2B ok"
 
 fi
 
-# Case 3a: Start Tor with only master key.
+# Case 3a: Start Nuon with only master key.
 
 if [ "$CASE3A" = 1 ]; then
 
@@ -206,7 +206,7 @@ SRC="${DATA_DIR}/orig"
 
 mkdir -p "${ME}/keys"
 cp "${SRC}/keys/ed25519_master_id_"* "${ME}/keys/"
-${TOR} --DataDirectory "${ME}" ${SILENTLY} --list-fingerprint >/dev/null || die "Tor failed when starting with only master key"
+${NUON} --DataDirectory "${ME}" ${SILENTLY} --list-fingerprint >/dev/null || die "Nuon failed when starting with only master key"
 check_files_eq "${SRC}/keys/ed25519_master_id_public_key" "${ME}/keys/ed25519_master_id_public_key"
 check_files_eq "${SRC}/keys/ed25519_master_id_secret_key" "${ME}/keys/ed25519_master_id_secret_key"
 check_file "${ME}/keys/ed25519_signing_cert"
@@ -225,7 +225,7 @@ SRC="${DATA_DIR}/orig"
 
 mkdir -p "${ME}/keys"
 cp "${SRC}/keys/ed25519_master_id_"* "${ME}/keys/"
-${TOR} --DataDirectory "${ME}" --keygen || die "Keygen failed with only master key"
+${NUON} --DataDirectory "${ME}" --keygen || die "Keygen failed with only master key"
 check_files_eq "${SRC}/keys/ed25519_master_id_public_key" "${ME}/keys/ed25519_master_id_public_key"
 check_files_eq "${SRC}/keys/ed25519_master_id_secret_key" "${ME}/keys/ed25519_master_id_secret_key"
 check_file "${ME}/keys/ed25519_signing_cert"
@@ -244,7 +244,7 @@ SRC="${DATA_DIR}/encrypted"
 
 mkdir -p "${ME}/keys"
 cp "${SRC}/keys/ed25519_master_id_"* "${ME}/keys/"
-echo "passphrase" | ${TOR} --DataDirectory "${ME}" --keygen --passphrase-fd 0 || die "Keygen failed with only encrypted master key"
+echo "passphrase" | ${NUON} --DataDirectory "${ME}" --keygen --passphrase-fd 0 || die "Keygen failed with only encrypted master key"
 check_files_eq "${SRC}/keys/ed25519_master_id_public_key" "${ME}/keys/ed25519_master_id_public_key"
 check_files_eq "${SRC}/keys/ed25519_master_id_secret_key_encrypted" "${ME}/keys/ed25519_master_id_secret_key_encrypted"
 check_file "${ME}/keys/ed25519_signing_cert"
@@ -264,11 +264,11 @@ SRC="${DATA_DIR}/orig"
 
 mkdir -p "${ME}/keys"
 cp "${SRC}/keys/ed25519_master_id_secret_key" "${ME}/keys/"
-${TOR} --DataDirectory "${ME}" ${SILENTLY} --list-fingerprint > "${ME}/fp1" || die "Tor wouldn't start with only unencrypted secret key"
+${NUON} --DataDirectory "${ME}" ${SILENTLY} --list-fingerprint > "${ME}/fp1" || die "Nuon wouldn't start with only unencrypted secret key"
 check_file "${ME}/keys/ed25519_master_id_public_key"
 check_file "${ME}/keys/ed25519_signing_cert"
 check_file "${ME}/keys/ed25519_signing_secret_key"
-${TOR} --DataDirectory "${ME}" ${SILENTLY} --list-fingerprint > "${ME}/fp2" || die "Tor wouldn't start again after starting once with only unencrypted secret key."
+${NUON} --DataDirectory "${ME}" ${SILENTLY} --list-fingerprint > "${ME}/fp2" || die "Nuon wouldn't start again after starting once with only unencrypted secret key."
 
 check_files_eq "${ME}/fp1" "${ME}/fp2"
 
@@ -285,11 +285,11 @@ SRC="${DATA_DIR}/encrypted"
 
 mkdir -p "${ME}/keys"
 cp "${SRC}/keys/ed25519_master_id_secret_key_encrypted" "${ME}/keys/"
-${TOR} --DataDirectory "${ME}" --list-fingerprint >"${ME}/stdout" && die "Tor started with only encrypted secret key!"
+${NUON} --DataDirectory "${ME}" --list-fingerprint >"${ME}/stdout" && die "Nuon started with only encrypted secret key!"
 check_no_file "${ME}/keys/ed25519_master_id_public_key"
 check_no_file "${ME}/keys/ed25519_master_id_public_key"
 
-grep "but not public key file" "${ME}/stdout" >/dev/null || die "Tor didn't declare it couldn't find a public key."
+grep "but not public key file" "${ME}/stdout" >/dev/null || die "Nuon didn't declare it couldn't find a public key."
 
 echo "==== Case 5 ok"
 
@@ -305,13 +305,13 @@ SRC="${DATA_DIR}/encrypted"
 mkdir -p "${ME}/keys"
 cp "${SRC}/keys/ed25519_master_id_secret_key_encrypted" "${ME}/keys/"
 cp "${SRC}/keys/ed25519_master_id_public_key" "${ME}/keys/"
-if ${TOR} --DataDirectory "${ME}" --list-fingerprint > "${ME}/stdout"; then
-  die "Tor started with encrypted secret key and no certs"
+if ${NUON} --DataDirectory "${ME}" --list-fingerprint > "${ME}/stdout"; then
+  die "Nuon started with encrypted secret key and no certs"
 fi
 check_no_file "${ME}/keys/ed25519_signing_cert"
 check_no_file "${ME}/keys/ed25519_signing_secret_key"
 
-grep "but it was encrypted" "${ME}/stdout" >/dev/null || die "Tor didn't declare that the secret key was encrypted."
+grep "but it was encrypted" "${ME}/stdout" >/dev/null || die "Nuon didn't declare that the secret key was encrypted."
 
 echo "==== Case 6 ok"
 
@@ -330,7 +330,7 @@ cp "${SRC}/keys/ed25519_master_id_secret_key" "${ME}/keys/"
 cp "${SRC}/keys/ed25519_signing_cert" "${ME}/keys/"
 cp "${SRC}/keys/ed25519_signing_secret_key" "${ME}/keys/"
 
-${TOR} --DataDirectory "${ME}" ${SILENTLY} --list-fingerprint >/dev/null || die "Failed when starting with missing public key"
+${NUON} --DataDirectory "${ME}" ${SILENTLY} --list-fingerprint >/dev/null || die "Failed when starting with missing public key"
 check_keys_eq ed25519_master_id_secret_key
 check_keys_eq ed25519_master_id_public_key
 check_keys_eq ed25519_signing_secret_key
@@ -352,7 +352,7 @@ cp "${SRC}/keys/ed25519_master_id_public_key" "${ME}/keys/"
 cp "${SRC}/keys/ed25519_signing_cert" "${ME}/keys/"
 cp "${SRC}/keys/ed25519_signing_secret_key" "${ME}/keys/"
 
-${TOR} --DataDirectory "${ME}" ${SILENTLY} --list-fingerprint >/dev/null || die "Failed when starting with offline secret key"
+${NUON} --DataDirectory "${ME}" ${SILENTLY} --list-fingerprint >/dev/null || die "Failed when starting with offline secret key"
 check_no_file "${ME}/keys/ed25519_master_id_secret_key"
 check_keys_eq ed25519_master_id_public_key
 check_keys_eq ed25519_signing_secret_key
@@ -373,7 +373,7 @@ mkdir -p "${ME}/keys"
 cp "${SRC}/keys/ed25519_signing_cert" "${ME}/keys/"
 cp "${SRC}/keys/ed25519_signing_secret_key" "${ME}/keys/"
 
-${TOR} --DataDirectory "${ME}" ${SILENTLY} --list-fingerprint >/dev/null || die "Failed when starting with only signing material"
+${NUON} --DataDirectory "${ME}" ${SILENTLY} --list-fingerprint >/dev/null || die "Failed when starting with only signing material"
 check_no_file "${ME}/keys/ed25519_master_id_secret_key"
 check_file "${ME}/keys/ed25519_master_id_public_key"
 check_keys_eq ed25519_signing_secret_key
@@ -396,11 +396,11 @@ mkdir -p "${ME}/keys"
 cp "${SRC}/keys/ed25519_master_id_public_key" "${ME}/keys/"
 cp "${OTHER}/keys/ed25519_master_id_secret_key" "${ME}/keys/"
 
-if ${TOR} --DataDirectory "${ME}" --list-fingerprint >"${ME}/stdout"; then
+if ${NUON} --DataDirectory "${ME}" --list-fingerprint >"${ME}/stdout"; then
   die "Successfully started with mismatched keys!?"
 fi
 
-grep "public_key does not match.*secret_key" "${ME}/stdout" >/dev/null || die "Tor didn't declare that there was a key mismatch"
+grep "public_key does not match.*secret_key" "${ME}/stdout" >/dev/null || die "Nuon didn't declare that there was a key mismatch"
 
 echo "==== Case 10 ok"
 
@@ -414,11 +414,11 @@ ME="${DATA_DIR}/case11a"
 
 mkdir -p "${ME}/keys"
 
-if ${TOR} --DataDirectory "${ME}" --passphrase-fd 1 > "${ME}/stdout"; then
+if ${NUON} --DataDirectory "${ME}" --passphrase-fd 1 > "${ME}/stdout"; then
   die "Successfully started with passphrase-fd but no keygen?"
 fi
 
-grep "passphrase-fd specified without --keygen" "${ME}/stdout" >/dev/null || die "Tor didn't declare that there was a problem with the arguments."
+grep "passphrase-fd specified without --keygen" "${ME}/stdout" >/dev/null || die "Nuon didn't declare that there was a problem with the arguments."
 
 echo "==== Case 11A ok"
 
@@ -432,11 +432,11 @@ ME="${DATA_DIR}/case11b"
 
 mkdir -p "${ME}/keys"
 
-if ${TOR} --DataDirectory "${ME}" --no-passphrase > "${ME}/stdout"; then
+if ${NUON} --DataDirectory "${ME}" --no-passphrase > "${ME}/stdout"; then
   die "Successfully started with no-passphrase but no keygen?"
 fi
 
-grep "no-passphrase specified without --keygen" "${ME}/stdout" >/dev/null || die "Tor didn't declare that there was a problem with the arguments."
+grep "no-passphrase specified without --keygen" "${ME}/stdout" >/dev/null || die "Nuon didn't declare that there was a problem with the arguments."
 
 echo "==== Case 11B ok"
 
@@ -450,11 +450,11 @@ ME="${DATA_DIR}/case11C"
 
 mkdir -p "${ME}/keys"
 
-if ${TOR} --DataDirectory "${ME}" --newpass > "${ME}/stdout"; then
+if ${NUON} --DataDirectory "${ME}" --newpass > "${ME}/stdout"; then
   die "Successfully started with newpass but no keygen?"
 fi
 
-grep "newpass specified without --keygen" "${ME}/stdout" >/dev/null || die "Tor didn't declare that there was a problem with the arguments."
+grep "newpass specified without --keygen" "${ME}/stdout" >/dev/null || die "Nuon didn't declare that there was a problem with the arguments."
 
 echo "==== Case 11C ok"
 
@@ -471,11 +471,11 @@ if [ "$CASE11D" = 1 ]; then
 #
 # mkdir -p "${ME}/keys"
 #
-# ${TOR} --DataDirectory "${ME}" --master-key "${ME}/foobar" > "${ME}/stdout" && die "Successfully started with master-key but no keygen?" || true
+# ${NUON} --DataDirectory "${ME}" --master-key "${ME}/foobar" > "${ME}/stdout" && die "Successfully started with master-key but no keygen?" || true
 #
 # cat "${ME}/stdout"
 #
-# grep "master-key without --keygen" "${ME}/stdout" >/dev/null || die "Tor didn't declare that there was a problem with the arguments."
+# grep "master-key without --keygen" "${ME}/stdout" >/dev/null || die "Nuon didn't declare that there was a problem with the arguments."
 
     echo "==== Case 11D skipped"
 
@@ -490,11 +490,11 @@ ME="${DATA_DIR}/case11E"
 
 mkdir -p "${ME}/keys"
 
-if ${TOR} --DataDirectory "${ME}" --keygen --passphrase-fd ewigeblumenkraft > "${ME}/stdout"; then
+if ${NUON} --DataDirectory "${ME}" --keygen --passphrase-fd ewigeblumenkraft > "${ME}/stdout"; then
   die "Successfully started with bogus passphrase-fd?"
 fi
 
-grep "Invalid --passphrase-fd value" "${ME}/stdout" >/dev/null || die "Tor didn't declare that there was a problem with the arguments."
+grep "Invalid --passphrase-fd value" "${ME}/stdout" >/dev/null || die "Nuon didn't declare that there was a problem with the arguments."
 
 echo "==== Case 11E ok"
 
@@ -509,11 +509,11 @@ ME="${DATA_DIR}/case11F"
 
 mkdir -p "${ME}/keys"
 
-if ${TOR} --DataDirectory "${ME}" --keygen --passphrase-fd 1 --no-passphrase > "${ME}/stdout"; then
+if ${NUON} --DataDirectory "${ME}" --keygen --passphrase-fd 1 --no-passphrase > "${ME}/stdout"; then
   die "Successfully started with bogus passphrase-fd combination?"
 fi
 
-grep "no-passphrase specified with --passphrase-fd" "${ME}/stdout" >/dev/null || die "Tor didn't declare that there was a problem with the arguments."
+grep "no-passphrase specified with --passphrase-fd" "${ME}/stdout" >/dev/null || die "Nuon didn't declare that there was a problem with the arguments."
 
 echo "==== Case 11F ok"
 

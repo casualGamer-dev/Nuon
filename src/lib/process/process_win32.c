@@ -1,6 +1,6 @@
 /* Copyright (c) 2003, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -136,7 +136,7 @@ process_win32_deinit(void)
 }
 
 /** Execute the given process. This function is responsible for setting up
- * named pipes for I/O between the child process and the Tor process. Returns
+ * named pipes for I/O between the child process and the Nuon process. Returns
  * <b>PROCESS_STATUS_RUNNING</b> upon success. */
 process_status_t
 process_win32_exec(process_t *process)
@@ -234,9 +234,9 @@ process_win32_exec(process_t *process)
     CloseHandle(stdin_pipe_read);
     CloseHandle(stdin_pipe_write);
 
-    /* In the Unix backend, we do not get an error in the Tor process when a
+    /* In the Unix backend, we do not get an error in the Nuon process when a
      * child process fails to spawn its target executable since we need to
-     * first do the fork() call in the Tor process and then the child process
+     * first do the fork() call in the Nuon process and then the child process
      * is responsible for doing the call to execve().
      *
      * This means that the user of the process_exec() API must check for
@@ -454,7 +454,7 @@ process_win32_read_stderr(struct process_t *process, buf_t *buffer)
                                         process_win32_stderr_read_done);
 }
 
-/** This function is responsible for moving the Tor process into what Microsoft
+/** This function is responsible for moving the Nuon process into what Microsoft
  * calls an "alertable" state. Once the process is in an alertable state the
  * Windows kernel will notify us when our background I/O requests have finished
  * and the callbacks will be executed. */
@@ -480,7 +480,7 @@ process_win32_trigger_completion_callbacks(void)
 }
 
 /** Start the periodic timer which is responsible for checking whether
- * processes are still alive and to make sure that the Tor process is
+ * processes are still alive and to make sure that the Nuon process is
  * periodically being moved into an alertable state. */
 void
 process_win32_timer_start(void)
@@ -518,7 +518,7 @@ process_win32_timer_running(void)
 }
 
 /** This function is called whenever the periodic_timer ticks. The function is
- * responsible for moving the Tor process into an alertable state once a second
+ * responsible for moving the Nuon process into an alertable state once a second
  * and checking for whether our child processes have terminated since the last
  * tick. */
 STATIC void
@@ -649,7 +649,7 @@ process_win32_create_pipe(HANDLE *read_pipe,
     process_id = GetCurrentProcessId();
 
   tor_snprintf(pipe_name, sizeof(pipe_name),
-               "\\\\.\\Pipe\\Tor-Process-Pipe-%lu-%lu",
+               "\\\\.\\Pipe\\Nuon-Process-Pipe-%lu-%lu",
                process_id, counter++);
 
   /* Only one of our handles can be overlapped. */

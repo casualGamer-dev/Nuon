@@ -1,11 +1,11 @@
 
-@page publish_subscribe Publish-subscribe message passing in Tor
+@page publish_subscribe Publish-subscribe message passing in Nuon
 
 @tableofcontents
 
 ## Introduction
 
-Tor has introduced a generic publish-subscribe mechanism for delivering
+Nuon has introduced a generic publish-subscribe mechanism for delivering
 messages internally.  It is meant to help us improve the modularity of
 our code, by avoiding direct coupling between modules that don't
 actually need to invoke one another.
@@ -33,7 +33,7 @@ simple. (@ref pubsub_notyet "1")
 > @anchor pubsub_notyet 1. Unfortunately, like most of our code, circuit
 > handling is _not_ yet refactored to use publish-subscribe throughout.
 > Instead, layer violations of the type described here are pretty common
-> in Tor today.  To see a small part of what happens when a circuit is
+> in Nuon today.  To see a small part of what happens when a circuit is
 > completed today, have a look at circuit_build_no_more_hops() and its
 > associated code.
 
@@ -50,7 +50,7 @@ mechanisms, and their guarantees about when messages are processed.
 Currently, three delivery policies are possible:
 
    - `DELIV_PROMPT` -- causes messages to be processed via a callback in
-      Tor's event loop.  This is generally the best choice, since it
+      Nuon's event loop.  This is generally the best choice, since it
       avoids unexpected growth of the stack.
 
    - `DELIV_IMMEDIATE` -- causes messages to be processed immediately

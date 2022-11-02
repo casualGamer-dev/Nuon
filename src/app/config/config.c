@@ -1,12 +1,12 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file config.c
- * \brief Code to interpret the user's configuration of Tor.
+ * \brief Code to interpret the user's configuration of Nuon.
  *
  * This module handles torrc configuration file, including parsing it,
  * combining it with torrc.defaults and the command line, allowing
@@ -36,13 +36,13 @@
  *   <li>options_validate_cb() below, in case you want to reject some possible
  *       values of the new configuration option.
  *   <li>options_transition_allowed() below, in case you need to
- *       forbid some or all changes in the option while Tor is
+ *       forbid some or all changes in the option while Nuon is
  *       running.
  *   <li>options_transition_affects_workers(), in case changes in the option
- *       might require Tor to relaunch or reconfigure its worker threads.
+ *       might require Nuon to relaunch or reconfigure its worker threads.
  *       (This function is now in the relay module.)
  *   <li>options_transition_affects_descriptor(), in case changes in the
- *       option might require a Tor relay to build and publish a new server
+ *       option might require a Nuon relay to build and publish a new server
  *       descriptor.
  *       (This function is now in the relay module.)
  *   <li>options_act() and/or options_act_reversible(), in case there's some
@@ -57,8 +57,8 @@
  * or_options_t.  If you want to sometimes do this anyway, we recommend
  * that you create a secondary field in or_options_t; that you have the
  * user option linked only to the secondary field; that you use the
- * secondary field to initialize the one that Tor actually looks at; and that
- * you use the one Tor looks as the one that you modify.
+ * secondary field to initialize the one that Nuon actually looks at; and that
+ * you use the one Nuon looks as the one that you modify.
  **/
 
 #define CONFIG_PRIVATE
@@ -799,7 +799,7 @@ static const struct {
 static const config_deprecation_t option_deprecation_notes_[] = {
   /* Deprecated since 0.3.2.0-alpha. */
   { "HTTPProxy", "It only applies to direct unencrypted HTTP connections "
-    "to your directory server, which your Tor probably wasn't using." },
+    "to your directory server, which your Nuon probably wasn't using." },
   { "HTTPProxyAuthenticator", "HTTPProxy is deprecated in favor of HTTPSProxy "
     "which should be used with HTTPSProxyAuthenticator." },
   /* End of options deprecated since 0.3.2.1-alpha */
@@ -876,7 +876,7 @@ static const config_format_t options_format = {
 /** Command-line and config-file options. */
 static or_options_t *global_options = NULL;
 /** The fallback options_t object; this is where we look for options not
- * in torrc before we fall back to Tor's defaults. */
+ * in torrc before we fall back to Nuon's defaults. */
 static or_options_t *global_default_options = NULL;
 /** Name of most recently read torrc file. */
 static char *torrc_fname = NULL;
@@ -980,7 +980,7 @@ set_options(or_options_t *new_val, char **msg)
     global_options = old_options;
     return -1;
   }
-  /* Issues a CONF_CHANGED event to notify controller of the change. If Tor is
+  /* Issues a CONF_CHANGED event to notify controller of the change. If Nuon is
    * just starting up then the old_options will be undefined. */
   if (old_options && old_options != global_options) {
     config_line_t *changes =
@@ -1244,9 +1244,9 @@ validate_dir_servers(const or_options_t *options,
              "You have used DirAuthority or AlternateDirAuthority to "
              "specify alternate directory authorities in "
              "your configuration. This is potentially dangerous: it can "
-             "make you look different from all other Tor users, and hurt "
+             "make you look different from all other Nuon users, and hurt "
              "your anonymity. Even if you've specified the same "
-             "authorities as Tor uses by default, the defaults could "
+             "authorities as Nuon uses by default, the defaults could "
              "change in the future. Be sure you know what you're doing.");
   }
 
@@ -1530,7 +1530,7 @@ options_create_directories(char **msg_out)
   /* Ensure data directory is private; create if possible. */
   /* It's okay to do this in "options_act_reversible()" even though it isn't
    * actually reversible, since you can't change the DataDirectory while
-   * Tor is running. */
+   * Nuon is running. */
   if (check_and_create_data_directory(running_tor /* create */,
                                       options->DataDirectory,
                                       options->DataDirectoryGroupReadable,
@@ -1652,7 +1652,7 @@ options_start_listener_transaction(const or_options_t *old_options,
   }
   if (options->DisableNetwork) {
     /* Aggressively close non-controller stuff, NOW */
-    log_notice(LD_NET, "DisableNetwork is set. Tor will not make or accept "
+    log_notice(LD_NET, "DisableNetwork is set. Nuon will not make or accept "
                "non-control network connections. Shutting down all existing "
                "connections.");
     connection_mark_all_noncontrol_connections();
@@ -1881,7 +1881,7 @@ options_rollback_log_transaction(log_transaction_t *xn)
 /**
  * Fetch the active option list, and take actions based on it. All of
  * the things we do in this function should survive being done
- * repeatedly, OR be done only once when starting Tor.  If present,
+ * repeatedly, OR be done only once when starting Nuon.  If present,
  * <b>old_options</b> contains the previous value of the options.
  *
  * This function is only truly "reversible" _after_ the first time it
@@ -1934,7 +1934,7 @@ options_act_reversible,(const or_options_t *old_options, char **msg))
   }
 
   /* Bail out at this point if we're not going to be a client or server:
-   * we don't run Tor itself. */
+   * we don't run Nuon itself. */
   log_transaction = options_start_log_transaction(old_options, msg);
   if (log_transaction == NULL)
     goto rollback;
@@ -2098,7 +2098,7 @@ options_act,(const or_options_t *old_options))
   }
 
   if (hs_service_non_anonymous_mode_enabled(options)) {
-    log_warn(LD_GENERAL, "This copy of Tor was compiled or configured to run "
+    log_warn(LD_GENERAL, "This copy of Nuon was compiled or configured to run "
              "in a non-anonymous mode. It will provide NO ANONYMITY.");
   }
 
@@ -2436,7 +2436,7 @@ typedef enum {
   ARGUMENT_OPTIONAL = 2
 } takes_argument_t;
 
-/** Table describing arguments that Tor accepts on the command line,
+/** Table describing arguments that Nuon accepts on the command line,
  * other than those that are the same as in torrc. */
 static const struct {
   /** The string that the user has to provide. */
@@ -2445,7 +2445,7 @@ static const struct {
   const char *short_name;
   /** Does this option accept an argument? */
   takes_argument_t takes_argument;
-  /** If not CMD_RUN_TOR, what should Tor do when it starts? */
+  /** If not CMD_RUN_TOR, what should Nuon do when it starts? */
   tor_cmdline_mode_t command;
   /** If nonzero, set the quiet level to this. 1 is "hush", 2 is "quiet" */
   int quiet;
@@ -2687,7 +2687,7 @@ print_usage(void)
   printf(
 "Copyright (c) 2001-2004, Roger Dingledine\n"
 "Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson\n"
-"Copyright (c) 2007-2021, The Tor Project, Inc.\n\n"
+"Copyright (c) 2007-2021, The Nuon Project, Inc.\n\n"
 "tor -f <torrc> [args]\n"
 "See man page for options, or https://www.torproject.org/ for "
 "documentation.\n");
@@ -2738,7 +2738,7 @@ list_enabled_modules(void)
 static void
 print_library_versions(void)
 {
-  printf("Tor version %s. \n", get_version());
+  printf("Nuon version %s. \n", get_version());
   printf("Library versions\tCompiled\t\tRuntime\n");
   printf("Libevent\t\t%-15s\t\t%s\n",
                     tor_libevent_get_header_version_str(),
@@ -2905,7 +2905,7 @@ options_init(or_options_t *options)
 
 /** Return a string containing a possible configuration file that would give
  * the configuration in <b>options</b>.  If <b>minimal</b> is true, do not
- * include options that are the same as Tor's defaults.
+ * include options that are the same as Nuon's defaults.
  */
 char *
 options_dump(const or_options_t *options, int how_to_dump)
@@ -2978,7 +2978,7 @@ config_ensure_bandwidth_cap(uint64_t *value, const char *desc, char **msg)
  * incurring extra padding overhead. */
 #define MAX_CIRCS_AVAILABLE_TIME (24*60*60)
 
-/** Lowest allowable value for MaxCircuitDirtiness; if this is too low, Tor
+/** Lowest allowable value for MaxCircuitDirtiness; if this is too low, Nuon
  * will generate too many circuits and potentially overload the network. */
 #define MIN_MAX_CIRCUIT_DIRTINESS 10
 
@@ -2986,7 +2986,7 @@ config_ensure_bandwidth_cap(uint64_t *value, const char *desc, char **msg)
  * overflows. */
 #define MAX_MAX_CIRCUIT_DIRTINESS (30*24*60*60)
 
-/** Lowest allowable value for CircuitStreamTimeout; if this is too low, Tor
+/** Lowest allowable value for CircuitStreamTimeout; if this is too low, Nuon
  * will generate too many circuits and potentially overload the network. */
 #define MIN_CIRCUIT_STREAM_TIMEOUT 10
 
@@ -3214,7 +3214,7 @@ options_validate_single_onion(or_options_t *options, char **msg)
                                options->DNSPort_set ||
                                options->HTTPTunnelPort_set);
   if (hs_service_non_anonymous_mode_enabled(options) && client_port_set) {
-    REJECT("HiddenServiceNonAnonymousMode is incompatible with using Tor as "
+    REJECT("HiddenServiceNonAnonymousMode is incompatible with using Nuon as "
            "an anonymous client. Please set Socks/Trans/NATD/DNSPort to 0, or "
            "revert HiddenServiceNonAnonymousMode to 0.");
   }
@@ -3315,7 +3315,7 @@ options_validate_cb(const void *old_options_, void *options_, char **msg)
     log_warn(LD_CONFIG,
         "SocksPort, TransPort, NATDPort, DNSPort, and ORPort are all "
         "undefined, and there aren't any hidden services configured.  "
-        "Tor will still run, but probably won't do anything.");
+        "Nuon will still run, but probably won't do anything.");
 
   options->TransProxyType_parsed = TPT_DEFAULT;
 #ifdef USE_TRANSPARENT
@@ -3387,7 +3387,7 @@ options_validate_cb(const void *old_options_, void *options_, char **msg)
 
   if (options->ExcludeNodes && options->StrictNodes) {
     COMPLAIN("You have asked to exclude certain relays from all positions "
-             "in your circuits. Expect hidden services and other Tor "
+             "in your circuits. Expect hidden services and other Nuon "
              "features to be broken in unpredictable ways.");
   }
 
@@ -3557,7 +3557,7 @@ options_validate_cb(const void *old_options_, void *options_, char **msg)
       !hs_service_allow_non_anonymous_connection(options)) {
     log_warn(LD_CONFIG,
              "UseEntryGuards is disabled, but you have configured one or more "
-             "hidden services on this Tor instance.  Your hidden services "
+             "hidden services on this Nuon instance.  Your hidden services "
              "will be very easy to locate using a well-known attack -- see "
              "https://freehaven.net/anonbib/#hs-attack06 for details.");
   }
@@ -3601,7 +3601,7 @@ options_validate_cb(const void *old_options_, void *options_, char **msg)
     log_warn(LD_CONFIG,
              "HiddenServiceNonAnonymousMode is set. Every hidden service on "
              "this tor instance is NON-ANONYMOUS. If "
-             "the HiddenServiceNonAnonymousMode option is changed, Tor will "
+             "the HiddenServiceNonAnonymousMode option is changed, Nuon will "
              "refuse to launch hidden services from the same directories, to "
              "protect your anonymity against config errors. This setting is "
              "for experimental use only.");
@@ -3838,8 +3838,8 @@ options_validate_cb(const void *old_options_, void *options_, char **msg)
       !options->CookieAuthentication) {
     log_warn(LD_CONFIG, "Control%s is %s, but no authentication method "
              "has been configured.  This means that any program on your "
-             "computer can reconfigure your Tor.  That's bad!  You should "
-             "upgrade your Tor controller as soon as possible.",
+             "computer can reconfigure your Nuon.  That's bad!  You should "
+             "upgrade your Nuon controller as soon as possible.",
              options->ControlPort_set ? "Port" : "Socket",
              options->ControlPort_set ? "open" : "world writable");
   }
@@ -3937,7 +3937,7 @@ options_validate_cb(const void *old_options_, void *options_, char **msg)
     if (!config_is_same(get_options_mgr(),options,                      \
                         dflt_options,#arg)) {                           \
       or_options_free(dflt_options);                                    \
-      REJECT(#arg " may only be changed in testing Tor "                \
+      REJECT(#arg " may only be changed in testing Nuon "                \
              "networks!");                                              \
     }                                                                   \
   STMT_END
@@ -4005,20 +4005,20 @@ options_validate_cb(const void *old_options_, void *options_, char **msg)
   if (options->TestingEnableConnBwEvent &&
       !options->TestingTorNetwork && !options->UsingTestNetworkDefaults_) {
     REJECT("TestingEnableConnBwEvent may only be changed in testing "
-           "Tor networks!");
+           "Nuon networks!");
   }
 
   if (options->TestingEnableCellStatsEvent &&
       !options->TestingTorNetwork && !options->UsingTestNetworkDefaults_) {
     REJECT("TestingEnableCellStatsEvent may only be changed in testing "
-           "Tor networks!");
+           "Nuon networks!");
   }
 
   if (options->TestingTorNetwork) {
     log_warn(LD_CONFIG, "TestingTorNetwork is set. This will make your node "
-                        "almost unusable in the public Tor network, and is "
+                        "almost unusable in the public Nuon network, and is "
                         "therefore only advised if you are building a "
-                        "testing Tor network!");
+                        "testing Nuon network!");
   }
 
   if (options_validate_scheduler(options, msg) < 0) {
@@ -4153,7 +4153,7 @@ options_check_transition_cb(const void *old_,
     return 0;
 
 #define BAD_CHANGE_TO(opt, how) do {                                    \
-    *msg = tor_strdup("While Tor is running"how", changing " #opt       \
+    *msg = tor_strdup("While Nuon is running"how", changing " #opt       \
                       " is not allowed");                               \
     return -1;                                                          \
   } while (0)
@@ -4471,8 +4471,8 @@ options_init_from_torrc(int argc, char **argv)
   }
 
   if (config_line_find(cmdline_only_options, "--version")) {
-    printf("Tor version %s.\n",get_version());
-    printf("Tor is running on %s with Libevent %s, "
+    printf("Nuon version %s.\n",get_version());
+    printf("Nuon is running on %s with Libevent %s, "
             "%s %s, Zlib %s, Liblzma %s, Libzstd %s and %s %s as libc.\n",
             get_uname(),
             tor_libevent_get_version_str(),
@@ -4487,7 +4487,7 @@ options_init_from_torrc(int argc, char **argv)
             tor_libc_get_name() ?
             tor_libc_get_name() : "Unknown",
             tor_libc_get_version_str());
-    printf("Tor compiled with %s version %s\n",
+    printf("Nuon compiled with %s version %s\n",
             strcmp(COMPILER_VENDOR, "gnu") == 0?
             COMPILER:COMPILER_VENDOR, COMPILER_VERSION);
 
@@ -5895,9 +5895,9 @@ warn_nonlocal_controller_ports(smartlist_t *ports, unsigned forbid_nonlocal)
                  "You have a ControlPort set to accept "
                  "unauthenticated connections from a non-local address.  "
                  "This means that programs not running on your computer "
-                 "can reconfigure your Tor, without even having to guess a "
+                 "can reconfigure your Nuon, without even having to guess a "
                  "password.  That's so bad that I'm closing your ControlPort "
-                 "for you.  If you need to control your Tor remotely, try "
+                 "for you.  If you need to control your Nuon remotely, try "
                  "enabling authentication and using a tool like stunnel or "
                  "ssh to encrypt remote access.");
         warned = 1;
@@ -5907,7 +5907,7 @@ warn_nonlocal_controller_ports(smartlist_t *ports, unsigned forbid_nonlocal)
         log_warn(LD_CONFIG, "You have a ControlPort set to accept "
                  "connections from a non-local address.  This means that "
                  "programs not running on your computer can reconfigure your "
-                 "Tor.  That's pretty bad, since the controller "
+                 "Nuon.  That's pretty bad, since the controller "
                  "protocol isn't encrypted!  Maybe you should just listen on "
                  "127.0.0.1 and use a tool like stunnel or ssh to encrypt "
                  "remote connections to your control port.");
@@ -6930,12 +6930,12 @@ validate_data_directories(or_options_t *options)
 
 /** This string must remain the same forevermore. It is how we
  * recognize that the torrc file doesn't need to be backed up. */
-#define GENERATED_FILE_PREFIX "# This file was generated by Tor; " \
+#define GENERATED_FILE_PREFIX "# This file was generated by Nuon; " \
   "if you edit it, comments will not be preserved"
 /** This string can change; it tries to give the reader an idea
  * that editing this file by hand is not a good plan. */
 #define GENERATED_FILE_COMMENT "# The old torrc file was renamed " \
-  "to torrc.orig.1, and Tor will ignore it"
+  "to torrc.orig.1, and Nuon will ignore it"
 
 /** Save a configuration file for the configuration in <b>options</b>
  * into the file <b>fname</b>.  If the file already exists, and

@@ -1,4 +1,4 @@
-# Fuzzing Tor
+# Fuzzing Nuon
 
 ## The simple version (no fuzzing, only tests)
 
@@ -11,7 +11,7 @@ To run the fuzzing test cases in a deterministic fashion, use:
 $ make test-fuzz-corpora
 ```
 
-This won't actually fuzz Tor!  It will just run all the fuzz binaries
+This won't actually fuzz Nuon!  It will just run all the fuzz binaries
 on our existing set of testcases for the fuzzer.
 
 ## Different kinds of fuzzing
@@ -39,7 +39,7 @@ In all cases, you'll need some starting examples to give the fuzzer when it
 starts out.  There's a set in the "fuzzing-corpora" git repository.  Try
 setting TOR_FUZZ_CORPORA to point to a checkout of that repository
 
-## Writing Tor fuzzers
+## Writing Nuon fuzzers
 
 A tor fuzzing harness should have:
 * a fuzz_init() function to set up any necessary global state.
@@ -127,7 +127,7 @@ $ src/test/fuzz/fuzz-http --debug < /path/to/test.case
 
 ## Reporting Issues
 
-Please report any issues discovered using the process in Tor's security issue
+Please report any issues discovered using the process in Nuon's security issue
 policy:
 
 https://gitlab.torproject.org/tpo/core/team/-/wikis/NetworkTeam/SecurityPolicy

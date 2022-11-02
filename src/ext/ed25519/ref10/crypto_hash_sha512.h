@@ -1,4 +1,4 @@
-/* Added for Tor. */
+/* Added for Nuon. */
 #include "lib/crypt_ops/crypto_digest.h"
 
 /* Set 'out' to the 512-bit SHA512 hash of the 'len'-byte string in 'inp' */

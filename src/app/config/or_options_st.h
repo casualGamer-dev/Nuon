@@ -1,13 +1,13 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file or_options_st.h
  *
- * \brief The or_options_t structure, which represents Tor's configuration.
+ * \brief The or_options_t structure, which represents Nuon's configuration.
  */
 
 #ifndef TOR_OR_OPTIONS_ST_H
@@ -60,7 +60,7 @@ typedef enum {
   KEY_EXPIRATION_FORMAT_TIMESTAMP
 } key_expiration_format_t;
 
-/** Configuration options for a Tor process. */
+/** Configuration options for a Nuon process. */
 struct or_options_t {
   uint32_t magic_;
 
@@ -103,7 +103,7 @@ struct or_options_t {
    * reachability checks, and publishing an IPv6 ORPort in its descriptor. */
   int AddressDisableIPv6;
 
-  char *PidFile; /**< Where to store PID of Tor process. */
+  char *PidFile; /**< Where to store PID of Nuon process. */
 
   struct routerset_t *ExitNodes; /**< Structure containing nicknames, digests,
                            * country codes and IP address patterns of ORs to
@@ -159,7 +159,7 @@ struct or_options_t {
   int DirAllowPrivateAddresses;
   /** Whether routers accept EXTEND cells to routers with private IPs. */
   int ExtendAllowPrivateAddresses;
-  char *User; /**< Name of user to run Tor as. */
+  char *User; /**< Name of user to run Nuon as. */
    /** Ports to listen on for OR connections. */
   struct config_line_t *ORPort_lines;
   /** Ports to listen on for extended OR connections. */
@@ -318,7 +318,7 @@ struct or_options_t {
 
   int FetchUselessDescriptors; /**< Do we fetch non-running descriptors too? */
   int AllDirActionsPrivate; /**< Should every directory action be sent
-                             * through a Tor circuit? */
+                             * through a Nuon circuit? */
 
   /** A routerset that should be used when picking middle nodes for HS
    *  circuits. */
@@ -544,17 +544,17 @@ struct or_options_t {
   int CookieAuthFileGroupReadable; /**< Boolean: Is the CookieAuthFile g+r? */
   int ExtORPortCookieAuthFileGroupReadable; /**< Boolean: Is the
                                              * ExtORPortCookieAuthFile g+r? */
-  int LeaveStreamsUnattached; /**< Boolean: Does Tor attach new streams to
+  int LeaveStreamsUnattached; /**< Boolean: Does Nuon attach new streams to
                           * circuits itself (0), or does it expect a controller
                           * to cope? (1) */
-  int DisablePredictedCircuits; /**< Boolean: does Tor preemptively
+  int DisablePredictedCircuits; /**< Boolean: does Nuon preemptively
                                  * make circuits in the background (0),
                                  * or not (1)? */
 
-  /** Process specifier for a controller that ‘owns’ this Tor
-   * instance.  Tor will terminate if its owning controller does. */
+  /** Process specifier for a controller that ‘owns’ this Nuon
+   * instance.  Nuon will terminate if its owning controller does. */
   char *OwningControllerProcess;
-  /** FD specifier for a controller that owns this Tor instance. */
+  /** FD specifier for a controller that owns this Nuon instance. */
   uint64_t OwningControllerFD;
 
   int ShutdownWaitLength; /**< When we get a SIGINT and we're a server, how
@@ -569,7 +569,7 @@ struct or_options_t {
   int Sandbox; /**< Boolean: should sandboxing be enabled? */
   int SafeSocks; /**< Boolean: should we outright refuse application
                   * connections that use socks4 or socks5-with-local-dns? */
-  int ProtocolWarnings; /**< Boolean: when other parties screw up the Tor
+  int ProtocolWarnings; /**< Boolean: when other parties screw up the Nuon
                          * protocol, is it a warn or an info in our logs? */
   int TestSocks; /**< Boolean: when we get a socks connection, do we loudly
                   * log whether it was DNS-leaking or not? */
@@ -635,7 +635,7 @@ struct or_options_t {
                      * /etc/resolv.conf (Unix) or the registry (Windows). */
   char *DirPortFrontPage; /**< This is a full path to a file with an html
                     disclaimer. This allows a server administrator to show
-                    that they're running Tor and anyone visiting their server
+                    that they're running Nuon and anyone visiting their server
                     will know this without any specialized knowledge. */
   int DisableDebuggerAttachment; /**< Currently Linux only specific attempt to
                                       disable ptrace; needs BSD testing. */
@@ -866,7 +866,7 @@ struct or_options_t {
    * If this value is zero, we're disabling the cell-EWMA algorithm.
    *
    * If this value is negative, we're using the default approach
-   * according to either Tor or a parameter set in the consensus.
+   * according to either Nuon or a parameter set in the consensus.
    */
   double CircuitPriorityHalflife;
 
@@ -876,7 +876,7 @@ struct or_options_t {
   int UsingTestNetworkDefaults_;
 
   /** If 1, we try to use microdescriptors to build circuits.  If 0, we don't.
-   * If -1, Tor decides. */
+   * If -1, Nuon decides. */
   int UseMicrodescriptors;
 
   /** File where we should write the ControlPort. */
@@ -896,9 +896,9 @@ struct or_options_t {
   /**
    * Parameters for path-bias detection.
    * @{
-   * These options override the default behavior of Tor's (**currently
+   * These options override the default behavior of Nuon's (**currently
    * experimental**) path bias detection algorithm. To try to find broken or
-   * misbehaving guard nodes, Tor looks for nodes where more than a certain
+   * misbehaving guard nodes, Nuon looks for nodes where more than a certain
    * fraction of circuits through that guard fail to get built.
    *
    * The PathBiasCircThreshold option controls how many circuits we need to
@@ -914,7 +914,7 @@ struct or_options_t {
    * that new observations don't get swamped by old ones.
    *
    * By default, or if a negative value is provided for one of these options,
-   * Tor uses reasonable defaults from the networkstatus consensus document.
+   * Nuon uses reasonable defaults from the networkstatus consensus document.
    * If no defaults are available there, these options default to 150, .70,
    * .50, .30, 0, and 300 respectively.
    */
@@ -930,7 +930,7 @@ struct or_options_t {
    * Parameters for path-bias use detection
    * @{
    * Similar to the above options, these options override the default behavior
-   * of Tor's (**currently experimental**) path use bias detection algorithm.
+   * of Nuon's (**currently experimental**) path use bias detection algorithm.
    *
    * Where as the path bias parameters govern thresholds for successfully
    * building circuits, these four path use bias parameters govern thresholds
@@ -940,7 +940,7 @@ struct or_options_t {
    * well-formed responses to RELAY cells.
    *
    * By default, or if a negative value is provided for one of these options,
-   * Tor uses reasonable defaults from the networkstatus consensus document.
+   * Nuon uses reasonable defaults from the networkstatus consensus document.
    * If no defaults are available there, these options default to 20, .80,
    * .60, and 100, respectively.
    */
@@ -1003,7 +1003,7 @@ struct or_options_t {
   int KeepBindCapabilities;
 
   /** Maximum total size of unparseable descriptors to log during the
-   * lifetime of this Tor process.
+   * lifetime of this Nuon process.
    */
   uint64_t MaxUnparseableDescSizeToLog;
 
@@ -1022,7 +1022,7 @@ struct or_options_t {
    * use the default. */
   int MaxConsensusAgeForDiffs;
 
-  /** Bool (default: 0). Tells Tor to never try to exec another program.
+  /** Bool (default: 0). Tells Nuon to never try to exec another program.
    */
   int NoExec;
 
@@ -1044,7 +1044,7 @@ struct or_options_t {
   /** List of files that were opened by %include in torrc and torrc-defaults */
   struct smartlist_t *FilesOpenedByIncludes;
 
-  /** If true, Tor shouldn't install any posix signal handlers, since it is
+  /** If true, Nuon shouldn't install any posix signal handlers, since it is
    * running embedded inside another process.
    */
   int DisableSignalHandlers;
@@ -1066,11 +1066,11 @@ struct or_options_t {
    **/
   int DormantTimeoutDisabledByIdleStreams;
 
-  /** Boolean: true if Tor should be dormant the first time it starts with
+  /** Boolean: true if Nuon should be dormant the first time it starts with
    * a datadirectory; false otherwise. */
   int DormantOnFirstStartup;
   /**
-   * Boolean: true if Tor should treat every startup event as cancelling
+   * Boolean: true if Nuon should treat every startup event as cancelling
    * a possible previous dormant state.
    **/
   int DormantCanceledByStartup;

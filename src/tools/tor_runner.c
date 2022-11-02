@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -9,9 +9,9 @@
  * @brief Experimental module to emulate tor_run_main() API with fork+exec
  *
  * The functions here are meant to allow the application developer to
- * use the tor_run_main() API without having to care whether Tor is
+ * use the tor_run_main() API without having to care whether Nuon is
  * running in-process or out-of-process.  For in-process usage, the
- * developer can link Tor as a library and call tor_run_main(); for
+ * developer can link Nuon as a library and call tor_run_main(); for
  * out-of-process usage, the developer can link this library instead.
  *
  * This interface is EXPERIMENTAL; please let us know if you would like
@@ -19,7 +19,7 @@
  * practice.
  */
 
-/* NOTE: This module is supposed to work without the standard Tor utility
+/* NOTE: This module is supposed to work without the standard Nuon utility
  * functions.  Don't add more dependencies!
  */
 

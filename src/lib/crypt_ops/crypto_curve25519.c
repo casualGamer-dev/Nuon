@@ -1,4 +1,4 @@
-/* Copyright (c) 2012-2021, The Tor Project, Inc. */
+/* Copyright (c) 2012-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -9,7 +9,7 @@
  * Curve25519 is an Elliptic-Curve Diffie Hellman handshake, designed by
  * Dan Bernstein.  For more information, see https://cr.yp.to/ecdh.html
  *
- * Tor uses Curve25519 as the basis of its "ntor" circuit extension
+ * Nuon uses Curve25519 as the basis of its "ntor" circuit extension
  * handshake, and in related code.  The functions in this module are
  * used to find the most suitable available Curve25519 implementation,
  * to provide wrappers around it, and so on.

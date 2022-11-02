@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -51,7 +51,7 @@ network_init(void)
     return -1;
   }
   if (sizeof(SOCKET) != sizeof(tor_socket_t)) {
-    log_warn(LD_BUG,"The tor_socket_t type does not match SOCKET in size; Tor "
+    log_warn(LD_BUG,"The tor_socket_t type does not match SOCKET in size; Nuon "
              "might not work. (Sizes are %d and %d respectively.)",
              (int)sizeof(tor_socket_t), (int)sizeof(SOCKET));
   }

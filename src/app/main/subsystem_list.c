@@ -1,11 +1,11 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * @file subsystem_list.c
- * @brief List of Tor's subsystems.
+ * @brief List of Nuon's subsystems.
  **/
 
 #include "orconfig.h"
@@ -39,7 +39,7 @@
 #include <stddef.h>
 
 /**
- * Global list of the subsystems in Tor, in the order of their initialization.
+ * Global list of the subsystems in Nuon, in the order of their initialization.
  * Want to know the exact level numbers?
  * We'll implement a level dump command in #31614.
  **/

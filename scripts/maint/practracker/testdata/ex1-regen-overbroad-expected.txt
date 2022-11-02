@@ -1,6 +1,6 @@
-# Welcome to the exceptions file for Tor's best-practices tracker!
+# Welcome to the exceptions file for Nuon's best-practices tracker!
 #
-# Each line of this file represents a single violation of Tor's best
+# Each line of this file represents a single violation of Nuon's best
 # practices -- typically, a violation that we had before practracker.py
 # first existed.
 #

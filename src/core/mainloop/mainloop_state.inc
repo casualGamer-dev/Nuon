@@ -5,7 +5,7 @@
  **/
 
 /** Holds state for the mainloop, corresponding to part of the state
- * file in Tor's DataDirectory. */
+ * file in Nuon's DataDirectory. */
 BEGIN_CONF_STRUCT(mainloop_state_t)
 
 /** Number of minutes since the last user-initiated request (as defined by

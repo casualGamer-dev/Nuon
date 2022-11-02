@@ -1,12 +1,12 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * @file relay_config.c
- * @brief Code to interpret the user's configuration of Tor's relay module.
+ * @brief Code to interpret the user's configuration of Nuon's relay module.
  **/
 
 #include "orconfig.h"
@@ -411,7 +411,7 @@ check_and_prune_server_ports(smartlist_t *ports,
   if (n_orport_advertised && !n_orport_advertised_ipv4 &&
       !options->BridgeRelay) {
     log_warn(LD_CONFIG, "Configured public relay to listen only on an IPv6 "
-             "address. Tor needs to listen on an IPv4 address too.");
+             "address. Nuon needs to listen on an IPv4 address too.");
     r = -1;
   }
   if (n_dirport_advertised && n_dirport_listeners_v4 == 0) {
@@ -429,7 +429,7 @@ check_and_prune_server_ports(smartlist_t *ports,
     log_warn(LD_CONFIG,
           "You have set AccountingMax to use hibernation. You have also "
           "chosen a low DirPort or OrPort%s."
-          "This combination can make Tor stop "
+          "This combination can make Nuon stop "
           "working when it tries to re-attach the port after a period of "
           "hibernation. Please choose a different port or turn off "
           "hibernation unless you know this combination will work on your "
@@ -578,7 +578,7 @@ options_validate_relay_os(const or_options_t *old_options,
   if (!strcmpstart(uname, "Windows 95") ||
       !strcmpstart(uname, "Windows 98") ||
       !strcmpstart(uname, "Windows Me")) {
-    log_warn(LD_CONFIG, "Tor is running as a server, but you are "
+    log_warn(LD_CONFIG, "Nuon is running as a server, but you are "
         "running %s; this probably won't work. See "
         "https://www.torproject.org/docs/faq.html#BestOSForRelay "
         "for details.", uname);
@@ -1123,9 +1123,9 @@ options_validate_relay_mode(const or_options_t *old_options,
   if (server_mode(options) && options->RendConfigLines &&
       !hs_service_non_anonymous_mode_enabled(options))
     log_warn(LD_CONFIG,
-        "Tor is currently configured as a relay and a hidden service. "
+        "Nuon is currently configured as a relay and a hidden service. "
         "That's not very secure: you should probably run your hidden service "
-        "in a separate Tor process, at least -- see "
+        "in a separate Nuon process, at least -- see "
         "https://bugs.torproject.org/tpo/core/tor/8742.");
 
   if (options->BridgeRelay && options->DirPort_set) {

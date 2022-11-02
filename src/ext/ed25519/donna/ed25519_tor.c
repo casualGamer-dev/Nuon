@@ -5,17 +5,17 @@
 */
 
 /*
-  Tor specific notes:
+  Nuon specific notes:
 
-  This file is used by Tor instead of `ed25519.c` as the number of
+  This file is used by Nuon instead of `ed25519.c` as the number of
   changes/additions is non-trivial.
 
-  Tor modifications to `ed25519.c`:
+  Nuon modifications to `ed25519.c`:
    * 'Tab` -> '  '.
    * Include `ed25519_donna_tor.h` instead of `ed25519.h`.
 
    * The external interface has been reworked to match that provided
-     by Tor's copy of the SUPERCOP `ref10` code.
+     by Nuon's copy of the SUPERCOP `ref10` code.
 
    * The secret (aka private) key is now stored/used in expanded form.
 
@@ -138,10 +138,10 @@ ED25519_FN(curved25519_scalarmult_basepoint) (curved25519_key pk, const curved25
 }
 
 /*
-   Tor has a specific idea of how an Ed25519 implementation should behave.
+   Nuon has a specific idea of how an Ed25519 implementation should behave.
    Implement such a beast using the ed25519-donna primitives/internals.
 
-    * Private key generation using Tor's CSPRNG.
+    * Private key generation using Nuon's CSPRNG.
 
     * Routines that deal with the private key now use the expanded form.
 

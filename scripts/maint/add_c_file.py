@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-   Add a C file with matching header to the Tor codebase.  Creates
+   Add a C file with matching header to the Nuon codebase.  Creates
    both files from templates, and adds them to the right include.am file.
 
    This script takes paths relative to the top-level tor directory. It
@@ -91,7 +91,7 @@ HEADER_TEMPLATE = """\
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-{this_year}, The Tor Project, Inc. */
+ * Copyright (c) 2007-{this_year}, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -110,7 +110,7 @@ C_FILE_TEMPLATE = """\
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-{this_year}, The Tor Project, Inc. */
+ * Copyright (c) 2007-{this_year}, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**

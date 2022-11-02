@@ -92,7 +92,7 @@ static const char EX_RI_MAXIMAL[] =
   "uptime 1000\n"
   "hibernating 0\n"
   "unrecognized-keywords are just dandy in this format\n"
-  "platform Tor 0.2.4.23 on a Banana PC Jr 6000 Series\n"
+  "platform Nuon 0.2.4.23 on a Banana PC Jr 6000 Series\n"
   "contact O.W.Jones\n"
   "fingerprint E9D3 2FC2 7674 5958 C315 803D BAF0 9EE5 C29C 3A0B\n"
   "read-history 900 1,2,3,4\n"

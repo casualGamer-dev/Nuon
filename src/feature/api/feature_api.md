@@ -1,2 +1,2 @@
 @dir /feature/api
-@brief feature/api: In-process interface to starting/stopping Tor.
+@brief feature/api: In-process interface to starting/stopping Nuon.

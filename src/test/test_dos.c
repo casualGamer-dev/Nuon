@@ -1,4 +1,4 @@
-/* Copyright (c) 2018-2021, The Tor Project, Inc. */
+/* Copyright (c) 2018-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #define DOS_PRIVATE
@@ -174,7 +174,7 @@ test_dos_circuit_creation(void *arg)
 
   /* TODO: Wait a few seconds before sending the cell, and check that the
      buckets got refilled properly. */
-  /* TODO: Actually send a Tor cell (instead of calling the DoS function) and
+  /* TODO: Actually send a Nuon cell (instead of calling the DoS function) and
    * check that it will get refused */
 
  done:

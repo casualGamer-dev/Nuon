@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright 2020, The Tor Project, Inc.
+# Copyright 2020, The Nuon Project, Inc.
 # See LICENSE for licensing information.
 
 #
@@ -21,7 +21,7 @@
 # Use "-c" to exit with a nonzero exit status if any file needs to change.
 # Use "-d" to emit diffs.
 #
-# The "-a" option tells us to run over every Tor source file.
+# The "-a" option tells us to run over every Nuon source file.
 # The "-v" option tells us to be verbose.
 
 set -e
@@ -45,7 +45,7 @@ function usage() {
     echo "    -c: check whether files are correctly formatted"
     echo "    -d: print a diff for the changes that would be applied"
     echo "    -i: change files in-place"
-    echo "    -a: run over all the C files in Tor"
+    echo "    -a: run over all the C files in Nuon"
     echo "    -v: verbose mode"
     echo "    -g: look at the files that have changed in git."
     echo "    -G: look at the files that are staged for the git commit."

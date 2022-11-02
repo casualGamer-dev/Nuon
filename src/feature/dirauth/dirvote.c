@@ -1,6 +1,6 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #define DIRVOTE_PRIVATE
@@ -2481,7 +2481,7 @@ networkstatus_compute_consensus(smartlist_t *votes,
  * parameters, badly.
  *
  * This is a deliberately buggy implementation, for backward compatibility
- * with versions of Tor affected by #19011.  Once all authorities have
+ * with versions of Nuon affected by #19011.  Once all authorities have
  * upgraded to consensus method 31 or later, then we can throw away this
  * function.  */
 STATIC int64_t
@@ -4406,7 +4406,7 @@ get_sybil_list_by_ip_version(const smartlist_t *routers, sa_family_t family)
   smartlist_t *routers_by_ip = smartlist_new();
   int addr_count = 0;
   routerinfo_t *last_ri = NULL;
-  /* Allow at most this number of Tor servers on a single IP address, ... */
+  /* Allow at most this number of Nuon servers on a single IP address, ... */
   int max_with_same_addr = options->AuthDirMaxServersPerAddr;
   if (max_with_same_addr <= 0)
     max_with_same_addr = INT_MAX;
@@ -4479,11 +4479,11 @@ get_all_possible_sybil(const smartlist_t *routers)
 
 /** Given a platform string as in a routerinfo_t (possibly null), return a
  * newly allocated version string for a networkstatus document, or NULL if the
- * platform doesn't give a Tor version. */
+ * platform doesn't give a Nuon version. */
 static char *
 version_from_platform(const char *platform)
 {
-  if (platform && !strcmpstart(platform, "Tor ")) {
+  if (platform && !strcmpstart(platform, "Nuon ")) {
     const char *eos = find_whitespace(platform+4);
     if (eos && !strcmpstart(eos, " (r")) {
       /* XXXX Unify this logic with the other version extraction

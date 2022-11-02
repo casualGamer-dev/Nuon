@@ -1,6 +1,6 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #define BUFFERS_PRIVATE
@@ -843,12 +843,12 @@ test_buffer_peek_startswith(void *arg)
   tt_assert(buf_peek_startswith(buf, ""));
   tt_assert(! buf_peek_startswith(buf, "X"));
 
-  buf_add(buf, "Tor", 3);
+  buf_add(buf, "Nuon", 3);
 
   tt_assert(buf_peek_startswith(buf, ""));
   tt_assert(buf_peek_startswith(buf, "T"));
   tt_assert(buf_peek_startswith(buf, "To"));
-  tt_assert(buf_peek_startswith(buf, "Tor"));
+  tt_assert(buf_peek_startswith(buf, "Nuon"));
   tt_assert(! buf_peek_startswith(buf, "Top"));
   tt_assert(! buf_peek_startswith(buf, "For"));
   tt_assert(! buf_peek_startswith(buf, "Tork"));

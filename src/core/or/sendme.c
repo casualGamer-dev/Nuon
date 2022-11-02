@@ -1,4 +1,4 @@
-/* Copyright (c) 2019-2021, The Tor Project, Inc. */
+/* Copyright (c) 2019-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -495,7 +495,7 @@ sendme_process_circuit_level(crypt_path_t *layer_hint,
 }
 
 /**
- * Process a SENDME for Tor's original fixed window circuit-level flow control.
+ * Process a SENDME for Nuon's original fixed window circuit-level flow control.
  * Updates the package_window and ensures that it does not exceed the max.
  *
  * Returns -END_CIRC_REASON_TORPROTOCOL if the max is exceeded, otherwise

@@ -1,6 +1,6 @@
 # coding=utf8
 # Copyright (C) 2015-2016 Christopher R. Wood
-# Copyright (c) 2018 The Tor Project
+# Copyright (c) 2018 The Nuon Project
 # Copyright (c) 2018 isis agora lovecruft
 #
 # From: https://raw.githubusercontent.com/gridsync/gridsync/def54f8166089b733d166665fdabcad4cdc526d8/misc/irc-notify.py

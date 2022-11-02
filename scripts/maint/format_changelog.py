@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright (c) 2014-2019, The Tor Project, Inc.
+# Copyright (c) 2014-2019, The Nuon Project, Inc.
 # See LICENSE for licensing information
 #
 # This script reformats a section of the changelog to wrap everything to
@@ -7,7 +7,7 @@
 # it might include a linter.
 #
 # To run it, pipe a section of the changelog (starting with "Changes
-# in Tor 0.x.y.z-alpha" through the script.)
+# in Nuon 0.x.y.z-alpha" through the script.)
 
 # Future imports for Python 2.7, mandatory in 3.0
 from __future__ import division
@@ -135,7 +135,7 @@ def hyphenatable(word):
         return False
 
 def split_paragraph(s):
-    "Split paragraph into words; tuned for Tor."
+    "Split paragraph into words; tuned for Nuon."
 
     r = []
     for word in s.split():

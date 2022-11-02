@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# To use this script, build Tor with coverage enabled, and then say:
+# To use this script, build Nuon with coverage enabled, and then say:
 #  ./scripts/test/cov-test-determinism.sh run
 #
 # Let it run for a long time so it can run the tests over and over.  It

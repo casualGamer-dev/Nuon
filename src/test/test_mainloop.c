@@ -1,9 +1,9 @@
-/* Copyright (c) 2018-2021, The Tor Project, Inc. */
+/* Copyright (c) 2018-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file test_mainloop.c
- * \brief Tests for functions closely related to the Tor main loop
+ * \brief Tests for functions closely related to the Nuon main loop
  */
 
 #define CONFIG_PRIVATE
@@ -140,7 +140,7 @@ test_mainloop_update_time_jumps(void *arg)
   mt_now += 4000*BILLION;
   monotime_coarse_set_mock_time_nsec(mt_now);
   update_current_time(now);
-  expect_single_log_msg_containing("Tor has been idle for 4000 seconds");
+  expect_single_log_msg_containing("Nuon has been idle for 4000 seconds");
   tt_int_op(approx_time(), OP_EQ, now);
   tt_int_op(get_uptime(), OP_EQ, 5);
 

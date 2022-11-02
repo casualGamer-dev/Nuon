@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -143,7 +143,7 @@ tor_api_get_provider_version(void)
   return "tor " VERSION;
 }
 
-/* Main entry point for the Tor process.  Called from main().
+/* Main entry point for the Nuon process.  Called from main().
  *
  * This function is distinct from main() only so we can link main.c into
  * the unittest binary without conflicting with the unittests' main.

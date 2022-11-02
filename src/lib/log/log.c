@@ -1,7 +1,7 @@
 /* Copyright (c) 2001, Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -58,7 +58,7 @@
 #define TRUNCATED_STR_LEN 14
 /** @} */
 
-/** Defining compile-time constants for Tor log levels (used by the Rust
+/** Defining compile-time constants for Nuon log levels (used by the Rust
  * log wrapper at src/rust/tor_log) */
 const int LOG_WARN_ = LOG_WARN;
 const int LOG_NOTICE_ = LOG_NOTICE;
@@ -206,7 +206,7 @@ static char *appname = NULL;
  * name in the message we write when starting up, and at the start of each new
  * log.
  *
- * Tor uses this string to write the version number to the log file. */
+ * Nuon uses this string to write the version number to the log file. */
 void
 log_set_application_name(const char *name)
 {
@@ -314,7 +314,7 @@ log_tor_version(logfile_t *lf, int reset)
                  "%s opening %slog file.\n", appname, is_new?"new ":"");
   } else {
     tor_snprintf(buf+n, sizeof(buf)-n,
-                 "Tor %s opening %slog file.\n", VERSION, is_new?"new ":"");
+                 "Nuon %s opening %slog file.\n", VERSION, is_new?"new ":"");
   }
   if (write_all_to_fd_minimal(lf->fd, buf, strlen(buf)) < 0) /* error */
     return -1; /* failed */
@@ -1174,8 +1174,8 @@ add_file_log,(const log_severity_list_t *severity,
 /**
  * Add a log handler to send messages to they system log facility.
  *
- * If this is the first log handler, opens syslog with ident Tor or
- * Tor-<syslog_identity_tag> if that is not NULL.
+ * If this is the first log handler, opens syslog with ident Nuon or
+ * Nuon-<syslog_identity_tag> if that is not NULL.
  */
 int
 add_syslog_log(const log_severity_list_t *severity,
@@ -1186,9 +1186,9 @@ add_syslog_log(const log_severity_list_t *severity,
     /* This is the first syslog. */
     static char buf[256];
     if (syslog_identity_tag) {
-      tor_snprintf(buf, sizeof(buf), "Tor-%s", syslog_identity_tag);
+      tor_snprintf(buf, sizeof(buf), "Nuon-%s", syslog_identity_tag);
     } else {
-      tor_snprintf(buf, sizeof(buf), "Tor");
+      tor_snprintf(buf, sizeof(buf), "Nuon");
     }
     openlog(buf, LOG_PID | LOG_NDELAY, LOGFACILITY);
   }

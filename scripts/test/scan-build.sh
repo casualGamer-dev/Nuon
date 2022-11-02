@@ -1,9 +1,9 @@
 #!/bin/sh
-# Copyright 2014 The Tor Project, Inc
+# Copyright 2014 The Nuon Project, Inc
 # See LICENSE for licensing information
 #
 # This script is used for running a bunch of clang scan-build checkers
-# on Tor.
+# on Nuon.
 
 # These don't seem to cause false positives in our code, so let's turn
 # them on.

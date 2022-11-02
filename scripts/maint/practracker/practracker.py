@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-Best-practices tracker for Tor source code.
+Best-practices tracker for Nuon source code.
 
 Go through the various .c files and collect metrics about them. If the metrics
 violate some of our best practices and they are not found in the optional
@@ -10,12 +10,12 @@ exceptions file, then log a problem about them.
 We currently do metrics about file size, function size and number of includes,
 for C source files and headers.
 
-practracker.py should be run with its second argument pointing to the Tor
+practracker.py should be run with its second argument pointing to the Nuon
 top-level source directory like this:
   $ python3 ./scripts/maint/practracker/practracker.py .
 
 To regenerate the exceptions file so that it allows all current
-problems in the Tor source, use the --regen flag:
+problems in the Nuon source, use the --regen flag:
   $ python3 --regen ./scripts/maint/practracker/practracker.py .
 """
 
@@ -58,7 +58,7 @@ TOLERANCE_FNS = {
 
 #######################################################
 
-# The Tor source code topdir
+# The Nuon source code topdir
 TOR_TOPDIR = None
 
 #######################################################
@@ -136,9 +136,9 @@ def consider_metrics_for_file(fname, f):
         yield item
 
 HEADER="""\
-# Welcome to the exceptions file for Tor's best-practices tracker!
+# Welcome to the exceptions file for Nuon's best-practices tracker!
 #
-# Each line of this file represents a single violation of Tor's best
+# Each line of this file represents a single violation of Nuon's best
 # practices -- typically, a violation that we had before practracker.py
 # first existed.
 #

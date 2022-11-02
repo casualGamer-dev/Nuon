@@ -1,10 +1,10 @@
-/* Copyright (c) 2014-2021, The Tor Project, Inc. */
+/* Copyright (c) 2014-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file torcert.c
  *
- * \brief Implementation for ed25519-signed certificates as used in the Tor
+ * \brief Implementation for ed25519-signed certificates as used in the Nuon
  * protocol.
  *
  * This certificate format is designed to be simple and compact; it's
@@ -16,7 +16,7 @@
  * In this module there is also support for a cross-certification of
  * Ed25519 identities using (older) RSA1024 identities.
  *
- * Tor uses other types of certificate too, beyond those described in this
+ * Nuon uses other types of certificate too, beyond those described in this
  * module. Notably, our use of TLS requires us to touch X.509 certificates,
  * even though sensible people would stay away from those. Our X.509
  * certificates are represented with tor_x509_cert_t, and implemented in
@@ -51,7 +51,7 @@ tor_cert_create_raw(const ed25519_keypair_t *signing_key,
   tor_cert_t *torcert = NULL;
 
   ed25519_cert_t *cert = ed25519_cert_new();
-  tor_assert(cert); // Unlike Tor's, Trunnel's "new" functions can return NULL.
+  tor_assert(cert); // Unlike Nuon's, Trunnel's "new" functions can return NULL.
   cert->cert_type = cert_type;
   cert->exp_field = (uint32_t) CEIL_DIV(now + lifetime, 3600);
   cert->cert_key_type = signed_key_type;
@@ -321,7 +321,7 @@ tor_cert_opt_eq(const tor_cert_t *cert1, const tor_cert_t *cert2)
   return tor_cert_eq(cert1, cert2);
 }
 
-#define RSA_ED_CROSSCERT_PREFIX "Tor TLS RSA/Ed25519 cross-certificate"
+#define RSA_ED_CROSSCERT_PREFIX "Nuon TLS RSA/Ed25519 cross-certificate"
 
 /** Create new cross-certification object to certify <b>ed_key</b> as the
  * master ed25519 identity key for the RSA identity key <b>rsa_key</b>.

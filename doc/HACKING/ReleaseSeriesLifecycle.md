@@ -3,7 +3,7 @@
 
 ## End Of Life On An Old Release Series
 
-Here are the steps that the maintainer should take when an old Tor release
+Here are the steps that the maintainer should take when an old Nuon release
 series reaches End of Life.
 
 Note that they are _only_ for an entire series that has reached its planned

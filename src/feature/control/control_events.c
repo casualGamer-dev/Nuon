@@ -1,5 +1,5 @@
 /* Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -339,7 +339,7 @@ static uint64_t stats_prev_n_written = 0;
 
 /**
  * Set <b>n_read</b> and <b>n_written</b> to the total number of bytes read
- * and written by Tor since the last call to this function.
+ * and written by Nuon since the last call to this function.
  *
  * Call this only from the main thread.
  */
@@ -442,8 +442,8 @@ get_block_event_queue(void)
  * We queue these events rather than send them immediately in order to break
  * the dependency in our callgraph from code that generates events for the
  * controller, and the network layer at large.  Otherwise, nearly every
- * interesting part of Tor would potentially call every other interesting part
- * of Tor.
+ * interesting part of Nuon would potentially call every other interesting part
+ * of Nuon.
  */
 MOCK_IMPL(STATIC void,
 queue_control_event_string,(uint16_t event, char *msg))

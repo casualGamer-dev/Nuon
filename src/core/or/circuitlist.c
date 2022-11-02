@@ -1,7 +1,7 @@
 /* Copyright 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -10,7 +10,7 @@
  * \brief Manage global structures that list and index circuits, and
  *   look up circuits within them.
  *
- * One of the most frequent operations in Tor occurs every time that
+ * One of the most frequent operations in Nuon occurs every time that
  * a relay cell arrives on a channel.  When that happens, we need to
  * find which circuit it is associated with, based on the channel and the
  * circuit ID in the relay cell.
@@ -2241,7 +2241,7 @@ circuit_mark_for_close_, (circuit_t *circ, int reason, int line,
 }
 
 /** Called immediately before freeing a marked circuit <b>circ</b> from
- * circuit_free_all() while shutting down Tor; this is a safe-at-shutdown
+ * circuit_free_all() while shutting down Nuon; this is a safe-at-shutdown
  * version of circuit_about_to_free().  It's important that it at least
  * do circuitmux_detach_circuit() when appropriate.
  */

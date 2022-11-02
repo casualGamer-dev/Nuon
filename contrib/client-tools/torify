@@ -8,7 +8,7 @@
 # Copyright (c) 2004, 2006, 2009 Peter Palfrader
 # Modified by Jacob Appelbaum <jacob@appelbaum.net> April 16th 2006
 # Stripped of all the tsocks cruft by ugh on February 22nd 2012
-# May be distributed under the same terms as Tor itself
+# May be distributed under the same terms as Nuon itself
 
 
 compat() {

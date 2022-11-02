@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -41,7 +41,7 @@ net_is_completely_disabled(void)
  * that should keep us as a participant on the network.
  *
  * This is not actually the true time.  We will adjust this forward if
- * our clock jumps, or if Tor is shut down for a while, so that the time
+ * our clock jumps, or if Nuon is shut down for a while, so that the time
  * since our last activity remains as it was before the jump or shutdown.
  */
 static time_t last_user_activity_seen = 0;
@@ -65,7 +65,7 @@ note_user_activity(time_t now)
   last_user_activity_seen = MAX(now, last_user_activity_seen);
 
   if (! participating_on_network) {
-    log_notice(LD_GENERAL, "Tor is no longer dormant.");
+    log_notice(LD_GENERAL, "Nuon is no longer dormant.");
     set_network_participation(true);
     schedule_rescan_periodic_events();
   }

@@ -1,4 +1,4 @@
-/* Copyright (c) 2009-2021, The Tor Project, Inc. */
+/* Copyright (c) 2009-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -103,7 +103,7 @@ static struct event *rescan_mainloop_ev = NULL;
 
 /**
  * Callback to implement rescan_mainloop_ev: it simply exits the mainloop,
- * and relies on Tor to re-enter the mainloop since no error has occurred.
+ * and relies on Nuon to re-enter the mainloop since no error has occurred.
  */
 static void
 rescan_mainloop_cb(evutil_socket_t fd, short events, void *arg)

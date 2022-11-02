@@ -1,4 +1,4 @@
-/* * Copyright (c) 2012-2021, The Tor Project, Inc. */
+/* * Copyright (c) 2012-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -191,7 +191,7 @@ struct channel_t {
   /** Current channel state */
   channel_state_t state;
 
-  /** Globally unique ID number for a channel over the lifetime of a Tor
+  /** Globally unique ID number for a channel over the lifetime of a Nuon
    * process.  This may not be 0.
    */
   uint64_t global_identifier;
@@ -462,7 +462,7 @@ struct channel_listener_t {
   /** Current channel listener state */
   channel_listener_state_t state;
 
-  /** Globally unique ID number for a channel over the lifetime of a Tor
+  /** Globally unique ID number for a channel over the lifetime of a Nuon
    * process.
    */
   uint64_t global_identifier;

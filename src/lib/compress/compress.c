@@ -1,13 +1,13 @@
 /* Copyright (c) 2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file compress.c
  * \brief Common compression API implementation.
  *
- * This file provides a unified interface to all the compression libraries Tor
+ * This file provides a unified interface to all the compression libraries Nuon
  * knows how to use.
  **/
 

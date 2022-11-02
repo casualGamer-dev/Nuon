@@ -1,4 +1,4 @@
-/* Copyright (c) 2007-2021, The Tor Project, Inc. */
+/* Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -22,7 +22,7 @@
  * function.  See the scripts and the README file in src/config for more
  * information about how those files are generated.
  *
- * Tor uses GeoIP information in order to implement user requests (such as
+ * Nuon uses GeoIP information in order to implement user requests (such as
  * ExcludeNodes {cc}), and to keep track of how much usage relays are getting
  * for each country.
  */

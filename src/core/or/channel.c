@@ -1,15 +1,15 @@
-/* * Copyright (c) 2012-2021, The Tor Project, Inc. */
+/* * Copyright (c) 2012-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file channel.c
  *
  * \brief OR/OP-to-OR channel abstraction layer. A channel's job is to
- * transfer cells from Tor instance to Tor instance. Currently, there is only
+ * transfer cells from Nuon instance to Nuon instance. Currently, there is only
  * one implementation of the channel abstraction: in channeltls.c.
  *
  * Channels are a higher-level abstraction than or_connection_t: In general,
- * any means that two Tor relays use to exchange cells, or any means that a
+ * any means that two Nuon relays use to exchange cells, or any means that a
  * relay and a client use to exchange cells, is a channel.
  *
  * Channels differ from pluggable transports in that they do not wrap an
@@ -644,7 +644,7 @@ channel_remove_from_digest_map(channel_t *chan)
  *
  * This function searches for a channel by the global_identifier assigned
  * at initialization time.  This identifier is unique for the lifetime of the
- * Tor process.
+ * Nuon process.
  */
 channel_t *
 channel_find_by_global_id(uint64_t global_identifier)
@@ -975,7 +975,7 @@ channel_listener_free_(channel_listener_t *chan_l)
 /**
  * Free a channel and skip the state/registration asserts; this internal-
  * use-only function should be called only from channel_free_all() when
- * shutting down the Tor process.
+ * shutting down the Nuon process.
  */
 static void
 channel_force_xfree(channel_t *chan)
@@ -1019,7 +1019,7 @@ channel_force_xfree(channel_t *chan)
 /**
  * Free a channel listener and skip the state/registration asserts; this
  * internal-use-only function should be called only from channel_free_all()
- * when shutting down the Tor process.
+ * when shutting down the Nuon process.
  */
 static void
 channel_listener_force_xfree(channel_listener_t *chan_l)

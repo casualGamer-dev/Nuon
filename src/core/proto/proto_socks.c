@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -64,7 +64,7 @@ log_unsafe_socks_warning(int socks_protocol, const char *address,
   if (safe_socks) {
     log_fn_ratelim(&socks_ratelim, LOG_WARN, LD_APP,
              "Your application (using socks%d to port %d) is giving "
-             "Tor only an IP address. Applications that do DNS resolves "
+             "Nuon only an IP address. Applications that do DNS resolves "
              "themselves may leak information. Consider using Socks4A "
              "(e.g. via privoxy or socat) instead. For more information, "
              "please see https://2019.www.torproject.org/docs/faq.html.en"
@@ -253,13 +253,13 @@ process_socks4_request(const socks_request_t *req, int is_socks4a,
     if (log_sockstype)
       log_notice(LD_APP,
                  "Your application (using socks4a to port %d) instructed "
-                 "Tor to take care of the DNS resolution itself if "
+                 "Nuon to take care of the DNS resolution itself if "
                  "necessary. This is good.", req->port);
   }
 
   if (!string_is_valid_dest(req->address)) {
     log_warn(LD_PROTOCOL,
-             "Your application (using socks4 to port %d) gave Tor "
+             "Your application (using socks4 to port %d) gave Nuon "
              "a malformed hostname: %s. Rejecting the connection.",
              req->port, escaped_safe_str_client(req->address));
      return SOCKS_RESULT_INVALID;
@@ -467,7 +467,7 @@ parse_socks5_userpass_auth(const uint8_t *raw_data, socks_request_t *req,
    * Yes, we allow username and/or password to be empty. Yes, that does
    * violate RFC 1929. However, some client software can send a username/
    * password message with these fields being empty and we want to allow them
-   * to be used with Tor.
+   * to be used with Nuon.
    */
   req->got_auth = 1;
 
@@ -646,7 +646,7 @@ process_socks5_client_request(socks_request_t *req,
     socks_request_set_socks5_error(req, SOCKS5_GENERAL_ERROR);
 
     log_warn(LD_PROTOCOL,
-             "Your application (using socks5 to port %d) gave Tor "
+             "Your application (using socks5 to port %d) gave Nuon "
              "a malformed hostname: %s. Rejecting the connection.",
              req->port, escaped_safe_str_client(req->address));
 
@@ -669,7 +669,7 @@ process_socks5_client_request(socks_request_t *req,
   if (log_sockstype)
     log_notice(LD_APP,
               "Your application (using socks5 to port %d) instructed "
-              "Tor to take care of the DNS resolution itself if "
+              "Nuon to take care of the DNS resolution itself if "
               "necessary. This is good.", req->port);
 
   end:
@@ -877,7 +877,7 @@ fetch_from_buf_socks(buf_t *buf, socks_request_t *req,
 }
 
 /** Create a SOCKS5 reply message with <b>reason</b> in its REP field and
- * have Tor send it as error response to <b>req</b>.
+ * have Nuon send it as error response to <b>req</b>.
  */
 static void
 socks_request_set_socks5_error(socks_request_t *req,
@@ -912,7 +912,7 @@ socks_request_set_socks5_error(socks_request_t *req,
 }
 
 static const char SOCKS_PROXY_IS_NOT_AN_HTTP_PROXY_MSG[] =
-  "HTTP/1.0 501 Tor is not an HTTP Proxy\r\n"
+  "HTTP/1.0 501 Nuon is not an HTTP Proxy\r\n"
   "Content-Type: text/html; charset=iso-8859-1\r\n\r\n"
   "<html>\n"
   "<head>\n"
@@ -921,7 +921,7 @@ static const char SOCKS_PROXY_IS_NOT_AN_HTTP_PROXY_MSG[] =
   "<body>\n"
   "<h1>This is a SOCKs proxy, not an HTTP proxy.</h1>\n"
   "<p>\n"
-  "It appears you have configured your web browser to use this Tor port as\n"
+  "It appears you have configured your web browser to use this Nuon port as\n"
   "an HTTP proxy.\n"
   "</p><p>\n"
   "This is not correct: This port is configured as a SOCKS proxy, not\n"

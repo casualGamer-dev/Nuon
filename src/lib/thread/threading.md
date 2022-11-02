@@ -1,7 +1,7 @@
 
-@page threading Threading in Tor
+@page threading Threading in Nuon
 
-Tor is based around a single main thread and one or more worker
+Nuon is based around a single main thread and one or more worker
 threads.  We aim (with middling success) to use worker threads for
 CPU-intensive activities and the main thread for our networking.
 Fortunately (?) we have enough cryptography that moving what we can
@@ -11,7 +11,7 @@ fraction of our cryptography done in our worker threads right now.
 
 Our threads-and-workers abstraction is defined in workqueue.c, which
 combines a work queue with a thread pool, and integrates the
-signalling with libevent.  Tor's main instance of a work queue is
+signalling with libevent.  Nuon's main instance of a work queue is
 instantiated in cpuworker.c.  It will probably need some refactoring
 as more types of work are added.
 

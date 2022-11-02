@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -18,8 +18,8 @@ struct config_format_t;
 struct smartlist_t;
 
 /**
- * A subsystem is a part of Tor that is initialized, shut down, configured,
- * and connected to other parts of Tor.
+ * A subsystem is a part of Nuon that is initialized, shut down, configured,
+ * and connected to other parts of Nuon.
  *
  * All callbacks are optional -- if a callback is set to NULL, the subsystem
  * manager will treat it as a no-op.
@@ -29,7 +29,7 @@ struct smartlist_t;
  * optional, and many of them with similar signatures.)
  *
  * See @ref initialization for more information about initialization and
- * shutdown in Tor.
+ * shutdown in Nuon.
  *
  * To make a new subsystem, you declare a const instance of this type, and
  * include it on the list in subsystem_list.c.  The code that manages these
@@ -49,7 +49,7 @@ typedef struct subsys_fns_t {
 
   /**
    * Whether this subsystem is supported -- that is, whether it is compiled
-   * into Tor.  For most subsystems, this should be true.
+   * into Nuon.  For most subsystems, this should be true.
    **/
   bool supported;
 
@@ -128,7 +128,7 @@ typedef struct subsys_fns_t {
    *
    * This function is not allowed to fail.
    *
-   * Subsystems are shut down when Tor is about to exit or return control to
+   * Subsystems are shut down when Nuon is about to exit or return control to
    * an embedding program. This callback must return the process to a state
    * such that subsys_fns_t.init will succeed if invoked again.
    **/
@@ -138,7 +138,7 @@ typedef struct subsys_fns_t {
    * A config_format_t describing all of the torrc fields owned by this
    * subsystem.
    *
-   * This object, if present, is registered in a confmgr_t for Tor's options,
+   * This object, if present, is registered in a confmgr_t for Nuon's options,
    * and used to parse option fields from the command line and torrc file.
    **/
   const struct config_format_t *options_format;
@@ -147,7 +147,7 @@ typedef struct subsys_fns_t {
    * A config_format_t describing all of the DataDir/state fields owned by
    * this subsystem.
    *
-   * This object, if present, is registered in a confmgr_t for Tor's state,
+   * This object, if present, is registered in a confmgr_t for Nuon's state,
    * and used to parse state fields from the DataDir/state file.
    **/
   const struct config_format_t *state_format;
@@ -177,8 +177,8 @@ typedef struct subsys_fns_t {
    * This function is only called after all the validation code defined
    * by subsys_fns_t.state_format has passed.
    *
-   * This function will only be called once per invocation of Tor, since
-   * Tor does not reload its state while it is running.
+   * This function will only be called once per invocation of Nuon, since
+   * Nuon does not reload its state while it is running.
    **/
   int (*set_state)(void *);
 

@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -86,7 +86,7 @@ MOCK_DECL(char *,
            const char *suffix));
 
 /* These macros wrap options_get_dir_fname2_suffix to provide a more
- * convenient API for finding filenames that Tor uses inside its storage
+ * convenient API for finding filenames that Nuon uses inside its storage
  * They are named according to a pattern:
  *    (options_)?get_(cache|key|data)dir_fname(2)?(_suffix)?
  *
@@ -192,10 +192,10 @@ or_options_t *options_new(void);
 typedef struct {
   /** List of options that can only be set from the command-line */
   struct config_line_t *cmdline_opts;
-  /** List of other options, to be handled by the general Tor configuration
+  /** List of other options, to be handled by the general Nuon configuration
       system. */
   struct config_line_t *other_opts;
-  /** Subcommand that Tor has been told to run */
+  /** Subcommand that Nuon has been told to run */
   tor_cmdline_mode_t command;
   /** Argument for the command mode, if any. */
   const char *command_arg;

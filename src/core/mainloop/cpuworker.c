@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -79,7 +79,7 @@ static int total_pending_tasks = 0;
 static int max_pending_tasks = 128;
 
 /** Initialize the cpuworker subsystem. It is OK to call this more than once
- * during Tor's lifetime.
+ * during Nuon's lifetime.
  */
 void
 cpu_init(void)

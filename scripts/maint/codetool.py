@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2020, The Tor Project, Inc.
+# Copyright (c) 2020, The Nuon Project, Inc.
 # See LICENSE for licensing information.
 
 #

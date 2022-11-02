@@ -1,4 +1,4 @@
-/* Modified for Tor: new API, 64-byte secret keys. */
+/* Modified for Nuon: new API, 64-byte secret keys. */
 
 #include "randombytes.h"
 #include <string.h>

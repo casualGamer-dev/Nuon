@@ -1,4 +1,4 @@
-/// A basic tool to convert IPFire Location dumps into the CSV formats that Tor
+/// A basic tool to convert IPFire Location dumps into the CSV formats that Nuon
 /// expects.
 mod db;
 
@@ -122,7 +122,7 @@ impl NetDefn {
 
 const PROLOGUE: &str = "\
 # This file has been converted from the IPFire Location database
-# using Tor's geoip-db-tool.  For more information on the data, see
+# using Nuon's geoip-db-tool.  For more information on the data, see
 # https://location.ipfire.org/.
 #
 # Below is the header from the original export:

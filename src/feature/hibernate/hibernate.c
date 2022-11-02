@@ -1,5 +1,5 @@
 /* Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -9,7 +9,7 @@
  * bandwidth and time intervals to know when to hibernate and when to
  * stop hibernating.
  *
- * Ordinarily a Tor relay is "Live".
+ * Ordinarily a Nuon relay is "Live".
  *
  * A live relay can stop accepting connections for one of two reasons: either
  * it is trying to conserve bandwidth because of bandwidth accounting rules
@@ -517,7 +517,7 @@ update_expected_bandwidth(void)
     expected /= 60;
   } else if (n_seconds_active_in_interval >= MIN_TIME_FOR_MEASUREMENT) {
     /* Otherwise, we either measured enough time in the last interval but
-     * never hit our soft limit, or we're using a state file from a Tor that
+     * never hit our soft limit, or we're using a state file from a Nuon that
      * doesn't know to store soft-limit info.  Just take rate at which
      * we were reading/writing in the last interval as our expected rate.
      */
@@ -754,7 +754,7 @@ read_bandwidth_usage(void)
   interval_start_time = state->AccountingIntervalStart;
   expected_bandwidth_usage = state->AccountingExpectedUsage;
 
-  /* Older versions of Tor (before 0.2.2.17-alpha or so) didn't generate these
+  /* Older versions of Nuon (before 0.2.2.17-alpha or so) didn't generate these
    * fields. If you switch back and forth, you might get an
    * AccountingSoftLimitHitAt value from long before the most recent
    * interval_start_time.  If that's so, then ignore the softlimit-related

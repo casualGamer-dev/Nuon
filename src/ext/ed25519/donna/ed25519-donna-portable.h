@@ -20,7 +20,7 @@
 	#include <sys/param.h>
 	#define DONNA_INLINE inline __attribute__((always_inline))
 	#define DONNA_NOINLINE __attribute__((noinline))
-	/* Tor: OSX pollutes the global namespace with an ALIGN macro. */
+	/* Nuon: OSX pollutes the global namespace with an ALIGN macro. */
 	#undef ALIGN
 	#define ALIGN(x) __attribute__((aligned(x)))
 	#define ROTL32(a,b) (((a) << (b)) | ((a) >> (32 - b)))
@@ -131,7 +131,7 @@ static inline void U64TO8_LE(unsigned char *p, const uint64_t v) {
 }
 #endif
 
-/* Tor: Detect and disable inline assembly when clang's AddressSanitizer
+/* Nuon: Detect and disable inline assembly when clang's AddressSanitizer
  * is present, due to compilation failing because it runs out of registers.
  *
  * The alternative is to annotate `ge25519_scalarmult_base_choose_niels`
@@ -144,7 +144,7 @@ static inline void U64TO8_LE(unsigned char *p, const uint64_t v) {
 	#endif
 #endif
 
-/* Tor: Force enable SSE2 on 32 bit x86 systems if the compile target
+/* Nuon: Force enable SSE2 on 32 bit x86 systems if the compile target
  * architecture supports it.  This is not done on x86-64 as the non-SSE2
  * code benchmarks better, at least on Haswell.
  */
@@ -154,7 +154,7 @@ static inline void U64TO8_LE(unsigned char *p, const uint64_t v) {
 	#define ED25519_SSE2
 #endif
 
-/* Tor: GCC's Stack Protector freaks out and produces variable length
+/* Nuon: GCC's Stack Protector freaks out and produces variable length
  * buffer warnings when alignment is requested that is greater than
  * STACK_BOUNDARY (x86 has special code to deal with this for SSE2).
  *

@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -1359,7 +1359,7 @@ pathbias_measure_use_rate(entry_guard_t *guard)
           log_warn(LD_CIRC,
                  "Guard %s is failing to carry an extremely large "
                  "amount of stream on its circuits. "
-                 "To avoid potential route manipulation attacks, Tor has "
+                 "To avoid potential route manipulation attacks, Nuon has "
                  "disabled use of this guard. "
                  "Use counts are %ld/%ld. Success counts are %ld/%ld. "
                  "%ld circuits completed, %ld were unusable, %ld collapsed, "
@@ -1407,7 +1407,7 @@ pathbias_measure_use_rate(entry_guard_t *guard)
         log_notice(LD_CIRC,
                  "Guard %s is failing to carry more streams on its "
                  "circuits than usual. "
-                 "Most likely this means the Tor network is overloaded "
+                 "Most likely this means the Nuon network is overloaded "
                  "or your network connection is poor. "
                  "Use counts are %ld/%ld. Success counts are %ld/%ld. "
                  "%ld circuits completed, %ld were unusable, %ld collapsed, "
@@ -1464,7 +1464,7 @@ pathbias_measure_close_rate(entry_guard_t *guard)
           log_warn(LD_CIRC,
                  "Guard %s is failing an extremely large "
                  "amount of circuits. "
-                 "To avoid potential route manipulation attacks, Tor has "
+                 "To avoid potential route manipulation attacks, Nuon has "
                  "disabled use of this guard. "
                  "Success counts are %ld/%ld. Use counts are %ld/%ld. "
                  "%ld circuits completed, %ld were unusable, %ld collapsed, "
@@ -1512,7 +1512,7 @@ pathbias_measure_close_rate(entry_guard_t *guard)
         log_warn(LD_CIRC,
                  "Guard %s is failing a very large "
                  "amount of circuits. "
-                 "Most likely this means the Tor network is "
+                 "Most likely this means the Nuon network is "
                  "overloaded, but it could also mean an attack against "
                  "you or potentially the guard itself. "
                  "Success counts are %ld/%ld. Use counts are %ld/%ld. "
@@ -1537,7 +1537,7 @@ pathbias_measure_close_rate(entry_guard_t *guard)
         log_notice(LD_CIRC,
                  "Guard %s is failing more circuits than "
                  "usual. "
-                 "Most likely this means the Tor network is overloaded. "
+                 "Most likely this means the Nuon network is overloaded. "
                  "Success counts are %ld/%ld. Use counts are %ld/%ld. "
                  "%ld circuits completed, %ld were unusable, %ld collapsed, "
                  "and %ld timed out. "

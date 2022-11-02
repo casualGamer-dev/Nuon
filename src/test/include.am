@@ -1,4 +1,4 @@
-# When the day comes that Tor requires Automake >= 1.12 change
+# When the day comes that Nuon requires Automake >= 1.12 change
 # TESTS_ENVIRONMENT to AM_TESTS_ENVIRONMENT because the former is reserved for
 # users while the later is reserved for developers.
 TESTS_ENVIRONMENT = \
@@ -82,7 +82,7 @@ TEST_CHUTNEY_FLAVORS_MIXED = mixed+hs-v3
 # only run if IPv6 and mixed networks are run
 TEST_CHUTNEY_FLAVORS_IPV6_MIXED = mixed+hs-v3-ipv6
 
-### This is a lovely feature, but it requires automake >= 1.12, and Tor
+### This is a lovely feature, but it requires automake >= 1.12, and Nuon
 ###  doesn't require that yet.
 ###
 # TEST_EXTENSIONS = .sh

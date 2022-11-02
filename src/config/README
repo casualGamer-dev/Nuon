@@ -1,4 +1,4 @@
-This directory has configuration files that ship with Tor.  They include:
+This directory has configuration files that ship with Nuon.  They include:
 
 geoip
 geoip6
@@ -60,5 +60,5 @@ Thus, one effective search algorithm here is to perform a binary
 search on all the entries in the file.
 
 Note that there _are_ "gaps" in these databases: not every possible
-address maps to a country code. In those cases, Tor reports the
+address maps to a country code. In those cases, Nuon reports the
 country as ??.

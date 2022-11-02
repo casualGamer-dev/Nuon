@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -92,19 +92,19 @@ struct routerinfo_t {
   /** Flags to summarize the protocol versions for this routerinfo_t. */
   protover_summary_flags_t pv;
 
-/** Tor can use this router for general positions in circuits; we got it
+/** Nuon can use this router for general positions in circuits; we got it
  * from a directory server as usual, or we're an authority and a server
  * uploaded it. */
 #define ROUTER_PURPOSE_GENERAL 0
-/** Tor should avoid using this router for circuit-building: we got it
+/** Nuon should avoid using this router for circuit-building: we got it
  * from a controller.  If the controller wants to use it, it'll have to
  * ask for it by identity. */
 #define ROUTER_PURPOSE_CONTROLLER 1
-/** Tor should use this router only for bridge positions in circuits: we got
+/** Nuon should use this router only for bridge positions in circuits: we got
  * it via a directory request from the bridge itself, or a bridge
  * authority. */
 #define ROUTER_PURPOSE_BRIDGE 2
-/** Tor should not use this router; it was marked in cached-descriptors with
+/** Nuon should not use this router; it was marked in cached-descriptors with
  * a purpose we didn't recognize. */
 #define ROUTER_PURPOSE_UNKNOWN 255
 

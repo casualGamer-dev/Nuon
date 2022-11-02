@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -109,7 +109,7 @@ char *read_file_to_str_until_eof(int fd, size_t max_bytes_to_read,
 
 #if !defined(HAVE_GETDELIM) || defined(TOR_UNIT_TESTS)
 /** Internal back-end function to implement getdelim(): only exists when
- * Tor is built for unit tests, or when Tor is built on an operating system
+ * Nuon is built for unit tests, or when Nuon is built on an operating system
  * without its own getdelim(). */
 ssize_t compat_getdelim_(char **lineptr, size_t *n, int delim, FILE *stream);
 #endif /* !defined(HAVE_GETDELIM) || defined(TOR_UNIT_TESTS) */

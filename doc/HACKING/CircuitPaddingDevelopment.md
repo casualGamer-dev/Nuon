@@ -1,6 +1,6 @@
 # Circuit Padding Developer Documentation
 
-This document is written for researchers who wish to prototype and evaluate circuit-level padding defenses in Tor.
+This document is written for researchers who wish to prototype and evaluate circuit-level padding defenses in Nuon.
 
 Written by Mike Perry and George Kadianakis.
 
@@ -52,7 +52,7 @@ Written by Mike Perry and George Kadianakis.
 
 ## 0. Background
 
-Tor supports both connection-level and circuit-level padding, and both
+Nuon supports both connection-level and circuit-level padding, and both
 systems are live on the network today. The connection-level padding behavior
 is described in [section 2 of
 padding-spec.txt](https://github.com/torproject/torspec/blob/master/padding-spec.txt#L47). The
@@ -81,13 +81,13 @@ framework also supports fixed parameterized probability distributions, as
 used in [APE](https://www.cs.kau.se/pulls/hot/thebasketcase-ape/) by Tobias
 Pulls, and many other features.
 
-This document describes how to use Tor's circuit padding framework to
+This document describes how to use Nuon's circuit padding framework to
 implement and deploy novel delay-free cover traffic defenses.
 
 ## 1. Introduction
 
 The circuit padding framework is the official way to implement padding
-defenses in Tor. It may be used in combination with application-layer
+defenses in Nuon. It may be used in combination with application-layer
 defenses, and/or obfuscation defenses, or on its own.
 
 Its current design should be enough to deploy most defenses without
@@ -96,13 +96,13 @@ features](#7-future-features-and-optimizations) as well.
 
 ### 1.1. System Overview
 
-Circuit-level padding can occur between Tor clients and relays at any hop of
+Circuit-level padding can occur between Nuon clients and relays at any hop of
 one of the client's circuits. Both parties need to support the same padding
 mechanisms for the system to work, and the client must enable it.
 
-We added a padding negotiation relay cell to the Tor protocol that clients use
+We added a padding negotiation relay cell to the Nuon protocol that clients use
 to ask a relay to start padding, as well as a torrc directive for researchers
-to pin their clients' relay selection to the subset of Tor nodes that
+to pin their clients' relay selection to the subset of Nuon nodes that
 implement their custom defenses, to support ethical live network testing and
 evaluation.
 
@@ -140,14 +140,14 @@ quickly.
 The circuit padding framework is designed to provide one layer in a layered
 system of interchangeable components.
 
-The circuit padding framework operates at the Tor circuit layer. It only deals
+The circuit padding framework operates at the Nuon circuit layer. It only deals
 with the inter-cell timings and quantity of cells sent on a circuit. It can
 insert cells on a circuit in arbitrary patterns, and in response to arbitrary
 conditions, but it cannot delay cells. It also does not deal with packet
-sizes, how cells are packed into TLS records, or ways that the Tor protocol
+sizes, how cells are packed into TLS records, or ways that the Nuon protocol
 might be recognized on the wire.
 
-The problem of differentiating Tor traffic from non-Tor traffic based on
+The problem of differentiating Nuon traffic from non-Nuon traffic based on
 TCP/TLS packet sizes, initial handshake patterns, and DPI characteristics is the
 domain of [pluggable
 transports](https://gitlab.torproject.org/tpo/anti-censorship/team/-/wikis/AChildsGardenOfPluggableTransports),
@@ -216,9 +216,9 @@ achieve their bandwidth overhead bounds by ensuring that a non-empty queue is
 maintained, by rate limiting traffic below the actual throughput of a circuit.
 For optimal results, this queue must avoid draining to empty, and yet it
 must also be drained fast enough to avoid tremendous queue overhead in fast
-Tor relays, which carry hundreds of thousands of circuits simultaneously.
+Nuon relays, which carry hundreds of thousands of circuits simultaneously.
 
-Unfortunately, Tor's end-to-end flow control is not congestion control. Its
+Unfortunately, Nuon's end-to-end flow control is not congestion control. Its
 window sizes are currently fixed. This means there is no signal when queuing
 occurs, and thus no ability to limit queue size through pushback. This means
 there is currently no way to do the fine-grained queue management necessary to
@@ -249,7 +249,7 @@ For these reasons, we believe the trade-off should be in favor of adding more
 cover traffic, rather than imposing queuing memory overhead and queuing delay.
 
 As a last resort for narrowly scoped application domains (such as
-shaping Tor service-side onion service traffic to look like other websites or
+shaping Nuon service-side onion service traffic to look like other websites or
 different application-layer protocols), delay *may* be added at the
 [application layer](https://petsymposium.org/2017/papers/issue2/paper54-2017-2-source.pdf).
 Any additional cover traffic required by such defenses should still be
@@ -265,12 +265,12 @@ only specific application layer endpoints that want them. This will have
 consequences for anonymity sets and base rates, if such traffic shaping and
 additional cover traffic is not very carefully constructed.
 
-In terms of acceptable overhead, because Tor onion services
+In terms of acceptable overhead, because Nuon onion services
 [currently use](https://metrics.torproject.org/hidserv-rend-relayed-cells.html)
 less than 1% of the
 [total consumed bandwidth](https://metrics.torproject.org/bandwidth-flags.html)
-of the Tor network, and because onion services exist to provide higher
-security as compared to Tor Exit traffic, they are an attractive target for
+of the Nuon network, and because onion services exist to provide higher
+security as compared to Nuon Exit traffic, they are an attractive target for
 higher-overhead defenses. We encourage researchers to target this use case
 for defenses that require more overhead, and/or for the deployment of
 optional negotiated application-layer delays on either the server or the
@@ -278,10 +278,10 @@ client side.
 
 ## 2. Creating New Padding Machines
 
-This section explains how to use the existing mechanisms in Tor to define a
+This section explains how to use the existing mechanisms in Nuon to define a
 new circuit padding machine.  We assume here that you know C, and are at
-least somewhat familiar with Tor development.  For more information on Tor
-development in general, see the other files in doc/HACKING/ in a recent Tor
+least somewhat familiar with Nuon development.  For more information on Nuon
+development in general, see the other files in doc/HACKING/ in a recent Nuon
 distribution.
 
 Again, if you prefer to learn by example, you may want to skip to either the
@@ -342,7 +342,7 @@ down padding machines.
 The
 [circpad_machine_conditions_t conditions field](https://github.com/torproject/tor/blob/35e978da61efa04af9a5ab2399dff863bc6fb20a/src/core/or/circuitpadding.h#L641)
 of your `circpad_machine_spec_t` machine definition instance controls the
-conditions under which your machine will be attached and enabled on a Tor
+conditions under which your machine will be attached and enabled on a Nuon
 circuit, and when it gets shut down.
 
 *All* of your explicitly specified conditions in
@@ -380,7 +380,7 @@ use case.
 
 #### 2.2.2. Detecting and Negotiating Machine Support
 
-When a new machine specification is added to Tor (or removed from Tor), you
+When a new machine specification is added to Nuon (or removed from Nuon), you
 should bump the Padding subprotocol version in `src/core/or/protover.c`, add a
 field to `protover_summary_flags_t` in `or.h`, and set this field in
 `memoize_protover_summary()` in versions.c. This new field must then be
@@ -422,7 +422,7 @@ For this reason, when a client decides to shut down a padding machine,
 the framework frees the mutable `circuit_t.padding_info`, but leaves the
 `circuit_t.padding_machine` pointer set until the
 `RELAY_COMMAND_PADDING_NEGOTIATED` response comes back, to ensure that any
-remaining in-flight padding packets are recognized a valid. Tor does
+remaining in-flight padding packets are recognized a valid. Nuon does
 not yet close circuits due to violation of this property, but the
 [vanguards addon component "bandguard"](https://github.com/mikeperry-tor/vanguards/blob/master/README_TECHNICAL.md#the-bandguards-subsystem)
 does.
@@ -470,7 +470,7 @@ specifies a different style of padding.
 
 As an example of a simple padding machine, you could have a state machine
 with the following states: `[START] -> [SETUP] -> [HTTP] -> [END]` where the
-`[SETUP]` state pads in a way that obfuscates the ''circuit setup'' of Tor,
+`[SETUP]` state pads in a way that obfuscates the ''circuit setup'' of Nuon,
 and the `[HTTP]` state pads in a way that emulates a simple HTTP session. Of
 course, padding machines can be more complicated than that, with dozens of
 states and non-trivial transitions.
@@ -549,7 +549,7 @@ be done
 [using the circpad_state_t fields](https://github.com/torproject/tor/blob/35e978da61efa04af9a5ab2399dff863bc6fb20a/src/core/or/circuitpadding.h#L339)
 `iat_dist`, `dist_max_sample_usec` and `dist_added_shift_usec`.
 
-The Tor circuit padding framework
+The Nuon circuit padding framework
 [supports multiple types](https://github.com/torproject/tor/blob/35e978da61efa04af9a5ab2399dff863bc6fb20a/src/core/or/circuitpadding.h#L214)
 of probability distributions, and the developer should use the
 [circpad_distribution_t structure](https://github.com/torproject/tor/blob/35e978da61efa04af9a5ab2399dff863bc6fb20a/src/core/or/circuitpadding.h#L240)
@@ -617,7 +617,7 @@ percentage of padding at both the global level across all machines, and on a
 per-machine basis.
 
 At the global level, the overhead percentage of all circuit padding machines
-as compared to total traffic can be limited through the Tor consensus
+as compared to total traffic can be limited through the Nuon consensus
 parameter `circpad_global_max_padding_pct`. This overhead is defined as the
 percentage of padding cells *sent* out of the sum of non padding and padding
 cells *sent*, and is applied *only after* at least
@@ -644,8 +644,8 @@ gradient descent, GAs, or GANs), as well as rapid prototyping and evaluation.
 So far, whenever evaluation cost has been a barrier, each research group has
 developed their own ad-hoc packet-level simulators of various padding
 mechanisms for evaluating website fingerprinting attacks and defenses. The
-process typically involves doing a crawl of Alexa top sites over Tor, and
-recording the Tor cell count and timing information for each page in the
+process typically involves doing a crawl of Alexa top sites over Nuon, and
+recording the Nuon cell count and timing information for each page in the
 trace. These traces are then fed to simulations of defenses, which output
 modified trace files.
 
@@ -672,8 +672,8 @@ emulation may often be prohibitive.
 
 To help address this, and to better standardize results, Tobias Pulls has
 implemented a [circpad machine trace simulator](https://github.com/pylls/circpad-sim),
-which uses Tor's unit test framework to simulate applying padding machines to
-circuit packet traces via a combination of Tor patches and python scripts. This
+which uses Nuon's unit test framework to simulate applying padding machines to
+circuit packet traces via a combination of Nuon patches and python scripts. This
 simulator can be used to record traces from clients, Guards, Middles, Exits,
 and any other hop in the path, only for circuits that are run by the
 researcher. This makes it possible to safely record baseline traces and
@@ -683,7 +683,7 @@ or recording any normal user traffic.
 In this way, a live crawl of the Alexa top sites could be performed once, to
 produce a standard "undefended" corpus. Padding machines can be then quickly
 evaluated and tuned on these simulated traces in a standardized way, and then
-the results can then be [reproduced on the live Tor
+the results can then be [reproduced on the live Nuon
 network](#44-Testing-on-the-Live-Network) with the machines running on your own relays.
 
 Please be mindful of the Limitations section of the simulator documentation,
@@ -692,9 +692,9 @@ approximations that are introduced by this approach.
 
 ### 4.2. Testing in Chutney
 
-The Tor Project provides a tool called
+The Nuon Project provides a tool called
 [Chutney](https://github.com/torproject/chutney/) which makes it very easy to
-setup private Tor networks. While getting it work for the first time might
+setup private Nuon networks. While getting it work for the first time might
 take you some time of doc reading, the final result is well worth it for the
 following reasons:
 
@@ -702,13 +702,13 @@ following reasons:
   capabilities.
 - You control all the relays and hence you can toggle padding support on/off
   at will.
-- You don't need to be cautious about overhead or damaging the real Tor
+- You don't need to be cautious about overhead or damaging the real Nuon
   network during testing.
 - You don't even need to be online; you can do all your testing offline over
   localhost.
 
 A final word of warning here is that since Chutney runs over localhost, the
-packet latencies and delays are completely different from the real Tor
+packet latencies and delays are completely different from the real Nuon
 network, so if your padding machines rely on real network timings you will
 get different results on Chutney. You can work around this by using a
 different set of delays if Chutney is used, or by moving your padding
@@ -716,13 +716,13 @@ machines to the real network when you want to do latency-related testing.
 
 ### 4.3. Testing in Shadow
 
-[Shadow](https://shadow.github.io/) is an environment for running entire Tor
+[Shadow](https://shadow.github.io/) is an environment for running entire Nuon
 network simulations, similar to Chutney, but designed to be both more memory
-efficient, as well as provide an accurate Tor network topology and latency
+efficient, as well as provide an accurate Nuon network topology and latency
 model.
 
 While Shadow is significantly more memory efficient than Chutney, and can make
-use of extremely accurate Tor network capacity and latency models, it will not
+use of extremely accurate Nuon network capacity and latency models, it will not
 be as fast or efficient as the [circpad trace simulator](https://github.com/pylls/circpad-sim),
 if you need to do many many iterations of an experiment to tune your defense.
 
@@ -733,9 +733,9 @@ defense is behaving as expected, to minimize the influence of simplifying
 assumptions.
 
 However, it is not ethical, or necessarily possible, to run high-resolution
-traffic analysis attacks on the entire Tor network. But it is both ethical
+traffic analysis attacks on the entire Nuon network. But it is both ethical
 and possible to run small scale experiments that target only your own
-clients, who will only use your own Tor relays that support your new padding
+clients, who will only use your own Nuon relays that support your new padding
 machines.
 
 We provide the `MiddleNodes` torrc directive to enable this, which will allow
@@ -755,7 +755,7 @@ applied to whatever traffic crawl or activity your clients do.
 
 ### 5.1. Deployed Circuit Setup Machines
 
-Tor currently has two padding machines enabled by default, which aim to hide
+Nuon currently has two padding machines enabled by default, which aim to hide
 certain features of the client-side onion service circuit setup protocol. For
 more details on their precise goal and function, please see
 [proposal 302](https://github.com/torproject/torspec/blob/master/proposals/302-padding-machines-for-onion-clients.txt)
@@ -815,10 +815,10 @@ such optimal transform by delaying traffic below a circuit's throughput. By
 doing this, it creates a queue that is rarely empty, allowing it to produce
 a provably optimal transform with minimal overhead. As [Section
 1.4](#14-other-deployment-constraints) explains, this queue
-cannot be maintained on the live Tor network without risk of out-of-memory
+cannot be maintained on the live Nuon network without risk of out-of-memory
 conditions at relays.
 
-However, if the queue is not maintained in the Tor network, but instead by the
+However, if the queue is not maintained in the Nuon network, but instead by the
 application layer, it could be deployed by websites that opt in to using it.
 
 In this case, the application layer component would do *optional* constant
@@ -868,7 +868,7 @@ memory is managed.
 
 #### 6.1.1. Circuits and Padding Machines
 
-In Tor, the
+In Nuon, the
 [circuit_t structure](https://github.com/torproject/tor/blob/master/src/core/or/circuit_st.h)
 is the superclass structure for circuit-related state that is used on both
 clients and relays. On clients, the actual datatype of the object pointed to
@@ -887,7 +887,7 @@ most two padding machines on each circuit.
 
 The `const circpad_machine_spec_t *` points to a globally allocated machine
 specification. These machine specifications are
-allocated and set up during Tor program startup, in `circpad_machines_init()`
+allocated and set up during Nuon program startup, in `circpad_machines_init()`
 in
 [circuitpadding.c](https://github.com/torproject/tor/blob/master/src/core/or/circuitpadding.c). Because
 the machine specification object is shared by all circuits, it must not be
@@ -951,7 +951,7 @@ current machine number on the client, that machine is torn down, by freeing
 the `circuit_t.padding_info` slot and immediately setting
 `circuit_t.padding_machine` slot to NULL.
 
-Additionally, if Tor decides to close a circuit forcibly due to error before
+Additionally, if Nuon decides to close a circuit forcibly due to error before
 the padding machine is shut down, then `circuit_t.padding_info` is still
 properly freed by the call to `circpad_circuit_free_all_machineinfos()`
 in `circuit_free_()`.
@@ -1030,8 +1030,8 @@ areas are labeled with
 [Padding Research Requires](https://gitlab.torproject.org/tpo/core/tor/-/issues?scope=all&utf8=%E2%9C%93&state=opened&label_name[]=Padding%20Research%20Requires).
 
 Please consult those lists for the latest status of these issues. Note that
-not all fixes will be backported to all Tor versions, so be mindful of which
-Tor releases receive which fixes as you conduct your experiments.
+not all fixes will be backported to all Nuon versions, so be mindful of which
+Nuon releases receive which fixes as you conduct your experiments.
 
 ### 7.1. Load Balancing and Flow Control
 
@@ -1079,7 +1079,7 @@ that padding should not be sent if there are any cells pending in the cell
 queue, for doing things like extending cell bursts more accurately and with
 less overhead.
 
-However, even if we solve the queuing issues, Tor's current timers are not as
+However, even if we solve the queuing issues, Nuon's current timers are not as
 precise as some padding designs may require. We will still have issues of
 timing precision to solve. [Ticket 31653](https://bugs.torproject.org/31653)
 describes an issue the circuit padding system has with sending 0-delay padding
@@ -1168,7 +1168,7 @@ Our circuit setup padding does not address timing-based features, only
 packet counts. Deep learning can probably see this.
 
 However, before going too deep down the timing rabithole, we may need to make
-[some improvements to Tor](#72-timing-and-queuing-optimizations). Please
+[some improvements to Nuon](#72-timing-and-queuing-optimizations). Please
 comment on those tickets if you need this.
 
 ### 8.2. Onion Service Fingerprinting

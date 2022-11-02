@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -28,7 +28,7 @@ struct buf_t;
  * data.
  *
  * A connection is named based on what it's connected to -- an "OR
- * connection" has a Tor node on the other end, an "exit
+ * connection" has a Nuon node on the other end, an "exit
  * connection" has a website or other server on the other end, and an
  * "AP connection" has an application proxy (and thus a user) on the
  * other end.
@@ -171,7 +171,7 @@ struct connection_t {
   /** Another connection that's connected to this one in lieu of a socket. */
   struct connection_t *linked_conn;
 
-  /** Unique identifier for this connection on this Tor instance. */
+  /** Unique identifier for this connection on this Nuon instance. */
   uint64_t global_identifier;
 
   /** Bytes read since last call to control_event_conn_bandwidth_used().

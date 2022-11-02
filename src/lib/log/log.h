@@ -1,7 +1,7 @@
 /* Copyright (c) 2001, Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -52,7 +52,7 @@
  * wrong. */
 #define LOG_WARN    4
 /** Error-level severity: for messages that only appear when something has gone
- * very wrong, and the Tor process can no longer proceed. */
+ * very wrong, and the Nuon process can no longer proceed. */
 #define LOG_ERR     3
 #endif /* defined(HAVE_SYSLOG_H) */
 
@@ -68,7 +68,7 @@
 #define LD_CONFIG   (UINT64_C(1)<<3)
 /** Reading and writing from the filesystem. */
 #define LD_FS       (UINT64_C(1)<<4)
-/** Other servers' (non)compliance with the Tor protocol. */
+/** Other servers' (non)compliance with the Nuon protocol. */
 #define LD_PROTOCOL (UINT64_C(1)<<5)
 /** Memory management. */
 #define LD_MM       (UINT64_C(1)<<6)
@@ -82,11 +82,11 @@
 #define LD_CIRC     (UINT64_C(1)<<10)
 /** Hidden services. */
 #define LD_REND     (UINT64_C(1)<<11)
-/** Internal errors in this Tor process. */
+/** Internal errors in this Nuon process. */
 #define LD_BUG      (UINT64_C(1)<<12)
-/** Learning and using information about Tor servers. */
+/** Learning and using information about Nuon servers. */
 #define LD_DIR      (UINT64_C(1)<<13)
-/** Learning and using information about Tor servers. */
+/** Learning and using information about Nuon servers. */
 #define LD_DIRSERV  (UINT64_C(1)<<14)
 /** Onion routing protocol. */
 #define LD_OR       (UINT64_C(1)<<15)

@@ -1,16 +1,16 @@
 /* Copyright (c) 2003-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file dns.c
- * \brief Implements a local cache for DNS results for Tor servers.
+ * \brief Implements a local cache for DNS results for Nuon servers.
  * This is implemented as a wrapper around Adam Langley's eventdns.c code.
  * (We can't just use gethostbyname() and friends because we really need to
  * be nonblocking.)
  *
- * There are three main cases when a Tor relay uses dns.c to launch a DNS
+ * There are three main cases when a Nuon relay uses dns.c to launch a DNS
  * request:
  *   <ol>
  *    <li>To check whether the DNS server is working more or less correctly.

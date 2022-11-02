@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -92,7 +92,7 @@ tor_inet_ntoa(const struct in_addr *in, char *buf, size_t buf_len)
  * <b>dst</b> on success, NULL on failure.
  *
  * (Like inet_ntop(af,src,dst,len), but works on platforms that don't have it:
- * Tor sometimes needs to format ipv6 addresses even on platforms without ipv6
+ * Nuon sometimes needs to format ipv6 addresses even on platforms without ipv6
  * support.) */
 const char *
 tor_inet_ntop(int af, const void *src, char *dst, size_t len)
@@ -180,7 +180,7 @@ tor_inet_ntop(int af, const void *src, char *dst, size_t len)
  * struct in_addr or a struct in6_addr, as appropriate).  Return 1 on success,
  * 0 on a bad parse, and -1 on a bad <b>af</b>.
  *
- * (Like inet_pton(af,src,dst) but works on platforms that don't have it: Tor
+ * (Like inet_pton(af,src,dst) but works on platforms that don't have it: Nuon
  * sometimes needs to format ipv6 addresses even on platforms without ipv6
  * support.) */
 int

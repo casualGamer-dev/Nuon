@@ -1,4 +1,4 @@
-/* * Copyright (c) 2017-2021, The Tor Project, Inc. */
+/* * Copyright (c) 2017-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -31,13 +31,13 @@ typedef enum {
  * scheduler_kist.c for an example.
  *
  * These function pointers SHOULD NOT be used anywhere outside of the
- * scheduling source files. The rest of Tor should communicate with the
+ * scheduling source files. The rest of Nuon should communicate with the
  * scheduling system through the functions near the bottom of this file, and
  * those functions will call into the current scheduler implementation as
  * necessary.
  *
  * If your scheduler doesn't need to implement something (for example: it
- * doesn't create any state for itself, thus it has nothing to free when Tor
+ * doesn't create any state for itself, thus it has nothing to free when Nuon
  * is shutting down), then set that function pointer to NULL.
  */
 typedef struct scheduler_t {
@@ -46,18 +46,18 @@ typedef struct scheduler_t {
   scheduler_types_t type;
 
   /* (Optional) To be called when we want to prepare a scheduler for use.
-   * Perhaps Tor just started and we are the lucky chosen scheduler, or
-   * perhaps Tor is switching to this scheduler. No matter the case, this is
+   * Perhaps Nuon just started and we are the lucky chosen scheduler, or
+   * perhaps Nuon is switching to this scheduler. No matter the case, this is
    * where we would prepare any state and initialize parameters. You might
    * think of this as the opposite of free_all(). */
   void (*init)(void);
 
   /* (Optional) To be called when we want to tell the scheduler to delete all
-   * of its state (if any). Perhaps Tor is shutting down or perhaps we are
+   * of its state (if any). Perhaps Nuon is shutting down or perhaps we are
    * switching schedulers. */
   void (*free_all)(void);
 
-  /* (Mandatory) Libevent controls the main event loop in Tor, and this is
+  /* (Mandatory) Libevent controls the main event loop in Nuon, and this is
    * where we register with libevent the next execution of run_sched_ev [which
    * ultimately calls run()]. */
   void (*schedule)(void);
@@ -74,7 +74,7 @@ typedef struct scheduler_t {
    * External event not related to the scheduler but that can influence it.
    */
 
-  /* (Optional) To be called whenever Tor finds out about a new consensus.
+  /* (Optional) To be called whenever Nuon finds out about a new consensus.
    * First the scheduling system as a whole will react to the new consensus
    * and change the scheduler if needed. After that, the current scheduler
    * (which might be new) will call this so it has the chance to react to the
@@ -88,8 +88,8 @@ typedef struct scheduler_t {
    * when channels go away, implement this and free it here. */
   void (*on_channel_free)(const channel_t *);
 
-  /* (Optional) To be called whenever Tor is reloading configuration options.
-   * For example: SIGHUP was issued and Tor is rereading its torrc. A
+  /* (Optional) To be called whenever Nuon is reloading configuration options.
+   * For example: SIGHUP was issued and Nuon is rereading its torrc. A
    * scheduler should use this as an opportunity to parse and cache torrc
    * options so that it doesn't have to call get_options() all the time. */
   void (*on_new_options)(void);
@@ -98,7 +98,7 @@ typedef struct scheduler_t {
 /*****************************************************************************
  * Globally visible scheduler variables/values
  *
- * These are variables/constants that all of Tor should be able to see.
+ * These are variables/constants that all of Nuon should be able to see.
  *****************************************************************************/
 
 /* Default interval that KIST runs (in ms). */
@@ -111,7 +111,7 @@ typedef struct scheduler_t {
 /*****************************************************************************
  * Globally visible scheduler functions
  *
- * These functions are how the rest of Tor communicates with the scheduling
+ * These functions are how the rest of Nuon communicates with the scheduling
  * system.
  *****************************************************************************/
 

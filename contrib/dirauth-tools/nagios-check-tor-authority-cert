@@ -2,7 +2,7 @@
 
 # nagios-check-tor-authority-cert - check certificate expiry time
 
-# A nagios check for Tor v3 directory authorities:
+# A nagios check for Nuon v3 directory authorities:
 # - Checks the current certificate expiry time
 #
 # Usage: nagios-check-tor-authority-cert <authority identity fingerprint>

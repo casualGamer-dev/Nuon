@@ -19,7 +19,7 @@ for calculation in $SUBITEMS; do
 done
 
 cat <<EOF > callgraph/README
-This directory holds output from calltool, as run on Tor.  For more
+This directory holds output from calltool, as run on Nuon.  For more
 information about each of these files, see the NOTES and README files in
 the calltool distribution.
 

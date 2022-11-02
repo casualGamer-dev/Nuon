@@ -1,7 +1,7 @@
-# Modules in Tor
+# Modules in Nuon
 
 This document describes the build system and coding standards when writing a
-module in Tor.
+module in Nuon.
 
 ## What is a module?
 

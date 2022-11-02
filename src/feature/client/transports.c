@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2021, The Tor Project, Inc. */
+/* Copyright (c) 2011-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -1439,7 +1439,7 @@ create_managed_proxy_environment(const managed_proxy_t *mp)
      * assert that this env var exists are sufficiently dead.
      *
      * (If we remove this line entirely, some joker will stick this
-     * variable in Tor's environment and crash PTs that try to parse
+     * variable in Nuon's environment and crash PTs that try to parse
      * it even when not run in server mode.) */
 
     if (options->ExtORPort_lines) {
@@ -1617,7 +1617,7 @@ free_execve_args(char **arg)
   tor_free(arg);
 }
 
-/** Tor will read its config.
+/** Nuon will read its config.
  *  Prepare the managed proxy list so that proxies not used in the new
  *  config will shutdown, and proxies that need to spawn different
  *  transports will do so. */
@@ -1955,7 +1955,7 @@ managed_proxy_exit_callback(process_t *process, process_exit_code_t exit_code)
 }
 
 /** Returns a valid integer log severity level from <b>severity</b> that
- * is compatible with Tor's logging functions. Returns <b>-1</b> on
+ * is compatible with Nuon's logging functions. Returns <b>-1</b> on
  * error. */
 STATIC int
 managed_proxy_severity_parse(const char *severity)

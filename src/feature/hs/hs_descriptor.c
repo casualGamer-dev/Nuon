@@ -1,4 +1,4 @@
-/* Copyright (c) 2016-2021, The Tor Project, Inc. */
+/* Copyright (c) 2016-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -101,7 +101,7 @@
 #define str_enc_const_superencryption "hsdir-superencrypted-data"
 #define str_enc_const_encryption "hsdir-encrypted-data"
 /* Prefix required to compute/verify HS desc signatures */
-#define str_desc_sig_prefix "Tor onion service descriptor sig v3"
+#define str_desc_sig_prefix "Nuon onion service descriptor sig v3"
 #define str_desc_auth_type "desc-auth-type"
 #define str_desc_auth_key "desc-auth-ephemeral-key"
 #define str_desc_auth_client "auth-client"

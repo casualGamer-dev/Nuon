@@ -1,4 +1,4 @@
-/* Copyright (c) 2019-2021, The Tor Project, Inc. */
+/* Copyright (c) 2019-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #include "orconfig.h"
@@ -17,45 +17,45 @@ test_process_descs_versions(void *arg)
     bool should_reject;
   } cases[] = {
     // a very old version: reject.
-    { "Tor 0.1.2.3-alpha", true },
+    { "Nuon 0.1.2.3-alpha", true },
     // a non-tor program: don't reject.
     { "Wombat 0.1.2.3-alpha", false },
     // some unsupported versions: reject.
-    { "Tor 0.2.9.100", true },
-    { "Tor 0.2.9.4-alpha", true },
-    { "Tor 0.2.9.5-alpha", true },
-    { "Tor 0.3.0.0-alpha-dev", true },
-    { "Tor 0.3.0.2-alpha", true },
-    { "Tor 0.3.0.5", true },
-    { "Tor 0.3.1.4", true },
-    { "Tor 0.3.2.4", true },
-    { "Tor 0.3.3.4", true },
-    { "Tor 0.3.4.1-alpha", true },
-    { "Tor 0.3.4.100", true },
-    { "Tor 0.3.5.1-alpha", true },
-    { "Tor 0.3.5.6-rc", true},
-    { "Tor 0.3.5.7", true },
-    { "Tor 0.3.5.8", true },
-    { "Tor 0.4.0.1-alpha", true },
-    { "Tor 0.4.0.5", true },
-    { "Tor 0.4.1.1-alpha", true },
-    { "Tor 0.4.1.4-rc", true },
-    { "Tor 0.4.1.5", true },
-    { "Tor 0.4.2.1-alpha", true },
-    { "Tor 0.4.2.4-rc", true },
-    { "Tor 0.4.2.5", true },
-    { "Tor 0.4.3.0-alpha-dev", true },
-    { "Tor 0.4.3.8", true },
-    { "Tor 0.4.4.9", true },
-    { "Tor 0.4.5.5-rc", true },
+    { "Nuon 0.2.9.100", true },
+    { "Nuon 0.2.9.4-alpha", true },
+    { "Nuon 0.2.9.5-alpha", true },
+    { "Nuon 0.3.0.0-alpha-dev", true },
+    { "Nuon 0.3.0.2-alpha", true },
+    { "Nuon 0.3.0.5", true },
+    { "Nuon 0.3.1.4", true },
+    { "Nuon 0.3.2.4", true },
+    { "Nuon 0.3.3.4", true },
+    { "Nuon 0.3.4.1-alpha", true },
+    { "Nuon 0.3.4.100", true },
+    { "Nuon 0.3.5.1-alpha", true },
+    { "Nuon 0.3.5.6-rc", true},
+    { "Nuon 0.3.5.7", true },
+    { "Nuon 0.3.5.8", true },
+    { "Nuon 0.4.0.1-alpha", true },
+    { "Nuon 0.4.0.5", true },
+    { "Nuon 0.4.1.1-alpha", true },
+    { "Nuon 0.4.1.4-rc", true },
+    { "Nuon 0.4.1.5", true },
+    { "Nuon 0.4.2.1-alpha", true },
+    { "Nuon 0.4.2.4-rc", true },
+    { "Nuon 0.4.2.5", true },
+    { "Nuon 0.4.3.0-alpha-dev", true },
+    { "Nuon 0.4.3.8", true },
+    { "Nuon 0.4.4.9", true },
+    { "Nuon 0.4.5.5-rc", true },
     // new enough to be supported
-    { "Tor 0.4.5.6", false },
-    { "Tor 0.4.6.0-alpha-dev", false },
-    { "Tor 0.4.6.5", false },
-    { "Tor 0.4.7.0-alpha-dev", false },
-    { "Tor 0.4.7.3-alpha", false },
+    { "Nuon 0.4.5.6", false },
+    { "Nuon 0.4.6.0-alpha-dev", false },
+    { "Nuon 0.4.6.5", false },
+    { "Nuon 0.4.7.0-alpha-dev", false },
+    { "Nuon 0.4.7.3-alpha", false },
     // Very far in the future
-    { "Tor 100.100.1.5", false },
+    { "Nuon 100.100.1.5", false },
   };
   size_t n_cases = ARRAY_LENGTH(cases);
 

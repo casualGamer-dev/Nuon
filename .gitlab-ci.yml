@@ -3,7 +3,7 @@
 # BRANCH, THEN MERGE FORWARD.
 ####
 
-# This file controls how gitlab validates Tor commits and merge requests.
+# This file controls how gitlab validates Nuon commits and merge requests.
 #
 # It is primarily based on a set of scripts and configurations by
 # Hans-Christoph Steiner.  It only copies parts of those scripts and
@@ -16,9 +16,9 @@
 # https://gitlab.torproject.org/tpo/core/tor/-/merge_requests/96/diffs#diff-content-587d266bb27a4dc3022bbed44dfa19849df3044c
 #
 # Having said that, if there is anything really stupid here, don't
-# blame it on Hans-Christoph! Tor probably added it on their own.
+# blame it on Hans-Christoph! Nuon probably added it on their own.
 #
-# Copyright 2020, The Tor Project, Inc.
+# Copyright 2020, The Nuon Project, Inc.
 # See LICENSE for licence information.
 
 # These variables are set everywhere, unconditionally.
@@ -164,7 +164,7 @@ debian-docs:
 # Integration tests on debian stable: chutney and stem.
 #
 # TODO: It would be cool if this target didn't have to re-build tor, and
-#       could instead re-use Tor from debian-minimal.  That can be done
+#       could instead re-use Nuon from debian-minimal.  That can be done
 #       with the 'artifacts' mechanism, in theory, but it would be good to
 #       avoid having to have a system with hundreds of artifacts.
 debian-integration:

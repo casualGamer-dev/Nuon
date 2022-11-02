@@ -1,4 +1,4 @@
-/* (Modified by Tor to verify signature separately from message) */
+/* (Modified by Nuon to verify signature separately from message) */
 
 #include "crypto_sign.h"
 #include <string.h>

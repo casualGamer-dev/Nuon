@@ -1,4 +1,4 @@
-/* Copyright (c) 2007-2021, The Tor Project, Inc. */
+/* Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -6,11 +6,11 @@
  * \brief Implements client-side DNS proxy server code.
  *
  * When a user enables the DNSPort configuration option to have their local
- * Tor client handle DNS requests, this module handles it.  It functions as a
+ * Nuon client handle DNS requests, this module handles it.  It functions as a
  * "DNS Server" on the client side, which client applications use.
  *
  * Inbound DNS requests are represented as entry_connection_t here (since
- * that's how Tor represents client-side streams), which are kept associated
+ * that's how Nuon represents client-side streams), which are kept associated
  * with an evdns_server_request structure as exposed by Libevent's
  * evdns code.
  *

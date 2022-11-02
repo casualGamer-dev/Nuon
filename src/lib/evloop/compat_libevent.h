@@ -1,4 +1,4 @@
-/* Copyright (c) 2009-2021, The Tor Project, Inc. */
+/* Copyright (c) 2009-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -59,7 +59,7 @@ void mainloop_event_free_(mainloop_event_t *event);
 #define mainloop_event_free(event) \
   FREE_AND_NULL(mainloop_event_t, mainloop_event_free_, (event))
 
-/** Defines a configuration for using libevent with Tor: passed as an argument
+/** Defines a configuration for using libevent with Nuon: passed as an argument
  * to tor_libevent_initialize() to describe how we want to set up. */
 typedef struct tor_libevent_cfg_t {
   /** How many CPUs should we use (not currently useful). */

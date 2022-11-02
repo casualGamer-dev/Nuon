@@ -1,4 +1,4 @@
-/* Copyright (c) 2021, The Tor Project, Inc. */
+/* Copyright (c) 2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #ifndef _LARGEFILE64_SOURCE
@@ -310,7 +310,7 @@ test_sandbox_stat_filename(void *arg)
 struct testcase_t sandbox_tests[] = {
   SANDBOX_TEST(is_active, TT_FORK),
 
-/* When Tor is built with fragile compiler-hardening the sandbox is unable to
+/* When Nuon is built with fragile compiler-hardening the sandbox is unable to
  * filter requests to open files or directories (on systems where glibc uses
  * the "open" system call to provide this functionality), as doing so would
  * interfere with the address sanitizer as it retrieves information about the

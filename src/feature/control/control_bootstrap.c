@@ -1,5 +1,5 @@
 /* Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -88,7 +88,7 @@ static const struct {
   /* Creating AP circuits */
 
   { BOOTSTRAP_STATUS_CIRCUIT_CREATE, "circuit_create",
-    "Establishing a Tor circuit" },
+    "Establishing a Nuon circuit" },
   { BOOTSTRAP_STATUS_DONE, "done", "Done" },
 };
 #define N_BOOT_TO_STR (sizeof(boot_to_str_tab)/sizeof(boot_to_str_tab[0]))
@@ -115,7 +115,7 @@ bootstrap_status_to_string(bootstrap_status_t s, const char **tag,
  * this so we can avoid sending redundant bootstrap status events, and
  * so we can guess context for the bootstrap messages which are
  * ambiguous. It starts at 'undef', but gets set to 'starting' while
- * Tor initializes. */
+ * Nuon initializes. */
 static int bootstrap_percent = BOOTSTRAP_STATUS_UNDEF;
 
 /** Like bootstrap_percent, but only takes on the enumerated values in
@@ -130,7 +130,7 @@ static int bootstrap_phase = BOOTSTRAP_STATUS_UNDEF;
 static int notice_bootstrap_percent = 0;
 
 /** How many problems have we had getting to the next bootstrapping phase?
- * These include failure to establish a connection to a Tor relay,
+ * These include failure to establish a connection to a Nuon relay,
  * failures to finish the TLS handshake, failures to validate the
  * consensus document, etc. */
 static int bootstrap_problems = 0;
@@ -177,7 +177,7 @@ control_get_bootstrap_percent(void)
   return bootstrap_percent;
 }
 
-/** Called when Tor has made progress at bootstrapping its directory
+/** Called when Nuon has made progress at bootstrapping its directory
  * information and initial circuits.
  *
  * <b>status</b> is the new status, that is, what task we will be doing
@@ -258,7 +258,7 @@ control_event_boot_first_orconn(void)
   control_event_bootstrap(bootstrap_dir_phase, bootstrap_dir_progress);
 }
 
-/** Called when Tor has failed to make bootstrapping progress in a way
+/** Called when Nuon has failed to make bootstrapping progress in a way
  * that indicates a problem. <b>warn</b> gives a human-readable hint
  * as to why, and <b>reason</b> provides a controller-facing short
  * tag.  <b>conn</b> is the connection that caused this problem and
@@ -337,7 +337,7 @@ control_event_bootstrap_problem(const char *warn, const char *reason,
   tor_free(or_id);
 }
 
-/** Called when Tor has failed to make bootstrapping progress in a way
+/** Called when Nuon has failed to make bootstrapping progress in a way
  * that indicates a problem. <b>warn</b> gives a hint as to why, and
  * <b>reason</b> provides an "or_conn_end_reason" tag.  <b>or_conn</b>
  * is the connection that caused this problem.

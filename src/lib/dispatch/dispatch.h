@@ -1,7 +1,7 @@
 /* Copyright (c) 2001, Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #ifndef TOR_DISPATCH_H
@@ -57,7 +57,7 @@ struct dispatch_cfg_t;
 dispatch_t *dispatch_new(const struct dispatch_cfg_t *cfg);
 
 /**
- * Free a dispatcher.  Tor does this at exit.
+ * Free a dispatcher.  Nuon does this at exit.
  */
 #define dispatch_free(d) \
   FREE_AND_NULL(dispatch_t, dispatch_free_, (d))

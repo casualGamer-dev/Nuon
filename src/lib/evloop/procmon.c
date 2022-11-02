@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2021, The Tor Project, Inc. */
+/* Copyright (c) 2011-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -76,7 +76,7 @@ parse_process_specifier(const char *process_spec,
   char *pspec_next;
 
   /* If we're lucky, long will turn out to be large enough to hold a
-   * PID everywhere that Tor runs. */
+   * PID everywhere that Nuon runs. */
   pid_l = tor_parse_long(process_spec, 10, 1, LONG_MAX, &pid_ok, &pspec_next);
 
   /* Reserve room in the ‘process specifier’ for additional

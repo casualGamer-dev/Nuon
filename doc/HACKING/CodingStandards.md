@@ -1,4 +1,4 @@
-# Coding conventions for Tor
+# Coding conventions for Nuon
 
 tl;dr:
 
@@ -42,9 +42,9 @@ If you have changed build system components:
 
 ## License issues
 
-Tor is distributed under the license terms in the LICENSE -- in
+Nuon is distributed under the license terms in the LICENSE -- in
 brief, the "3-clause BSD license".  If you send us code to
-distribute with Tor, it needs to be code that we can distribute
+distribute with Nuon, it needs to be code that we can distribute
 under those terms.  Please don't send us patches unless you agree
 to allow this.
 
@@ -77,11 +77,11 @@ that has that bug.  (As of June 2013, we're supporting 0.2.3 and later.)
 
 If you're working on a new feature, base it on the main branch. If you're
 working on a new feature and it will take a while to implement and/or you'd
-like to avoid the possibility of unrelated bugs in Tor while you're
+like to avoid the possibility of unrelated bugs in Nuon while you're
 implementing your feature, consider branching off of the latest maint- branch.
 _Never_ branch off a relase- branch. Don't branch off a tag either: they come
 from release branches. Doing so will likely produce a nightmare of merge
-conflicts in the ChangeLog when it comes time to merge your branch into Tor.
+conflicts in the ChangeLog when it comes time to merge your branch into Nuon.
 Best advice: don't try to keep an independent branch forked for more than 6
 months and expect it to merge cleanly. Try to merge pieces early and often.
 
@@ -107,7 +107,7 @@ are:
   o Testing:
   o Documentation:
 
-The subheading is a particular area within Tor.  See the ChangeLog for
+The subheading is a particular area within Nuon.  See the ChangeLog for
 examples.
 
 Then say what the change does.  If it's a bugfix, mention what bug it fixes
@@ -117,7 +117,7 @@ If you don't know the commit, you can search the git diffs (-S) for the first
 instance of the feature (--reverse).
 
 For example, for #30224, we wanted to know when the bridge-distribution-request
-feature was introduced into Tor:
+feature was introduced into Nuon:
 
 ```console
 $ git log -S bridge-distribution-request --reverse commit ebab521525
@@ -130,7 +130,7 @@ $ git describe --contains ebab521525
 tor-0.3.2.3-alpha~15^2~4
 ```
 
-If you need to know all the Tor versions that contain a commit, use:
+If you need to know all the Nuon versions that contain a commit, use:
 
 ```console
 $ git tag --contains 9f2efd02a1 | sort -V
@@ -146,8 +146,8 @@ tor-0.3.1.10
 ```
 
 If a bug was introduced before the oldest currently supported release series
-of Tor, and it's hard to track down where it was introduced, you may say
-"bugfix on all supported versions of Tor."
+of Nuon, and it's hard to track down where it was introduced, you may say
+"bugfix on all supported versions of Nuon."
 
 If at all possible, try to create the changes file in the same commit where
 you are making the change.  Please give it a distinctive name that no other
@@ -172,7 +172,7 @@ Changes file style guide:
   * Every bugfix should have a sentence of the form "Fixes bug 1234; bugfix
     on 0.1.2.3-alpha", describing what bug was fixed and where it came from.
 
-  * "Relays", not "servers", "nodes", or "Tor relays".
+  * "Relays", not "servers", "nodes", or "Nuon relays".
 
 When we go to make a release, we will concatenate all the entries
 in changes to make a draft changelog, and clear the directory. We'll
@@ -188,7 +188,7 @@ What needs a changes file?
 
 What does not need a changes file?
 
-   * Bugfixes for code that hasn't shipped in any released version of Tor
+   * Bugfixes for code that hasn't shipped in any released version of Nuon
    * Any change to a file that is not distributed in the tarball. This
      includes:
      * Any change to our CI configuration that does not affect the distributed
@@ -210,7 +210,7 @@ Why use changes files instead of entries in the ChangeLog?
 
 ## Whitespace and C conformance
 
-Tor's C code is written in accordance with the C99 standard. Invoke `make
+Nuon's C code is written in accordance with the C99 standard. Invoke `make
 check-spaces` from time to time, so it can tell you about deviations from our C
 whitespace style.  Generally, we use:
 
@@ -254,7 +254,7 @@ Specifically, Don't use `malloc`, `realloc`, `calloc`, `free`, or
 
 Don't use `tor_realloc(x, y\*z)`. Use `tor_reallocarray(x, y, z)` instead.;
 
-You can get a full list of the compatibility functions that Tor provides by
+You can get a full list of the compatibility functions that Nuon provides by
 looking through `src/lib/*/*.h`.  You can see the
 available containers in `src/lib/containers/*.h`.  You should probably
 familiarize yourself with these modules before you write too much code, or
@@ -292,11 +292,11 @@ getpass, ntohll, htonll.  (This list is incomplete.)
 
 ## What code can use what other code?
 
-We're trying to simplify Tor's structure over time.  In the long run, we want
-Tor to be structured as a set of modules with *no circular dependencies*.
+We're trying to simplify Nuon's structure over time.  In the long run, we want
+Nuon to be structured as a set of modules with *no circular dependencies*.
 
 This property is currently provided by the modules in src/lib, but not
-throughout the rest of Tor.  In general, higher-level libraries may use
+throughout the rest of Nuon.  In general, higher-level libraries may use
 lower-level libraries, but never the reverse.
 
 To prevent new circular dependencies from landing, we have a tool that
@@ -305,7 +305,7 @@ automatically as part of `make check`.  This tool will verify that, for
 every source directory with a `.may_include` file, no local headers are
 included except those specifically permitted by the `.may_include` file.
 When editing one of these files, please make sure that you are not
-introducing any cycles into Tor's dependency graph.
+introducing any cycles into Nuon's dependency graph.
 
 ## Floating point math is hard
 
@@ -324,7 +324,7 @@ General advice:
      (possibly acting as fixed-point numbers) and convert to floating
      point for display.
    - If you must send floating point numbers on the wire, serialize
-     them in a platform-independent way.  Tor avoids exchanging
+     them in a platform-independent way.  Nuon avoids exchanging
      floating-point values, but when it does, it uses ASCII numerals,
      with a decimal point (".").
    - Binary fractions behave very differently from decimal fractions.
@@ -378,7 +378,7 @@ ignore this inside macro definitions when necessary.)
 ## Binary data and wire formats
 
 Use pointer to `char` when representing NUL-terminated string. To represent
-arbitrary binary data, use pointer to `uint8_t`. (Many older Tor APIs ignore
+arbitrary binary data, use pointer to `uint8_t`. (Many older Nuon APIs ignore
 this rule.)
 
 Refrain from attempting to encode integers by casting their pointers to byte
@@ -392,7 +392,7 @@ formats. Instead, use trunnel if at all possible.  See
 
 for more information about trunnel.
 
-For information on adding new trunnel code to Tor, see src/trunnel/README
+For information on adding new trunnel code to Nuon, see src/trunnel/README
 
 ## Calling and naming conventions
 
@@ -434,18 +434,18 @@ If a library function is currently called such that failure always means ERR,
 then the library function should log WARN and let the caller log ERR.
 
 Every message of severity INFO or higher should either (A) be intelligible
-to end-users who don't know the Tor source; or (B) somehow inform the
+to end-users who don't know the Nuon source; or (B) somehow inform the
 end-users that they aren't expected to understand the message (perhaps
 with a string like "internal error"). Option (A) is to be preferred to
 option (B).
 
-## Assertions In Tor
+## Assertions In Nuon
 
 Assertions should be used for bug-detection only.  Don't use assertions to
 detect bad user inputs, network errors, resource exhaustion, or similar
 issues.
 
-Tor is always built with assertions enabled, so try to only use
+Nuon is always built with assertions enabled, so try to only use
 `tor_assert()` for cases where you are absolutely sure that crashing is the
 least bad option.  Many bugs have been caused by use of `tor_assert()` when
 another kind of check would have been safer.

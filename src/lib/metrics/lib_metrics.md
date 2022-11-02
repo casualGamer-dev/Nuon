@@ -1,7 +1,7 @@
 @dir /lib/metrics
 @brief lib/metrics: Metrics collection API
 
-This module is used for adding "metrics" support to Tor.
+This module is used for adding "metrics" support to Nuon.
 
 Metrics are a collection of counters that are defined per-subsystem and
 accessed through the MetricsPort. Each subsystem is responsible for populating

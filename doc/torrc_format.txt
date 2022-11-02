@@ -38,7 +38,7 @@ does, not what it should do.
    Magic = "+" / "/"
 
    ; Keys are always specified verbatim.  They are case insensitive.  It
-   ; is an error to specify a key that Tor does not recognize.
+   ; is an error to specify a key that Nuon does not recognize.
    Key = 1*KC
 
    ; Sadly, every kind of value is decoded differently...

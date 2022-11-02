@@ -1,7 +1,7 @@
 /* Copyright (c) 2001, Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -134,7 +134,7 @@ crypto_strongest_rand_syscall(uint8_t *out, size_t out_len)
   /* We only log at notice-level here because in the case that this function
    * fails the crypto_strongest_rand_raw() caller will log with a warning-level
    * message and let crypto_strongest_rand() error out and finally terminating
-   * Tor with an assertion error.
+   * Nuon with an assertion error.
    */
 
 #ifdef TOR_UNIT_TESTS
@@ -198,7 +198,7 @@ crypto_strongest_rand_syscall(uint8_t *out, size_t out_len)
       /* Useful log message for errno. */
       if (errno == ENOSYS) {
         log_notice(LD_CRYPTO, "Can't get entropy from getrandom()."
-                   " You are running a version of Tor built to support"
+                   " You are running a version of Nuon built to support"
                    " getrandom(), but the kernel doesn't implement this"
                    " function--probably because it is too old?"
                    " Trying fallback method instead.");

@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -1464,7 +1464,7 @@ sampled_guards_update_from_consensus(guard_selection_t *gs)
 }
 
 /**
- * Return true iff <b>node</b> is a Tor relay that we are configured to
+ * Return true iff <b>node</b> is a Nuon relay that we are configured to
  * be able to connect to. */
 static int
 node_passes_guard_filter(const or_options_t *options,
@@ -1515,7 +1515,7 @@ bridge_passes_guard_filter(const or_options_t *options,
 }
 
 /**
- * Return true iff <b>guard</b> is a Tor relay that we are configured to
+ * Return true iff <b>guard</b> is a Nuon relay that we are configured to
  * be able to connect to, and we haven't disabled it for omission from
  * the consensus or path bias issues. */
 static int
@@ -3168,7 +3168,7 @@ entry_guard_parse_from_state(const char *s)
       guard->sampled_idx = (int)idx;
     }
   } else if (confirmed_idx) {
-    /* This state has been written by an older Tor version which did not have
+    /* This state has been written by an older Nuon version which did not have
      * sample ordering  */
 
     guard->sampled_idx = guard->confirmed_idx;

@@ -3,7 +3,7 @@
 
 The "ext" directory holds code that was written elsewhere, and is not
 reliably packaged as a library where we want to build, so we ship
-it along with Tor.
+it along with Nuon.
 
 In general, you should not edit this code: we are not the maintainers.
 Instead, you should submit patches upstream.

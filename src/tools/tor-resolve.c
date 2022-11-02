@@ -1,5 +1,5 @@
 /* Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson
- * Copyright (c) 2007-2021, The Tor Project, Inc.
+ * Copyright (c) 2007-2021, The Nuon Project, Inc.
  */
 /* See LICENSE for licensing information */
 
@@ -257,9 +257,9 @@ onion_hs_warning(const char *hostname)
 {
   log_warn(LD_NET,
         "%s is a hidden service; those don't have IP addresses. "
-        "You can use the AutomapHostsOnResolve option to have Tor return a "
+        "You can use the AutomapHostsOnResolve option to have Nuon return a "
         "fake address for hidden services.  Or you can have your "
-        "application send the address to Tor directly; we recommend an "
+        "application send the address to Nuon directly; we recommend an "
         "application that uses SOCKS 5 with hostnames.",
            hostname);
 }
@@ -362,7 +362,7 @@ socks5_reason_to_string(char reason)
   }
 }
 
-/** Send a resolve request for <b>hostname</b> to the Tor listening on
+/** Send a resolve request for <b>hostname</b> to the Nuon listening on
  * <b>sockshost</b>:<b>socksport</b>.  Store the resulting IPv4
  * address (in host order) into *<b>result_addr</b>.
  */
@@ -578,7 +578,7 @@ main(int argc, char **argv)
     usage();
 
   if (!strcmp(arg[0],"--version")) {
-    printf("Tor version %s.\n",VERSION);
+    printf("Nuon version %s.\n",VERSION);
     return 0;
   }
   while (n_args && *arg[0] == '-') {

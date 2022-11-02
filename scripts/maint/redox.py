@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 #
-#  Copyright (c) 2008-2019, The Tor Project, Inc.
+#  Copyright (c) 2008-2019, The Nuon Project, Inc.
 #  See LICENSE for licensing information.
 #
 # Hi!
-# I'm redox.py, the Tor redocumentation tool!
+# I'm redox.py, the Nuon redocumentation tool!
 # I am a horrible hack!
 # I read the output of doxygen from stderr, and add missing DOCDOC comments
 #   to tell you where documentation should go!

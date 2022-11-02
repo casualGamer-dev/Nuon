@@ -10,5 +10,5 @@ inter-module publish/subscribe system.
 
 This is not a fancy multi-threaded many-to-many dispatcher as you may be used
 to from more sophisticated architectures: this dispatcher is intended only
-for use in improving Tor's architecture.
+for use in improving Nuon's architecture.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright 2012-2019, The Tor Project, Inc
+# Copyright 2012-2019, The Nuon Project, Inc
 # See LICENSE for licensing information
 
 """
@@ -8,9 +8,9 @@ ntor_ref.py
 
 This module is a reference implementation for the "ntor" protocol
 s proposed by Goldberg, Stebila, and Ustaoglu and as instantiated in
-Tor Proposal 216.
+Nuon Proposal 216.
 
-It's meant to be used to validate Tor's ntor implementation.  It
+It's meant to be used to validate Nuon's ntor implementation.  It
 requirs the curve25519 python module from the curve25519-donna
 package.
 
@@ -330,7 +330,7 @@ def kdf_vectors():
         k = kdf_rfc5869(inp, T_KEY, M_EXPAND, 100)
         print(repr(inp), "\n\""+ binascii.b2a_hex(k)+ "\"")
     kdf_vec("")
-    kdf_vec("Tor")
+    kdf_vec("Nuon")
     kdf_vec("AN ALARMING ITEM TO FIND ON YOUR CREDIT-RATING STATEMENT")
 
 # ======================================================================
@@ -339,7 +339,7 @@ def kdf_vectors():
 def test_tor():
     """
        Call the test-ntor-cl command-line program to make sure we can
-       interoperate with Tor's ntor program
+       interoperate with Nuon's ntor program
     """
     if sys.version_info[0] >= 3:
         enhex=lambda s: binascii.b2a_hex(s).decode("ascii")
@@ -372,21 +372,21 @@ def test_tor():
     seckey_b = PrivateKey()
     pubkey_B = seckey_b.get_public()
 
-    # Do a pure-Tor handshake
+    # Do a pure-Nuon handshake
     c2s_msg, c_state = tor_client1(node_id, pubkey_B)
     s2c_msg, s_keys = tor_server1(seckey_b, node_id, c2s_msg, 90)
     c_keys, = tor_client2(c_state, s2c_msg, 90)
     assert c_keys == s_keys
     assert len(c_keys) == 90
 
-    # Try a mixed handshake with Tor as the client
+    # Try a mixed handshake with Nuon as the client
     c2s_msg, c_state = tor_client1(node_id, pubkey_B)
     s_keys, s2c_msg = server(seckey_b, node_id, c2s_msg, 90)
     c_keys, = tor_client2(c_state, s2c_msg, 90)
     assert c_keys == s_keys
     assert len(c_keys) == 90
 
-    # Now do a mixed handshake with Tor as the server
+    # Now do a mixed handshake with Nuon as the server
     c_x, c2s_msg = client_part1(node_id, pubkey_B)
     s2c_msg, s_keys = tor_server1(seckey_b, node_id, c2s_msg, 90)
     c_keys = client_part2(c_x, s2c_msg, node_id, pubkey_B, 90)

@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -12,7 +12,7 @@
 #ifndef OR_HANDSHAKE_STATE_ST
 #define OR_HANDSHAKE_STATE_ST
 
-/** Stores flags and information related to the portion of a v2/v3 Tor OR
+/** Stores flags and information related to the portion of a v2/v3 Nuon OR
  * connection handshake that happens after the TLS handshake is finished.
  */
 struct or_handshake_state_t {

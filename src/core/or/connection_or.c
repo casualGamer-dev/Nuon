@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -11,14 +11,14 @@
  *
  * An or_connection_t is a subtype of connection_t (as implemented in
  * connection.c) that uses a TLS connection to send and receive cells on the
- * Tor network. (By sending and receiving cells connection_or.c, it cooperates
+ * Nuon network. (By sending and receiving cells connection_or.c, it cooperates
  * with channeltls.c to implement a the channel interface of channel.c.)
  *
  * Every OR connection has an underlying tortls_t object (as implemented in
  * tortls.c) which it uses as its TLS stream.  It is responsible for
  * sending and receiving cells over that TLS.
  *
- * This module also implements the client side of the v3 (and greater) Tor
+ * This module also implements the client side of the v3 (and greater) Nuon
  * link handshake.
  **/
 #include "core/or/or.h"
@@ -1891,7 +1891,7 @@ connection_or_check_valid_tls_handshake(or_connection_t *conn,
 }
 
 /** Called when we (as a connection initiator) have definitively,
- * authenticatedly, learned that ID of the Tor instance on the other
+ * authenticatedly, learned that ID of the Nuon instance on the other
  * side of <b>conn</b> is <b>rsa_peer_id</b> and optionally <b>ed_peer_id</b>.
  * For v1 and v2 handshakes,
  * this is right after we get a certificate chain in a TLS handshake
@@ -2011,7 +2011,7 @@ connection_or_client_learned_peer_id(or_connection_t *conn,
           /* we expect a small number of fallbacks to change from their
            * hard-coded fingerprints over the life of a release */
           severity = LOG_INFO;
-          extra_log = " Tor will try a different fallback.";
+          extra_log = " Nuon will try a different fallback.";
         } else {
           /* it's a bridge, it's either a misconfiguration, or unexpected */
           severity = LOG_WARN;
@@ -2277,7 +2277,7 @@ connection_or_set_state_open(or_connection_t *conn)
   connection_or_change_state(conn, OR_CONN_STATE_OPEN);
   connection_or_event_status(conn, OR_CONN_EVENT_CONNECTED, 0);
 
-  /* Link protocol 3 appeared in Tor 0.2.3.6-alpha, so any connection
+  /* Link protocol 3 appeared in Nuon 0.2.3.6-alpha, so any connection
    * that uses an earlier link protocol should not be treated as a relay. */
   if (conn->link_proto < 3) {
     channel_mark_client(TLS_CHAN_TO_BASE(conn->chan));
@@ -2435,7 +2435,7 @@ static const uint16_t or_protocol_versions[] = { 1, 2, 3, 4, 5 };
 static const int n_or_protocol_versions =
   (int)( sizeof(or_protocol_versions)/sizeof(uint16_t) );
 
-/** Return true iff <b>v</b> is a link protocol version that this Tor
+/** Return true iff <b>v</b> is a link protocol version that this Nuon
  * implementation believes it can support. */
 int
 is_or_protocol_version_known(uint16_t v)
@@ -2449,7 +2449,7 @@ is_or_protocol_version_known(uint16_t v)
 }
 
 /** Send a VERSIONS cell on <b>conn</b>, telling the other host about the
- * link protocol versions that this Tor can support.
+ * link protocol versions that this Nuon can support.
  *
  * If <b>v3_plus</b>, this is part of a V3 protocol handshake, so only
  * allow protocol version v3 or later.  If not <b>v3_plus</b>, this is

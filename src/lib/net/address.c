@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -2179,7 +2179,7 @@ string_is_valid_dest(const char *string)
 }
 
 /** Return true iff <b>string</b> matches a pattern of DNS names
- * that we allow Tor clients to connect to.
+ * that we allow Nuon clients to connect to.
  *
  * Note: This allows certain technically invalid characters ('_') to cope
  * with misconfigured zones that have been encountered in the wild.

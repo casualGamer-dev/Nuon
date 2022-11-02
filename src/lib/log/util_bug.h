@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -13,7 +13,7 @@
  *
  * We provide two kinds of assertion here: "fatal" and "nonfatal". Use
  * nonfatal assertions for any bug you can reasonably recover from -- and
- * please, try to recover!  Many severe bugs in Tor have been caused by using
+ * please, try to recover!  Many severe bugs in Nuon have been caused by using
  * a regular assertion when a nonfatal assertion would have been better.
  *
  * If you need to check a condition with a nonfatal assertion, AND recover
@@ -142,7 +142,7 @@
 #define ALL_BUGS_ARE_FATAL
 #endif
 
-/** Define ALL_BUGS_ARE_FATAL if you want Tor to crash when any problem comes
+/** Define ALL_BUGS_ARE_FATAL if you want Nuon to crash when any problem comes
  * up, so you can get a coredump and track things down. */
 #ifdef ALL_BUGS_ARE_FATAL
 #define tor_assert_nonfatal_unreached() tor_assert(0)

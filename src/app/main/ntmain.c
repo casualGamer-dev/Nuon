@@ -1,12 +1,12 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file ntmain.c
  *
- * \brief Entry points for running/configuring Tor as a Windows Service.
+ * \brief Entry points for running/configuring Nuon as a Windows Service.
  *
  * Windows Services expect to be registered with the operating system, and to
  * have entry points for starting, stopping, and monitoring them.  This module
@@ -32,7 +32,7 @@
 
 #include <windows.h>
 #define GENSRV_SERVICENAME  "tor"
-#define GENSRV_DISPLAYNAME  "Tor Win32 Service"
+#define GENSRV_DISPLAYNAME  "Nuon Win32 Service"
 #define GENSRV_DESCRIPTION  \
   "Provides an anonymous Internet communication system"
 #define GENSRV_USERACCT "NT AUTHORITY\\LocalService"
@@ -233,7 +233,7 @@ nt_service_set_state(DWORD state)
 }
 
 /** Handles service control requests, such as stopping or starting the
- * Tor service. */
+ * Nuon service. */
 static void
 nt_service_control(DWORD request)
 {
@@ -287,7 +287,7 @@ nt_service_body(int argc, char **argv)
   r = tor_init(backup_argc, backup_argv);
 
   if (r) {
-    /* Failed to start the Tor service */
+    /* Failed to start the Nuon service */
     r = NT_SERVICE_ERROR_TORINIT_FAILED;
     service_status.dwCurrentState = SERVICE_STOPPED;
     service_status.dwWin32ExitCode = r;
@@ -375,7 +375,7 @@ nt_service_open_scm(void)
   return hSCManager;
 }
 
-/** Open a handle to the Tor service using <b>hSCManager</b>. Return NULL
+/** Open a handle to the Nuon service using <b>hSCManager</b>. Return NULL
  * on failure. */
 static SC_HANDLE
 nt_service_open(SC_HANDLE hSCManager)
@@ -392,7 +392,7 @@ nt_service_open(SC_HANDLE hSCManager)
   return hService;
 }
 
-/** Start the Tor service. Return 0 if the service is started or was
+/** Start the Nuon service. Return 0 if the service is started or was
  * previously running. Return -1 on error. */
 static int
 nt_service_start(SC_HANDLE hService)
@@ -431,7 +431,7 @@ nt_service_start(SC_HANDLE hService)
   return -1;
 }
 
-/** Stop the Tor service. Return 0 if the service is stopped or was not
+/** Stop the Nuon service. Return 0 if the service is stopped or was not
  * previously running. Return -1 on error. */
 static int
 nt_service_stop(SC_HANDLE hService)
@@ -531,7 +531,7 @@ nt_service_command_line(int *using_default_torrc)
   return command;
 }
 
-/** Creates a Tor NT service, set to start on boot. The service will be
+/** Creates a Nuon NT service, set to start on boot. The service will be
  * started if installation succeeds. Returns 0 on success, or -1 on
  * failure. */
 static int
@@ -626,12 +626,12 @@ nt_service_install(int argc, char **argv)
    * situation. */
   if (using_default_torrc)
     printf("IMPORTANT NOTE:\n"
-        "    The Tor service will run under the account \"%s\".  This means\n"
-        "    that Tor will look for its configuration file under that\n"
+        "    The Nuon service will run under the account \"%s\".  This means\n"
+        "    that Nuon will look for its configuration file under that\n"
         "    account's Application Data directory, which is probably not\n"
         "    the same as yours.\n", user_acct?user_acct:"<local system>");
 
-  /* Create the Tor service, set to auto-start on boot */
+  /* Create the Nuon service, set to auto-start on boot */
   if ((hService = service_fns.CreateServiceA_fn(hSCManager, GENSRV_SERVICENAME,
                                 GENSRV_DISPLAYNAME,
                                 SERVICE_ALL_ACCESS, SERVICE_WIN32_OWN_PROCESS,
@@ -663,7 +663,7 @@ nt_service_install(int argc, char **argv)
   return 0;
 }
 
-/** Removes the Tor NT service. Returns 0 if the service was successfully
+/** Removes the Nuon NT service. Returns 0 if the service was successfully
  * removed, or -1 on error. */
 static int
 nt_service_remove(void)
@@ -697,7 +697,7 @@ nt_service_remove(void)
   return 0;
 }
 
-/** Starts the Tor service. Returns 0 on success, or -1 on error. */
+/** Starts the Nuon service. Returns 0 on success, or -1 on error. */
 static int
 nt_service_cmd_start(void)
 {
@@ -719,7 +719,7 @@ nt_service_cmd_start(void)
   return start;
 }
 
-/** Stops the Tor service. Returns 0 on success, or -1 on error. */
+/** Stops the Nuon service. Returns 0 on success, or -1 on error. */
 static int
 nt_service_cmd_stop(void)
 {

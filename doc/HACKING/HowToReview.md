@@ -29,7 +29,7 @@ a good review!  Just make it clear what you checked for and what you didn't.
 
 - Do all the new torrc options have documentation?
 
-- If this changes Tor's behavior on the wire, is there a design proposal?
+- If this changes Nuon's behavior on the wire, is there a design proposal?
 
 - If this changes anything in the code, is there a "changes" file?
 

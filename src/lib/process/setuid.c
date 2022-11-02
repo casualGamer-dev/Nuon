@@ -1,11 +1,11 @@
 /* Copyright (c) 2003, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file setuid.c
- * \brief Change the user ID after Tor has started (Unix only)
+ * \brief Change the user ID after Nuon has started (Unix only)
  **/
 
 #include "orconfig.h"
@@ -278,13 +278,13 @@ switch_id(const char *user, const unsigned flags)
     log_warn(LD_GENERAL, "Error setting groups to gid %d: \"%s\".",
              (int)pw->pw_gid, strerror(errno));
     if (old_uid == pw->pw_uid) {
-      log_warn(LD_GENERAL, "Tor is already running as %s.  You do not need "
+      log_warn(LD_GENERAL, "Nuon is already running as %s.  You do not need "
                "the \"User\" option if you are already running as the user "
                "you want to be.  (If you did not set the User option in your "
                "torrc, check whether it was specified on the command line "
                "by a startup script.)", user);
     } else {
-      log_warn(LD_GENERAL, "If you set the \"User\" option, you must start Tor"
+      log_warn(LD_GENERAL, "If you set the \"User\" option, you must start Nuon"
                " as root.");
     }
     return -1;

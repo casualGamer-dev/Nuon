@@ -1,4 +1,4 @@
-/* Added to ref10 for Tor. We place this in the public domain.  Alternatively,
+/* Added to ref10 for Nuon. We place this in the public domain.  Alternatively,
  * you may have it under the Creative Commons 0 "CC0" license. */
 #include "fe.h"
 #include "ed25519_ref10.h"

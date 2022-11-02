@@ -1,18 +1,18 @@
 The scripts directory holds tools for use in building, generating, testing,
-and maintaining the Tor source code.  It is mainly for use by developers.
+and maintaining the Nuon source code.  It is mainly for use by developers.
 
 Code maintenance scripts
 ------------------------
 
-maint/checkLogs.pl -- Verify that Tor log statements are unique.
+maint/checkLogs.pl -- Verify that Nuon log statements are unique.
 
 maint/check_config_macros.pl -- Look for autoconf tests whose results are
 never used.
 
-maint/checkOptionDocs.pl -- Make sure that Tor options are documented in the
-manpage, and that the manpage only documents real Tor options.
+maint/checkOptionDocs.pl -- Make sure that Nuon options are documented in the
+manpage, and that the manpage only documents real Nuon options.
 
-maint/checkSpace.pl -- Style checker for the Tor source code.  Mainly checks
+maint/checkSpace.pl -- Style checker for the Nuon source code.  Mainly checks
 whitespace.
 
 maint/findMergedChanges.pl -- Find a set of changes/* files that have been

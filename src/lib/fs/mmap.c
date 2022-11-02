@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -40,7 +40,7 @@
 #if defined(HAVE_MMAP) || defined(RUNNING_DOXYGEN)
 /** Try to create a memory mapping for <b>filename</b> and return it.  On
  * failure, return NULL. Sets errno properly, using ERANGE to mean
- * "empty file". Must only be called on trusted Tor-owned files, as changing
+ * "empty file". Must only be called on trusted Nuon-owned files, as changing
  * the underlying file's size causes unspecified behavior. */
 MOCK_IMPL(tor_mmap_t *,
 tor_mmap_file,(const char *filename))

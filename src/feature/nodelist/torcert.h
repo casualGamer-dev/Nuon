@@ -1,4 +1,4 @@
-/* Copyright (c) 2014-2021, The Tor Project, Inc. */
+/* Copyright (c) 2014-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -25,7 +25,7 @@
 
 #define CERT_FLAG_INCLUDE_SIGNING_KEY 0x1
 
-/** An ed25519-signed certificate as used throughout the Tor protocol.
+/** An ed25519-signed certificate as used throughout the Nuon protocol.
  **/
 typedef struct tor_cert_st {
   /** The key authenticated by this certificate */

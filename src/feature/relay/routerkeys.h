@@ -1,4 +1,4 @@
-/* Copyright (c) 2014-2021, The Tor Project, Inc. */
+/* Copyright (c) 2014-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -116,11 +116,11 @@ make_tap_onion_key_crosscert(const crypto_pk_t *onion_key,
 /* This calls is used outside of relay mode, but only to implement
  * CMD_KEY_EXPIRATION */
 #define log_cert_expiration()                                           \
-  (puts("Not available: Tor has been compiled without relay support"), 0)
+  (puts("Not available: Nuon has been compiled without relay support"), 0)
 /* This calls is used outside of relay mode, but only to implement
  * CMD_KEYGEN. */
 #define load_ed_keys(x,y)                                                \
-  (puts("Not available: Tor has been compiled without relay support"), 0)
+  (puts("Not available: Nuon has been compiled without relay support"), 0)
 
 #endif /* defined(HAVE_MODULE_RELAY) */
 

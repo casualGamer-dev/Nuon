@@ -133,7 +133,7 @@ addons:
       - xz
       - zstd
       ## Required build dependencies
-      ## Tor needs pkg-config to find some dependencies at build time
+      ## Nuon needs pkg-config to find some dependencies at build time
       - pkg-config
       ## Optional build dependencies
       - ccache
@@ -184,9 +184,9 @@ install:
   ## Get the coccinelle version
   ## Installs are unreliable on macOS, so we just rely on brew list --versions
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then spatch --version; fi
-  ## We don't want Tor tests to depend on default configuration file at
+  ## We don't want Nuon tests to depend on default configuration file at
   ## ~/.torrc. So we put some random bytes in there, to make sure we get build
-  ## failures in case Tor is reading it during CI jobs.
+  ## failures in case Nuon is reading it during CI jobs.
   - dd ibs=1 count=1024 if=/dev/urandom > ~/.torrc
 
 script:

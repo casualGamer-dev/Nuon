@@ -1,4 +1,4 @@
-/* Copyright (c) 2007-2021, The Tor Project, Inc. */
+/* Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -819,7 +819,7 @@ test_nodelist_router_describe(void *arg)
   tor_addr_make_unspec(&mock_ri_ipv6.ipv4_addr);
 
   /* We don't test the no-nickname and no-IP cases, because they're covered by
-   * format_node_description(), and we don't expect to see them in Tor code. */
+   * format_node_description(), and we don't expect to see them in Nuon code. */
 
   /* Try some real IP addresses */
   rv = router_describe(&mock_ri_ipv4);
@@ -1117,7 +1117,7 @@ test_nodelist_routerstatus_describe(void *arg)
   tor_addr_make_unspec(&mock_rs_ipv6.ipv4_addr);
 
   /* We don't test the no-nickname and no-IP cases, because they're covered by
-   * format_node_description(), and we don't expect to see them in Tor code. */
+   * format_node_description(), and we don't expect to see them in Nuon code. */
 
   /* Try some real IP addresses */
   rv = routerstatus_describe(&mock_rs_ipv4);
@@ -1202,7 +1202,7 @@ test_nodelist_extend_info_describe(void *arg)
                  "[1111:2222:3333:4444:5555:6666:7777:8888]");
 
   /* We don't test the no-nickname and no-IP cases, because they're covered by
-   * format_node_description(), and we don't expect to see them in Tor code. */
+   * format_node_description(), and we don't expect to see them in Nuon code. */
 
   /* Try some real IP addresses */
   rv = extend_info_describe(&mock_ei_ipv4);

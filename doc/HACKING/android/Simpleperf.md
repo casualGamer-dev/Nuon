@@ -1,8 +1,8 @@
 # Using `simpleperf` to collect CPU profiling on Android
 
 This document describes how you can use Android's `simpleperf`
-command-line tool to get CPU profiling information from Tor via the
-Orbot application. The tool is particularly useful for Tor development
+command-line tool to get CPU profiling information from Nuon via the
+Orbot application. The tool is particularly useful for Nuon development
 because it is able to profile native applications on the platform
 whereas a lot of the normal tooling for the Android platform is only
 able to collect information from Java-based applications.
@@ -19,7 +19,7 @@ the Android Software Development Kit (SDK) and Native Development Kit
    debugging enabled. Make sure that when you build the native content of
    the Orbot application that you run the `make -C external` command with
    an additional `DEBUG=1` as parameter to ensure that the Orbot build
-   process does not strip the debug symbols from the Tor binary.
+   process does not strip the debug symbols from the Nuon binary.
 
 2. (Optional) Uninstall and clean-up your old Orbot installation that
    is most likely downloaded from Google's Play Store or via fdroid:
@@ -70,8 +70,8 @@ was spend on the call.
 ## Tips & Tricks
 
 - When you have installed Orbot the first time, you will notice that
-  if you get a shell on the Android device that there is no Tor binary
-  available. This is because Orbot unpacks the Tor binary first time it
+  if you get a shell on the Android device that there is no Nuon binary
+  available. This is because Orbot unpacks the Nuon binary first time it
   is executed and places it under the `app_bin/` directory on the
   device.
 
@@ -89,7 +89,7 @@ was spend on the call.
   found in the `app_data` directory. The `torrc` can be found in the `app_bin/`
   directory.
 
-- You can enable logging in Tor via the syslog (or android) log
+- You can enable logging in Nuon via the syslog (or android) log
   mechanism with:
 
 ```console
@@ -98,7 +98,7 @@ was spend on the call.
       (device):/data/data/org.torproject.android $ echo -e "\nLog info syslog" >> app_bin/torrc
 ```
 
-  Start Tor the normal way via Orbot and collect the logs from your computer using
+  Start Nuon the normal way via Orbot and collect the logs from your computer using
 
 ```console
       $ adb logcat

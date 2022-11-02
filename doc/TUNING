@@ -1,5 +1,5 @@
 Most operating systems limit an amount of TCP sockets that can be used
-simultaneously. It is possible for a busy Tor relay to run into these
+simultaneously. It is possible for a busy Nuon relay to run into these
 limits, thus being unable to fully utilize the bandwidth resources it
 has at its disposal. Following system-specific tips might be helpful
 to alleviate the aforementioned problem.
@@ -49,7 +49,7 @@ add 'kern.maxfiles=16000' to the file /etc/sysctl.conf.
 
 There are stricter resource limits set on user classes, which are stored in
 /etc/login.conf. This config file also allows limit sets for daemons started
-with scripts in the /etc/rc.d directory, which presumably includes Tor.
+with scripts in the /etc/rc.d directory, which presumably includes Nuon.
 
 To increase the file descriptor limit from its default of 1,024, add the
 following to /etc/login.conf:
@@ -58,11 +58,11 @@ tor:\
 	:openfiles-max=13500:\
 	:tc=daemon:
 
-Upon restarting Tor, it will be able to open up to 13,500 file descriptors.
+Upon restarting Nuon, it will be able to open up to 13,500 file descriptors.
 
-This will work *only* if you are starting Tor with the script /etc/rc.d/tor. If
+This will work *only* if you are starting Nuon with the script /etc/rc.d/tor. If
 you're using a custom build instead of the package, you can easily copy the rc.d
-script from the Tor port directory. Alternatively, you can ensure that the Tor's
+script from the Nuon port directory. Alternatively, you can ensure that the Nuon's
 daemon user has its own user class and make a /etc/login.conf entry for it.
 
 High-bandwidth relays sometimes give the syslog warning:
@@ -81,5 +81,5 @@ Do note that this document is a draft and above information may be
 technically incorrect and/or incomplete. If so, please open a ticket
 on https://gitlab.torproject.org or post to tor-relays mailing list.
 
-Are you running a busy Tor relay? Let us know how you are solving
+Are you running a busy Nuon relay? Let us know how you are solving
 the out-of-sockets problem on your system.

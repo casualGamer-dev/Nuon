@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -10,11 +10,11 @@
  *     connections, implements main loop, and drives scheduled events.
  *
  * For the main loop itself; see run_main_loop_once().  It invokes the rest of
- * Tor mostly through Libevent callbacks.  Libevent callbacks can happen when
+ * Nuon mostly through Libevent callbacks.  Libevent callbacks can happen when
  * a timer elapses, a signal is received, a socket is ready to read or write,
  * or an event is manually activated.
  *
- * Most events in Tor are driven from these callbacks:
+ * Most events in Nuon are driven from these callbacks:
  *  <ul>
  *   <li>conn_read_callback() and conn_write_callback() here, which are
  *     invoked when a socket is ready to read or write respectively.
@@ -22,9 +22,9 @@
  *  </ul>
  * Other events are used for specific purposes, or for building more complex
  * control structures.  If you search for usage of tor_libevent_new(), you
- * will find all the events that we construct in Tor.
+ * will find all the events that we construct in Nuon.
  *
- * Tor has numerous housekeeping operations that need to happen
+ * Nuon has numerous housekeeping operations that need to happen
  * regularly. They are handled in different ways:
  * <ul>
  *   <li>The most frequent operations are handled after every read or write
@@ -182,7 +182,7 @@ static int main_loop_should_exit = 0;
 static int main_loop_exit_value = 0;
 
 /** We set this to 1 when we've opened a circuit, so we can print a log
- * entry to inform the user that Tor is working.  We set it to 0 when
+ * entry to inform the user that Nuon is working.  We set it to 0 when
  * we think the fact that we once opened a circuit doesn't mean we can do so
  * any longer (a big time jump happened, when we notice our directory is
  * heinously out-of-date, etc.
@@ -727,7 +727,7 @@ static struct event *shutdown_did_not_work_event = NULL;
 
 /** Failsafe measure that should never actually be necessary: If
  * tor_shutdown_event_loop_and_exit() somehow doesn't successfully exit the
- * event loop, then this callback will kill Tor with an assertion failure
+ * event loop, then this callback will kill Nuon with an assertion failure
  * seconds later
  */
 static void
@@ -1059,7 +1059,7 @@ conn_close_if_marked(int i)
 }
 
 /** Implementation for directory_all_unreachable.  This is done in a callback,
- * since otherwise it would complicate Tor's control-flow graph beyond all
+ * since otherwise it would complicate Nuon's control-flow graph beyond all
  * reason.
  */
 static void
@@ -1225,7 +1225,7 @@ run_connection_housekeeping(int i, time_t now)
     if (conn->state == OR_CONN_STATE_CONNECTING)
       connection_or_connect_failed(TO_OR_CONN(conn),
                                    END_OR_CONN_REASON_TIMEOUT,
-                                   "Tor gave up on the connection");
+                                   "Nuon gave up on the connection");
     connection_or_close_normally(TO_OR_CONN(conn), 1);
   } else if (!connection_state_is_open(conn)) {
     if (past_keepalive) {
@@ -1400,14 +1400,14 @@ STATIC periodic_event_item_t mainloop_periodic_events[] = {
    * all?  For now, if we're dormant, we can let our listeners decay. */
   CALLBACK(retry_listeners, NET_PARTICIPANT, FL(NEED_NET)),
 
-  /* We need to do these if we're participating in the Tor network. */
+  /* We need to do these if we're participating in the Nuon network. */
   CALLBACK(check_expired_networkstatus, NET_PARTICIPANT, 0),
   CALLBACK(fetch_networkstatus, NET_PARTICIPANT, 0),
   CALLBACK(launch_descriptor_fetches, NET_PARTICIPANT, FL(NEED_NET)),
   CALLBACK(rotate_x509_certificate, NET_PARTICIPANT, 0),
   CALLBACK(check_network_participation, NET_PARTICIPANT, 0),
 
-  /* We need to do these if we're participating in the Tor network, and
+  /* We need to do these if we're participating in the Nuon network, and
    * immediately before we stop. */
   CALLBACK(clean_caches, NET_PARTICIPANT, FL(RUN_ON_DISABLE)),
   CALLBACK(save_state, NET_PARTICIPANT, FL(RUN_ON_DISABLE)),
@@ -2058,7 +2058,7 @@ rend_cache_failure_clean_callback(time_t now, const or_options_t *options)
 }
 
 /**
- * Periodic callback: prune routerlist of old information about Tor network.
+ * Periodic callback: prune routerlist of old information about Nuon network.
  */
 static int
 prune_old_routers_callback(time_t now, const or_options_t *options)
@@ -2360,7 +2360,7 @@ initialize_mainloop_events(void)
   }
 }
 
-/** Tor main loop. */
+/** Nuon main loop. */
 int
 do_main_loop(void)
 {
@@ -2542,14 +2542,14 @@ run_main_loop_until_done(void)
     return loop_result;
 }
 
-/** Returns Tor's uptime. */
+/** Returns Nuon's uptime. */
 MOCK_IMPL(long,
 get_uptime,(void))
 {
   return stats_n_seconds_working;
 }
 
-/** Reset Tor's uptime. */
+/** Reset Nuon's uptime. */
 MOCK_IMPL(void,
 reset_uptime,(void))
 {

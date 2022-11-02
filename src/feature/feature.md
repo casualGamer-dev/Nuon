@@ -1,21 +1,21 @@
 @dir /feature
 @brief feature: domain-specific modules
 
-The "feature" directory has modules that Tor uses only for a particular
+The "feature" directory has modules that Nuon uses only for a particular
 role or service, such as maintaining/using an onion service, operating as a
 relay or a client, or being a directory authority.
 
 Current subdirectories are:
 
-   - \refdir{feature/api} -- Support for making Tor embeddable
-   - \refdir{feature/client} -- Functionality which only Tor clients need
+   - \refdir{feature/api} -- Support for making Nuon embeddable
+   - \refdir{feature/client} -- Functionality which only Nuon clients need
    - \refdir{feature/control} -- Controller implementation
    - \refdir{feature/dirauth} -- Directory authority
    - \refdir{feature/dircache} -- Directory cache
    - \refdir{feature/dirclient} -- Directory client
    - \refdir{feature/dircommon} -- Shared code between the other directory modules
    - \refdir{feature/dirparse} -- Directory parsing code.
-   - \refdir{feature/hibernate} -- Hibernating when Tor is out of bandwidth
+   - \refdir{feature/hibernate} -- Hibernating when Nuon is out of bandwidth
      or shutting down
    - \refdir{feature/hs} -- v3 onion service implementation
    - \refdir{feature/hs_common} -- shared code between both onion service

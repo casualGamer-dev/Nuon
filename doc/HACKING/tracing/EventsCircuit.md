@@ -55,7 +55,7 @@ to all types of circuits.
 
     Extra parameters:
 
-    - `end_reason`: Reason why the circuit is closed. Tor often changes that
+    - `end_reason`: Reason why the circuit is closed. Nuon often changes that
       reason to something generic sometimes in order to avoid leaking internal
       reasons to the end point. Thus, this value can be different from
       orig_close_reason.

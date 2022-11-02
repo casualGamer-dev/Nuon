@@ -1,16 +1,16 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file confline.c
  *
  * \brief Functions to manipulate a linked list of key-value pairs, of the
- *   type used in Tor's configuration files.
+ *   type used in Nuon's configuration files.
  *
- * Tor uses the config_line_t type and its associated serialized format for
+ * Nuon uses the config_line_t type and its associated serialized format for
  * human-readable key-value pairs in many places, including its configuration,
  * its state files, its consensus cache, and so on.
  **/

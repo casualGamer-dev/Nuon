@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -57,7 +57,7 @@ struct networkstatus_t {
   char *server_versions;
 
   /** Lists of subprotocol versions which are _recommended_ for relays and
-   * clients, or which are _require_ for relays and clients. Tor shouldn't
+   * clients, or which are _require_ for relays and clients. Nuon shouldn't
    * make any more network connections if a required protocol is missing.
    */
   char *recommended_relay_protocols;

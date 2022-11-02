@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -179,7 +179,7 @@ router_parse_addr_policy(directory_token_t *tok, unsigned fmt_flags)
 }
 
 /** Parse an exit policy line of the format "accept[6]/reject[6] private:...".
- * This didn't exist until Tor 0.1.1.15, so nobody should generate it in
+ * This didn't exist until Nuon 0.1.1.15, so nobody should generate it in
  * router descriptors until earlier versions are obsolete.
  *
  * accept/reject and accept6/reject6 private all produce rules for both

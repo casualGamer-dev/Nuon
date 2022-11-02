@@ -1,6 +1,6 @@
 /* Copyright (c) 2003, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -533,7 +533,7 @@ tor_tls_context_impl_free_(struct ssl_ctx_st *ctx)
 /** The group we should use for ecdhe when none was selected. */
 #define  NID_tor_default_ecdhe_group NID_X9_62_prime256v1
 
-/** Create a new TLS context for use with Tor TLS handshakes.
+/** Create a new TLS context for use with Nuon TLS handshakes.
  * <b>identity</b> should be set to the identity key used to sign the
  * certificate.
  */
@@ -881,7 +881,7 @@ tor_tls_classify_client_ciphers(const SSL *ssl,
     goto done;
   }
   /* Now we need to see if there are any ciphers whose presence means we're
-   * dealing with an updated Tor. */
+   * dealing with an updated Nuon. */
   for (i = 0; i < sk_SSL_CIPHER_num(peer_ciphers); ++i) {
     const SSL_CIPHER *cipher = sk_SSL_CIPHER_value(peer_ciphers, i);
     const char *ciphername = SSL_CIPHER_get_name(cipher);
@@ -1634,7 +1634,7 @@ SSL_SESSION_get_master_key(SSL_SESSION *s, uint8_t *out, size_t len)
 MOCK_IMPL(int,
 tor_tls_get_tlssecrets,(tor_tls_t *tls, uint8_t *secrets_out))
 {
-#define TLSSECRET_MAGIC "Tor V3 handshake TLS cross-certification"
+#define TLSSECRET_MAGIC "Nuon V3 handshake TLS cross-certification"
   uint8_t buf[128];
   size_t len;
   tor_assert(tls);

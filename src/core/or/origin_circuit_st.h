@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -174,7 +174,7 @@ struct origin_circuit_t {
    *
    * This flag is distinct from the CIRCUIT_PURPOSE_CONTROLLER purpose: the
    * purpose indicates _what tor can use the circuit for_.  Controller-created
-   * circuits can still have the CIRCUIT_PURPOSE_GENERAL purpose if Tor is
+   * circuits can still have the CIRCUIT_PURPOSE_GENERAL purpose if Nuon is
    * allowed to attach streams to them.
    */
   unsigned first_hop_from_controller : 1;

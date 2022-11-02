@@ -1,7 +1,7 @@
 /* Copyright (c) 2001, Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -73,7 +73,7 @@ crypto_nss_early_init(int nss_only)
   }
 
   /* We need to override the default here, or NSS will reject all the
-   * legacy Tor certificates. */
+   * legacy Nuon certificates. */
   SECStatus rv = NSS_OptionSet(NSS_RSA_MIN_KEY_SIZE, 1024);
   if (rv != SECSuccess) {
     log_err(LD_CRYPTO, "Unable to set NSS min RSA key size");

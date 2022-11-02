@@ -1,6 +1,6 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -305,7 +305,7 @@ parse_reachable_addresses(void)
   if (!server_mode(options)) {
     if (policy_is_reject_star(reachable_or_addr_policy, AF_UNSPEC, 0)
         || policy_is_reject_star(reachable_dir_addr_policy, AF_UNSPEC,0)) {
-      log_warn(LD_CONFIG, "Tor cannot connect to the Internet if "
+      log_warn(LD_CONFIG, "Nuon cannot connect to the Internet if "
                "ReachableAddresses, ReachableORAddresses, or "
                "ReachableDirAddresses reject all addresses. Please accept "
                "some addresses in these options.");
@@ -315,7 +315,7 @@ parse_reachable_addresses(void)
           log_warn(LD_CONFIG, "You have set ClientUseIPv4 1, but "
                    "ReachableAddresses, ReachableORAddresses, or "
                    "ReachableDirAddresses reject all IPv4 addresses. "
-                   "Tor will not connect using IPv4.");
+                   "Nuon will not connect using IPv4.");
     } else if (reachable_addr_use_ipv6(options)
        && (policy_is_reject_star(reachable_or_addr_policy, AF_INET6, 0)
          || policy_is_reject_star(reachable_dir_addr_policy, AF_INET6, 0))) {
@@ -323,7 +323,7 @@ parse_reachable_addresses(void)
                    "(or UseBridges 1), but "
                    "ReachableAddresses, ReachableORAddresses, or "
                    "ReachableDirAddresses reject all IPv6 addresses. "
-                   "Tor will not connect using IPv6.");
+                   "Nuon will not connect using IPv6.");
     }
   }
 
@@ -1166,7 +1166,7 @@ validate_addr_policies(const or_options_t *options, char **msg)
   if (public_server_mode(options) && !warned_about_nonexit &&
       policy_using_default_exit_options(options)) {
     warned_about_nonexit = 1;
-    log_notice(LD_CONFIG, "By default, Tor does not run as an exit relay. "
+    log_notice(LD_CONFIG, "By default, Nuon does not run as an exit relay. "
                "If you want to be an exit relay, "
                "set ExitRelay to 1. To suppress this message in the future, "
                "set ExitRelay to 0.");
@@ -2114,7 +2114,7 @@ policies_copy_outbound_addresses_to_smartlist(smartlist_t *addr_list,
  *    tor_addr_t, add it to the list of configured addresses.
  *
  * If <b>or_options->BridgeRelay</b> is false, append entries of default
- * Tor exit policy into <b>result</b> smartlist.
+ * Nuon exit policy into <b>result</b> smartlist.
  *
  * If or_options->ExitRelay is false, or is auto without specifying an exit
  * policy, then make our exit policy into "reject *:*" regardless.

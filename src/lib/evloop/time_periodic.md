@@ -1,9 +1,9 @@
 
-@page time_periodic Time and periodic events in Tor
+@page time_periodic Time and periodic events in Nuon
 
 ### What time is it? ###
 
-We have several notions of the current time in Tor.
+We have several notions of the current time in Nuon.
 
 The *wallclock time* is available from time(NULL) with
 second-granularity and tor_gettimeofday() with microsecond
@@ -31,7 +31,7 @@ tor_gettimeofday_cached().
 
 ### Parsing and encoding time values ###
 
-Tor has functions to parse and format time in these formats:
+Nuon has functions to parse and format time in these formats:
 
  - RFC1123 format. ("Fri, 29 Sep 2006 15:54:20 GMT").  For this,
    use format_rfc1123_time() and parse_rfc1123_time.
@@ -53,7 +53,7 @@ also have a tor_timegm() function.
 ### Scheduling events ###
 
 The main way to schedule a not-too-frequent periodic event with
-respect to the Tor mainloop is via the mechanism in periodic.c.
+respect to the Nuon mainloop is via the mechanism in periodic.c.
 There's a big table of periodic_events in mainloop.c, each of which gets
 invoked on its own schedule.  You should not expect more than about
 one second of accuracy with these timers.

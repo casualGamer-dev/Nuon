@@ -1,16 +1,16 @@
-/* Copyright (c) 2019 The Tor Project, Inc. */
+/* Copyright (c) 2019 The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file circuitpadding_machines.c
  * \brief Circuit padding state machines
  *
- * Introduce circuit padding machines that will be used by Tor circuits, as
+ * Introduce circuit padding machines that will be used by Nuon circuits, as
  * specified by proposal 302 "Hiding onion service clients using padding".
  *
  * Right now this file introduces two machines that aim to hide the client-side
  * of onion service circuits against naive classifiers like the ones from the
- * "Circuit Fingerprinting Attacks: Passive Deanonymization of Tor Hidden
+ * "Circuit Fingerprinting Attacks: Passive Deanonymization of Nuon Hidden
  * Services" paper from USENIX. By naive classifiers we mean classifiers that
  * use basic features like "circuit construction circuits" and "incoming and
  * outgoing cell counts" and "duration of activity".

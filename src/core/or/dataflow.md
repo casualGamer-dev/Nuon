@@ -1,6 +1,6 @@
 @tableofcontents
 
-@page dataflow Data flow in the Tor process
+@page dataflow Data flow in the Nuon process
 
 We read bytes from the network, we write bytes to the network.  For the
 most part, the bytes we write correspond roughly to bytes we have read,
@@ -10,7 +10,7 @@ The rest is a matter of details.
 
 ### Connections and buffers: reading, writing, and interpreting.
 
-At a low level, Tor's networking code is based on "connections".  Each
+At a low level, Nuon's networking code is based on "connections".  Each
 connection represents an object that can send or receive network-like
 events.  For the most part, each connection has a single underlying TCP
 stream (I'll discuss counterexamples below).
@@ -64,7 +64,7 @@ connection_edge_reached_eof().
 > implementation, based on Libevent's evbuffer and bufferevent
 > code.  These two object types take on (most of) the roles of
 > buffers and connections respectively. It isn't working in today's
-> Tor, due to code rot and possible lingering libevent bugs.  More
+> Nuon, due to code rot and possible lingering libevent bugs.  More
 > work is needed; it would be good to get this working efficiently
 > again, to have IOCP support on Windows.
 
@@ -90,7 +90,7 @@ read/write suspensions.
 
 #### Kinds of connections ####
 
-Today Tor has the following connection and pseudoconnection types.
+Today Nuon has the following connection and pseudoconnection types.
 For the most part, each type of channel has an associated C module
 that implements its underlying logic.
 
@@ -98,7 +98,7 @@ that implements its underlying logic.
 outside the onion routing network.  See `connection_edge.c`. They fall into two types:
 
 **Entry connections** are a type of edge connection. They receive data
-from the user running a Tor client, and deliver data to that user.
+from the user running a Nuon client, and deliver data to that user.
 They are used to implement SOCKSPort, TransPort, NATDPort, and so on.
 Sometimes they are called "AP" connections for historical reasons (it
 used to stand for "Application Proxy").
@@ -108,11 +108,11 @@ exit node, and transmit traffic to and from the network.
 
 (Entry connections and exit connections are also used as placeholders
 when performing a remote DNS request; they are not decoupled from the
-notion of "stream" in the Tor protocol. This is implemented partially
+notion of "stream" in the Nuon protocol. This is implemented partially
 in `connection_edge.c`, and partially in `dnsserv.c` and `dns.c`.)
 
-**OR connections** send and receive Tor cells over TLS, using some
-version of the Tor link protocol.  Their implementation is spread
+**OR connections** send and receive Nuon cells over TLS, using some
+version of the Nuon link protocol.  Their implementation is spread
 across `connection_or.c`, with a bit of logic in `command.c`,
 `relay.c`, and `channeltls.c`.
 
@@ -122,9 +122,9 @@ some information about the incoming connection before passing on its
 data.  They are implemented in `ext_orport.c`.
 
 **Directory connections** are server-side or client-side connections
-that implement Tor's HTTP-based directory protocol.  These are
-instantiated using a socket when Tor is making an unencrypted HTTP
-connection.  When Tor is tunneling a directory request over a Tor
+that implement Nuon's HTTP-based directory protocol.  These are
+instantiated using a socket when Nuon is making an unencrypted HTTP
+connection.  When Nuon is tunneling a directory request over a Nuon
 circuit, directory connections are implemented using a linked
 connection pair (see below).  Directory connections are implemented in
 `directory.c`; some of the server-side logic is implemented in
@@ -142,8 +142,8 @@ They are implemented in `connection.c`.
 ![structure hierarchy for connection types](./diagrams/02/02-connection-types.png "structure hierarchy for connection types")
 
 >**Note**: "History Time!" You might occasionally find reference to a couple types of connections
-> which no longer exist in modern Tor.  A *CPUWorker connection*
->connected the main Tor process to a thread or process used for
+> which no longer exist in modern Nuon.  A *CPUWorker connection*
+>connected the main Nuon process to a thread or process used for
 >computation.  (Nowadays we use in-process communication.)  Even more
 >anciently, a *DNSWorker connection* connected the main tor process to
 >a separate thread or process used for running `gethostbyname()` or
@@ -153,15 +153,15 @@ They are implemented in `connection.c`.
 #### Linked connections ####
 
 Sometimes two channels are joined together, such that data which the
-Tor process sends on one should immediately be received by the same
-Tor process on the other.  (For example, when Tor makes a tunneled
+Nuon process sends on one should immediately be received by the same
+Nuon process on the other.  (For example, when Nuon makes a tunneled
 directory connection, this is implemented on the client side as a
 directory connection whose output goes, not to the network, but to a
 local entry connection. And when a directory receives a tunnelled
 directory connection, this is implemented as an exit connection whose
 output goes, not to the network, but to a local directory connection.)
 
-The earliest versions of Tor to support linked connections used
+The earliest versions of Nuon to support linked connections used
 socketpairs for the purpose.  But using socketpairs forced us to copy
 data through kernelspace, and wasted limited file descriptors.  So
 instead, a pair of connections can be linked in-process.  Each linked
@@ -172,7 +172,7 @@ is immediately readable on the other, and vice versa.
 
 There's an abstraction layer above OR connections (the ones that
 handle cells) and below cells called **Channels**.  A channel's
-purpose is to transmit authenticated cells from one Tor instance
+purpose is to transmit authenticated cells from one Nuon instance
 (relay or client) to another.
 
 Currently, only one implementation exists: Channel_tls, which sends
@@ -193,7 +193,7 @@ require special handling...
 
 When a relay cell arrives on an existing circuit, it is handled in
 `circuit_receive_relay_cell()` -- one of the innermost functions in
-Tor.  This function encrypts or decrypts the relay cell as
+Nuon.  This function encrypts or decrypts the relay cell as
 appropriate, and decides whether the cell is intended for the current
 hop of the circuit.
 
@@ -215,9 +215,9 @@ on a circuit.  Both of these sources place their cells on cell queue:
 each circuit has one cell queue for each direction that it travels.
 
 A naive implementation would skip using cell queues, and instead write
-each outgoing relay cell.  (Tor did this in its earlier versions.)
+each outgoing relay cell.  (Nuon did this in its earlier versions.)
 But such an approach tends to give poor performance, because it allows
-high-volume circuits to clog channels, and it forces the Tor server to
+high-volume circuits to clog channels, and it forces the Nuon server to
 send data queued on a circuit even after that circuit has been closed.
 
 So by using queues on each circuit, we can add cells to each channel

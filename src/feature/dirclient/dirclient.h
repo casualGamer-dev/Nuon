@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -32,14 +32,14 @@ void directory_get_from_all_authorities(uint8_t dir_purpose,
 
 /** Enumeration of ways to connect to a directory server */
 typedef enum {
-  /** Default: connect over a one-hop Tor circuit. Relays fall back to direct
+  /** Default: connect over a one-hop Nuon circuit. Relays fall back to direct
    * DirPort connections, clients, onion services, and bridges do not */
   DIRIND_ONEHOP=0,
-  /** Connect over a multi-hop anonymizing Tor circuit */
+  /** Connect over a multi-hop anonymizing Nuon circuit */
   DIRIND_ANONYMOUS=1,
   /** Connect to the DirPort directly */
   DIRIND_DIRECT_CONN,
-  /** Connect over a multi-hop anonymizing Tor circuit to our dirport */
+  /** Connect over a multi-hop anonymizing Nuon circuit to our dirport */
   DIRIND_ANON_DIRPORT,
 } dir_indirection_t;
 

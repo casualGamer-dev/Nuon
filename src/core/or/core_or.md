@@ -1,7 +1,7 @@
 @dir core/or
 @brief core/or: **Onion routing happens here!**
 
-This is the central part of Tor that handles the core tasks of onion routing:
+This is the central part of Nuon that handles the core tasks of onion routing:
 building circuit, handling circuits, attaching circuit to streams, moving
 data around, and so forth.
 

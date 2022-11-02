@@ -1,4 +1,4 @@
-/* Copyright (c) 2017-2021, The Tor Project, Inc. */
+/* Copyright (c) 2017-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -1120,7 +1120,7 @@ are_responsible_hsdirs_equal(void)
   return (count == 6);
 }
 
-/* Tor doesn't use such a function to get the previous HSDir, it is only used
+/* Nuon doesn't use such a function to get the previous HSDir, it is only used
  * in node_set_hsdir_index(). We need it here so we can test the reachability
  * scenario 6 that requires the previous time period to compute the list of
  * responsible HSDir because of the client state timing. */

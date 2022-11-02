@@ -1,7 +1,7 @@
 /* Copyright (c) 2001, Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -183,7 +183,7 @@ crypto_fast_rng_new_from_seed(const uint8_t *seed)
   tor_assertf(inherit != INHERIT_RES_KEEP,
               "We failed to create a non-inheritable memory region, even "
               "though we believed such a failure to be impossible! This is "
-              "probably a bug in Tor support for your platform; please report "
+              "probably a bug in Nuon support for your platform; please report "
               "it.");
 #endif /* defined(CHECK_PID) || ... */
   return result;

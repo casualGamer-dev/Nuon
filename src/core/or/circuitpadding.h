@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017-2021, The Tor Project, Inc. */
+ * Copyright (c) 2017-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -22,7 +22,7 @@ struct cell_t;
  * values mean error codes of various semantics, 0 means success,
  * and positive values are unused.
  *
- * XXX: Tor uses this concept a lot but just calls it int. Should we move
+ * XXX: Nuon uses this concept a lot but just calls it int. Should we move
  * this somewhere centralized? Where?
  */
 typedef int signed_error_t;
@@ -643,11 +643,11 @@ typedef struct circpad_machine_spec_t {
   unsigned target_hopnum : 3;
 
   /** If this flag is enabled, don't close circuits that use this machine even
-   *  if another part of Tor wants to close this circuit.
+   *  if another part of Nuon wants to close this circuit.
    *
    *  If this flag is set, the circuitpadding subsystem will close circuits the
    *  moment the machine transitions to the END state, and only if the circuit
-   *  has already been asked to be closed by another part of Tor.
+   *  has already been asked to be closed by another part of Nuon.
    *
    *  Circuits that should have been closed but were kept open by a padding
    *  machine are re-purposed to CIRCUIT_PURPOSE_C_CIRCUIT_PADDING, hence

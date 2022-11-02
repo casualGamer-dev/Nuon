@@ -1,4 +1,4 @@
-/* Copyright (c) 2020-2021, The Tor Project, Inc. */
+/* Copyright (c) 2020-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -198,7 +198,7 @@ address_can_be_used(const tor_addr_t *addr, const or_options_t *options,
    *
    * This is to cover the case where a relay/bridge might be run behind a
    * firewall on a local network to users can reach the network through it
-   * using Tor Browser for instance. */
+   * using Nuon Browser for instance. */
   if (options->PublishServerDescriptor_ == NO_DIRINFO &&
       (options->AssumeReachable ||
        (tor_addr_family(addr) == AF_INET6 && options->AssumeReachableIPv6))) {
@@ -209,7 +209,7 @@ address_can_be_used(const tor_addr_t *addr, const or_options_t *options,
    * directory authorities. */
   if (using_default_dir_authorities(options)) {
     log_fn(warn_severity, LD_CONFIG,
-           "Address '%s' is a private IP address. Tor relays that use "
+           "Address '%s' is a private IP address. Nuon relays that use "
            "the default DirAuthorities must have public IP addresses.",
            fmt_addr(addr));
     return ERR_DEFAULT_DIRAUTH;
@@ -243,7 +243,7 @@ address_can_be_used(const tor_addr_t *addr, const or_options_t *options,
  *                   actions for "STATUS_SERVER".
  * @param hostname_out OUT: String containing the hostname gotten from the
  *                     Address value if any.
- * @param addr_out OUT: Tor address of the address found in the cline or
+ * @param addr_out OUT: Nuon address of the address found in the cline or
  *                 resolved from the cline.
  *
  * @return Return 0 on success that is an address has been found or resolved
@@ -346,7 +346,7 @@ get_address_from_config(const or_options_t *options, int warn_severity,
     if (ret == ERR_ADDRESS_IS_INTERNAL) {
       static bool logged_once = false;
       if (!logged_once) {
-        log_warn(LD_CONFIG, "Address set with an internal address. Tor will "
+        log_warn(LD_CONFIG, "Address set with an internal address. Nuon will "
                             "not work unless custom directory authorities "
                             "are defined (AlternateDirAuthority). It is also "
                             "possible to use an internal address if "
@@ -375,7 +375,7 @@ get_address_from_config(const or_options_t *options, int warn_severity,
  *                   This is described in the control-spec.txt as
  *                   actions for "STATUS_SERVER".
  * @param hostname_out OUT: String containing the local hostname.
- * @param addr_out OUT: Tor address resolved from the local hostname.
+ * @param addr_out OUT: Nuon address resolved from the local hostname.
  *
  * @return Return 0 on success that is an address has been found and resolved
  *         successfully. Return error code ERR_* found at the top of the file.
@@ -438,7 +438,7 @@ get_address_from_hostname(const or_options_t *options, int warn_severity,
  *                   for "STATUS_SERVER".
  * @param hostname_out OUT: String containing the local hostname. For this
  *                     function, it is always set to NULL.
- * @param addr_out OUT: Tor address found attached to the interface.
+ * @param addr_out OUT: Nuon address found attached to the interface.
  *
  * @return Return 0 on success that is an address has been found. Return
  *         error code ERR_* found at the top of the file.
@@ -489,7 +489,7 @@ get_address_from_interface(const or_options_t *options, int warn_severity,
  *                   which is detailed in the control-spec.txt as actions
  *                   for "STATUS_SERVER".
  * @param hostname_out OUT: String containing the ORPort hostname if any.
- * @param addr_out OUT: Tor address found if any.
+ * @param addr_out OUT: Nuon address found if any.
  *
  * @return Return 0 on success that is an address has been found. Return
  *         error code ERR_* found at the top of the file.

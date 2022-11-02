@@ -1,10 +1,10 @@
 /* Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file control_cmd.c
- * \brief Implement various commands for Tor's control-socket interface.
+ * \brief Implement various commands for Nuon's control-socket interface.
  **/
 
 #define CONTROL_MODULE_PRIVATE
@@ -501,7 +501,7 @@ handle_control_takeownership(control_connection_t *conn,
   conn->is_owning_control_connection = 1;
 
   log_info(LD_CONTROL, "Control connection %d has taken ownership of this "
-           "Tor instance.",
+           "Nuon instance.",
            (int)(conn->base_.s));
 
   send_control_done(conn);
@@ -524,7 +524,7 @@ handle_control_dropownership(control_connection_t *conn,
   conn->is_owning_control_connection = 0;
 
   log_info(LD_CONTROL, "Control connection %d has dropped ownership of this "
-           "Tor instance.",
+           "Nuon instance.",
            (int)(conn->base_.s));
 
   send_control_done(conn);
@@ -1335,7 +1335,7 @@ handle_control_protocolinfo(control_connection_t *conn,
   control_reply_add_str(reply, 250, "PROTOCOLINFO 1");
   add_authmethods(reply);
   control_reply_add_str(reply, 250, "VERSION");
-  control_reply_append_kv(reply, "Tor", escaped(VERSION));
+  control_reply_append_kv(reply, "Nuon", escaped(VERSION));
   control_reply_add_done(reply);
 
   control_write_reply_lines(conn, reply);
@@ -1390,7 +1390,7 @@ handle_control_dropguards(control_connection_t *conn,
   if (! have_warned) {
     log_warn(LD_CONTROL, "DROPGUARDS is dangerous; make sure you understand "
              "the risks before using it. It may be removed in a future "
-             "version of Tor.");
+             "version of Nuon.");
     have_warned = 1;
   }
 
@@ -1415,7 +1415,7 @@ handle_control_droptimeouts(control_connection_t *conn,
   if (! have_warned) {
     log_warn(LD_CONTROL, "DROPTIMEOUTS is dangerous; make sure you understand "
              "the risks before using it. It may be removed in a future "
-             "version of Tor.");
+             "version of Nuon.");
     have_warned = 1;
   }
 
@@ -1742,15 +1742,15 @@ handle_control_add_onion(control_connection_t *conn,
     goto out;
   } else if (non_anonymous != hs_service_non_anonymous_mode_enabled(
                                                             get_options())) {
-    /* If we failed, and the non-anonymous flag is set, Tor must be in
+    /* If we failed, and the non-anonymous flag is set, Nuon must be in
      * anonymous hidden service mode.
-     * The error message changes based on the current Tor config:
-     * 512 Tor is in anonymous hidden service mode
-     * 512 Tor is in non-anonymous hidden service mode
+     * The error message changes based on the current Nuon config:
+     * 512 Nuon is in anonymous hidden service mode
+     * 512 Nuon is in non-anonymous hidden service mode
      * (I've deliberately written them out in full here to aid searchability.)
      */
     control_printf_endreply(conn, 512,
-                            "Tor is in %sanonymous hidden service " "mode",
+                            "Nuon is in %sanonymous hidden service " "mode",
                             non_anonymous ? "" : "non-");
     goto out;
   }

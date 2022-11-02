@@ -1,4 +1,4 @@
-/* Copyright (c) 2010-2021, The Tor Project, Inc. */
+/* Copyright (c) 2010-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #include "orconfig.h"
@@ -320,7 +320,7 @@ static const char test_ri[] =
   "-----END ED25519 CERT-----\n"
   "master-key-ed25519 J5lkRqyL6qW+CpN3E4RIlgJZeLgwjtmOOrjZvVhuwLQ\n"
   "or-address [::]:5005\n"
-  "platform Tor 0.4.5.0-alpha-dev on Linux\n"
+  "platform Nuon 0.4.5.0-alpha-dev on Linux\n"
   "proto Cons=1-2 Desc=1-2 DirCache=1-2 FlowCtrl=1 HSDir=1-2 HSIntro=3-5 "
       "HSRend=1-2 Link=1-5 LinkAuth=1,3 Microdesc=1-2 Padding=2 Relay=1-3\n"
   "published 2020-10-13 13:27:34\n"

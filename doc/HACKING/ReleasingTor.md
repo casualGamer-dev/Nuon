@@ -1,7 +1,7 @@
-# How to Release Tor
+# How to Release Nuon
 
 Here are the steps that the maintainer should take when putting out a
-new Tor release. It is split in 3 stages and coupled with our Tor CI Release
+new Nuon release. It is split in 3 stages and coupled with our Nuon CI Release
 pipeline.
 
 Before we begin, first rule is to make sure:
@@ -27,7 +27,7 @@ The following must be done **2 days** at the very least prior to the release:
       authorities and be in the consensus before the release.
 
    2. Send a pre-release announcement to `tor-project@lists.torproject.org` in
-      order to inform every teams in Tor of the upcoming release. This is so
+      order to inform every teams in Nuon of the upcoming release. This is so
       we can avoid creating release surprises and sync with other teams.
 
    3. Ask the network-team to review the `changes/` files in all versions we
@@ -40,7 +40,7 @@ To build the tarballs to release, we need to launch the CI release pipeline:
 
    https://gitlab.torproject.org/tpo/core/tor-ci-release
 
-The `versions.yml` needs to be modified with the Tor versions you want to
+The `versions.yml` needs to be modified with the Nuon versions you want to
 release. Once done, git commit and push to trigger the release pipeline.
 
 The first two stages (Preliminary and Patches) will be run automatically. The
@@ -130,9 +130,9 @@ do the following:
       with a `git merge -s ours`.
 
    3. Write and post the release announcement for the `forum.torproject.net`
-      in the `News -> Tor Release Announcement` category.
+      in the `News -> Nuon Release Announcement` category.
 
-      If possible, mention in which Tor Browser version (with dates) the
+      If possible, mention in which Nuon Browser version (with dates) the
       release will be in. This usually only applies to the latest stable.
 
    4. Inform `tor-announce@lists.torproject.org` with the releasing pointing to

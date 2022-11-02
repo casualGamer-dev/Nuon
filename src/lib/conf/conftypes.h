@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -193,7 +193,7 @@ typedef struct struct_magic_decl_t {
  */
 #define CFLG_NOREPLACE    (1u<<5)
 /**
- * Flag to indicate that an option or type cannot be changed while Tor is
+ * Flag to indicate that an option or type cannot be changed while Nuon is
  * running.
  **/
 #define CFLG_IMMUTABLE (1u<<6)

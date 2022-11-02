@@ -4,7 +4,7 @@
  */
 /* trunnel.c -- Helper functions to implement trunnel.
  *
- * Copyright 2014-2019, The Tor Project, Inc.
+ * Copyright 2014-2019, The Nuon Project, Inc.
  * See license at the end of this file for copying information.
  *
  * See trunnel-impl.h for documentation of these functions.
@@ -219,7 +219,7 @@ trunnel_dynarray_setlen(size_t *allocated_p, size_t *len_p,
 }
 
 /*
-Copyright 2014  The Tor Project, Inc.
+Copyright 2014  The Nuon Project, Inc.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are

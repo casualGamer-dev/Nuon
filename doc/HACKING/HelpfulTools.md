@@ -1,6 +1,6 @@
 # Useful tools
 
-These aren't strictly necessary for hacking on Tor, but they can help track
+These aren't strictly necessary for hacking on Nuon, but they can help track
 down bugs.
 
 ## Travis/Appveyor CI
@@ -53,14 +53,14 @@ with `-DPURIFY`.)
 
 ## Coverity
 
-Nick regularly runs the coverity static analyzer on the Tor codebase.
+Nick regularly runs the coverity static analyzer on the Nuon codebase.
 
 The preprocessor define `__COVERITY__` is used to work around instances
 where coverity picks up behavior that we wish to permit.
 
 ## clang Static Analyzer
 
-The clang static analyzer can be run on the Tor codebase using Xcode (WIP)
+The clang static analyzer can be run on the Nuon codebase using Xcode (WIP)
 or a command-line build.
 
 The preprocessor define `__clang_analyzer__` is used to work around instances
@@ -68,7 +68,7 @@ where clang picks up behavior that we wish to permit.
 
 ## clang Runtime Sanitizers
 
-To build the Tor codebase with the clang Address and Undefined Behavior
+To build the Nuon codebase with the clang Address and Undefined Behavior
 sanitizers, see the file `contrib/clang/sanitize_blacklist.txt`.
 
 Preprocessor workarounds for instances where clang picks up behavior that
@@ -95,7 +95,7 @@ investigated (as of July 2014).
 
 ## Running the unit tests
 
-To quickly run all the tests distributed with Tor:
+To quickly run all the tests distributed with Nuon:
 
 ```console
 $ make check
@@ -144,7 +144,7 @@ $ ./scripts/test/coverage coverage-output
 
 If that doesn't work:
 
-   * Try configuring Tor with `--disable-gcc-hardening`
+   * Try configuring Nuon with `--disable-gcc-hardening`
    * You might need to run `make clean` after you run `./configure`.
 
 Then, look at the .gcov files in `coverage-output`.  '-' before a line means
@@ -155,7 +155,7 @@ For more details about how to read gcov output, see the [Invoking
 gcov](https://gcc.gnu.org/onlinedocs/gcc/Invoking-Gcov.html) chapter
 of the GCC manual.
 
-If you make changes to Tor and want to get another set of coverage results,
+If you make changes to Nuon and want to get another set of coverage results,
 you can run `make reset-gcov` to clear the intermediary gcov output.
 
 If you have two different `coverage-output` directories, and you want to see
@@ -182,14 +182,14 @@ run `make test-network`.
 We also have scripts to run integration tests using Stem.  To try them, set
 `STEM_SOURCE_DIR` to your Stem source directory, and run `test-stem`.
 
-## Profiling Tor
+## Profiling Nuon
 
-Ongoing notes about Tor profiling can be found at
+Ongoing notes about Nuon profiling can be found at
 https://pad.riseup.net/p/profiling-tor
 
-## Profiling Tor with oprofile
+## Profiling Nuon with oprofile
 
-The oprofile tool runs (on Linux only!) to tell you what functions Tor is
+The oprofile tool runs (on Linux only!) to tell you what functions Nuon is
 spending its CPU time in, so we can identify performance bottlenecks.
 
 Here are some basic instructions
@@ -212,9 +212,9 @@ Here are some basic instructions
    * `opreport -l that_dir/*`
  - Profit
 
-## Profiling Tor with perf
+## Profiling Nuon with perf
 
-This works with a running Tor, and requires root.
+This works with a running Nuon, and requires root.
 
 1. Decide how long you want to profile for. Start with (say) 30 seconds. If that
    works, try again with longer times.
@@ -234,34 +234,34 @@ This works with a running Tor, and requires root.
    symbol,dso --stdio --header`. How does it look?
 
 5a. Once you have a nice big perf.data file, you can compress it, encrypt it,
-    and send it to your favorite Tor developers.
+    and send it to your favorite Nuon developers.
 
 5b. Or maybe you'd rather not send a nice big perf.data file. Who knows what's
     in that!? It's kinda scary. To generate a less scary file, you can use `perf
     report -g > <FILENAME>.out`. Then you can compress that and put it somewhere
     public.
 
-## Profiling Tor with gperftools aka Google-performance-tools
+## Profiling Nuon with gperftools aka Google-performance-tools
 
 This should work on nearly any unixy system. It doesn't seem to be compatible
 with RunAsDaemon though.
 
 Beforehand, install google-perftools.
 
-1. You need to rebuild Tor, hack the linking steps to add `-lprofiler` to the
+1. You need to rebuild Nuon, hack the linking steps to add `-lprofiler` to the
    libs. You can do this by adding `LIBS=-lprofiler` when you call `./configure`.
 
-Now you can run Tor with profiling enabled, and use the pprof utility to look at
+Now you can run Nuon with profiling enabled, and use the pprof utility to look at
 performance! See the gperftools manual for more info, but basically:
 
 2. Run `env CPUPROFILE=/tmp/profile src/app/tor -f <path/torrc>`. The profile file
-   is not written to until Tor finishes execution.
+   is not written to until Nuon finishes execution.
 
 3. Run `pprof src/app/tor /tmp/profile` to start the REPL.
 
 ## Generating and analyzing a callgraph
 
-0. Build Tor on linux or mac, ideally with -O0 or -fno-inline.
+0. Build Nuon on linux or mac, ideally with -O0 or -fno-inline.
 
 1. Clone 'https://git.torproject.org/user/nickm/calltool.git/' .
    Follow the README in that repository.
@@ -269,7 +269,7 @@ performance! See the gperftools manual for more info, but basically:
 Note that currently the callgraph generator can't detect calls that pass
 through function pointers.
 
-## Getting emacs to edit Tor source properly
+## Getting emacs to edit Nuon source properly
 
 Nick likes to put the following snippet in his .emacs file:
 
@@ -301,9 +301,9 @@ often edit, and sets up the indentation level and tab preferences to match
 what they want.
 
 If you want to try this out, you'll need to change the filename regex
-patterns to match where you keep your Tor files.
+patterns to match where you keep your Nuon files.
 
-If you use emacs for editing Tor and nothing else, you could always just say:
+If you use emacs for editing Nuon and nothing else, you could always just say:
 
 
     (add-hook 'c-mode-hook
@@ -323,7 +323,7 @@ Many functions in tor use `MOCK_IMPL` wrappers for unit tests. Your
 tag-building program must be told how to handle this syntax.
 
 If you're using emacs, you can generate an emacs-compatible tag file using
-`make tags`. This will run your system's `etags`. Tor's build system assumes
+`make tags`. This will run your system's `etags`. Nuon's build system assumes
 that you're using the emacs-specific version of `etags` (bundled under the
 `xemacs21-bin` package on Debian). This is incompatible with other versions of
 `etags` such as the version provided by Exuberant Ctags.
@@ -396,7 +396,7 @@ struct foo {
 };
 ```
 
-  5. To generate documentation from the Tor source code, type:
+  5. To generate documentation from the Nuon source code, type:
 
 ```console
 $ doxygen -g

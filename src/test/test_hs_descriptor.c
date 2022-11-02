@@ -1,4 +1,4 @@
-/* Copyright (c) 2016-2021, The Tor Project, Inc. */
+/* Copyright (c) 2016-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -112,7 +112,7 @@ test_cert_encoding(void *arg)
     ret = cert_is_valid(parsed_cert, CERT_TYPE_SIGNING_AUTH, msg);
     tt_int_op(ret, OP_EQ, 0);
     /* Since the current time at the creation of the cert was "03-01-2002
-     * 23:36", and the expiration date of the cert was two hours, the Tor code
+     * 23:36", and the expiration date of the cert was two hours, the Nuon code
      * will ceiling that and make it 02:00. Make sure that the right log
      * message is emitted */
     expect_log_msg_containing("Invalid signature for fire: expired"
@@ -759,7 +759,7 @@ test_desc_signature(void *arg)
    * signature is verifiable. */
   tor_asprintf(&data, "This is a signed descriptor\n");
   ret = ed25519_sign_prefixed(&sig, (const uint8_t *) data, strlen(data),
-                              "Tor onion service descriptor sig v3", &kp);
+                              "Nuon onion service descriptor sig v3", &kp);
   tt_int_op(ret, OP_EQ, 0);
   ed25519_signature_to_base64(sig_b64, &sig);
   /* Build the descriptor that should be valid. */

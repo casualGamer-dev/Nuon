@@ -1,7 +1,7 @@
-;tor.nsi - A basic win32 installer for Tor
+;tor.nsi - A basic win32 installer for Nuon
 ; Originally written by J Doe.
 ; Modified by Steve Topletz, Andrew Lewman
-; See the Tor LICENSE for licensing information
+; See the Nuon LICENSE for licensing information
 ;-----------------------------------------
 ;
 !include "MUI.nsh"
@@ -18,29 +18,29 @@
 SetCompressor /SOLID LZMA ;Tighter compression
 RequestExecutionLevel user ;Updated for Vista compatibility
 OutFile ${INSTALLER}
-InstallDir $PROGRAMFILES\Tor
+InstallDir $PROGRAMFILES\Nuon
 SetOverWrite ifnewer
-Name "Tor"
-Caption "Tor ${VERSION} Setup"
+Name "Nuon"
+Caption "Nuon ${VERSION} Setup"
 BrandingText "The Onion Router"
 CRCCheck on
 XPStyle on
 VIProductVersion "${VERSION}"
-VIAddVersionKey "ProductName" "The Onion Router: Tor"
+VIAddVersionKey "ProductName" "The Onion Router: Nuon"
 VIAddVersionKey "Comments" "${WEBSITE}"
 VIAddVersionKey "LegalTrademarks" "Three line BSD"
-VIAddVersionKey "LegalCopyright" "©2004-2008, Roger Dingledine, Nick Mathewson. ©2009 The Tor Project, Inc. "
-VIAddVersionKey "FileDescription" "Tor is an implementation of Onion Routing. You can read more at ${WEBSITE}"
+VIAddVersionKey "LegalCopyright" "ï¿½2004-2008, Roger Dingledine, Nick Mathewson. ï¿½2009 The Nuon Project, Inc. "
+VIAddVersionKey "FileDescription" "Nuon is an implementation of Onion Routing. You can read more at ${WEBSITE}"
 VIAddVersionKey "FileVersion" "${VERSION}"
 
-!define MUI_WELCOMEPAGE_TITLE "Welcome to the Tor Setup Wizard"
-!define MUI_WELCOMEPAGE_TEXT "This wizard will guide you through the installation of Tor ${VERSION}.\r\n\r\nIf you have previously installed Tor and it is currently running, please exit Tor first before continuing this installation.\r\n\r\n$_CLICK"
+!define MUI_WELCOMEPAGE_TITLE "Welcome to the Nuon Setup Wizard"
+!define MUI_WELCOMEPAGE_TEXT "This wizard will guide you through the installation of Nuon ${VERSION}.\r\n\r\nIf you have previously installed Nuon and it is currently running, please exit Nuon first before continuing this installation.\r\n\r\n$_CLICK"
 !define MUI_ABORTWARNING
 !define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\win-install.ico"
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\win-uninstall.ico"
 !define MUI_HEADERIMAGE_BITMAP "${NSISDIR}\Contrib\Graphics\Header\win.bmp"
 !define MUI_FINISHPAGE_RUN "$INSTDIR\tor.exe"
-!define MUI_FINISHPAGE_LINK "Visit the Tor website for the latest updates."
+!define MUI_FINISHPAGE_LINK "Visit the Nuon website for the latest updates."
 !define MUI_FINISHPAGE_LINK_LOCATION ${WEBSITE}
 
 !insertmacro MUI_PAGE_WELCOME
@@ -67,17 +67,17 @@ FunctionEnd
 ;Sections
 ;--------
 
-Section "Tor" Tor
+Section "Nuon" Nuon
 ;Files that have to be installed for tor to run and that the user
 ;cannot choose not to install
 	SectionIn RO
 	SetOutPath $INSTDIR
 	Call ExtractBinaries
 	Call ExtractIcon
-	WriteINIStr "$INSTDIR\Tor Website.url" "InternetShortcut" "URL" ${WEBSITE}
+	WriteINIStr "$INSTDIR\Nuon Website.url" "InternetShortcut" "URL" ${WEBSITE}
 
 	StrCpy $CONFIGFILE "torrc"
-	StrCpy $CONFIGDIR $APPDATA\Tor
+	StrCpy $CONFIGDIR $APPDATA\Nuon
 ;   ;If $APPDATA isn't valid here (Early win95 releases with no updated
 ;   ; shfolder.dll) then we put it in the program directory instead.
 ;   StrCmp $APPDATA "" "" +2
@@ -86,7 +86,7 @@ Section "Tor" Tor
 	;If there's already a torrc config file, ask if they want to
 	;overwrite it with the new one.
 	${If} ${FileExists} "$CONFIGDIR\torrc"
-		MessageBox MB_ICONQUESTION|MB_YESNO "You already have a Tor config file.$\r$\nDo you want to overwrite it with the default sample config file?" IDYES Yes IDNO No
+		MessageBox MB_ICONQUESTION|MB_YESNO "You already have a Nuon config file.$\r$\nDo you want to overwrite it with the default sample config file?" IDYES Yes IDNO No
 		Yes:
 			Delete $CONFIGDIR\torrc
 			Goto Next
@@ -98,7 +98,7 @@ Section "Tor" Tor
 
 ; the geoip file needs to be included and stuffed into the right directory
 ; otherwise tor is unhappy
-	SetOutPath $APPDATA\Tor
+	SetOutPath $APPDATA\Nuon
 	Call ExtractGEOIP
 SectionEnd
 
@@ -110,8 +110,8 @@ SubSection /e "Shortcuts" Shortcuts
 
 Section "Start Menu" StartMenu
   SetOutPath $INSTDIR
-  ${If} ${FileExists} "$SMPROGRAMS\Tor\*.*"
-    RMDir /r "$SMPROGRAMS\Tor"
+  ${If} ${FileExists} "$SMPROGRAMS\Nuon\*.*"
+    RMDir /r "$SMPROGRAMS\Nuon"
   ${EndIf}
   Call CreateTorLinks
   ${If} ${FileExists} "$INSTDIR\Documents\*.*"
@@ -121,12 +121,12 @@ SectionEnd
 
 Section "Desktop" Desktop
    SetOutPath $INSTDIR
-   CreateShortCut "$DESKTOP\Tor.lnk" "$INSTDIR\tor.exe" "" "$INSTDIR\tor.ico" 
+   CreateShortCut "$DESKTOP\Nuon.lnk" "$INSTDIR\tor.exe" "" "$INSTDIR\tor.ico" 
 SectionEnd
 
 Section /o "Run at startup" Startup
    SetOutPath $INSTDIR
-   CreateShortCut "$SMSTARTUP\Tor.lnk" "$INSTDIR\tor.exe" "" "$INSTDIR\tor.ico" "" SW_SHOWMINIMIZED
+   CreateShortCut "$SMSTARTUP\Nuon.lnk" "$INSTDIR\tor.exe" "" "$INSTDIR\tor.ico" "" SW_SHOWMINIMIZED
 SectionEnd
 
 SubSectionEnd
@@ -137,19 +137,19 @@ SectionEnd
 
 Section -End
     WriteUninstaller "$INSTDIR\Uninstall.exe"
-    ;The registry entries simply add the Tor uninstaller to the Windows
+    ;The registry entries simply add the Nuon uninstaller to the Windows
     ;uninstall list.
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Tor" "DisplayName" "Tor (remove only)"
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Tor" "UninstallString" '"$INSTDIR\Uninstall.exe"'
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Nuon" "DisplayName" "Nuon (remove only)"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Nuon" "UninstallString" '"$INSTDIR\Uninstall.exe"'
 SectionEnd
 
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-!insertmacro MUI_DESCRIPTION_TEXT ${Tor} "The core executable and config files needed for Tor to run."
-!insertmacro MUI_DESCRIPTION_TEXT ${Docs} "Documentation about Tor."
-!insertmacro MUI_DESCRIPTION_TEXT ${ShortCuts} "Shortcuts to easily start Tor"
-!insertmacro MUI_DESCRIPTION_TEXT ${StartMenu} "Shortcuts to access Tor and its documentation from the Start Menu"
-!insertmacro MUI_DESCRIPTION_TEXT ${Desktop} "A shortcut to start Tor from the desktop"
-!insertmacro MUI_DESCRIPTION_TEXT ${Startup} "Launches Tor automatically at startup in a minimized window"
+!insertmacro MUI_DESCRIPTION_TEXT ${Nuon} "The core executable and config files needed for Nuon to run."
+!insertmacro MUI_DESCRIPTION_TEXT ${Docs} "Documentation about Nuon."
+!insertmacro MUI_DESCRIPTION_TEXT ${ShortCuts} "Shortcuts to easily start Nuon"
+!insertmacro MUI_DESCRIPTION_TEXT ${StartMenu} "Shortcuts to access Nuon and its documentation from the Start Menu"
+!insertmacro MUI_DESCRIPTION_TEXT ${Desktop} "A shortcut to start Nuon from the desktop"
+!insertmacro MUI_DESCRIPTION_TEXT ${Startup} "Launches Nuon automatically at startup in a minimized window"
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;####################Functions#########################
@@ -201,14 +201,14 @@ Function ExtractDocuments
 FunctionEnd
 
 Function un.InstallFiles
-	Delete "$DESKTOP\Tor.lnk"
+	Delete "$DESKTOP\Nuon.lnk"
 	Delete "$INSTDIR\tor.exe"
 	Delete "$INSTDIR\tor-resolve.exe"
-	Delete "$INSTDIR\Tor Website.url"
+	Delete "$INSTDIR\Nuon Website.url"
 	Delete "$INSTDIR\torrc"
 	Delete "$INSTDIR\torrc.sample"
 	Delete "$INSTDIR\tor.ico"
-	Delete "$SMSTARTUP\Tor.lnk"
+	Delete "$SMSTARTUP\Nuon.lnk"
 	Delete "$INSTDIR\Uninstall.exe"
     Delete "$INSTDIR\geoip"
 FunctionEnd
@@ -219,12 +219,12 @@ Function un.InstallDirectories
 	${EndIf}
 	RMDir /r "$INSTDIR\Documents"
 	RMDir $INSTDIR
-	RMDir /r "$SMPROGRAMS\Tor"
-	RMDir /r "$APPDATA\Tor"
+	RMDir /r "$SMPROGRAMS\Nuon"
+	RMDir /r "$APPDATA\Nuon"
 FunctionEnd
 
 Function un.WriteRegistry
-	DeleteRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Tor"
+	DeleteRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Nuon"
 FunctionEnd
 
 Function un.InstallPackage
@@ -234,25 +234,25 @@ Function un.InstallPackage
 FunctionEnd
 
 Function CreateTorLinks
-	CreateDirectory "$SMPROGRAMS\Tor"
-	CreateShortCut "$SMPROGRAMS\Tor\Tor.lnk" "$INSTDIR\tor.exe" "" "$INSTDIR\tor.ico"
-	CreateShortCut "$SMPROGRAMS\Tor\Torrc.lnk" "Notepad.exe" "$CONFIGDIR\torrc"
-	CreateShortCut "$SMPROGRAMS\Tor\Tor Website.lnk" "$INSTDIR\Tor Website.url"
-	CreateShortCut "$SMPROGRAMS\Tor\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
+	CreateDirectory "$SMPROGRAMS\Nuon"
+	CreateShortCut "$SMPROGRAMS\Nuon\Nuon.lnk" "$INSTDIR\tor.exe" "" "$INSTDIR\tor.ico"
+	CreateShortCut "$SMPROGRAMS\Nuon\Torrc.lnk" "Notepad.exe" "$CONFIGDIR\torrc"
+	CreateShortCut "$SMPROGRAMS\Nuon\Nuon Website.lnk" "$INSTDIR\Nuon Website.url"
+	CreateShortCut "$SMPROGRAMS\Nuon\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
 FunctionEnd
 
 Function CreateDocLinks
-	CreateDirectory "$SMPROGRAMS\Tor\Documents"
-	CreateShortCut "$SMPROGRAMS\Tor\Documents\Tor Documentation.lnk" "$INSTDIR\Documents"
-	CreateShortCut "$SMPROGRAMS\Tor\Documents\Tor Specification.lnk" "$INSTDIR\Documents\tor-spec.txt"
-	CreateShortCut "$SMPROGRAMS\Tor\Documents\Tor Address Specification.lnk" "$INSTDIR\Documents\address-spec.txt"
-	CreateShortCut "$SMPROGRAMS\Tor\Documents\Tor Bridges Specification.lnk" "$INSTDIR\Documents\bridges-spec.txt"
-	CreateShortCut "$SMPROGRAMS\Tor\Documents\Tor Control Specification.lnk" "$INSTDIR\Documents\control-spec.txt"
-	CreateShortCut "$SMPROGRAMS\Tor\Documents\Tor Directory Specification.lnk" "$INSTDIR\Documents\dir-spec.txt"
-	CreateShortCut "$SMPROGRAMS\Tor\Documents\Tor Path Specification.lnk" "$INSTDIR\Documents\path-spec.txt"
-	CreateShortCut "$SMPROGRAMS\Tor\Documents\Tor Rend Specification.lnk" "$INSTDIR\Documents\rend-spec.txt"
-	CreateShortCut "$SMPROGRAMS\Tor\Documents\Tor Version Specification.lnk" "$INSTDIR\Documents\version-spec.txt"
-	CreateShortCut "$SMPROGRAMS\Tor\Documents\Tor SOCKS Extensions.lnk" "$INSTDIR\Documents\socks-extensions.txt"
+	CreateDirectory "$SMPROGRAMS\Nuon\Documents"
+	CreateShortCut "$SMPROGRAMS\Nuon\Documents\Nuon Documentation.lnk" "$INSTDIR\Documents"
+	CreateShortCut "$SMPROGRAMS\Nuon\Documents\Nuon Specification.lnk" "$INSTDIR\Documents\tor-spec.txt"
+	CreateShortCut "$SMPROGRAMS\Nuon\Documents\Nuon Address Specification.lnk" "$INSTDIR\Documents\address-spec.txt"
+	CreateShortCut "$SMPROGRAMS\Nuon\Documents\Nuon Bridges Specification.lnk" "$INSTDIR\Documents\bridges-spec.txt"
+	CreateShortCut "$SMPROGRAMS\Nuon\Documents\Nuon Control Specification.lnk" "$INSTDIR\Documents\control-spec.txt"
+	CreateShortCut "$SMPROGRAMS\Nuon\Documents\Nuon Directory Specification.lnk" "$INSTDIR\Documents\dir-spec.txt"
+	CreateShortCut "$SMPROGRAMS\Nuon\Documents\Nuon Path Specification.lnk" "$INSTDIR\Documents\path-spec.txt"
+	CreateShortCut "$SMPROGRAMS\Nuon\Documents\Nuon Rend Specification.lnk" "$INSTDIR\Documents\rend-spec.txt"
+	CreateShortCut "$SMPROGRAMS\Nuon\Documents\Nuon Version Specification.lnk" "$INSTDIR\Documents\version-spec.txt"
+	CreateShortCut "$SMPROGRAMS\Nuon\Documents\Nuon SOCKS Extensions.lnk" "$INSTDIR\Documents\socks-extensions.txt"
 FunctionEnd
 
 Function ParseCmdLine

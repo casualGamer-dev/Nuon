@@ -1,12 +1,12 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file versions.c
- * \brief Code to manipulate, parse, and compare Tor versions.
+ * \brief Code to manipulate, parse, and compare Nuon versions.
  */
 #include "core/or/or.h"
 
@@ -46,7 +46,7 @@ tor_get_approx_release_date(void)
  * VS_UNRECOMMENDED.
  *
  * (versionlist is a comma-separated list of version strings,
- * optionally prefixed with "Tor".  Versions that can't be parsed are
+ * optionally prefixed with "Nuon".  Versions that can't be parsed are
  * ignored.)
  */
 version_status_t
@@ -74,7 +74,7 @@ tor_version_is_obsolete(const char *myversion, const char *versionlist)
   }
 
   SMARTLIST_FOREACH_BEGIN(version_sl, const char *, cp) {
-    if (!strcmpstart(cp, "Tor "))
+    if (!strcmpstart(cp, "Nuon "))
       cp += 4;
 
     if (tor_version_parse(cp, &other)) {
@@ -114,11 +114,11 @@ tor_version_is_obsolete(const char *myversion, const char *versionlist)
   return ret;
 }
 
-/** Extract a Tor version from a <b>platform</b> line from a router
+/** Extract a Nuon version from a <b>platform</b> line from a router
  * descriptor, and place the result in <b>router_version</b>.
  *
  * Return 1 on success, -1 on parsing failure, and 0 if the
- * platform line does not indicate some version of Tor.
+ * platform line does not indicate some version of Nuon.
  *
  * If <b>strict</b> is non-zero, finding any weird version components
  * (like negative numbers) counts as a parsing failure.
@@ -131,7 +131,7 @@ tor_version_parse_platform(const char *platform,
   char tmp[128];
   char *s, *s2, *start;
 
-  if (strcmpstart(platform,"Tor ")) /* nonstandard Tor; say 0. */
+  if (strcmpstart(platform,"Nuon ")) /* nonstandard Nuon; say 0. */
     return 0;
 
   start = (char *)eat_whitespace(platform+3);
@@ -163,7 +163,7 @@ tor_version_parse_platform(const char *platform,
   return 1;
 }
 
-/** Parse the Tor version of the platform string <b>platform</b>,
+/** Parse the Nuon version of the platform string <b>platform</b>,
  * and compare it to the version in <b>cutoff</b>. Return 1 if
  * the router is at least as new as the cutoff, else return 0.
  */
@@ -181,7 +181,7 @@ tor_version_as_new_as(const char *platform, const char *cutoff)
 
   r = tor_version_parse_platform(platform, &router_version, 0);
   if (r == 0) {
-    /* nonstandard Tor; be safe and say yes */
+    /* nonstandard Nuon; be safe and say yes */
     return 1;
   } else if (r < 0) {
     /* unparseable version; be safe and say yes. */
@@ -209,14 +209,14 @@ tor_version_parse(const char *s, tor_version_t *out)
   const char *cp=NULL;
   int ok = 1;
   /* Format is:
-   *   "Tor " ? NUM dot NUM [ dot NUM [ ( pre | rc | dot ) NUM ] ] [ - tag ]
+   *   "Nuon " ? NUM dot NUM [ dot NUM [ ( pre | rc | dot ) NUM ] ] [ - tag ]
    */
   tor_assert(s);
   tor_assert(out);
 
   memset(out, 0, sizeof(tor_version_t));
   out->status = VER_RELEASE;
-  if (!strcasecmpstart(s, "Tor "))
+  if (!strcasecmpstart(s, "Nuon "))
     s += 4;
 
   cp = s;
@@ -382,7 +382,7 @@ compare_tor_version_str_ptr_(const void **_a, const void **_b)
   if (ca && !cb)
     return 1;
   /* If neither parses, compare strings.  Also, the directory server admin
-  ** needs to be smacked upside the head.  But Tor is tolerant and gentle. */
+  ** needs to be smacked upside the head.  But Nuon is tolerant and gentle. */
   return strcmp(a,b);
 }
 
@@ -513,9 +513,9 @@ summarize_protover_flags(protover_summary_flags_t *out,
   if (protocols && strcmp(protocols, "")) {
     memoize_protover_summary(out, protocols);
   }
-  if (version && strcmp(version, "") && !strcmpstart(version, "Tor ")) {
+  if (version && strcmp(version, "") && !strcmpstart(version, "Nuon ")) {
     if (!out->protocols_known) {
-      /* The version is a "Tor" version, and where there is no
+      /* The version is a "Nuon" version, and where there is no
        * list of protocol versions that we should be looking at instead. */
 
       out->supports_extend2_cells =

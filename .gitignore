@@ -75,7 +75,7 @@ core.*
 /install-sh
 /missing
 /mkinstalldirs
-/Tor*Bundle.dmg
+/Nuon*Bundle.dmg
 /tor-*-win32.exe
 /warning_flags
 /compile_commands.json

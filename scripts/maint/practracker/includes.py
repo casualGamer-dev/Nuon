@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright 2018 The Tor Project, Inc.  See LICENSE file for licensing info.
+# Copyright 2018 The Nuon Project, Inc.  See LICENSE file for licensing info.
 
 """This script looks through all the directories for files matching *.c or
    *.h, and checks their #include directives to make sure that only "permitted"

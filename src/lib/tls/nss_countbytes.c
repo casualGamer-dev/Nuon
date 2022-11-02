@@ -1,4 +1,4 @@
-/* Copyright 2018-2021, The Tor Project Inc. */
+/* Copyright 2018-2021, The Nuon Project Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -59,7 +59,7 @@ tor_nss_countbytes_init(void)
   if (countbytes_initialized)
     return;
 
-  countbytes_layer_id = PR_GetUniqueIdentity("Tor byte-counting layer");
+  countbytes_layer_id = PR_GetUniqueIdentity("Nuon byte-counting layer");
   tor_assert(countbytes_layer_id != PR_INVALID_IO_LAYER);
 
   memcpy(&countbytes_methods, PR_GetDefaultIOMethods(), sizeof(PRIOMethods));

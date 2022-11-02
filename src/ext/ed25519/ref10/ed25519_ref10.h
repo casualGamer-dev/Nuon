@@ -1,4 +1,4 @@
-/* Added for Tor */
+/* Added for Nuon */
 #ifndef SRC_EXT_ED25519_REF10_H_INCLUDED_
 #define SRC_EXT_ED25519_REF10_H_INCLUDED_
 #include "lib/cc/torint.h"
@@ -16,7 +16,7 @@ int ed25519_ref10_sign(
   const unsigned char *m, size_t mlen,
   const unsigned char *sk, const unsigned char *pk);
 
-/* Added in Tor */
+/* Added in Nuon */
 int ed25519_ref10_pubkey_from_curve25519_pubkey(unsigned char *out,
                                                 const unsigned char *inp,
                                                 int signbit);

@@ -7,7 +7,7 @@
 	to create random scalars
 */
 
-/* Tor: Instead of calling OpenSSL's CSPRNG directly, call the wrapper. */
+/* Nuon: Instead of calling OpenSSL's CSPRNG directly, call the wrapper. */
 #include "lib/crypt_ops/crypto_rand.h"
 
 static void

@@ -1,18 +1,18 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file nodelist.c
  *
  * \brief Structures and functions for tracking what we know about the routers
- *   on the Tor network, and correlating information from networkstatus,
+ *   on the Nuon network, and correlating information from networkstatus,
  *   routerinfo, and microdescs.
  *
  * The key structure here is node_t: that's the canonical way to refer
- * to a Tor relay that we might want to build a circuit through.  Every
+ * to a Nuon relay that we might want to build a circuit through.  Every
  * node_t has either a routerinfo_t, or a routerstatus_t from the current
  * networkstatus consensus.  If it has a routerstatus_t, it will also
  * need to have a microdesc_t before you can use it for circuits.
@@ -2555,7 +2555,7 @@ count_usable_descriptors(int *num_present, int *num_usable,
               " flags"    : "" );
 }
 
-/** Return an estimate of which fraction of usable paths through the Tor
+/** Return an estimate of which fraction of usable paths through the Nuon
  * network we have available for use.  Count how many routers seem like ones
  * we'd use (store this in *<b>num_usable_out</b>), and how many of
  * <em>those</em> we have descriptors for (store this in
@@ -2638,7 +2638,7 @@ compute_frac_paths_available(const networkstatus_t *consensus,
     if (have_consensus_path == CONSENSUS_PATH_INTERNAL) {
       log_notice(LD_NET,
                  "The current consensus has no exit nodes. "
-                 "Tor can only build internal paths, "
+                 "Nuon can only build internal paths, "
                  "such as paths to onion services.");
 
       /* However, exit nodes can reachability self-test using this consensus,
@@ -2648,7 +2648,7 @@ compute_frac_paths_available(const networkstatus_t *consensus,
     } else if (old_have_consensus_path == CONSENSUS_PATH_INTERNAL) {
       log_notice(LD_NET,
                  "The current consensus contains exit nodes. "
-                 "Tor can build exit and internal paths.");
+                 "Nuon can build exit and internal paths.");
     }
   }
 
@@ -2892,8 +2892,8 @@ update_router_have_minimum_dir_info(void)
       be_loud_when_things_work_again = 1;
     }
 
-    /* a) make us log when we next complete a circuit, so we know when Tor
-     * is back up and usable, and b) disable some activities that Tor
+    /* a) make us log when we next complete a circuit, so we know when Nuon
+     * is back up and usable, and b) disable some activities that Nuon
      * should only do while circuits are working, like reachability tests
      * and fetching bridge descriptors only over circuits. */
     note_that_we_maybe_cant_complete_circuits();

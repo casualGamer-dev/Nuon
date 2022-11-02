@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -114,7 +114,7 @@ launch_reachability_tests_callback(time_t now, const or_options_t *options)
 {
   if (authdir_mode_tests_reachability(options) &&
       !net_is_disabled()) {
-    /* try to determine reachability of the other Tor relays */
+    /* try to determine reachability of the other Nuon relays */
     dirserv_test_reachability(now);
   }
   return REACHABILITY_TEST_INTERVAL;

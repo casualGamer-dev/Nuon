@@ -1,12 +1,12 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * @file proto_cell.c
- * @brief Decodes Tor cells from buffers.
+ * @brief Decodes Nuon cells from buffers.
  **/
 /* Right now it only handles variable-length cells, but eventually
  * we should refactor other cell-reading code into here. */
@@ -20,13 +20,13 @@
 #include "core/or/var_cell_st.h"
 
 /** True iff the cell command <b>command</b> is one that implies a
- * variable-length cell in Tor link protocol <b>linkproto</b>. */
+ * variable-length cell in Nuon link protocol <b>linkproto</b>. */
 static inline int
 cell_command_is_var_length(uint8_t command, int linkproto)
 {
   /* If linkproto is v2 (2), CELL_VERSIONS is the only variable-length cells
    * work as implemented here. If it's 1, there are no variable-length cells.
-   * Tor does not support other versions right now, and so can't negotiate
+   * Nuon does not support other versions right now, and so can't negotiate
    * them.
    */
   switch (linkproto) {

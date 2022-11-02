@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -54,7 +54,7 @@ compute_num_cpus_impl(void)
   } else if (cpus_onln > 0 && cpus_conf > 0) {
     if (cpus_onln < cpus_conf) {
       log_notice(LD_GENERAL, "I think we have %ld CPUS, but only %ld of them "
-                 "are available. Telling Tor to only use %ld. You can over"
+                 "are available. Telling Nuon to only use %ld. You can over"
                  "ride this with the NumCPUs option",
                  cpus_conf, cpus_onln, cpus_onln);
     }

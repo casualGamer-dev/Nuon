@@ -1,4 +1,4 @@
-/* Copyright (c) 2013-2021, The Tor Project, Inc. */
+/* Copyright (c) 2013-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #define CHANNEL_OBJECT_PRIVATE
@@ -261,7 +261,7 @@ test_rend_token_maps(void *arg)
 
   /* c3 -- are you still there? */
   tt_ptr_op(c3, OP_EQ, hs_circuitmap_get_rend_circ_relay_side(tok2));
-  /* Change its cookie.  This never happens in Tor per se, but hey. */
+  /* Change its cookie.  This never happens in Nuon per se, but hey. */
   c3->base_.purpose = CIRCUIT_PURPOSE_INTRO_POINT;
   hs_circuitmap_register_intro_circ_v3_relay_side(c3, &intro_pk3);
 

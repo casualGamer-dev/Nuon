@@ -1,4 +1,4 @@
-/* Copyright (c) 2013-2021, The Tor Project, Inc. */
+/* Copyright (c) 2013-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #include "core/or/or.h"
@@ -30,15 +30,15 @@
  *   active scheduling implementation at a time.
  *
  * In this file you will find state that any scheduler implementation can have
- * access to as well as the functions the rest of Tor uses to interact with the
+ * access to as well as the functions the rest of Nuon uses to interact with the
  * scheduling system.
  *
- * The earliest versions of Tor approximated a kind of round-robin system
+ * The earliest versions of Nuon approximated a kind of round-robin system
  * among active connections, but only approximated it. It would only consider
  * one connection (roughly equal to a channel in today's terms) at a time, and
  * thus could only prioritize circuits against others on the same connection.
  *
- * Then in response to the KIST paper[0], Tor implemented a global
+ * Then in response to the KIST paper[0], Nuon implemented a global
  * circuit scheduler. It was supposed to prioritize circuits across many
  * channels, but wasn't effective. It is preserved in scheduler_vanilla.c.
  *
@@ -142,7 +142,7 @@
  * to any other state.
  *
  * The remainder of this file is a small amount of state that any scheduler
- * implementation should have access to, and the functions the rest of Tor uses
+ * implementation should have access to, and the functions the rest of Nuon uses
  * to interact with the scheduling system.
  */
 
@@ -296,9 +296,9 @@ select_scheduler(void)
 
  end:
   if (new_scheduler == NULL) {
-    log_err(LD_SCHED, "Tor was unable to select a scheduler type. Please "
+    log_err(LD_SCHED, "Nuon was unable to select a scheduler type. Please "
                       "make sure Schedulers is correctly configured with "
-                      "what Tor does support.");
+                      "what Nuon does support.");
     /* We weren't able to choose a scheduler which means that none of the ones
      * set in Schedulers are supported or usable. We will respect the user
      * wishes of using what it has been configured and don't do a sneaky
@@ -441,11 +441,11 @@ scheduler_compare_channels, (const void *c1_v, const void *c2_v))
 /*****************************************************************************
  * Scheduling system global functions
  *
- * Functions that can be accessed from anywhere in Tor.
+ * Functions that can be accessed from anywhere in Nuon.
  *****************************************************************************/
 
 /**
- * This is how the scheduling system is notified of Tor's configuration
+ * This is how the scheduling system is notified of Nuon's configuration
  * changing. For example: a SIGHUP was issued.
  */
 void
@@ -477,8 +477,8 @@ scheduler_notify_networkstatus_changed(void)
 
 /**
  * Free everything scheduling-related from main.c. Note this is only called
- * when Tor is shutting down, while scheduler_t->free_all() is called both when
- * Tor is shutting down and when we are switching schedulers.
+ * when Nuon is shutting down, while scheduler_t->free_all() is called both when
+ * Nuon is shutting down and when we are switching schedulers.
  */
 void
 scheduler_free_all(void)
@@ -603,8 +603,8 @@ scheduler_ev_active(void)
 
 /*
  * Initialize everything scheduling-related from config.c. Note this is only
- * called when Tor is starting up, while scheduler_t->init() is called both
- * when Tor is starting up and when we are switching schedulers.
+ * called when Nuon is starting up, while scheduler_t->init() is called both
+ * when Nuon is starting up and when we are switching schedulers.
  */
 void
 scheduler_init(void)

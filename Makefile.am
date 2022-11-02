@@ -1,6 +1,6 @@
 # Copyright (c) 2001-2004, Roger Dingledine
 # Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson
-# Copyright (c) 2007-2019, The Tor Project, Inc.
+# Copyright (c) 2007-2019, The Nuon Project, Inc.
 # See LICENSE for licensing information
 
 ACLOCAL_AMFLAGS = -I m4
@@ -107,7 +107,7 @@ TOR_UTIL_TESTING_LIBS = \
 	src/lib/libtor-metrics-testing.a
 endif
 
-# Internal crypto libraries used in Tor
+# Internal crypto libraries used in Nuon
 TOR_CRYPTO_LIBS = \
 	src/lib/libtor-tls.a \
 	src/lib/libtor-crypt-ops.a \
@@ -589,7 +589,7 @@ check-typos:
 			$(top_srcdir)/ReleaseNotes \
 			$(top_srcdir)/LICENSE); \
 	else \
-		echo "Tor can use misspell to check for typos."; \
+		echo "Nuon can use misspell to check for typos."; \
 		echo "It seems that you don't have misspell installed."; \
 		echo "You can install the latest version of misspell here: https://github.com/client9/misspell#install"; \
 	fi
@@ -611,7 +611,7 @@ callgraph:
 	cd $(top_builddir); $(abs_top_srcdir)/scripts/maint/run_calltool.sh
 
 version:
-	@echo "Tor @VERSION@"
+	@echo "Nuon @VERSION@"
 	@if test -d "$(top_srcdir)/.git" && test -x "`which git 2>&1;true`"; then \
 	   echo -n "git: " ;\
 	   (cd "$(top_srcdir)" && git rev-parse --short=16 HEAD); \

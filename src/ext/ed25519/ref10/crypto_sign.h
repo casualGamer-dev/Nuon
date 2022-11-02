@@ -1,4 +1,4 @@
-/* Added for Tor */
+/* Added for Nuon */
 #define crypto_sign ed25519_ref10_sign
 #define crypto_sign_keypair ed25519_ref10_keygen
 #define crypto_sign_seckey ed25519_ref10_seckey

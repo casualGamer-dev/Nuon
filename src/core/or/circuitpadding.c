@@ -1,4 +1,4 @@
-/* Copyright (c) 2017 The Tor Project, Inc. */
+/* Copyright (c) 2017 The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -7,7 +7,7 @@
  *
  * \details
  *
- * This file implements Tor proposal 254 "Padding Negotiation" which is heavily
+ * This file implements Nuon proposal 254 "Padding Negotiation" which is heavily
  * inspired by the paper "Toward an Efficient Website Fingerprinting Defense"
  * by M. Juarez, M. Imani, M. Perry, C. Diaz, M. Wright.
  *
@@ -104,7 +104,7 @@ static uint64_t circpad_global_nonpadding_sent;
  *  torrc that have origin_side == 1 (ie: are for client side).
  *
  *  The machines in this smartlist are considered immutable and they are used
- *  as-is by circuits so they should not change or get deallocated in Tor's
+ *  as-is by circuits so they should not change or get deallocated in Nuon's
  *  runtime and as long as circuits are alive. */
 STATIC smartlist_t *origin_padding_machines = NULL;
 
@@ -112,7 +112,7 @@ STATIC smartlist_t *origin_padding_machines = NULL;
  *  torrc that have origin_side == 0 (ie: are for relay side).
  *
  *  The machines in this smartlist are considered immutable and they are used
- *  as-is by circuits so they should not change or get deallocated in Tor's
+ *  as-is by circuits so they should not change or get deallocated in Nuon's
  *  runtime and as long as circuits are alive. */
 STATIC smartlist_t *relay_padding_machines = NULL;
 
@@ -241,9 +241,9 @@ circpad_marked_circuit_for_padding(circuit_t *circ, int reason)
 
     /* If we weren't marked dirty yet, let's pretend we're dirty now.
      * ("Dirty" means that a circuit has been used for application traffic
-     * by Tor.. Dirty circuits have different expiry times, and are not
+     * by Nuon.. Dirty circuits have different expiry times, and are not
      * considered in counts of built circuits, etc. By claiming that we're
-     * dirty, the rest of Tor will make decisions as if we were actually
+     * dirty, the rest of Nuon will make decisions as if we were actually
      * used by application data.
      *
      * This is most important for circuit_expire_old_circuits_clientside(),
@@ -1283,7 +1283,7 @@ circpad_send_padding_cell_for_callback(circpad_machine_runtime_t *mi)
 }
 
 /**
- * Tor-timer compatible callback that tells us to send a padding cell.
+ * Nuon-timer compatible callback that tells us to send a padding cell.
  *
  * Timers are associated with circpad_machine_runtime_t's. When the machineinfo
  * is freed on a circuit, the timers are cancelled. Since the lifetime

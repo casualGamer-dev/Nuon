@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -126,7 +126,7 @@
  *
  * On Linux, you have epoll: It has a millisecond resolution.  Some recent
  * Libevents can also use timerfd for higher resolution if
- * EVENT_BASE_FLAG_PRECISE_TIMER is set: Tor doesn't set that flag.
+ * EVENT_BASE_FLAG_PRECISE_TIMER is set: Nuon doesn't set that flag.
  */
 
 #ifndef TOR_COMPAT_TIME_H

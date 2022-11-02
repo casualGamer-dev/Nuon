@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -9,7 +9,7 @@
  * \brief Handle edge streams.
  *
  * An edge_connection_t is a subtype of a connection_t, and represents two
- * critical concepts in Tor: a stream, and an edge connection.  From the Tor
+ * critical concepts in Nuon: a stream, and an edge connection.  From the Nuon
  * protocol's point of view, a stream is a bi-directional channel that is
  * multiplexed on a single circuit.  Each stream on a circuit is identified
  * with a separate 16-bit stream ID, local to the (circuit,exit) pair.
@@ -1174,7 +1174,7 @@ connection_ap_expire_beginning(void)
     /* We already consider SocksTimeout in
      * connection_ap_handshake_attach_circuit(), but we need to consider
      * it here too because controllers that put streams in controller_wait
-     * state never ask Tor to attach the circuit. */
+     * state never ask Nuon to attach the circuit. */
     if (AP_CONN_STATE_IS_UNATTACHED(base_conn->state)) {
       if (seconds_since_born >= options->SocksTimeout) {
         log_fn(severity, LD_APP,
@@ -1780,7 +1780,7 @@ connection_ap_handshake_rewrite(entry_connection_t *conn,
   if (!strcmpend(socks->address, ".exit")) {
     static ratelim_t exit_warning_limit = RATELIM_INIT(60*15);
     log_fn_ratelim(&exit_warning_limit, LOG_WARN, LD_APP,
-                   "The  \".exit\" notation is disabled in Tor due to "
+                   "The  \".exit\" notation is disabled in Nuon due to "
                    "security risks.");
     control_event_client_status(LOG_WARN, "SOCKS_BAD_HOSTNAME HOSTNAME=%s",
                                 escaped(socks->address));
@@ -1816,7 +1816,7 @@ connection_ap_handshake_rewrite(entry_connection_t *conn,
    * automapping.  Automapping happens when we're asked to resolve a
    * hostname, and AutomapHostsOnResolve is set, and the hostname has a
    * suffix listed in AutomapHostsSuffixes.  It's a handy feature
-   * that lets you have Tor assign e.g. IPv6 addresses for .onion
+   * that lets you have Nuon assign e.g. IPv6 addresses for .onion
    * names, and return them safely from DNSPort.
    */
   if (socks->command == SOCKS_COMMAND_RESOLVE &&
@@ -1936,7 +1936,7 @@ connection_ap_handshake_rewrite(entry_connection_t *conn,
     /* This address was probably handed out by
      * client_dns_get_unmapped_address, but the mapping was discarded for some
      * reason.  Or the user typed in a virtual address range manually.  We
-     * *don't* want to send the address through Tor; that's likely to fail,
+     * *don't* want to send the address through Nuon; that's likely to fail,
      * and may leak information.
      */
     log_warn(LD_APP,"Missing mapping for virtual address '%s'. Refusing.",
@@ -2431,8 +2431,8 @@ connection_ap_handshake_rewrite_and_attach(entry_connection_t *conn,
               nodelist_reentry_contains(&addr, socks->port)) {
             log_warn(LD_APP, "Not attempting connection to %s:%d because "
                      "the network would reject it. Are you trying to send "
-                     "Tor traffic over Tor? This traffic can be harmful to "
-                     "the Tor network. If you really need it, try using "
+                     "Nuon traffic over Nuon? This traffic can be harmful to "
+                     "the Nuon network. If you really need it, try using "
                      "a bridge as a workaround.",
                      safe_str_client(socks->address), socks->port);
             connection_mark_unattached_ap(conn, END_STREAM_REASON_TORPROTOCOL);
@@ -2938,7 +2938,7 @@ static const char HTTP_CONNECT_IS_NOT_AN_HTTP_PROXY_MSG[] =
   "<body>\n"
   "<h1>This is an HTTP CONNECT tunnel, not an HTTP proxy.</h1>\n"
   "<p>\n"
-  "It appears you have configured your web browser to use this Tor port as\n"
+  "It appears you have configured your web browser to use this Nuon port as\n"
   "an HTTP proxy.\n"
   "</p><p>\n"
   "This is not correct: This port is configured as a CONNECT tunnel, not\n"
@@ -3017,7 +3017,7 @@ connection_ap_process_http_connect(entry_connection_t *conn)
       socks->username = authorization; // steal reference
       socks->usernamelen = strlen(authorization);
     }
-    char *isolation = http_get_header(headers, "X-Tor-Stream-Isolation: ");
+    char *isolation = http_get_header(headers, "X-Nuon-Stream-Isolation: ");
     if (isolation) {
       socks->password = isolation; // steal reference
       socks->passwordlen = strlen(isolation);
@@ -4216,9 +4216,9 @@ connection_exit_connect(edge_connection_t *edge_conn)
     return;
   }
 
-  /* Next, check for attempts to connect back into the Tor network. We don't
+  /* Next, check for attempts to connect back into the Nuon network. We don't
    * want to allow these for the same reason we don't want to allow
-   * infinite-length circuits (see "A Practical Congestion Attack on Tor Using
+   * infinite-length circuits (see "A Practical Congestion Attack on Nuon Using
    * Long Paths", Usenix Security 2009). See also ticket 2667.
    *
    * Skip this if the network reentry is allowed (known from the consensus).

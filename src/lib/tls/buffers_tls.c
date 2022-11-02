@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -50,7 +50,7 @@ read_to_chunk_tls(buf_t *buf, chunk_t *chunk, tor_tls_t *tls,
  * the network before it can decrypt any data.  Thus, trying to read 1
  * byte from TLS can require that several KB be read from the network
  * and decrypted.  The extra data is stored in TLS's decrypt buffer.)
- * Because the data hasn't been read by Tor (it's still inside the TLS),
+ * Because the data hasn't been read by Nuon (it's still inside the TLS),
  * this means that sometimes a connection "has stuff to read" even when
  * poll() didn't return POLLIN. The tor_tls_get_pending_bytes function is
  * used in connection.c to detect TLS objects with non-empty internal

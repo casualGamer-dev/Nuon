@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -116,7 +116,7 @@
  * bandwidth measurement, reachability test and address discovery from an
  * authority using the NETINFO cell. */
 #define CIRCUIT_PURPOSE_TESTING 21
-/** A controller made this circuit and Tor should not cannibalize it or attach
+/** A controller made this circuit and Nuon should not cannibalize it or attach
  * streams to it without explicitly being told. */
 #define CIRCUIT_PURPOSE_CONTROLLER 22
 /** This circuit is used for path bias probing only */

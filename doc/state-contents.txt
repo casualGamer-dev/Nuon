@@ -1,5 +1,5 @@
 
-Contents of the Tor state file
+Contents of the Nuon state file
 ==============================
 
 The state file is structured with more or less the same rules as torrc.
@@ -7,7 +7,7 @@ Recognized fields are:
 
   TorVersion
 
-     The version of Tor that wrote this file
+     The version of Nuon that wrote this file
 
   LastWritten
 
@@ -18,7 +18,7 @@ Recognized fields are:
   MinutesSinceUserActivity (integer)
   Dormant (0, 1, or "auto")
 
-     These values are used to keep track of how long Tor has been idle,
+     These values are used to keep track of how long Nuon has been idle,
      for the purpose of becoming 'dormant' after a long period without
      any user-initiated requests.
 
@@ -26,8 +26,8 @@ Recognized fields are:
      time the user asked us to do something.  It is set to zero if we're
      dormant.
 
-     "Dormant" is 1 if Tor was dormant when it wrote its state file, 0 if
-     Tor was active, and "auto" if Tor was starting for the first time.
+     "Dormant" is 1 if Nuon was dormant when it wrote its state file, 0 if
+     Nuon was active, and "auto" if Nuon was starting for the first time.
 
   AccountingBytesReadInInterval     (memory unit)
   AccountingBytesWrittenInInterval  (memory unit)
@@ -43,7 +43,7 @@ Recognized fields are:
      The IntervalStart is the time at which the current accounting
      interval began.  We were expecting to use ExpectedUsage over the
      course of the interval.  BytesRead/BytesWritten are the total
-     number of bytes transferred over the whole interval.  If Tor has
+     number of bytes transferred over the whole interval.  If Nuon has
      been active during the interval, then AccountingSecondsActive is
      the amount of time for which it has been active.  We were expecting
      to hit the bandwidth soft limit in SecondsToReachSoftLimit after we
@@ -56,7 +56,7 @@ Recognized fields are:
      One or more of these may be present.
 
      The format is "transportname addr:port", to remember the address
-     at which a pluggable transport was listening. Tor bridges use
+     at which a pluggable transport was listening. Nuon bridges use
      this information to spawn pluggable transport listeners in the
      same IP address and TCP port even after tor client restarts.
 
@@ -137,7 +137,7 @@ Recognized fields are:
 
          sampled_by (tor version)
 
-              Which version of Tor added this Guard to the sample?
+              Which version of Nuon added this Guard to the sample?
               (Used to help with debugging.)
 
          sampled_idx (integer)
@@ -224,13 +224,13 @@ Obsolete fields include:
 
       The EntryGuardAddedBy line is optional.  It contains three
       space-separated fields: the identity of the entry guard, the version of
-      Tor that added it, and the ISO time at which it was added.
+      Nuon that added it, and the ISO time at which it was added.
 
       EntryGuardPathBias and  EntryGuardPathUseBias are superseded by
       the `pb_...` elements in the Guard flag, and served a similar purpose.
 
       These entries have all been superseded by the Guard line type,
-      since Tor 0.3.0.1-alpha.
+      since Nuon 0.3.0.1-alpha.
 
   HidServRevCounter
 

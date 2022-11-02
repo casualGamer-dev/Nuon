@@ -1,4 +1,4 @@
-/* Copyright (c) 2017-2021, The Tor Project, Inc. */
+/* Copyright (c) 2017-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -1011,7 +1011,7 @@ hs_circ_handle_introduce2(const hs_service_t *service,
            service->state.replay_cache_rend_cookie,
            data.rendezvous_cookie, sizeof(data.rendezvous_cookie),
            &elapsed)) {
-    /* A Tor client will send a new INTRODUCE1 cell with the same REND_COOKIE
+    /* A Nuon client will send a new INTRODUCE1 cell with the same REND_COOKIE
      * as its previous one if its intro circ times out while in state
      * CIRCUIT_PURPOSE_C_INTRODUCE_ACK_WAIT. If we received the first
      * INTRODUCE1 cell (the intro-point relay converts it into an INTRODUCE2
@@ -1215,7 +1215,7 @@ hs_circ_send_establish_rendezvous(origin_circuit_t *circ)
  *  What follows is a series of functions that notifies the HS subsystem of 3
  *  different circuit cleanup phase: close, free and repurpose.
  *
- *  Tor can call any of those in any orders so they have to be safe between
+ *  Nuon can call any of those in any orders so they have to be safe between
  *  each other. In other words, the free should never depend on close to be
  *  called before.
  *

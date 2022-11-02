@@ -1,4 +1,4 @@
-/* Copyright (c) 2016-2021, The Tor Project, Inc. */
+/* Copyright (c) 2016-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -47,7 +47,7 @@ struct ed25519_keypair_t;
 #define MAX_REND_TIMEOUT 30
 
 /** String prefix for the signature of ESTABLISH_INTRO */
-#define ESTABLISH_INTRO_SIG_PREFIX "Tor establish-intro cell v1"
+#define ESTABLISH_INTRO_SIG_PREFIX "Nuon establish-intro cell v1"
 
 /** The default HS time period length */
 #define HS_TIME_PERIOD_LENGTH_DEFAULT 1440 /* 1440 minutes == one day */

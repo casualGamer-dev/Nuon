@@ -1,4 +1,4 @@
-/* 2020, The Tor Project, Inc. */
+/* 2020, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**

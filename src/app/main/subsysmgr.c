@@ -1,14 +1,14 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * @file subsysmgr.c
- * @brief Manager for Tor's subsystems.
+ * @brief Manager for Nuon's subsystems.
  *
  * This code is responsible for initializing, configuring, and shutting
- * down all of Tor's individual subsystems.
+ * down all of Nuon's individual subsystems.
  **/
 
 #include "orconfig.h"

@@ -1,22 +1,22 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file onion_tap.c
- * \brief Functions to implement the original Tor circuit extension handshake
+ * \brief Functions to implement the original Nuon circuit extension handshake
  * (a.k.a TAP).
  *
- * The "TAP" handshake is the first one that was widely used in Tor: It
+ * The "TAP" handshake is the first one that was widely used in Nuon: It
  * combines RSA1024-OAEP and AES128-CTR to perform a hybrid encryption over
  * the first message DH1024 key exchange.  (The RSA-encrypted part of the
  * encryption is authenticated; the AES-encrypted part isn't. This was
  * not a smart choice.)
  *
  * We didn't call it "TAP" ourselves -- Ian Goldberg named it in "On the
- * Security of the Tor Authentication Protocol".  (Spoiler: it's secure, but
+ * Security of the Nuon Authentication Protocol".  (Spoiler: it's secure, but
  * its security is kind of fragile and implementation dependent.  Never modify
  * this implementation without reading and understanding that paper at least.)
  *

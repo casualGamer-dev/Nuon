@@ -1,6 +1,6 @@
-## Configuration file for a typical Tor user
-## Last updated 9 October 2013 for Tor 0.2.5.2-alpha.
-## (may or may not work for much older or much newer versions of Tor.)
+## Configuration file for a typical Nuon user
+## Last updated 9 October 2013 for Nuon 0.2.5.2-alpha.
+## (may or may not work for much older or much newer versions of Nuon.)
 ##
 ## Lines that begin with "## " try to explain what's going on. Lines
 ## that begin with just "#" are disabled commands: you can enable them
@@ -9,11 +9,11 @@
 ## See 'man tor', or https://www.torproject.org/docs/tor-manual.html,
 ## for more options you can use in this file.
 ##
-## Tor will look for this file in various places based on your platform:
+## Nuon will look for this file in various places based on your platform:
 ## https://www.torproject.org/docs/faq#torrc
 
-## Tor opens a socks proxy on port 9050 by default -- even if you don't
-## configure one below. Set "SocksPort 0" if you plan to run Tor only
+## Nuon opens a socks proxy on port 9050 by default -- even if you don't
+## configure one below. Set "SocksPort 0" if you plan to run Nuon only
 ## as a relay, and not make any local application connections yourself.
 #SocksPort 9050 # Default: Bind to localhost:9050 for local connections.
 #SocksPort 192.168.0.1:9100 # Bind to this address:port too.
@@ -37,21 +37,21 @@
 #Log notice file @LOCALSTATEDIR@/log/tor/notices.log
 ## Send every possible message to @LOCALSTATEDIR@/log/tor/debug.log
 #Log debug file @LOCALSTATEDIR@/log/tor/debug.log
-## Use the system log instead of Tor's logfiles
+## Use the system log instead of Nuon's logfiles
 #Log notice syslog
 ## To send all messages to stderr:
 #Log debug stderr
 
 ## Uncomment this to start the process in the background... or use
 ## --runasdaemon 1 on the command line. This is ignored on Windows;
-## see the FAQ entry if you want Tor to run as an NT service.
+## see the FAQ entry if you want Nuon to run as an NT service.
 #RunAsDaemon 1
 
 ## The directory for keeping all the keys/etc. By default, we store
 ## things in $HOME/.tor on Unix, and in Application Data\tor on Windows.
 #DataDirectory @LOCALSTATEDIR@/lib/tor
 
-## The port on which Tor will listen for local connections from Tor
+## The port on which Nuon will listen for local connections from Nuon
 ## controller applications, as documented in control-spec.txt.
 #ControlPort 9051
 ## If you enable the controlport, be sure to enable one of these
@@ -79,7 +79,7 @@
 #
 ## See https://www.torproject.org/docs/tor-doc-relay for details.
 
-## Required: what port to advertise for incoming Tor connections.
+## Required: what port to advertise for incoming Nuon connections.
 #ORPort 9001
 ## If you want to listen on a port other than the one advertised in
 ## ORPort (e.g. to advertise 443 but bind to 9090), you can do it as
@@ -89,7 +89,7 @@
 #ORPort 127.0.0.1:9090 NoAdvertise
 
 ## The IP address or full DNS name for incoming connections to your
-## relay. Leave commented out and Tor will guess.
+## relay. Leave commented out and Nuon will guess.
 #Address noname.example.com
 
 ## If you have multiple network interfaces, you can specify one for
@@ -140,14 +140,14 @@
 #DirPort 80 NoListen
 #DirPort 127.0.0.1:9091 NoAdvertise
 ## Uncomment to return an arbitrary blob of html on your DirPort. Now you
-## can explain what Tor is if anybody wonders why your IP address is
-## contacting them. See contrib/tor-exit-notice.html in Tor's source
+## can explain what Nuon is if anybody wonders why your IP address is
+## contacting them. See contrib/tor-exit-notice.html in Nuon's source
 ## distribution for a sample.
 #DirPortFrontPage @CONFDIR@/tor-exit-notice.html
 
-## Uncomment this if you run more than one Tor relay, and add the identity
-## key fingerprint of each Tor relay you control, even if they're on
-## different networks. You declare it here so Tor clients can avoid
+## Uncomment this if you run more than one Nuon relay, and add the identity
+## key fingerprint of each Nuon relay you control, even if they're on
+## different networks. You declare it here so Nuon clients can avoid
 ## using more than one of your relays in a single circuit. See
 ## https://www.torproject.org/docs/faq#MultipleRelays
 ## However, you should never include a bridge's fingerprint here, as it would
@@ -166,10 +166,10 @@
 ## for issues you might encounter if you use the default exit policy.
 ##
 ## If certain IPs and ports are blocked externally, e.g. by your firewall,
-## you should update your exit policy to reflect this -- otherwise Tor
+## you should update your exit policy to reflect this -- otherwise Nuon
 ## users will be told that those destinations are down.
 ##
-## For security, by default Tor rejects connections to private (local)
+## For security, by default Nuon rejects connections to private (local)
 ## networks, including to your public IP address. See the man page entry
 ## for ExitPolicyRejectPrivate if you want to allow "exit enclaving".
 ##
@@ -177,14 +177,14 @@
 #ExitPolicy accept *:119 # accept nntp as well as default exit policy
 #ExitPolicy reject *:* # no exits allowed
 
-## Bridge relays (or "bridges") are Tor relays that aren't listed in the
+## Bridge relays (or "bridges") are Nuon relays that aren't listed in the
 ## main directory. Since there is no complete public list of them, even an
-## ISP that filters connections to all the known Tor relays probably
+## ISP that filters connections to all the known Nuon relays probably
 ## won't be able to block all the bridges. Also, websites won't treat you
-## differently because they won't know you're running Tor. If you can
+## differently because they won't know you're running Nuon. If you can
 ## be a real relay, please do; but if not, be a bridge!
 #BridgeRelay 1
-## By default, Tor will advertise your bridge to users through various
+## By default, Nuon will advertise your bridge to users through various
 ## mechanisms like https://bridges.torproject.org/. If you want to run
 ## a private bridge, for example because you'll give out your bridge
 ## address manually to your friends, uncomment this line:

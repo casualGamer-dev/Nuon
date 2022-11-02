@@ -1,12 +1,12 @@
 #!/usr/bin/python
-# Copyright 2017-2019, The Tor Project, Inc
+# Copyright 2017-2019, The Nuon Project, Inc
 # See LICENSE for licensing information
 
 """
 hs_ntor_ref.py
 
 This module is a reference implementation of the modified ntor protocol
-proposed for Tor hidden services in proposal 224 (Next Generation Hidden
+proposed for Nuon hidden services in proposal 224 (Next Generation Hidden
 Services) in section [NTOR-WITH-EXTRA-DATA].
 
 The modified ntor protocol is a single-round protocol, with three steps in total:
@@ -18,7 +18,7 @@ The modified ntor protocol is a single-round protocol, with three steps in total
 
     3: Client computes key material as well.
 
-It's meant to be used to validate Tor's HS ntor implementation by conducting
+It's meant to be used to validate Nuon's HS ntor implementation by conducting
 various integration tests. Specifically it conducts the following three tests:
 
 - Tests our Python implementation by running the whole protocol in Python and

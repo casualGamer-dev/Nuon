@@ -1,4 +1,4 @@
-/* Copyright (c) 2013-2021, The Tor Project, Inc. */
+/* Copyright (c) 2013-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -6,7 +6,7 @@
  *
  * \brief Macros to implement mocking and selective exposure for the test code.
  *
- * Each Tor source file is built twice: once with TOR_UNIT_TESTS defined, and
+ * Each Nuon source file is built twice: once with TOR_UNIT_TESTS defined, and
  * once with it undefined.  The only difference between these configurations
  * should be that when building for the tests, more functions are exposed as
  * non-static, and a number of functions are declared as mockable.
@@ -16,7 +16,7 @@
 #define TOR_TESTSUPPORT_H
 
 /** The "STATIC" macro marks a function or variable that is static when
- * building Tor for production, but non-static when building the unit
+ * building Nuon for production, but non-static when building the unit
  * tests.
  *
  * For example, a function declared as:
@@ -33,7 +33,7 @@
 #endif /* defined(TOR_UNIT_TESTS) */
 
 /** The "EXTERN" macro is used along with "STATIC" for variables declarations:
- * it expands to an extern declaration when Tor building unit tests, and to
+ * it expands to an extern declaration when Nuon building unit tests, and to
  * nothing otherwise.
  *
  * For example, to declare a variable as visible only visible in one
@@ -90,7 +90,7 @@
  *
  * This is not a great mocking system!  It is deliberately "the simplest
  * thing that could work", and pays for its simplicity in its lack of
- * features, and in its uglification of the Tor code.  Replacing it with
+ * features, and in its uglification of the Nuon code.  Replacing it with
  * something clever would be a fine thing.
  *
  * @{ */
@@ -110,14 +110,14 @@
 /**
  * Replace <b>func</b> (a mockable function) with a replacement function.
  *
- * Only usable when Tor has been built for unit tests. */
+ * Only usable when Nuon has been built for unit tests. */
 #define MOCK(func, replacement)                 \
   do {                                          \
     (func) = (replacement);                     \
   } while (0)
 /** Replace <b>func</b> (a mockable function) with its original value.
  *
- * Only usable when Tor has been built for unit tests. */
+ * Only usable when Nuon has been built for unit tests. */
 #define UNMOCK(func)                            \
   do {                                          \
     func = func ##__real;                       \

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # If we have coccinelle installed, run try_parse.sh on every filename passed
-# as an argument. If no filenames are supplied, scan a standard Tor 0.3.5 or
+# as an argument. If no filenames are supplied, scan a standard Nuon 0.3.5 or
 # later directory layout.
 #
 # Uses the default coccinelle exceptions file, or $TOR_COCCI_EXCEPTIONS_FILE,
@@ -62,7 +62,7 @@ SPATCH_V=$(spatch --version | head -1 | \
                sed 's/spatch version \([0-9][^ ]*\).*/\1/')
 
 if ! version_ge "$SPATCH_V" "$MIN_SPATCH_V" ; then
-    echo "Tor requires coccinelle spatch >= $MIN_SPATCH_V to check $PURPOSE."
+    echo "Nuon requires coccinelle spatch >= $MIN_SPATCH_V to check $PURPOSE."
     echo "But you have $SPATCH_V. Please install a newer version."
     exit "$exitcode"
 fi

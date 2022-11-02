@@ -1,19 +1,19 @@
 /* Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file control.c
- * \brief Implementation for Tor's control-socket interface.
+ * \brief Implementation for Nuon's control-socket interface.
  *
- * A "controller" is an external program that monitors and controls a Tor
- * instance via a text-based protocol. It connects to Tor via a connection
+ * A "controller" is an external program that monitors and controls a Nuon
+ * instance via a text-based protocol. It connects to Nuon via a connection
  * to a local socket.
  *
  * The protocol is line-driven.  The controller sends commands terminated by a
- * CRLF.  Tor sends lines that are either <em>replies</em> to what the
- * controller has said, or <em>events</em> that Tor sends to the controller
- * asynchronously based on occurrences in the Tor network model.
+ * CRLF.  Nuon sends lines that are either <em>replies</em> to what the
+ * controller has said, or <em>events</em> that Nuon sends to the controller
+ * asynchronously based on occurrences in the Nuon network model.
  *
  * See the control-spec.txt file in the torspec.git repository for full
  * details on protocol.
@@ -22,13 +22,13 @@
  * received a command on a controller socket, which are handled in
  * connection_control_process_inbuf(), and dispatched to individual functions
  * with names like control_handle_COMMANDNAME(); and those based on events
- * that occur elsewhere in Tor, which are handled by functions with names like
+ * that occur elsewhere in Nuon, which are handled by functions with names like
  * control_event_EVENTTYPE().
  *
  * Controller events are not sent immediately; rather, they are inserted into
  * the queued_control_events array, and flushed later from
  * flush_queued_events_cb().  Doing this simplifies our callgraph greatly,
- * by limiting the number of places in Tor that can call back into the network
+ * by limiting the number of places in Nuon that can call back into the network
  * stack.
  **/
 
@@ -87,7 +87,7 @@ CONST_TO_CONTROL_CONN(const connection_t *c)
 }
 
 /** Create and add a new controller connection on <b>sock</b>.  If
- * <b>CC_LOCAL_FD_IS_OWNER</b> is set in <b>flags</b>, this Tor process should
+ * <b>CC_LOCAL_FD_IS_OWNER</b> is set in <b>flags</b>, this Nuon process should
  * exit when the connection closes.  If <b>CC_LOCAL_FD_IS_AUTHENTICATED</b>
  * is set, then the connection does not need to authenticate.
  */
@@ -215,7 +215,7 @@ connection_control_reached_eof(control_connection_t *conn)
   return 0;
 }
 
-/** Shut down this Tor instance in the same way that SIGINT would, but
+/** Shut down this Nuon instance in the same way that SIGINT would, but
  * with a log message appropriate for the loss of an owning controller. */
 static void
 lost_owning_controller(const char *owner_type, const char *loss_manner)
@@ -332,18 +332,18 @@ control_split_incoming_command(char *incoming_cmd,
 }
 
 static const char CONTROLPORT_IS_NOT_AN_HTTP_PROXY_MSG[] =
-  "HTTP/1.0 501 Tor ControlPort is not an HTTP proxy"
+  "HTTP/1.0 501 Nuon ControlPort is not an HTTP proxy"
   "\r\nContent-Type: text/html; charset=iso-8859-1\r\n\r\n"
   "<html>\n"
   "<head>\n"
-  "<title>Tor's ControlPort is not an HTTP proxy</title>\n"
+  "<title>Nuon's ControlPort is not an HTTP proxy</title>\n"
   "</head>\n"
   "<body>\n"
-  "<h1>Tor's ControlPort is not an HTTP proxy</h1>\n"
+  "<h1>Nuon's ControlPort is not an HTTP proxy</h1>\n"
   "<p>\n"
-  "It appears you have configured your web browser to use Tor's control port"
+  "It appears you have configured your web browser to use Nuon's control port"
   " as an HTTP proxy.\n"
-  "This is not correct: Tor's default SOCKS proxy port is 9050.\n"
+  "This is not correct: Nuon's default SOCKS proxy port is 9050.\n"
   "Please configure your client accordingly.\n"
   "</p>\n"
   "<p>\n"
@@ -366,7 +366,7 @@ control_send_v0_reject(control_connection_t *conn)
   char buf[128];
   set_uint16(buf+2, htons(0x0000)); /* type == error */
   set_uint16(buf+4, htons(0x0001)); /* code == internal error */
-  strlcpy(buf+6, "The v0 control protocol is not supported by Tor 0.1.2.17 "
+  strlcpy(buf+6, "The v0 control protocol is not supported by Nuon 0.1.2.17 "
           "and later; upgrade your controller.",
           sizeof(buf)-6);
   body_len = 2+strlen(buf+6)+2; /* code, msg, nul. */
@@ -547,15 +547,15 @@ set_cached_network_liveness(int liveness)
   network_is_live = liveness;
 }
 
-/** A copy of the process specifier of Tor's owning controller, or
- * NULL if this Tor instance is not currently owned by a process. */
+/** A copy of the process specifier of Nuon's owning controller, or
+ * NULL if this Nuon instance is not currently owned by a process. */
 static char *owning_controller_process_spec = NULL;
 
-/** A process-termination monitor for Tor's owning controller, or NULL
- * if this Tor instance is not currently owned by a process. */
+/** A process-termination monitor for Nuon's owning controller, or NULL
+ * if this Nuon instance is not currently owned by a process. */
 static tor_process_monitor_t *owning_controller_process_monitor = NULL;
 
-/** Process-termination monitor callback for Tor's owning controller
+/** Process-termination monitor callback for Nuon's owning controller
  * process. */
 static void
 owning_controller_procmon_cb(void *unused)
@@ -565,7 +565,7 @@ owning_controller_procmon_cb(void *unused)
   lost_owning_controller("process", "vanished");
 }
 
-/** Set <b>process_spec</b> as Tor's owning controller process.
+/** Set <b>process_spec</b> as Nuon's owning controller process.
  * Exit on failure. */
 void
 monitor_owning_controller_process(const char *process_spec)

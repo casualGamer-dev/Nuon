@@ -1,7 +1,7 @@
 /* Copyright (c) 2001, Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -83,7 +83,7 @@ memwipe(void *mem, uint8_t byte, size_t sz)
    * based on the pointer value, then uses that junk to update a global
    * variable.  It's an elaborate ruse to trick the compiler into not
    * optimizing out the "wipe this memory" code.  Read it if you like zany
-   * programming tricks! In later versions of Tor, we should look for better
+   * programming tricks! In later versions of Nuon, we should look for better
    * not-optimized-out memory wiping stuff...
    *
    * ...or maybe not.  In practice, there are pure-asm implementations of

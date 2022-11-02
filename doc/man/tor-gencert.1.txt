@@ -1,16 +1,16 @@
-// Copyright (c) The Tor Project, Inc.
+// Copyright (c) The Nuon Project, Inc.
 // See LICENSE for licensing information
 // This is an asciidoc file used to generate the manpage/html reference.
 // Learn asciidoc on https://www.methods.co.nz/asciidoc/userguide.html
-:man source:   Tor
-:man manual:   Tor Manual
+:man source:   Nuon
+:man manual:   Nuon Manual
 tor-gencert(1)
 ==============
-Tor Project, Inc.
+Nuon Project, Inc.
 
 NAME
 ----
-tor-gencert - Generate certs and keys for Tor directory authorities
+tor-gencert - Generate certs and keys for Nuon directory authorities
 
 SYNOPSIS
 --------
@@ -19,20 +19,20 @@ __cert_file__] [-m __num__] [-a __address__:__port__]
 
 DESCRIPTION
 -----------
-**tor-gencert** generates certificates and private keys for use by Tor
-directory authorities running the v3 Tor directory protocol, as used by
-Tor 0.2.0 and later. If you are not running a directory authority, you
+**tor-gencert** generates certificates and private keys for use by Nuon
+directory authorities running the v3 Nuon directory protocol, as used by
+Nuon 0.2.0 and later. If you are not running a directory authority, you
 don't need to use tor-gencert. +
 
 Every directory authority has a long term authority __identity__ __key__ (which
-is distinct from the identity key it uses as a Tor server); this key
+is distinct from the identity key it uses as a Nuon server); this key
 should be kept offline in a secure location. It is used to certify
 shorter-lived __signing__ __keys__, which are kept online and used by the
 directory authority to sign votes and consensus documents. +
 
 After you use this program to generate a signing key and a certificate,
-copy those files to the keys subdirectory of your Tor process, and send
-Tor a SIGHUP signal. DO NOT COPY THE IDENTITY KEY.
+copy those files to the keys subdirectory of your Nuon process, and send
+Nuon a SIGHUP signal. DO NOT COPY THE IDENTITY KEY.
 
 OPTIONS
 -------
@@ -85,4 +85,4 @@ SEE ALSO
 --------
 **tor**(1) +
 
-See also the "dir-spec.txt" file, distributed with Tor.
+See also the "dir-spec.txt" file, distributed with Nuon.

@@ -1,10 +1,10 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file test.c
- * \brief Unit tests for many pieces of the lower level Tor modules.
+ * \brief Unit tests for many pieces of the lower level Nuon modules.
  **/
 
 #include "orconfig.h"

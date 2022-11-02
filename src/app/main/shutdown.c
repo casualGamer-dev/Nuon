@@ -1,12 +1,12 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * @file shutdown.c
- * @brief Code to free global resources used by Tor.
+ * @brief Code to free global resources used by Nuon.
  *
  * In the future, this should all be handled by the subsystem manager. */
 
@@ -53,7 +53,7 @@
 
 void evdns_shutdown(int);
 
-/** Do whatever cleanup is necessary before shutting Tor down. */
+/** Do whatever cleanup is necessary before shutting Nuon down. */
 void
 tor_cleanup(void)
 {
@@ -100,7 +100,7 @@ tor_cleanup(void)
 /** Free all memory that we might have allocated somewhere.
  * If <b>postfork</b>, we are a worker process and we want to free
  * only the parts of memory that we won't touch. If !<b>postfork</b>,
- * Tor is shutting down and we should free everything.
+ * Nuon is shutting down and we should free everything.
  *
  * Helps us find the real leaks with sanitizers and the like. Also valgrind
  * should then report 0 reachable in its leak report (in an ideal world --

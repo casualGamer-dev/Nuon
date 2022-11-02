@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # apply.sh:
-# run spatch with appropriate includes and builtins for the Tor source code
+# run spatch with appropriate includes and builtins for the Nuon source code
 
 top="$(dirname "$0")/../.."
 

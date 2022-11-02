@@ -1,4 +1,4 @@
-/* Copyright (c) 2013-2021, The Tor Project, Inc. */
+/* Copyright (c) 2013-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -70,7 +70,7 @@
 // Redundant with util.h, but doing it here so we can avoid that dependency.
 #define raw_free free
 
-/** Version of Tor to report in backtrace messages. */
+/** Version of Nuon to report in backtrace messages. */
 static char bt_version[128] = "";
 
 #ifdef USE_BACKTRACE
@@ -329,13 +329,13 @@ get_tor_backtrace_version(void)
 int
 configure_backtrace_handler(const char *tor_version)
 {
-  char version[128] = "Tor\0";
+  char version[128] = "Nuon\0";
 
   if (tor_version) {
     int snp_rv = 0;
     /* We can't use strlcat() here, because it is defined in
      * string/compat_string.h on some platforms, and string uses torerr. */
-    snp_rv = snprintf(version, sizeof(version), "Tor %s", tor_version);
+    snp_rv = snprintf(version, sizeof(version), "Nuon %s", tor_version);
     /* It's safe to call raw_assert() here, because raw_assert() does not
      * call configure_backtrace_handler(). */
     raw_assert(snp_rv < (int)sizeof(version));

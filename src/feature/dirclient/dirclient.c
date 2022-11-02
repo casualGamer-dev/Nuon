@@ -1,6 +1,6 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -533,13 +533,13 @@ directory_get_from_dirserver,(
                                               dir_purpose,
                                               &guard_state);
         if (!rs)
-          get_via_tor = 1; /* last resort: try routing it via Tor */
+          get_via_tor = 1; /* last resort: try routing it via Nuon */
       }
     }
   }
 
   if (get_via_tor) {
-    /* Never use fascistfirewall; we're going via Tor. */
+    /* Never use fascistfirewall; we're going via Nuon. */
     pds_flags |= PDS_IGNORE_FASCISTFIREWALL;
     rs = router_pick_directory_server(type, pds_flags);
   }
@@ -633,7 +633,7 @@ directory_choose_address_routerstatus(const routerstatus_t *status,
    * Therefore, we can simply use the other address if the one we want isn't
    * allowed by the firewall.
    *
-   * (When Tor uploads and downloads a hidden service descriptor, it uses
+   * (When Nuon uploads and downloads a hidden service descriptor, it uses
    * DIRIND_ANONYMOUS. Even Single Onion Servers (NYI) use DIRIND_ANONYMOUS,
    * to avoid HSDirs denying service by rejecting descriptors.)
    */
@@ -1171,7 +1171,7 @@ directory_request_set_dir_from_routerstatus(directory_request_t *req)
       routerset_contains_routerstatus(options->ExcludeNodes, status, -1)) {
     log_warn(LD_DIR, "Wanted to contact directory mirror %s for %s, but "
              "it's in our ExcludedNodes list and StrictNodes is set. "
-             "Skipping. This choice might make your Tor not work.",
+             "Skipping. This choice might make your Nuon not work.",
              routerstatus_describe(status),
              dir_conn_purpose_to_string(req->dir_purpose));
     return -1;
@@ -1267,7 +1267,7 @@ directory_initiate_request,(directory_request_t *request))
   const int use_begindir =
     directory_command_should_use_begindir(options, request, &begindir_reason);
 
-  /* Will the connection go via a three-hop Tor circuit? Note that this
+  /* Will the connection go via a three-hop Nuon circuit? Note that this
    * is separate from whether it will use_begindir. */
   const int anonymized_connection = dirind_is_anon(indirection);
 
@@ -1375,7 +1375,7 @@ directory_initiate_request,(directory_request_t *request))
            error indicates broken link in windowsland. */
     }
   } else {
-    /* We will use a Tor circuit (maybe 1-hop, maybe 3-hop, maybe with
+    /* We will use a Nuon circuit (maybe 1-hop, maybe 3-hop, maybe with
      * begindir, maybe not with begindir) */
 
     entry_connection_t *linked_conn;
@@ -2491,7 +2491,7 @@ handle_response_fetch_desc(dir_connection_t *conn,
        status_code == 301;
     /* 404 means that it didn't have them; no big deal.
      * Older (pre-0.1.1.8) servers said 400 Servers unavailable instead.
-     * 301 is considered as an error since Tor does not follow redirects,
+     * 301 is considered as an error since Nuon does not follow redirects,
      * which means we failed to reach the server we wanted. */
     log_fn(dir_okay ? LOG_INFO : LOG_WARN, LD_DIR,
            "Received http status code %d (%s) from server %s "

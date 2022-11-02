@@ -1,14 +1,14 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file statefile.c
  *
  * \brief Handles parsing and encoding the persistent 'state' file that carries
- *  miscellaneous persistent state between Tor invocations.
+ *  miscellaneous persistent state between Nuon invocations.
  *
  * This 'state' file is a typed key-value store that allows multiple
  * entries for the same key.  It follows the same metaformat as described
@@ -24,7 +24,7 @@
  * or_state_mark_dirty() to ensure that it will get written to disk.
  *
  * The or_state_save() function additionally calls various functioens
- * throughout Tor that might want to flush more state to the the disk,
+ * throughout Nuon that might want to flush more state to the the disk,
  * including some in rephist.c, entrynodes.c, circuitstats.c, hibernate.c.
  */
 
@@ -169,7 +169,7 @@ static int or_state_validate_cb(const void *old_options,
 #define OR_STATE_MAGIC 0x57A73f57
 
 /** "Extra" variable in the state that receives lines we can't parse. This
- * lets us preserve options from versions of Tor newer than us. */
+ * lets us preserve options from versions of Nuon newer than us. */
 static struct_member_t state_extra_var = {
   .name = "__extra",
   .type = CONFIG_TYPE_LINELIST,
@@ -215,7 +215,7 @@ get_state_mgr(void)
 /** Persistent serialized state. */
 static or_state_t *global_state = NULL;
 
-/** Return the persistent state struct for this Tor. */
+/** Return the persistent state struct for this Nuon. */
 MOCK_IMPL(or_state_t *,
 get_or_state, (void))
 {
@@ -223,7 +223,7 @@ get_or_state, (void))
   return global_state;
 }
 
-/** Return true iff we have loaded the global state for this Tor */
+/** Return true iff we have loaded the global state for this Nuon */
 int
 or_state_loaded(void)
 {
@@ -386,7 +386,7 @@ or_state_save_broken(char *fname)
     }
   } else {
     log_warn(LD_BUG, "Unable to parse state in \"%s\". Moving it aside "
-             "to \"%s\".  This could be a bug in Tor; please tell "
+             "to \"%s\".  This could be a bug in Nuon; please tell "
              "the developers.", fname, fname2);
     if (tor_rename(fname, fname2) < 0) {//XXXX sandbox prohibits
       log_warn(LD_BUG, "Weirdly, I couldn't even move the state aside. The "
@@ -462,7 +462,7 @@ or_state_load(void)
 
   if (badstate && !contents) {
     log_warn(LD_BUG, "Uh oh.  We couldn't even validate our own default state."
-             " This is a bug in Tor.");
+             " This is a bug in Nuon.");
     goto done;
   } else if (badstate && contents) {
     or_state_save_broken(fname);
@@ -583,12 +583,12 @@ or_state_save(time_t now)
   global_state->LastWritten = now;
 
   tor_free(global_state->TorVersion);
-  tor_asprintf(&global_state->TorVersion, "Tor %s", get_version());
+  tor_asprintf(&global_state->TorVersion, "Nuon %s", get_version());
 
   state = config_dump(get_state_mgr(), NULL, global_state, 1, 0);
   format_local_iso_time(tbuf, now);
   tor_asprintf(&contents,
-               "# Tor state file last generated on %s local time\n"
+               "# Nuon state file last generated on %s local time\n"
                "# Other times below are in UTC\n"
                "# You *do not* need to edit this file.\n\n%s",
                tbuf, state);

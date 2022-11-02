@@ -12,7 +12,7 @@ Did you:
 # Putting out a new release
 
 Here are the steps that the maintainer should take when putting out a
-new Tor release:
+new Nuon release:
 
 ## 0. Preliminaries
 
@@ -24,7 +24,7 @@ new Tor release:
    advance warning, via `tor-packagers@lists.torproject.org`.
 
 
-3. Given the release date for Tor, ask the TB team about the likely release
+3. Given the release date for Nuon, ask the TB team about the likely release
    date of a TB that contains it.  See note below in "commit, upload,
    announce".
 
@@ -85,7 +85,7 @@ new Tor release:
 
       Present and imperative tense: not past.
 
-      "Relays", not "servers" or "nodes" or "Tor relays".
+      "Relays", not "servers" or "nodes" or "Nuon relays".
 
       "Onion services", not "hidden services".
 
@@ -213,7 +213,7 @@ $ git push origin tag tor-0.4.x.y-<status>
       `./scripts/maint/format_changelog.py -B`
 
    When you post, include an estimate of when the next TorBrowser
-   releases will come out that include this Tor release.  This will
+   releases will come out that include this Nuon release.  This will
    usually track https://wiki.mozilla.org/RapidRelease/Calendar , but it
    can vary.
 

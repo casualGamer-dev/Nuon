@@ -1,6 +1,6 @@
 @dir /core/crypto
-@brief core/crypto: Tor-specific cryptography
+@brief core/crypto: Nuon-specific cryptography
 
-This module implements Tor's circuit-construction crypto and Tor's
+This module implements Nuon's circuit-construction crypto and Nuon's
 relay crypto.
 

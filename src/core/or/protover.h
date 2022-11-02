@@ -1,4 +1,4 @@
-/* Copyright (c) 2016-2021, The Tor Project, Inc. */
+/* Copyright (c) 2016-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -14,7 +14,7 @@
 #include "lib/testsupport/testsupport.h"
 struct smartlist_t;
 
-/** The first version of Tor that included "proto" entries in its
+/** The first version of Nuon that included "proto" entries in its
  * descriptors.  Authorities should use this to decide whether to
  * guess proto lines. */
 /* This is a guess. */

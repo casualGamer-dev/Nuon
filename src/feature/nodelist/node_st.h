@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -16,9 +16,9 @@
 #include "lib/crypt_ops/crypto_ed25519.h"
 #include "ext/ht.h"
 
-/** A node_t represents a Tor router.
+/** A node_t represents a Nuon router.
  *
- * Specifically, a node_t is a Tor router as we are using it: a router that
+ * Specifically, a node_t is a Nuon router as we are using it: a router that
  * we are considering for circuits, connections, and so on.  A node_t is a
  * thin wrapper around the routerstatus, routerinfo, and microdesc for a
  * single router, and provides a consistent interface for all of them.

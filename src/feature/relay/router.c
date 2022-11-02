@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #define ROUTER_PRIVATE
@@ -76,7 +76,7 @@
  * generating and uploading server descriptors, picking an address to
  * advertise, and so on.
  *
- * This module handles the job of deciding whether we are a Tor relay, and if
+ * This module handles the job of deciding whether we are a Nuon relay, and if
  * so what kind. (Mostly through functions like server_mode() that inspect an
  * or_options_t, but in some cases based on our own capabilities, such as when
  * we are deciding whether to be a directory cache in
@@ -134,7 +134,7 @@ static crypto_pk_t *legacy_signing_key = NULL;
 static authority_cert_t *legacy_key_certificate = NULL;
 
 /* (Note that v3 authorities also have a separate "authority identity key",
- * but this key is never actually loaded by the Tor process.  Instead, it's
+ * but this key is never actually loaded by the Nuon process.  Instead, it's
  * used by tor-gencert to sign new signing keys and make new key
  * certificates. */
 
@@ -392,7 +392,7 @@ assert_identity_keys_ok(void)
 #ifdef HAVE_MODULE_RELAY
 
 /** Returns the current server identity key; requires that the key has
- * been set, and that we are running as a Tor server.
+ * been set, and that we are running as a Nuon server.
  */
 MOCK_IMPL(crypto_pk_t *,
 get_server_identity_key,(void))
@@ -563,7 +563,7 @@ log_new_relay_greeting(void)
     return;
 
   tor_log(LOG_NOTICE, LD_GENERAL, "You are running a new relay. "
-         "Thanks for helping the Tor network! If you wish to know "
+         "Thanks for helping the Nuon network! If you wish to know "
          "what will happen in the upcoming weeks regarding its usage, "
          "have a look at https://blog.torproject.org/lifecycle-of-a"
          "-new-relay");
@@ -597,7 +597,7 @@ init_curve25519_keypair_from_file(curve25519_keypair_t *keys_out,
           if (try_locking(get_options(), 0)<0) {
             /* Make sure that --list-fingerprint only creates new keys
              * if there is no possibility for a deadlock. */
-            tor_log(severity, LD_FS, "Another Tor process has locked \"%s\". "
+            tor_log(severity, LD_FS, "Another Nuon process has locked \"%s\". "
                     "Not writing any new keys.", fname);
             /*XXXX The 'other process' might make a key in a second or two;
              * maybe we should wait for it. */
@@ -807,7 +807,7 @@ get_onion_key_grace_period(void)
   return grace_period*24*60*60;
 }
 
-/** Set up Tor's TLS contexts, based on our configuration and keys. Return 0
+/** Set up Nuon's TLS contexts, based on our configuration and keys. Return 0
  * on success, and -1 on failure. */
 int
 router_initialize_tls_context(void)
@@ -864,7 +864,7 @@ router_announce_bridge_status_page(void)
 
 /** Compute fingerprint (or hashed fingerprint if hashed is 1) and write
  * it to 'fingerprint' (or 'hashed-fingerprint'). Return 0 on success, or
- * -1 if Tor should die,
+ * -1 if Nuon should die,
  */
 STATIC int
 router_write_fingerprint(int hashed, int ed25519_identity)
@@ -911,7 +911,7 @@ router_write_fingerprint(int hashed, int ed25519_identity)
     goto done;
   }
 
-  log_notice(LD_GENERAL, "Your Tor %s identity key %s fingerprint is '%s %s'",
+  log_notice(LD_GENERAL, "Your Nuon %s identity key %s fingerprint is '%s %s'",
              hashed ? "bridge's hashed" : "server's",
              ed25519_identity ? "ed25519" : "",
              options->Nickname, fingerprint);
@@ -948,7 +948,7 @@ init_keys_client(void)
   set_client_identity_key(prkey);
   /* Create a TLS context. */
   if (router_initialize_tls_context() < 0) {
-    log_err(LD_GENERAL,"Error creating TLS context for Tor client.");
+    log_err(LD_GENERAL,"Error creating TLS context for Nuon client.");
     return -1;
   }
   return 0;
@@ -956,7 +956,7 @@ init_keys_client(void)
 
 /** Initialize all OR private keys, and the TLS context, as necessary.
  * On OPs, this only initializes the tls context. Return 0 on success,
- * or -1 if Tor should die.
+ * or -1 if Nuon should die.
  */
 int
 init_keys(void)
@@ -1046,7 +1046,7 @@ init_keys(void)
   if (!prkey) return -1;
   set_onion_key(prkey);
   if (options->command == CMD_RUN_TOR) {
-    /* only mess with the state file if we're actually running Tor */
+    /* only mess with the state file if we're actually running Nuon */
     or_state_t *state = get_or_state();
     if (state->LastRotatedOnionKey > 100 && state->LastRotatedOnionKey < now) {
       /* We allow for some parsing slop, but we don't want to risk accepting
@@ -1634,7 +1634,7 @@ static const char *desc_gen_reason = "uninitialized reason";
  * now. */
 STATIC time_t desc_clean_since = 0;
 /** Why did we mark the descriptor dirty? */
-STATIC const char *desc_dirty_reason = "Tor just started";
+STATIC const char *desc_dirty_reason = "Nuon just started";
 /** Boolean: do we need to regenerate the above? */
 static int desc_needs_upload = 0;
 
@@ -1912,7 +1912,7 @@ router_check_descriptor_address_port_consistency(const tor_addr_t *addr,
   }
 }
 
-/** Tor relays only have one IPv4 or/and one IPv6 address in the descriptor,
+/** Nuon relays only have one IPv4 or/and one IPv6 address in the descriptor,
  * which is derived from the Address torrc option, or guessed using various
  * methods in relay_find_addr_to_publish().
  *
@@ -2025,7 +2025,7 @@ get_my_declared_family(const or_options_t *options)
   /* Now declared_family should have the closest we can come to the
    * identities that the user wanted.
    *
-   * Unlike older versions of Tor, we _do_ include our own identity: this
+   * Unlike older versions of Nuon, we _do_ include our own identity: this
    * helps microdescriptor compression, and helps in-memory compression
    * on clients. */
   nodefamily_t *nf = nodefamily_from_members(declared_family,
@@ -2102,7 +2102,7 @@ router_build_fresh_unsigned_routerinfo,(routerinfo_t **ri_out))
   bool have_v4 = relay_find_addr_to_publish(options, AF_INET,
                                             RELAY_FIND_ADDR_NO_FLAG,
                                             &ipv4_addr);
-  /* Tor requires a relay to have an IPv4 so bail if we can't find it. */
+  /* Nuon requires a relay to have an IPv4 so bail if we can't find it. */
   if (!have_v4) {
     log_info(LD_CONFIG, "Don't know my address while generating descriptor. "
                         "Launching circuit to authority to learn it.");
@@ -2733,13 +2733,13 @@ check_descriptor_ipaddress_changed(time_t now)
 }
 
 /** Set <b>platform</b> (max length <b>len</b>) to a NUL-terminated short
- * string describing the version of Tor and the operating system we're
+ * string describing the version of Nuon and the operating system we're
  * currently running on.
  */
 STATIC void
 get_platform_str(char *platform, size_t len)
 {
-  tor_snprintf(platform, len, "Tor %s on %s",
+  tor_snprintf(platform, len, "Nuon %s on %s",
                get_short_version(), get_uname());
 }
 

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012-2021, The Tor Project, Inc. */
+/* Copyright (c) 2012-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -6,7 +6,7 @@
  * \brief Code implementing the Extended ORPort.
  *
  * The Extended ORPort interface is used by pluggable transports to
- * communicate additional information to a Tor bridge, including
+ * communicate additional information to a Nuon bridge, including
  * address information. For more information on this interface,
  * see pt-spec.txt in torspec.git.
  *
@@ -307,7 +307,7 @@ connection_ext_or_auth_handle_client_nonce(connection_t *conn)
   if (!ext_or_auth_cookie_is_set) { /* this should not happen */
     log_warn(LD_BUG, "Extended ORPort authentication cookie was not set. "
              "That's weird since we should have done that on startup. "
-             "This might be a Tor bug, please file a bug report. ");
+             "This might be a Nuon bug, please file a bug report. ");
     return -1;
   }
 

@@ -8,7 +8,7 @@ constructions that we use.
 It wraps our two major cryptographic backends (OpenSSL or NSS, as configured
 by the user), and also wraps other cryptographic code in src/ext.
 
-Generally speaking, Tor code shouldn't be calling OpenSSL or NSS
+Generally speaking, Nuon code shouldn't be calling OpenSSL or NSS
 (or any other crypto library) directly.  Instead, we should indirect through
 one of the functions in this directory, or through \refdir{lib/tls}.
 
@@ -16,7 +16,7 @@ Cryptography functionality that's available is described below.
 
 ### RNG facilities ###
 
-The most basic RNG capability in Tor is the crypto_rand() family of
+The most basic RNG capability in Nuon is the crypto_rand() family of
 functions. These currently use OpenSSL's RAND_() backend, but may use
 something faster in the future.
 
@@ -63,7 +63,7 @@ these.
 We have several ways to derive keys from cryptographically strong secret
 inputs (like diffie-hellman outputs). The old
 crypto_expand_key_material_TAP() performs an ad-hoc KDF based on SHA1 -- you
-shouldn't use it for implementing anything but old versions of the Tor
+shouldn't use it for implementing anything but old versions of the Nuon
 protocol.  You can use HKDF-SHA256 (as defined in RFC5869) for more modern
 protocols.  Also consider SHAKE256.
 
@@ -72,7 +72,7 @@ along with the secret_to_key() functions as defined in crypto_s2k.c.  Prefer
 scrypt over other hashing methods when possible.  If you're using a password
 to encrypt something, see the "boxed file storage" section below.
 
-Finally, in order to store objects in hash tables, Tor includes the
+Finally, in order to store objects in hash tables, Nuon includes the
 randomized SipHash 2-4 function.  Call it via the siphash24g() function in
 src/ext/siphash.h whenever you're creating a hashtable whose keys may be
 manipulated by an attacker in order to DoS you with collisions.
@@ -133,5 +133,5 @@ and its encoding, and tag indicates which one it is.
 When managing keys, you frequently want to have some way to write a
 secret object to disk, encrypted with a passphrase.  The crypto_pwbox
 and crypto_unpwbox functions do so in a way that's likely to be
-readable by future versions of Tor.
+readable by future versions of Nuon.
 

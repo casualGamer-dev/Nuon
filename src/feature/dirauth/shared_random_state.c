@@ -1,4 +1,4 @@
-/* Copyright (c) 2016-2021, The Tor Project, Inc. */
+/* Copyright (c) 2016-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -77,7 +77,7 @@ static const config_var_t state_vars[] = {
 // clang-format on
 
 /** "Extra" variable in the state that receives lines we can't parse. This
- * lets us preserve options from versions of Tor newer than us. */
+ * lets us preserve options from versions of Nuon newer than us. */
 static const struct_member_t state_extra_var = {
   .name = "__extra",
   .type = CONFIG_TYPE_LINELIST,
@@ -722,7 +722,7 @@ disk_state_save_to_disk(void)
   state = config_dump(get_srs_mgr(), NULL, sr_disk_state, 0, 0);
   format_local_iso_time(tbuf, now);
   tor_asprintf(&content,
-               "# Tor shared random state file last generated on %s "
+               "# Nuon shared random state file last generated on %s "
                "local time\n"
                "# Other times below are in UTC\n"
                "# Please *do not* edit this file.\n\n%s",

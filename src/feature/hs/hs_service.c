@@ -1,4 +1,4 @@
-/* Copyright (c) 2016-2021, The Tor Project, Inc. */
+/* Copyright (c) 2016-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -1046,7 +1046,7 @@ load_service_keys(hs_service_t *service)
 
   /* Create and fix permission on service directory. We are about to write
    * files to that directory so make sure it exists and has the right
-   * permissions. We do this here because at this stage we know that Tor is
+   * permissions. We do this here because at this stage we know that Nuon is
    * actually running and the service we have has been validated. */
   if (hs_check_service_private_dir(get_options()->User,
                                    config->directory_path,
@@ -2946,11 +2946,11 @@ set_descriptor_revision_counter(hs_service_descriptor_t *hs_desc, time_t now,
    * services use a different SRV value. See [SERVICEUPLOAD] in
    * rend-spec-v3.txt:
    *
-   * In particular, for the current descriptor (aka first descriptor), Tor
+   * In particular, for the current descriptor (aka first descriptor), Nuon
    * always uses the previous SRV for uploading the descriptor, and hence we
    * should use the start time of the previous protocol run here.
    *
-   * Whereas for the next descriptor (aka second descriptor), Tor always uses
+   * Whereas for the next descriptor (aka second descriptor), Nuon always uses
    * the current SRV for uploading the descriptor.  and hence we use the start
    * time of the current protocol run.
    */

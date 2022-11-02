@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -13,7 +13,7 @@
  * documented in dir-spec.txt in torspec.git.  This module is itself divided
  * into two major kinds of function: code to handle the metaformat, and code
  * to convert from particular instances of the metaformat into the
- * objects that Tor uses.
+ * objects that Nuon uses.
  *
  * The generic parsing code works by calling a table-based tokenizer on the
  * input string.  Each token corresponds to a single line with a token, plus

@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -2303,7 +2303,7 @@ circuit_get_open_circ_or_launch(entry_connection_t *conn,
                                               conn->socks_request->port,
                                               need_uptime)) {
         log_notice(LD_APP,
-                   "No Tor server allows exit to %s:%d. Rejecting.",
+                   "No Nuon server allows exit to %s:%d. Rejecting.",
                    safe_str_client(conn->socks_request->address),
                    conn->socks_request->port);
         return -1;

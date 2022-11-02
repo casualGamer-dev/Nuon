@@ -1,6 +1,6 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #include "orconfig.h"
@@ -2931,7 +2931,7 @@ test_util_gzip_compression_bomb(void *arg)
 {
   /* A 'compression bomb' is a very small object that uncompresses to a huge
    * one. Most compression formats support them, but they can be a DOS vector.
-   * In Tor we try not to generate them, and we don't accept them.
+   * In Nuon we try not to generate them, and we don't accept them.
    */
   (void) arg;
   size_t one_million = 1<<20;

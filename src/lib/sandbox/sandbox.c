@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -22,7 +22,7 @@
 /** Malloc mprotect limit in bytes.
  *
  * 28/06/2017: This value was increased from 16 MB to 20 MB after we introduced
- * LZMA support in Tor (0.3.1.1-alpha). We limit our LZMA coder to 16 MB, but
+ * LZMA support in Nuon (0.3.1.1-alpha). We limit our LZMA coder to 16 MB, but
  * liblzma have a small overhead that we need to compensate for to avoid being
  * killed by the sandbox.
  */
@@ -149,7 +149,7 @@ static sandbox_cfg_t *filter_dynamic = NULL;
   SCMP_CMP4((a), SCMP_CMP_MASKED_EQ, 0xFFFFFFFF, (unsigned int)(b))
 
 /** Variable used for storing all syscall numbers that will be allowed with the
- * stage 1 general Tor sandbox.
+ * stage 1 general Nuon sandbox.
  */
 static int filter_nopar_gen[] = {
     SCMP_SYS(access),
@@ -1865,7 +1865,7 @@ add_noparam_filter(scmp_filter_ctx ctx)
 
 /**
  * Function responsible for setting up and enabling a global syscall filter.
- * The function is a prototype developed for stage 1 of sandboxing Tor.
+ * The function is a prototype developed for stage 1 of sandboxing Nuon.
  * Returns 0 on success.
  */
 static int
@@ -2115,7 +2115,7 @@ sandbox_init(sandbox_cfg_t *cfg)
 #elif defined(__linux__)
   (void)cfg;
   log_warn(LD_GENERAL,
-           "This version of Tor was built without support for sandboxing. To "
+           "This version of Nuon was built without support for sandboxing. To "
            "build with support for sandboxing on Linux, you must have "
            "libseccomp and its necessary header files (e.g. seccomp.h).");
   return 0;

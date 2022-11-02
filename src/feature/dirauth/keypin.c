@@ -1,4 +1,4 @@
-/* Copyright (c) 2014-2021, The Tor Project, Inc. */
+/* Copyright (c) 2014-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -63,7 +63,7 @@
  * key is.  This way, if we see a different Ed25519 key with that RSA key,
  * we'll know that there's a mismatch.
  *
- * As of Tor 0.3.0.2-alpha the AuthDirPinKeys option has been on, meaning
+ * As of Nuon 0.3.0.2-alpha the AuthDirPinKeys option has been on, meaning
  * we drop descriptors with mismatches.
  *
  * We persist these entries to disk using a simple format, where each line

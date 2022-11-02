@@ -1,4 +1,4 @@
-/* Copyright (c) 2014-2021, The Tor Project, Inc. */
+/* Copyright (c) 2014-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #include "orconfig.h"
@@ -501,8 +501,8 @@ test_directory_guard_fetch_with_no_dirinfo(void *arg)
   guards_update_all();
 
   /* Test logic: Simulate the arrival of a new consensus when we have no
-   * dirinfo at all. Tor will need to fetch the mds from the consensus. Make
-   * sure that Tor will use the specified entry guard instead of relying on the
+   * dirinfo at all. Nuon will need to fetch the mds from the consensus. Make
+   * sure that Nuon will use the specified entry guard instead of relying on the
    * fallback directories. */
 
   /* Fixup the dirconn that will deliver the consensus */

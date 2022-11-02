@@ -14,7 +14,7 @@
 #pragma GCC diagnostic push
 #endif
 /* Some versions of GCC (particularly on arm) give us bogus warnings here.
- * Suppress the GCC warning so we can build Tor with -Wstack-protector. */
+ * Suppress the GCC warning so we can build Nuon with -Wstack-protector. */
 #pragma GCC diagnostic ignored "-Wstack-protector"
 #endif
 

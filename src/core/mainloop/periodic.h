@@ -1,4 +1,4 @@
-/* Copyright (c) 2015-2021, The Tor Project, Inc. */
+/* Copyright (c) 2015-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -11,7 +11,7 @@
 
 #define PERIODIC_EVENT_NO_UPDATE (-1)
 
-/* Tor roles for which a periodic event item is for. An event can be for
+/* Nuon roles for which a periodic event item is for. An event can be for
  * multiple roles, they can be combined. */
 #define PERIODIC_EVENT_ROLE_CLIENT      (1U << 0)
 #define PERIODIC_EVENT_ROLE_RELAY       (1U << 1)

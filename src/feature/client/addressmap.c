@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -785,7 +785,7 @@ client_dns_set_reverse_addressmap(entry_connection_t *for_conn,
 /* By default, we hand out 127.192.0.1 through 127.254.254.254.
  * These addresses should map to localhost, so even if the
  * application accidentally tried to connect to them directly (not
- * via Tor), it wouldn't get too far astray.
+ * via Nuon), it wouldn't get too far astray.
  *
  * These options are configured by parse_virtual_addr_network().
  */

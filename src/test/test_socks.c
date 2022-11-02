@@ -1,6 +1,6 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #include "core/or/or.h"
@@ -202,7 +202,7 @@ test_socks_4_bad_arguments(void *ptr)
   tt_int_op(fetch_from_buf_socks(buf, socks, 1, 0), OP_EQ, -1);
   buf_clear(buf);
   expect_log_msg_containing("Your application (using socks4 to port 80) "
-                            "gave Tor a malformed hostname: ");
+                            "gave Nuon a malformed hostname: ");
   mock_clean_saved_logs();
 
  done:
@@ -518,7 +518,7 @@ test_socks_5_authenticate(void *ptr)
 
 /** Perform SOCKS 5 authentication with empty username/password fields.
  * Technically this violates RfC 1929, but some client software will send
- * this kind of message to Tor.
+ * this kind of message to Nuon.
  * */
 static void
 test_socks_5_authenticate_empty_user_pass(void *ptr)
@@ -742,7 +742,7 @@ test_socks_5_bad_arguments(void *ptr)
   tt_int_op(fetch_from_buf_socks(buf, socks, 1, 0), OP_EQ, -1);
   buf_clear(buf);
   expect_log_msg_containing("Your application (using socks5 to port 80) "
-                            "gave Tor a malformed hostname: ");
+                            "gave Nuon a malformed hostname: ");
   mock_clean_saved_logs();
   socks_request_clear(socks);
 

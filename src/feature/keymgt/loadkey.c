@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -66,7 +66,7 @@ init_key_from_file(const char *fname, int generate, int severity,
           if (try_locking(get_options(), 0)<0) {
             /* Make sure that --list-fingerprint only creates new keys
              * if there is no possibility for a deadlock. */
-            tor_log(severity, LD_FS, "Another Tor process has locked \"%s\". "
+            tor_log(severity, LD_FS, "Another Nuon process has locked \"%s\". "
                     "Not writing any new keys.", fname);
             /*XXXX The 'other process' might make a key in a second or two;
              * maybe we should wait for it. */

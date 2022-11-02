@@ -1,5 +1,5 @@
 /* Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -186,7 +186,7 @@ rep_hist_remove_predicted_ports(const smartlist_t *rmv_ports)
 /** The user asked us to do a resolve. Rather than keeping track of
  * timings and such of resolves, we fake it for now by treating
  * it the same way as a connection to port 80. This way we will continue
- * to have circuits lying around if the user only uses Tor for resolves.
+ * to have circuits lying around if the user only uses Nuon for resolves.
  */
 void
 rep_hist_note_used_resolve(time_t now)

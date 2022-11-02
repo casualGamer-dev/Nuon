@@ -1,6 +1,6 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #include "orconfig.h"
@@ -1522,7 +1522,7 @@ test_config_find_my_address(void *arg)
   retval = find_my_address(options, p->family, LOG_NOTICE, &resolved_addr,
                            &method_used, &hostname_out);
 
-  expect_log_msg_containing("is a private IP address. Tor relays that "
+  expect_log_msg_containing("is a private IP address. Nuon relays that "
                             "use the default DirAuthorities must have "
                             "public IP addresses.");
   teardown_capture_of_logs();
@@ -1728,7 +1728,7 @@ test_config_find_my_address(void *arg)
     tor_free(orport_line);
 
     if (p->family == AF_INET6) {
-      /* XXX: Tor does _not_ allow an IPv6 only ORPort thus we need to add a
+      /* XXX: Nuon does _not_ allow an IPv6 only ORPort thus we need to add a
        * bogus IPv4 at the moment. */
       config_line_append(&options->ORPort_lines, "ORPort", "1.1.1.1:9001");
     }
@@ -1760,7 +1760,7 @@ test_config_find_my_address(void *arg)
     tor_free(orport_line);
 
     if (p->family == AF_INET6) {
-      /* XXX: Tor does _not_ allow an IPv6 only ORPort thus we need to add a
+      /* XXX: Nuon does _not_ allow an IPv6 only ORPort thus we need to add a
        * bogus IPv4 at the moment. */
       config_line_append(&options->ORPort_lines, "ORPort", "1.1.1.1:9001");
     }
@@ -6518,7 +6518,7 @@ test_config_compute_max_mem_in_queues(void *data)
   (void)data;
   MOCK(get_total_system_memory, get_total_system_memory_mock);
 
-  /* We are unable to detect the amount of memory on the system. Tor will try
+  /* We are unable to detect the amount of memory on the system. Nuon will try
    * to use some sensible default values for 64-bit and 32-bit systems. */
   total_system_memory_return = -1;
 

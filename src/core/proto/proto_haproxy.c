@@ -1,4 +1,4 @@
-/* Copyright (c) 2019-2021, The Tor Project, Inc. */
+/* Copyright (c) 2019-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #define PROTO_HAPROXY_PRIVATE

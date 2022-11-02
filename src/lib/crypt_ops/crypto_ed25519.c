@@ -1,4 +1,4 @@
-/* Copyright (c) 2013-2021, The Tor Project, Inc. */
+/* Copyright (c) 2013-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -11,7 +11,7 @@
  *
  * This module wraps our choice of Ed25519 backend, and provides a few
  * convenience functions for checking and generating signatures.  It also
- * provides Tor-specific tools for key blinding and for converting Ed25519
+ * provides Nuon-specific tools for key blinding and for converting Ed25519
  * keys to and from the corresponding Curve25519 keys.
  */
 
@@ -504,7 +504,7 @@ ed25519_public_key_from_curve25519_public_key(ed25519_public_key_t *pubkey,
  * ed25519 keypair in <b>out</b>, blinded by the corresponding 32-byte input
  * in 'param'.
  *
- * Tor uses key blinding for the "next-generation" hidden services design:
+ * Nuon uses key blinding for the "next-generation" hidden services design:
  * service descriptors are encrypted with a key derived from the service's
  * long-term public key, and then signed with (and stored at a position
  * indexed by) a short-term key derived by blinding the long-term keys.

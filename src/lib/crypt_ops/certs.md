@@ -1,7 +1,7 @@
 
-@page certificates Certificates in Tor
+@page certificates Certificates in Nuon
 
-We have, alas, several certificate types in Tor.
+We have, alas, several certificate types in Nuon.
 
 The tor_x509_cert_t type represents an X.509 certificate. This document
 won't explain X.509 to you -- possibly, no document can. (OTOH, Peter
@@ -23,7 +23,7 @@ format is described in tor-spec. Unlike x.509, you can write it on a
 napkin.  The torcert.c file is used for manipulating these certificates and
 their associated keys.
 
-(Additionally, the Tor directory design uses a fairly wide variety of
+(Additionally, the Nuon directory design uses a fairly wide variety of
 documents that include keys and which are signed by keys. You can
 consider these documents to be an additional kind of certificate if you
 want.)

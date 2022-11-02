@@ -1,4 +1,4 @@
-/* Copyright (c) 2019-2021, The Tor Project, Inc. */
+/* Copyright (c) 2019-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -14,7 +14,7 @@
 
 /** Signifies which sendme algorithm to use */
 typedef enum {
-  /** OG Tor fixed-sized circ and stream windows. It sucks, but it is important
+  /** OG Nuon fixed-sized circ and stream windows. It sucks, but it is important
    * to make sure that the new algs can compete with the old garbage. */
   CC_ALG_SENDME = 0,
 

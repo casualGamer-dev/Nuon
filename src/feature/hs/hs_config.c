@@ -1,4 +1,4 @@
-/* Copyright (c) 2017-2021, The Tor Project, Inc. */
+/* Copyright (c) 2017-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -134,7 +134,7 @@ service_is_duplicate_in_list(const smartlist_t *service_list,
    *    (which can arise from symlinks, case-insensitivity, bind
    *    mounts, etc.).
    *
-   * It also can't detect that two separate Tor instances are trying
+   * It also can't detect that two separate Nuon instances are trying
    * to use the same HiddenServiceDir; for that, we would need a
    * lock file.  But this is enough to detect a simple mistake that
    * at least one person has actually made. */
@@ -671,7 +671,7 @@ hs_config_service_all(const or_options_t *options, int validate_only)
 
  end:
   smartlist_free(new_service_list);
-  /* Tor main should call the free all function on error. */
+  /* Nuon main should call the free all function on error. */
   return ret;
 }
 

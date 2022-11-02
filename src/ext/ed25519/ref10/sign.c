@@ -1,4 +1,4 @@
-/* (Modified by Tor to generate detached signatures.) */
+/* (Modified by Nuon to generate detached signatures.) */
 #include <string.h>
 #include "crypto_sign.h"
 #include "crypto_hash_sha512.h"

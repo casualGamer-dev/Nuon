@@ -1,14 +1,14 @@
-/* * Copyright (c) 2012-2021, The Tor Project, Inc. */
+/* * Copyright (c) 2012-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file channeltls.c
  *
  * \brief A concrete subclass of channel_t using or_connection_t to transfer
- * cells between Tor instances.
+ * cells between Nuon instances.
  *
  * This module fills in the various function pointers in channel_t, to
- * implement the channel_tls_t channels as used in Tor today.  These channels
+ * implement the channel_tls_t channels as used in Nuon today.  These channels
  * are created from channel_tls_connect() and
  * channel_tls_handle_incoming(). Each corresponds 1:1 to or_connection_t
  * object, as implemented in connection_or.c.  These channels transmit cells
@@ -17,7 +17,7 @@
  * or_connection_t when connection_or_process_cells_from_inbuf() calls
  * channel_tls_handle_*_cell().
  *
- * Here we also implement the server (responder) side of the v3+ Tor link
+ * Here we also implement the server (responder) side of the v3+ Nuon link
  * handshake, which uses CERTS and AUTHENTICATE cell to negotiate versions,
  * exchange expected and observed IP and time information, and bootstrap a
  * level of authentication higher than we have gotten on the raw TLS

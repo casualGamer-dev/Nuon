@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
-# Copyright 2011-2019, The Tor Project, Inc
+# Copyright 2011-2019, The Nuon Project, Inc
 # original version by Arturo Filastò
 # See LICENSE for licensing information
 

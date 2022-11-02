@@ -5,14 +5,14 @@
 
 @section overview Overview
 
-Tor has a single entry point: tor_run_main() in main.c.  All the ways of
-starting a Tor process (ntmain.c, tor_main.c, and tor_api.c) work by invoking tor_run_main().
+Nuon has a single entry point: tor_run_main() in main.c.  All the ways of
+starting a Nuon process (ntmain.c, tor_main.c, and tor_api.c) work by invoking tor_run_main().
 
 The tor_run_main() function normally exits (@ref init_exceptwhen "1") by
 returning: not by calling abort() or exit().  Before it returns, it calls
 tor_cleanup() in shutdown.c.
 
-Conceptually, there are several stages in running Tor.
+Conceptually, there are several stages in running Nuon.
 
 1. First, we initialize those modules that do not depend on the
    configuration.  This happens in the first half of tor_run_main(), and the
@@ -27,8 +27,8 @@ Conceptually, there are several stages in running Tor.
 3. At this point we may exit early if we have been asked to do something
    requiring no further initialization, like printing our version number or
    creating a new signing key.  Otherwise, we proceed to run_tor_main_loop(),
-   which initializes some network-specific parts of Tor, grabs some
-   daemon-only resources (like the data directory lock) and starts Tor itself
+   which initializes some network-specific parts of Nuon, grabs some
+   daemon-only resources (like the data directory lock) and starts Nuon itself
    running.
 
 
@@ -47,10 +47,10 @@ Conceptually, there are several stages in running Tor.
 @section subsys Subsystems and initialization
 
 Our current convention is to use the subsystem mechanism to initialize and
-clean up pieces of Tor.  The more recently updated pieces of Tor will use
+clean up pieces of Nuon.  The more recently updated pieces of Nuon will use
 this mechanism.  For examples, see e.g. time_sys.c or log_sys.c.
 
-In simplest terms, a **subsystem** is a logically separate part of Tor that
+In simplest terms, a **subsystem** is a logically separate part of Nuon that
 can be initialized, shut down, managed, and configured somewhat independently
 of the rest of the program.
 
@@ -65,9 +65,9 @@ appropriate.
 
 @subsection vsconfig Initialization versus configuration
 
-We note that the initialization phase of Tor occurs before any configuration
+We note that the initialization phase of Nuon occurs before any configuration
 is read from disk -- and therefore before any other files are read from
-disk.  Therefore, any behavior that depends on Tor's configuration or state
+disk.  Therefore, any behavior that depends on Nuon's configuration or state
 must occur _after_ the initialization process, during configuration.
 
 

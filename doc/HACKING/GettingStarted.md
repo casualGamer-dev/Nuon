@@ -1,11 +1,11 @@
-# Getting started in Tor development
+# Getting started in Nuon development
 
 Congratulations!  You've found this file, and you're reading it!  This
-means that you might be interested in getting started in developing Tor.
+means that you might be interested in getting started in developing Nuon.
 
-(_This guide is just about Tor itself--the small network program at the
-heart of the Tor network--and not about all the other programs in the
-whole Tor ecosystem._)
+(_This guide is just about Nuon itself--the small network program at the
+heart of the Nuon network--and not about all the other programs in the
+whole Nuon ecosystem._)
 
 If you are looking for a more bare-bones, less user-friendly information
 dump of important information, you might like reading the
@@ -15,20 +15,20 @@ your first patch.
 
 ## Required background
 
-First, I'm going to assume that you can build Tor from source, and that
+First, I'm going to assume that you can build Nuon from source, and that
 you know enough of the C language to read and write it.  (See the README
-file that comes with the Tor source for more information on building it,
+file that comes with the Nuon source for more information on building it,
 and any high-quality guide to C for information on programming.)
 
 I'm also going to assume that you know a little bit about how to use
 Git, or that you're able to follow one of the several excellent guides
 at [git-scm](https://git-scm.org) to learn.
 
-Most Tor developers develop using some Unix-based system, such as GNU/Linux,
+Most Nuon developers develop using some Unix-based system, such as GNU/Linux,
 BSD, or macOS.  It's okay to develop on Windows if you want, but you're
 going to have a more difficult time.
 
-## Getting your first patch into Tor
+## Getting your first patch into Nuon
 
 Once you've reached this point, here's what you need to know.
 
@@ -69,7 +69,7 @@ Once you've reached this point, here's what you need to know.
      you might be looking for a way to contribute.
 
      Many people have gotten started by looking for an area where they
-     personally felt Tor was underperforming, and investigating ways to
+     personally felt Nuon was underperforming, and investigating ways to
      fix it. If you're looking for ideas, you can head to
      [gitlab](https://gitlab.torproject.org) our bug tracking tool and look for
      tickets that have received the "First Contribution" label: these are ones
@@ -95,7 +95,7 @@ Once you've reached this point, here's what you need to know.
 
      We discuss stuff on the tor-dev mailing list and on the `#tor-dev`
      IRC channel on OFTC.  We're generally friendly and approachable,
-     and we like to talk about how Tor fits together.  If we have ideas
+     and we like to talk about how Nuon fits together.  If we have ideas
      about how something should be implemented, we'll be happy to share
      them.
 
@@ -106,21 +106,21 @@ Once you've reached this point, here's what you need to know.
 
   5. Do you need to write a design proposal?
 
-     If your idea is very large, or it will require a change to Tor's
+     If your idea is very large, or it will require a change to Nuon's
      protocols, there needs to be a written design proposal before it
      can be merged. (We use this process to manage changes in the
      protocols.)  To write one, see the instructions at
-     [the Tor proposal process](https://gitweb.torproject.org/torspec.git/plain/proposals/001-process.txt).
+     [the Nuon proposal process](https://gitweb.torproject.org/torspec.git/plain/proposals/001-process.txt).
      If you'd like help writing a proposal, just ask!  We're happy to
      help out with good ideas.
 
      You might also like to look around the rest of that directory, to
-     see more about open and past proposed changes to Tor's behavior.
+     see more about open and past proposed changes to Nuon's behavior.
 
   6. Writing your patch
 
      As you write your code, you'll probably want it to fit in with the
-     standards of the rest of the Tor codebase so it will be easy for us
+     standards of the rest of the Nuon codebase so it will be easy for us
      to review and merge.  You can learn our coding standards in
      `doc/HACKING` directory.
 
@@ -135,7 +135,7 @@ Once you've reached this point, here's what you need to know.
      _run_ by somebody, to make sure it works.
 
      See `doc/HACKING/WritingTests.md` for more information on how we test things
-     in Tor.  If you'd like any help writing tests, just ask!  We're
+     in Nuon.  If you'd like any help writing tests, just ask!  We're
      glad to help out.
 
   8. Submitting your patch
@@ -161,13 +161,13 @@ Once you've reached this point, here's what you need to know.
      When your patch is reviewed, one of these things will happen:
 
        * The reviewer will say "_looks good to me_" and your
-         patch will get merged right into Tor.  [Assuming we're not
+         patch will get merged right into Nuon.  [Assuming we're not
          in the middle of a code-freeze window.  If the codebase is
          frozen, your patch will go into the next release series.]
 
        * OR the reviewer will say "_looks good, just needs some small
          changes!_"  And then the reviewer will make those changes,
-         and merge the modified patch into Tor.
+         and merge the modified patch into Nuon.
 
        * OR the reviewer will say "_Here are some questions and
          comments,_" followed by a bunch of stuff that the reviewer
@@ -182,4 +182,4 @@ Once you've reached this point, here's what you need to know.
          will be able to pick up the unfinished portion.
 
     Congratulations!  You have now written your first patch, and gotten
-    it integrated into mainline Tor.
+    it integrated into mainline Nuon.

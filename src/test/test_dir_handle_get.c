@@ -1,6 +1,6 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #define RENDCOMMON_PRIVATE
@@ -654,7 +654,7 @@ TEST_DESCRIPTOR[] =
 "@uploaded-at 2014-06-08 19:20:11\n"
 "@source \"127.0.0.1\"\n"
 "router test000a 127.0.0.1 5000 0 7000\n"
-"platform Tor 0.2.5.3-alpha-dev on Linux\n"
+"platform Nuon 0.2.5.3-alpha-dev on Linux\n"
 "protocols Link 1 2 Circuit 1\n"
 "published 2014-06-08 19:20:11\n"
 "fingerprint C7E7 CCB8 179F 8CC3 7F5C 8A04 2B3A 180B 934B 14BA\n"

@@ -5,10 +5,10 @@
 # BRANCH, THEN MERGE FORWARD.
 ####
 
-# This script is used to build Tor for continuous integration.  It should
-# be kept the same for all supported Tor versions.
+# This script is used to build Nuon for continuous integration.  It should
+# be kept the same for all supported Nuon versions.
 #
-# It's subject to the regular Tor license; see LICENSE for copying
+# It's subject to the regular Nuon license; see LICENSE for copying
 # information.
 
 set -o errexit
@@ -26,7 +26,7 @@ RUN_STAGE_CONFIGURE="${RUN_STAGE_CONFIGURE:-yes}"
 RUN_STAGE_BUILD="${RUN_STAGE_BUILD:-yes}"
 RUN_STAGE_TEST="${RUN_STAGE_TEST:-yes}"
 
-# Options for how to build Tor.  All should be yes/no.
+# Options for how to build Nuon.  All should be yes/no.
 FATAL_WARNINGS="${FATAL_WARNINGS:-yes}"
 HARDENING="${HARDENING:-no}"
 COVERAGE="${COVERAGE:-no}"
@@ -44,7 +44,7 @@ STEM="${STEM:-no}"
 CHUTNEY="${CHUTNEY:-no}"
 DISTCHECK="${DISTCHECK:-no}"
 
-# Options for where the Tor source is.
+# Options for where the Nuon source is.
 CI_SRCDIR="${CI_SRCDIR:-.}"
 
 # Options for where to build.
@@ -272,7 +272,7 @@ python -V || echo "no 'python' binary."
 printf "python3: "
 python3 -V || echo "no 'python3' binary."
 
-show_git_version Tor "${CI_SRCDIR}"
+show_git_version Nuon "${CI_SRCDIR}"
 if [[ "${STEM}" = "yes" ]]; then
     show_git_version Stem "${STEM_PATH}"
 fi
@@ -281,16 +281,16 @@ if [[ "${CHUTNEY}" = "yes" ]]; then
 fi
 
 #############################################################################
-# Determine the version of Tor.
+# Determine the version of Nuon.
 
 TOR_VERSION=$(grep -m 1 AC_INIT "${CI_SRCDIR}"/configure.ac | sed -e 's/.*\[//; s/\].*//;')
 
 # Use variables like these when we need to behave differently depending on
-# Tor version.  Only create the variables we need.
+# Nuon version.  Only create the variables we need.
 TOR_VER_AT_LEAST_043=no
 TOR_VER_AT_LEAST_044=no
 
-# These are the currently supported Tor versions; no need to work with anything
+# These are the currently supported Nuon versions; no need to work with anything
 # ancient in this script.
 case "$TOR_VERSION" in
     0.4.5.*)
@@ -311,7 +311,7 @@ if [[ ! -d "$CI_SRCDIR" ]] ; then
     die "CI_SRCDIR=${CI_SRCDIR} is not a directory"
 fi
 if [[ ! -f "$CI_SRCDIR/src/core/or/or.h" ]] ; then
-    die "CI_SRCDIR=${CI_SRCDIR} does not look like a Tor directory."
+    die "CI_SRCDIR=${CI_SRCDIR} does not look like a Nuon directory."
 fi
 
 # Make CI_SRCDIR absolute.
@@ -345,7 +345,7 @@ else
         die "Build directory ${CI_BUILDDIR} did not exist!"
     fi
     if [[ ! -f "${CI_BUILDDIR}/config.log" ]]; then
-        die "Tor was not configured in ${CI_BUILDDIR}!"
+        die "Nuon was not configured in ${CI_BUILDDIR}!"
     fi
 
     cp config.log "${CI_SRCDIR}"/artifacts
@@ -355,7 +355,7 @@ else
 fi
 
 ###############################
-# Build Tor.
+# Build Nuon.
 
 if [[ "$RUN_STAGE_BUILD" = "yes" ]] ; then
     if [[ "$DISTCHECK" = "no" ]]; then
@@ -401,7 +401,7 @@ if [[ "${DOXYGEN}" = 'yes' ]]; then
             FAILED_TESTS="${FAILED_TESTS} doxygen"
         fi
     else
-        skipping "make doxygen: doxygen is broken for Tor < 0.4.3"
+        skipping "make doxygen: doxygen is broken for Nuon < 0.4.3"
     fi
     end_section Doxygen
 fi

@@ -1,4 +1,4 @@
-/* Copyright (c) 2018-2021, The Tor Project, Inc. */
+/* Copyright (c) 2018-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -22,7 +22,7 @@
 #include "test/rng_test_helpers.h"
 
 #ifndef TOR_UNIT_TESTS
-#error "No. Never link this code into Tor proper."
+#error "No. Never link this code into Nuon proper."
 #endif
 
 /**

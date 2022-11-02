@@ -1,5 +1,5 @@
 
-@page strings String processing in Tor
+@page strings String processing in Nuon
 
 Since you're reading about a C program, you probably expected this
 section: it's full of functions for manipulating the (notoriously

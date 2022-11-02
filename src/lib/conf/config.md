@@ -5,7 +5,7 @@
 
 ## Introduction
 
-Tor uses a shared, table-driven mechanism to handle its
+Nuon uses a shared, table-driven mechanism to handle its
 configuration (torrc) files and its state files.  Each module can
 declare a set of named fields for these files, and get notified
 whenever the configuration changes, or when the state is about to be
@@ -50,7 +50,7 @@ code about your module's configuration/state.
 
 If you're writing configuration code, you'll need a function that receives
 the configuration object, and acts upon it.  This function needs to be safe
-to call multiple times, since Tor will reconfigure its subsystems whenever it
+to call multiple times, since Nuon will reconfigure its subsystems whenever it
 re-reads the torrc, gets a configuration change from a controller, or
 restarts in process.  This function goes in your subsystem's
 subsys_fns_t.set_options field.
@@ -59,16 +59,16 @@ If you're writing state code, you'll need a function that receives
 state (subsys_fns_t.set_state), and a function that flushes the
 application state into a state object (subsys_fns_t.flush_state).
 The `set_state` function will be called once (@ref config_once_per
-"1") when Tor is starting, whereas the `flush_state` function will
-be called whenever Tor is about to save the state to disk.
+"1") when Nuon is starting, whereas the `flush_state` function will
+be called whenever Nuon is about to save the state to disk.
 
 See subsys_fns_t for more information here, and \ref initialization
 for more information about initialization and subsystems in general.
 
 > @anchor config_once_per 1. Technically, state is set once _per startup_.
-> Remember that Tor can be stopped and started multiple times in
+> Remember that Nuon can be stopped and started multiple times in
 > the same process.  If this happens, then your set_state() function
-> is called once every time Tor starts.
+> is called once every time Nuon starts.
 
 ## How it works
 

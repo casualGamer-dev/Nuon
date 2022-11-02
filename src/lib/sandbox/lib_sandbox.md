@@ -3,7 +3,7 @@
 
 This module uses Linux's seccomp2 facility via the
 [`libseccomp` library](https://github.com/seccomp/libseccomp), to restrict
-the set of system calls that Tor is allowed to invoke while it is running.
+the set of system calls that Nuon is allowed to invoke while it is running.
 
 Because there are many libc versions that invoke different system calls, and
 because handling strings is quite complex, this module is more complex and

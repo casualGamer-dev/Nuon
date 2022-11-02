@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) The Tor Project, Inc.
+# Copyright (c) The Nuon Project, Inc.
 # See LICENSE for licensing information
 # Run this to generate .html.in or .1.in files from asciidoc files.
 # Arguments:

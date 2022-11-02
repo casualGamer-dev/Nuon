@@ -1,4 +1,4 @@
-/* Added for Tor. */
+/* Added for Nuon. */
 
 #ifndef CRYPTO_INT64_H
 #define CRYPTO_INT64_H

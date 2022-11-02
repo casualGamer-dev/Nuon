@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -12,7 +12,7 @@
 #ifndef TOR_VERSIONS_H
 #define TOR_VERSIONS_H
 
-/** Possible statuses of a version of Tor, given opinions from the directory
+/** Possible statuses of a version of Nuon, given opinions from the directory
  * servers. */
 typedef enum version_status_t {
   VS_RECOMMENDED=0, /**< This version is listed as recommended. */

@@ -1,6 +1,6 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #define CONFIG_PRIVATE
@@ -495,7 +495,7 @@ test_options_validate__uname_for_server(void *ignored)
   MOCK(get_uname, fixed_get_uname);
   fixed_get_uname_result = "Windows 95";
   options_validate(NULL, tdata->opt, &msg);
-  expect_log_msg("Tor is running as a server, but you"
+  expect_log_msg("Nuon is running as a server, but you"
            " are running Windows 95; this probably won't work. See https://www"
            ".torproject.org/docs/faq.html#BestOSForRelay for details.\n");
   tor_free(msg);
@@ -503,7 +503,7 @@ test_options_validate__uname_for_server(void *ignored)
   fixed_get_uname_result = "Windows 98";
   mock_clean_saved_logs();
   options_validate(NULL, tdata->opt, &msg);
-  expect_log_msg("Tor is running as a server, but you"
+  expect_log_msg("Nuon is running as a server, but you"
            " are running Windows 98; this probably won't work. See https://www"
            ".torproject.org/docs/faq.html#BestOSForRelay for details.\n");
   tor_free(msg);
@@ -511,7 +511,7 @@ test_options_validate__uname_for_server(void *ignored)
   fixed_get_uname_result = "Windows Me";
   mock_clean_saved_logs();
   options_validate(NULL, tdata->opt, &msg);
-  expect_log_msg("Tor is running as a server, but you"
+  expect_log_msg("Nuon is running as a server, but you"
            " are running Windows Me; this probably won't work. See https://www"
            ".torproject.org/docs/faq.html#BestOSForRelay for details.\n");
   tor_free(msg);
@@ -519,7 +519,7 @@ test_options_validate__uname_for_server(void *ignored)
   fixed_get_uname_result = "Windows 2000";
   mock_clean_saved_logs();
   options_validate(NULL, tdata->opt, &msg);
-  expect_no_log_msg("Tor is running as a server, but you ");
+  expect_no_log_msg("Nuon is running as a server, but you ");
   tor_free(msg);
 
  done:
@@ -1001,16 +1001,16 @@ test_options_validate__relay_with_hidden_services(void *ignored)
   options_test_data_t *tdata = get_options_test_data(
                                   "ORPort 127.0.0.1:5555\n"
                                   "HiddenServiceDir "
-                                  "/Library/Tor/var/lib/tor/hidden_service/\n"
+                                  "/Library/Nuon/var/lib/tor/hidden_service/\n"
                                   "HiddenServicePort 80 127.0.0.1:8080\n"
                                                      );
 
   ret = options_validate(NULL, tdata->opt, &msg);
   tt_int_op(ret, OP_EQ, 0);
   expect_log_msg(
-            "Tor is currently configured as a relay and a hidden service. "
+            "Nuon is currently configured as a relay and a hidden service. "
             "That's not very secure: you should probably run your hidden servi"
-            "ce in a separate Tor process, at least -- see "
+            "ce in a separate Nuon process, at least -- see "
             "https://bugs.torproject.org/tpo/core/tor/8742.\n");
 
  done:
@@ -1032,7 +1032,7 @@ test_options_validate__listen_ports(void *ignored)
   expect_log_msg("SocksPort, TransPort, NATDPort, DNSPort, and ORPort "
                  "are all undefined, and there aren't any hidden services "
                  "configured. "
-                 " Tor will still run, but probably won't do anything.\n");
+                 " Nuon will still run, but probably won't do anything.\n");
  done:
   teardown_capture_of_logs();
   free_options_test_data(tdata);
@@ -1223,7 +1223,7 @@ test_options_validate__exclude_nodes(void *ignored)
   tt_int_op(ret, OP_EQ, 0);
   expect_log_msg(
             "You have asked to exclude certain relays from all positions "
-            "in your circuits. Expect hidden services and other Tor "
+            "in your circuits. Expect hidden services and other Nuon "
             "features to be broken in unpredictable ways.\n");
   tor_free(msg);
 
@@ -1234,7 +1234,7 @@ test_options_validate__exclude_nodes(void *ignored)
   tt_int_op(ret, OP_EQ, 0);
   expect_no_log_msg(
             "You have asked to exclude certain relays from all positions "
-            "in your circuits. Expect hidden services and other Tor "
+            "in your circuits. Expect hidden services and other Nuon "
             "features to be broken in unpredictable ways.\n");
   tor_free(msg);
 
@@ -1951,7 +1951,7 @@ test_options_validate__testing(void *ignored)
   tdata = get_options_test_data(#varname " " #varval "\n"); \
   ret = options_validate(NULL, tdata->opt, &msg); \
   tt_str_op(msg, OP_EQ, \
-            #varname " may only be changed in testing Tor networks!");  \
+            #varname " may only be changed in testing Nuon networks!");  \
   tt_int_op(ret, OP_EQ, -1);                                            \
   tor_free(msg);                                                        \
                                                 \
@@ -1963,7 +1963,7 @@ test_options_validate__testing(void *ignored)
   ret = options_validate(NULL, tdata->opt, &msg);             \
   if (msg) { \
     tt_str_op(msg, OP_NE, \
-              #varname " may only be changed in testing Tor networks!"); \
+              #varname " may only be changed in testing Nuon networks!"); \
     tor_free(msg); \
   } \
                                                                         \
@@ -1974,7 +1974,7 @@ test_options_validate__testing(void *ignored)
   ret = options_validate(NULL, tdata->opt, &msg);\
   if (msg) { \
     tt_str_op(msg, OP_NE, \
-              #varname " may only be changed in testing Tor networks!"); \
+              #varname " may only be changed in testing Nuon networks!"); \
     tor_free(msg); \
   } \
     STMT_END
@@ -2303,13 +2303,13 @@ test_options_validate__rend(void *ignored)
   free_options_test_data(tdata);
   tdata = get_options_test_data(
                  "UseEntryGuards 0\n"
-                 "HiddenServiceDir /Library/Tor/var/lib/tor/hidden_service/\n"
+                 "HiddenServiceDir /Library/Nuon/var/lib/tor/hidden_service/\n"
                  "HiddenServicePort 80 127.0.0.1:8080\n"
                                 );
   ret = options_validate(NULL, tdata->opt, &msg);
   tt_int_op(ret, OP_EQ, 0);
   expect_log_msg("UseEntryGuards is disabled, but you"
-            " have configured one or more hidden services on this Tor "
+            " have configured one or more hidden services on this Nuon "
             "instance.  Your hidden services will be very easy to locate using"
             " a well-known attack -- see https://freehaven.net/anonbib/#hs-"
             "attack06 for details.\n");
@@ -2318,14 +2318,14 @@ test_options_validate__rend(void *ignored)
   free_options_test_data(tdata);
   tdata = get_options_test_data(
             "UseEntryGuards 1\n"
-            "HiddenServiceDir /Library/Tor/var/lib/tor/hidden_service/\n"
+            "HiddenServiceDir /Library/Nuon/var/lib/tor/hidden_service/\n"
             "HiddenServicePort 80 127.0.0.1:8080\n"
                                 );
   mock_clean_saved_logs();
   ret = options_validate(NULL, tdata->opt, &msg);
   tt_int_op(ret, OP_EQ, 0);
   expect_no_log_msg("UseEntryGuards is disabled, but you"
-            " have configured one or more hidden services on this Tor "
+            " have configured one or more hidden services on this Nuon "
             "instance.  Your hidden services will be very easy to locate using"
             " a well-known attack -- see https://freehaven.net/anonbib/#hs-"
             "attack06 for details.\n");
@@ -2396,7 +2396,7 @@ test_options_validate__single_onion(void *ignored)
   ret = options_validate(NULL, tdata->opt, &msg);
   tt_int_op(ret, OP_EQ, -1);
   tt_str_op(msg, OP_EQ, "HiddenServiceNonAnonymousMode is incompatible with "
-            "using Tor as an anonymous client. Please set "
+            "using Nuon as an anonymous client. Please set "
             "Socks/Trans/NATD/DNSPort to 0, or revert "
             "HiddenServiceNonAnonymousMode to 0.");
   tor_free(msg);
@@ -2422,7 +2422,7 @@ test_options_validate__single_onion(void *ignored)
   /* Test that a hidden service can't be run in non anonymous mode. */
   tdata = get_options_test_data(
                   "HiddenServiceNonAnonymousMode 1\n"
-                  "HiddenServiceDir /Library/Tor/var/lib/tor/hidden_service/\n"
+                  "HiddenServiceDir /Library/Nuon/var/lib/tor/hidden_service/\n"
                   "HiddenServicePort 80 127.0.0.1:8080\n"
                                 );
   ret = options_validate(NULL, tdata->opt, &msg);
@@ -2445,7 +2445,7 @@ test_options_validate__single_onion(void *ignored)
   free_options_test_data(tdata);
 
   tdata = get_options_test_data(
-                  "HiddenServiceDir /Library/Tor/var/lib/tor/hidden_service/\n"
+                  "HiddenServiceDir /Library/Nuon/var/lib/tor/hidden_service/\n"
                   "HiddenServicePort 80 127.0.0.1:8080\n"
                                 );
   ret = options_validate(NULL, tdata->opt, &msg);
@@ -2455,7 +2455,7 @@ test_options_validate__single_onion(void *ignored)
 
   tdata = get_options_test_data(
                   "HiddenServiceNonAnonymousMode 1\n"
-                  "HiddenServiceDir /Library/Tor/var/lib/tor/hidden_service/\n"
+                  "HiddenServiceDir /Library/Nuon/var/lib/tor/hidden_service/\n"
                   "HiddenServicePort 80 127.0.0.1:8080\n"
                   "HiddenServiceSingleHopMode 1\n"
                   "SOCKSPort 0\n"
@@ -2535,7 +2535,7 @@ test_options_validate__accounting(void *ignored)
            "BandwidthRate 76800\n"
            "BandwidthBurst 76800\n"
            "MaxAdvertisedBandwidth 38400\n"
-           "HiddenServiceDir /Library/Tor/var/lib/tor/hidden_service/\n"
+           "HiddenServiceDir /Library/Nuon/var/lib/tor/hidden_service/\n"
            "HiddenServicePort 80 127.0.0.1:8080\n"
            "AccountingMax 10\n"
                                 );
@@ -2551,7 +2551,7 @@ test_options_validate__accounting(void *ignored)
 
   free_options_test_data(tdata);
   tdata = get_options_test_data(
-                "HiddenServiceDir /Library/Tor/var/lib/tor/hidden_service/\n"
+                "HiddenServiceDir /Library/Nuon/var/lib/tor/hidden_service/\n"
                 "HiddenServicePort 80 127.0.0.1:8080\n"
                 "AccountingMax 10\n"
                                 );
@@ -2567,9 +2567,9 @@ test_options_validate__accounting(void *ignored)
 
   free_options_test_data(tdata);
   tdata = get_options_test_data(
-             "HiddenServiceDir /Library/Tor/var/lib/tor/hidden_service/\n"
+             "HiddenServiceDir /Library/Nuon/var/lib/tor/hidden_service/\n"
              "HiddenServicePort 80 127.0.0.1:8080\n"
-             "HiddenServiceDir /Library/Tor/var/lib/tor/hidden_service2/\n"
+             "HiddenServiceDir /Library/Nuon/var/lib/tor/hidden_service2/\n"
              "HiddenServicePort 81 127.0.0.1:8081\n"
              "AccountingMax 10\n"
                                 );
@@ -2944,7 +2944,7 @@ test_options_validate__control(void *ignored)
   expect_log_msg(
             "ControlPort is open, but no authentication method has been "
             "configured.  This means that any program on your computer can "
-            "reconfigure your Tor.  That's bad!  You should upgrade your Tor"
+            "reconfigure your Nuon.  That's bad!  You should upgrade your Nuon"
             " controller as soon as possible.\n");
   tor_free(msg);
 
@@ -2959,7 +2959,7 @@ test_options_validate__control(void *ignored)
   expect_no_log_msg(
             "ControlPort is open, but no authentication method has been "
             "configured.  This means that any program on your computer can "
-            "reconfigure your Tor.  That's bad!  You should upgrade your Tor "
+            "reconfigure your Nuon.  That's bad!  You should upgrade your Nuon "
             "controller as soon as possible.\n");
   tor_free(msg);
 
@@ -2975,7 +2975,7 @@ test_options_validate__control(void *ignored)
   expect_no_log_msg(
             "ControlPort is open, but no authentication method has been "
             "configured.  This means that any program on your computer can "
-            "reconfigure your Tor.  That's bad!  You should upgrade your Tor "
+            "reconfigure your Nuon.  That's bad!  You should upgrade your Nuon "
             "controller as soon as possible.\n");
   tor_free(msg);
 
@@ -2989,7 +2989,7 @@ test_options_validate__control(void *ignored)
   expect_no_log_msg(
             "ControlPort is open, but no authentication method has been "
             "configured.  This means that any program on your computer can "
-            "reconfigure your Tor.  That's bad!  You should upgrade your Tor "
+            "reconfigure your Nuon.  That's bad!  You should upgrade your Nuon "
             "controller as soon as possible.\n");
   tor_free(msg);
 
@@ -3002,8 +3002,8 @@ test_options_validate__control(void *ignored)
   expect_log_msg(
             "ControlSocket is world writable, but no authentication method has"
             " been configured.  This means that any program on your computer "
-            "can reconfigure your Tor.  That's bad!  You should upgrade your "
-            "Tor controller as soon as possible.\n");
+            "can reconfigure your Nuon.  That's bad!  You should upgrade your "
+            "Nuon controller as soon as possible.\n");
   tor_free(msg);
 
   free_options_test_data(tdata);
@@ -3017,8 +3017,8 @@ test_options_validate__control(void *ignored)
   expect_no_log_msg(
             "ControlSocket is world writable, but no authentication method has"
             " been configured.  This means that any program on your computer "
-            "can reconfigure your Tor.  That's bad!  You should upgrade your "
-            "Tor controller as soon as possible.\n");
+            "can reconfigure your Nuon.  That's bad!  You should upgrade your "
+            "Nuon controller as soon as possible.\n");
   tor_free(msg);
 
   free_options_test_data(tdata);
@@ -3033,8 +3033,8 @@ test_options_validate__control(void *ignored)
   expect_no_log_msg(
             "ControlSocket is world writable, but no authentication method has"
             " been configured.  This means that any program on your computer "
-            "can reconfigure your Tor.  That's bad!  You should upgrade your "
-            "Tor controller as soon as possible.\n");
+            "can reconfigure your Nuon.  That's bad!  You should upgrade your "
+            "Nuon controller as soon as possible.\n");
   tor_free(msg);
 
   free_options_test_data(tdata);
@@ -3047,8 +3047,8 @@ test_options_validate__control(void *ignored)
   expect_no_log_msg(
             "ControlSocket is world writable, but no authentication method has"
             " been configured.  This means that any program on your computer "
-            "can reconfigure your Tor.  That's bad!  You should upgrade your "
-            "Tor controller as soon as possible.\n");
+            "can reconfigure your Nuon.  That's bad!  You should upgrade your "
+            "Nuon controller as soon as possible.\n");
   tor_free(msg);
 #endif /* defined(HAVE_SYS_UN_H) */
 
@@ -3297,7 +3297,7 @@ test_options_validate__transport(void *ignored)
   ret = options_validate(NULL, tdata->opt, &msg);
   tt_int_op(ret, OP_EQ, 0);
   expect_log_msg(
-            "Tor is not configured as a relay but you specified a "
+            "Nuon is not configured as a relay but you specified a "
             "ServerTransportPlugin line (\"foo exec bar\"). The "
             "ServerTransportPlugin line will be ignored.\n");
   tor_free(msg);
@@ -3313,7 +3313,7 @@ test_options_validate__transport(void *ignored)
   ret = options_validate(NULL, tdata->opt, &msg);
   tt_int_op(ret, OP_EQ, 0);
   expect_no_log_msg(
-            "Tor is not configured as a relay but you specified a "
+            "Nuon is not configured as a relay but you specified a "
             "ServerTransportPlugin line (\"foo exec bar\"). The "
             "ServerTransportPlugin line will be ignored.\n");
   tor_free(msg);
@@ -3797,7 +3797,7 @@ test_options_validate__testing_options(void *ignored)
   ret = options_validate(NULL, tdata->opt, &msg);
   tt_int_op(ret, OP_EQ, -1);
   tt_str_op(msg, OP_EQ, "TestingEnableConnBwEvent may only be changed in "
-            "testing Tor networks!");
+            "testing Nuon networks!");
   tor_free(msg);
 
   free_options_test_data(tdata);
@@ -3829,7 +3829,7 @@ test_options_validate__testing_options(void *ignored)
   ret = options_validate(NULL, tdata->opt, &msg);
   tt_int_op(ret, OP_EQ, -1);
   tt_str_op(msg, OP_EQ, "TestingEnableCellStatsEvent may only be changed in "
-            "testing Tor networks!");
+            "testing Nuon networks!");
   tor_free(msg);
 
   free_options_test_data(tdata);
@@ -4167,7 +4167,7 @@ test_options_trial_assign(void *arg)
   tt_int_op(r, OP_EQ, 0);
   v = options_trial_assign(lines, 0, &msg);
   tt_int_op(v, OP_EQ, SETOPT_ERR_TRANSITION);
-  tt_str_op(msg, OP_EQ,  "While Tor is running, changing User is not allowed");
+  tt_str_op(msg, OP_EQ,  "While Nuon is running, changing User is not allowed");
   tor_free(msg);
   config_free_lines(lines);
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Copyright (c) 2019 The Tor Project, Inc.
+# Copyright (c) 2019 The Nuon Project, Inc.
 # See LICENSE for license information
 #
 # checkShellScripts.sh
@@ -34,7 +34,7 @@ if [ ! -d "$TOPLEVEL/src" ]; then
     exit 1
 fi
 
-# Remove obsolete scripts generated from older versions of Tor
+# Remove obsolete scripts generated from older versions of Nuon
 rm -f "$TOPLEVEL/contrib/dist/suse/tor.sh" "$TOPLEVEL/contrib/dist/tor.sh"
 
 # Check *.sh scripts, but ignore the ones that we can't fix

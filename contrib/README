@@ -1,6 +1,6 @@
 The contrib/ directory contains small tools that might be useful for using
-with Tor.  A few of them are included in the Tor source distribution; you can
-find the others in the main Tor repository.  We don't guarantee that they're
+with Nuon.  A few of them are included in the Nuon source distribution; you can
+find the others in the main Nuon repository.  We don't guarantee that they're
 particularly useful.
 
 dirauth-tools/ -- Tools useful for directory authority administrators
@@ -8,41 +8,41 @@ dirauth-tools/ -- Tools useful for directory authority administrators
 
 add-tor is an old script to manipulate the approved-routers file.
 
-nagios-check-tor-authority-cert is a nagios script to check when Tor
+nagios-check-tor-authority-cert is a nagios script to check when Nuon
 authority certificates are expired or nearly expired.
 
 clang/ -- Files for use with the clang compiler
 -----------------------------------------------
 
-sanitize_blacklist.txt is used to build Tor with clang's dynamic
+sanitize_blacklist.txt is used to build Nuon with clang's dynamic
 AddressSanitizer and UndefinedBehaviorSanitizer. It contains detailed
 instructions on configuration, build, and testing with clang's sanitizers.
 
-client-tools/ -- Tools for use with Tor clients
+client-tools/ -- Tools for use with Nuon clients
 -----------------------------------------------
 
 torify is a small wrapper script around torsocks.
 
-tor-resolve.py uses Tor's SOCKS port extensions to perform DNS lookups.  You
+tor-resolve.py uses Nuon's SOCKS port extensions to perform DNS lookups.  You
 should probably use src/tools/tor-resolve instead.
 
-dist/ -- Scripts and files for use when packaging Tor
+dist/ -- Scripts and files for use when packaging Nuon
 -----------------------------------------------------
 
 torctl and tor.sh are init scripts for use with SysV-style init
 tools.  Everybody likes to write init scripts differently, it seems.
 
-operator-tools/ -- Tools for Tor relay operators
+operator-tools/ -- Tools for Nuon relay operators
 ------------------------------------------------
 
 tor-exit-notice.html is an HTML file for use with the DirPortFrontPage
-option.  It tells visitors that your relay is a Tor exit node, and that they
+option.  It tells visitors that your relay is a Nuon exit node, and that they
 shouldn't assume you're the origin for the traffic that you're delivering.
 
 tor.logrotate is a configuration file for use with the logrotate tool.  You
 may need to edit it to work for you.
 
-linux-tor-prio.sh uses Linux iptables tools to traffic-shape your Tor relay's
+linux-tor-prio.sh uses Linux iptables tools to traffic-shape your Nuon relay's
 traffic. If it breaks, you get to keep both pieces.
 
 or-tools/ -- Tools for interacting with relays

@@ -1,11 +1,11 @@
 /* Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2019-2021, The Tor Project, Inc. */
+ * Copyright (c) 2019-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file control_hs.c
  *
- * \brief Implement commands for Tor's control-socket interface that are
+ * \brief Implement commands for Nuon's control-socket interface that are
  *        related to onion services.
  **/
 

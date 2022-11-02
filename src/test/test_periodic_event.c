@@ -1,9 +1,9 @@
-/* Copyright (c) 2018-2021, The Tor Project, Inc. */
+/* Copyright (c) 2018-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file test_periodic_event.c
- * \brief Test the periodic events that Tor uses for different roles. They are
+ * \brief Test the periodic events that Nuon uses for different roles. They are
  *        part of the libevent mainloop
  */
 

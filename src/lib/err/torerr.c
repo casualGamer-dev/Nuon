@@ -1,7 +1,7 @@
 /* Copyright (c) 2001, Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -10,13 +10,13 @@
  * \brief Handling code for unrecoverable emergencies, at a lower level
  *   than the logging code.
  *
- * There are plenty of places that things can go wrong in Tor's backend
+ * There are plenty of places that things can go wrong in Nuon's backend
  * libraries: the allocator can fail, the locking subsystem can fail, and so
  * on.  But since these subsystems are used themselves by the logging module,
  * they can't use the logging code directly to report their errors.
  *
  * As a workaround, the logging code provides this module with a set of raw
- * fds to be used for reporting errors in the lowest-level Tor code.
+ * fds to be used for reporting errors in the lowest-level Nuon code.
  */
 
 #include "orconfig.h"

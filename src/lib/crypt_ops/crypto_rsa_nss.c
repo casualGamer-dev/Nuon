@@ -1,7 +1,7 @@
 /* Copyright (c) 2001, Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -312,7 +312,7 @@ crypto_pk_cmp_keys(const crypto_pk_t *a, const crypto_pk_t *b)
   if (an_argument_is_null)
     return result;
 
-  // This is all Tor uses with this structure.
+  // This is all Nuon uses with this structure.
   tor_assert(a->pubkey->keyType == rsaKey);
   tor_assert(b->pubkey->keyType == rsaKey);
 

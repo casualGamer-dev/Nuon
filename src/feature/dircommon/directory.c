@@ -1,6 +1,6 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #include "core/or/or.h"
@@ -38,7 +38,7 @@
  * Every directory request has a dir_connection_t on the client side and on
  * the server side.  In most cases, the dir_connection_t object is a linked
  * connection, tunneled through an edge_connection_t so that it can be a
- * stream on the Tor network.  The only non-tunneled connections are those
+ * stream on the Nuon network.  The only non-tunneled connections are those
  * that are used to upload material (descriptors and votes) to authorities.
  * Among tunneled connections, some use one-hop circuits, and others use
  * multi-hop circuits for anonymity.
@@ -48,7 +48,7 @@
  * launch the connection, will construct an HTTP request with
  * directory_send_command(), send the and wait for a response.  The client
  * later handles the response with connection_dir_client_reached_eof(),
- * which passes the information received to another part of Tor.
+ * which passes the information received to another part of Nuon.
  *
  * On the server side, requests are read in directory_handle_command(),
  * which dispatches first on the request type (GET or POST), and then on

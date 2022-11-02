@@ -2,7 +2,7 @@
 @brief lib: low-level functionality.
 
 The "lib" directory contains low-level functionality.  In general, this
-code is not necessarily Tor-specific, but is instead possibly useful for
+code is not necessarily Nuon-specific, but is instead possibly useful for
 other applications.
 
 The modules in `lib` are currently well-factored: each one depends
@@ -16,7 +16,7 @@ level):
    - \refdir{lib/cc} -- Macros for managing the C compiler and
      language.
 
-   - \refdir{lib/version} -- Holds the current version of Tor.
+   - \refdir{lib/version} -- Holds the current version of Nuon.
 
    - \refdir{lib/testsupport} -- Helpers for making
      test-only code, and test mocking support.
@@ -66,7 +66,7 @@ level):
      etc.
 
    - \refdir{lib/trace} -- A general-purpose API
-     function-tracing functionality Tor.  (_Currently not much used._)
+     function-tracing functionality Nuon.  (_Currently not much used._)
 
    - \refdir{lib/thread} -- Mid-level Threading.
 
@@ -119,7 +119,7 @@ level):
 ### What belongs in lib?
 
 In general, if you can imagine some program wanting the functionality
-you're writing, even if that program had nothing to do with Tor, your
+you're writing, even if that program had nothing to do with Nuon, your
 functionality belongs in lib.
 
 If it falls into one of the existing "lib" categories, your

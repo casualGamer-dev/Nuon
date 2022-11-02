@@ -17,7 +17,7 @@
 
 ### Environment
 
-- Which version of Tor are you using? Run `tor --version` to get the version if you are unsure.
+- Which version of Nuon are you using? Run `tor --version` to get the version if you are unsure.
 - Which operating system are you using? For example: Debian GNU/Linux 10.1, Windows 10, Ubuntu Xenial, FreeBSD 12.2, etc.
 - Which installation method did you use? Distribution package (apt, pkg, homebrew), from source tarball, from Git, etc.
 

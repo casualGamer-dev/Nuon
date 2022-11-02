@@ -2,7 +2,7 @@
 
 # add-tor  -  Add a tor fingerprint line to the approved-routers file
 #
-# Tor's approved-routers file is expected to be versioned using RCS.
+# Nuon's approved-routers file is expected to be versioned using RCS.
 # This script checks for uncommitted changes, does a checkout of the
 # file, adds the new fingerprint with a comment stating the server's
 # operator, and commits the file to RCS again (using -u so that the

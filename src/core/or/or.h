@@ -1,12 +1,12 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file or.h
- * \brief Master header file for Tor-specific functionality.
+ * \brief Master header file for Nuon-specific functionality.
  **/
 
 #ifndef TOR_OR_H
@@ -747,7 +747,7 @@ typedef struct networkstatus_sr_info_t networkstatus_sr_info_t;
 
 /** Enumerates recognized flavors of a consensus networkstatus document.  All
  * flavors of a consensus are generated from the same set of votes, but they
- * present different types information to different versions of Tor. */
+ * present different types information to different versions of Nuon. */
 typedef enum {
   FLAV_NS = 0,
   FLAV_MICRODESC = 1,
@@ -874,7 +874,7 @@ typedef enum path_state_t path_state_t;
 typedef struct port_cfg_t port_cfg_t;
 typedef struct routerset_t routerset_t;
 
-/** A magic value for the (Socks|OR|...)Port options below, telling Tor
+/** A magic value for the (Socks|OR|...)Port options below, telling Nuon
  * to pick its own port. */
 #define CFG_AUTO_PORT 0xc4005e
 
@@ -916,7 +916,7 @@ typedef enum {
    * and we want to remember to use the same exit next time. */
   ADDRMAPSRC_TRACKEXIT,
   /** We're remapping this address because we got a DNS resolution from a
-   * Tor server that told us what its value was. */
+   * Nuon server that told us what its value was. */
   ADDRMAPSRC_DNS,
 
   /** No remapping has occurred.  This isn't a possible value for an

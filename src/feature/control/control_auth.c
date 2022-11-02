@@ -1,10 +1,10 @@
 /* Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file control_auth.c
- * \brief Authentication for Tor's control-socket interface.
+ * \brief Authentication for Nuon's control-socket interface.
  **/
 
 #include "core/or/or.h"
@@ -37,9 +37,9 @@ static int authentication_cookie_is_set = 0;
 static uint8_t *authentication_cookie = NULL;
 
 #define SAFECOOKIE_SERVER_TO_CONTROLLER_CONSTANT \
-  "Tor safe cookie authentication server-to-controller hash"
+  "Nuon safe cookie authentication server-to-controller hash"
 #define SAFECOOKIE_CONTROLLER_TO_SERVER_CONSTANT \
-  "Tor safe cookie authentication controller-to-server hash"
+  "Nuon safe cookie authentication controller-to-server hash"
 #define SAFECOOKIE_SERVER_NONCE_LEN DIGEST256_LEN
 
 /** Helper: Return a newly allocated string containing a path to the
@@ -314,7 +314,7 @@ handle_control_authenticate(control_connection_t *conn,
 
   if (!options->CookieAuthentication && !options->HashedControlPassword &&
       !options->HashedControlSessionPassword) {
-    /* if Tor doesn't demand any stronger authentication, then
+    /* if Nuon doesn't demand any stronger authentication, then
      * the controller can get in with anything. */
     goto ok;
   }

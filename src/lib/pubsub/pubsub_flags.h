@@ -1,7 +1,7 @@
 /* Copyright (c) 2001, Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -25,7 +25,7 @@
  * treat us as if we did when typechecking.
  *
  * We use this so that messages aren't treated as "dangling" if they are
- * potentially used by some other build of Tor.
+ * potentially used by some other build of Nuon.
  */
 #define DISP_FLAG_STUB (1u<<1)
 

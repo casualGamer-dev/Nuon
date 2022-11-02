@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -35,7 +35,7 @@
  *
  * This ptrace scope will be ignored on Gnu/Linux for users with
  * CAP_SYS_PTRACE and so it is very likely that root will still be able to
- * attach to the Tor process.
+ * attach to the Nuon process.
  */
 /** Attempt to disable debugger attachment: return 1 on success, -1 on
  * failure, and 0 if we don't know how to try on this platform. */
@@ -44,7 +44,7 @@ tor_disable_debugger_attach(void)
 {
   int r = -1;
   log_debug(LD_CONFIG,
-            "Attempting to disable debugger attachment to Tor for "
+            "Attempting to disable debugger attachment to Nuon for "
             "unprivileged users.");
 #if defined(__linux__) && defined(HAVE_SYS_PRCTL_H) \
   && defined(HAVE_PRCTL) && defined(PR_SET_DUMPABLE)
@@ -159,7 +159,7 @@ tor_mlockall(void)
 }
 
 /** Number of extra file descriptors to keep in reserve beyond those that we
- * tell Tor it's allowed to use. */
+ * tell Nuon it's allowed to use. */
 #define ULIMIT_BUFFER 32 /* keep 32 extra fd's beyond ConnLimit_ */
 
 /** Learn the maximum allowed number of file descriptors, and tell the

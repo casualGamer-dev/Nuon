@@ -1,12 +1,12 @@
 /* Copyright (c) 2003, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file torint.h
  *
- * \brief Integer definitions used throughout Tor.
+ * \brief Integer definitions used throughout Nuon.
  **/
 
 #ifndef TOR_TORINT_H
@@ -126,11 +126,11 @@ typedef int32_t ssize_t;
 #define SIZE_T_CEILING  ((size_t)(SSIZE_MAX-16))
 
 #if SIZEOF_INT > SIZEOF_VOID_P
-#error "sizeof(int) > sizeof(void *) - Can't build Tor here."
+#error "sizeof(int) > sizeof(void *) - Can't build Nuon here."
 #endif
 
 #if SIZEOF_UNSIGNED_INT > SIZEOF_VOID_P
-#error "sizeof(unsigned int) > sizeof(void *) - Can't build Tor here."
+#error "sizeof(unsigned int) > sizeof(void *) - Can't build Nuon here."
 #endif
 
 #endif /* !defined(TOR_TORINT_H) */

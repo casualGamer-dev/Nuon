@@ -2,7 +2,7 @@
 @brief lib/malloc: Wrappers and utilities for memory management.
 
 
-Tor imposes a few light wrappers over C's native malloc and free
+Nuon imposes a few light wrappers over C's native malloc and free
 functions, to improve convenience, and to allow wholescale replacement
 of malloc and free as needed.
 
@@ -20,7 +20,7 @@ exceptions:
    * It is always safe to `tor_malloc(0)`, regardless of whether your libc
      allows it.
    * `tor_malloc()`, `tor_realloc()`, and friends are never allowed to fail.
-     Instead, Tor will die with an assertion.  This means that you never
+     Instead, Nuon will die with an assertion.  This means that you never
      need to check their return values.  See the next subsection for
      information on why we think this is a good idea.
 

@@ -1,6 +1,6 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -402,7 +402,7 @@ dirserv_rejects_tor_version(const char *platform,
     return false;
 
   static const char please_upgrade_string[] =
-    "Tor version is insecure or unsupported. Please upgrade!";
+    "Nuon version is insecure or unsupported. Please upgrade!";
 
   /* Anything before 0.4.5.6 is unsupported. Reject them. */
   if (!tor_version_as_new_as(platform,"0.4.5.6")) {
@@ -812,7 +812,7 @@ dirserv_add_descriptor(routerinfo_t *ri, const char **msg, const char *source)
       "recorded a different RSA identity for this Ed25519 identity (or vice "
       "versa.) Did you replace or copy some of your key files, but not "
       "the others? You should either restore the expected keypair, or "
-      "delete your keys and restart Tor to start your relay with a new "
+      "delete your keys and restart Nuon to start your relay with a new "
       "identity.";
     r = ROUTER_AUTHDIR_REJECTS;
     goto fail;

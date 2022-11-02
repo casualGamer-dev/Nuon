@@ -1,6 +1,6 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -144,7 +144,7 @@ write_http_response_header_impl(dir_connection_t *conn, ssize_t length,
   if (!is_local_to_resolve_addr(&conn->base_.addr)) {
     /* Don't report the source address for a nearby/private connection.
      * Otherwise we tend to mis-report in cases where incoming ports are
-     * being forwarded to a Tor server running behind the firewall. */
+     * being forwarded to a Nuon server running behind the firewall. */
     buf_add_printf(buf, X_ADDRESS_HEADER "%s\r\n", conn->base_.address);
   }
   if (encoding) {

@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -79,7 +79,7 @@
 
 #if defined(HAVE_MINHERIT) && !defined(FLAG_ZERO) && !defined(FLAG_NOINHERIT)
 #warning "minherit() is defined, but FLAG_ZERO/NOINHERIT are not."
-#warning "This is probably a bug in Tor's support for this platform."
+#warning "This is probably a bug in Nuon's support for this platform."
 #endif
 
 /**
@@ -197,7 +197,7 @@ noinherit_mem(void *mem, size_t sz, inherit_res_t *inherit_result_out)
  *
  * [Note: OS people use the word "anonymous" here to mean that the memory
  * isn't associated with any file. This has *nothing* to do with the kind of
- * anonymity that Tor is trying to provide.]
+ * anonymity that Nuon is trying to provide.]
  */
 void *
 tor_mmap_anonymous(size_t sz, unsigned flags,

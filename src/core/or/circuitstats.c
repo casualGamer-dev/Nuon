@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -440,7 +440,7 @@ circuit_build_times_new_consensus_params(circuit_build_times_t *cbt,
       if (num != cbt->liveness.num_recent_circs) {
         int8_t *recent_circs;
         if (cbt->liveness.num_recent_circs > 0) {
-          log_notice(LD_CIRC, "The Tor Directory Consensus has changed how "
+          log_notice(LD_CIRC, "The Nuon Directory Consensus has changed how "
                      "many circuits we must track to detect network failures "
                      "from %d to %d.", cbt->liveness.num_recent_circs, num);
         } else {
@@ -966,7 +966,7 @@ circuit_build_times_shuffle_and_store_array(circuit_build_times_t *cbt,
 {
   uint32_t n = num_times;
   if (num_times > CBT_NCIRCUITS_TO_OBSERVE) {
-    log_notice(LD_CIRC, "The number of circuit times that this Tor version "
+    log_notice(LD_CIRC, "The number of circuit times that this Nuon version "
                "uses to calculate build times is less than the number stored "
                "in your state file. Decreasing the circuit time history from "
                "%lu to %d.", (unsigned long)num_times,
@@ -1360,7 +1360,7 @@ circuit_build_times_network_is_live(circuit_build_times_t *cbt)
   if (cbt->liveness.nonlive_timeouts > 0) {
     time_t time_since_live = now - cbt->liveness.network_last_live;
     log_notice(LD_CIRC,
-               "Tor now sees network activity. Restoring circuit build "
+               "Nuon now sees network activity. Restoring circuit build "
                "timeout recording. Network was down for %d seconds "
                "during %d circuit attempts.",
                (int)time_since_live,
@@ -1502,7 +1502,7 @@ circuit_build_times_network_close(circuit_build_times_t *cbt,
     cbt->liveness.nonlive_timeouts++;
     if (cbt->liveness.nonlive_timeouts == 1) {
       log_notice(LD_CIRC,
-                 "Tor has not observed any network activity for the past %d "
+                 "Nuon has not observed any network activity for the past %d "
                  "seconds. Disabling circuit build timeout recording.",
                  (int)(now - cbt->liveness.network_last_live));
 
@@ -1813,7 +1813,7 @@ circuit_build_times_set_timeout(circuit_build_times_t *cbt)
 }
 
 #ifdef TOR_UNIT_TESTS
-/** Make a note that we're running unit tests (rather than running Tor
+/** Make a note that we're running unit tests (rather than running Nuon
  * itself), so we avoid clobbering our state file. */
 void
 circuitbuild_running_unit_tests(void)

@@ -1,4 +1,4 @@
-/* Copyright (c) 2017-2021, The Tor Project, Inc. */
+/* Copyright (c) 2017-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -39,7 +39,7 @@ static const config_var_t config_vars[] = {
 };
 
 /* "Extra" variable in the state that receives lines we can't parse. This
- * lets us preserve options from versions of Tor newer than us. */
+ * lets us preserve options from versions of Nuon newer than us. */
 static const struct_member_t config_extra_vars = {
   .name = "__extra",
   .type = CONFIG_TYPE_LINELIST,

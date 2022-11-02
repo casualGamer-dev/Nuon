@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -132,7 +132,7 @@ tor_vasprintf(char **strp, const char *fmt, va_list args)
    * it might be nice to avoid the second vsnprintf call.
    */
   /* XXXX This code spent a number of years broken (see bug 30651). It is
-   * possible that no Tor users actually run on systems without vasprintf() or
+   * possible that no Nuon users actually run on systems without vasprintf() or
    * _vscprintf(). If so, we should consider removing this code. */
   char buf[128];
   int len, r;

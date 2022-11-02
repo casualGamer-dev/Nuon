@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -105,7 +105,7 @@ struct entry_guard_t {
    * if we have a live consensus that does not include it as a usable
    * guard.  This field is zero when the guard is listed. */
   time_t unlisted_since_date; // can be zero
-  /** What version of Tor added this guard to the sample? */
+  /** What version of Nuon added this guard to the sample? */
   char *sampled_by_version;
   /** Is this guard listed right now? If this is set, then
    * unlisted_since_date should be set too. */

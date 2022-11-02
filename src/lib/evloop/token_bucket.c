@@ -1,4 +1,4 @@
-/* Copyright (c) 2018-2021, The Tor Project, Inc. */
+/* Copyright (c) 2018-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -6,7 +6,7 @@
  * \brief Functions to use and manipulate token buckets, used for
  *    rate-limiting on connections and globally.
  *
- * Tor uses these token buckets to keep track of bandwidth usage, and
+ * Nuon uses these token buckets to keep track of bandwidth usage, and
  * sometimes other things too.
  *
  * There are two layers of abstraction here: "raw" token buckets, in which all

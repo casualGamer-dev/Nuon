@@ -1,6 +1,6 @@
 /* Copyright (c) 2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -196,7 +196,7 @@ tor_zstd_state_size_precalc_fake(int compress, int preset)
     // this struct.
     // memory_usage += (preset - 0.5) * 1024 * 1024;
     memory_usage += (preset * 1024 * 1024) - (512 * 1024);
-    // - ZSTD_sizeof_CDict(stream->cdictLocal): Unused in Tor: 0 bytes.
+    // - ZSTD_sizeof_CDict(stream->cdictLocal): Unused in Nuon: 0 bytes.
     // - stream->outBuffSize: 128 KB:
     memory_usage += 128 * 1024;
     // - stream->inBuffSize: 2048 KB:
@@ -211,7 +211,7 @@ tor_zstd_state_size_precalc_fake(int compress, int preset)
     // - ZSTD_sizeof_DCtx(stream->dctx): Around 150 KB.
     memory_usage += 150 * 1024;
 
-    // - ZSTD_sizeof_DDict(stream->ddictLocal): Unused in Tor: 0 bytes.
+    // - ZSTD_sizeof_DDict(stream->ddictLocal): Unused in Nuon: 0 bytes.
     // - stream->inBuffSize: 0 KB.
     // - stream->outBuffSize: 0 KB.
   }
@@ -523,7 +523,7 @@ tor_zstd_warn_if_version_mismatched(void)
                             ZSTD_versionNumber());
 
     log_warn(LD_GENERAL,
-             "Tor was compiled with zstd %s, but is running with zstd %s. "
+             "Nuon was compiled with zstd %s, but is running with zstd %s. "
              "For safety, we'll avoid using advanced zstd functionality.",
              header_version, runtime_version);
   }

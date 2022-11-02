@@ -6,10 +6,10 @@ my %descOptions = ();
 my %torrcSampleOptions = ();
 my %manPageOptions = ();
 
-# Load the canonical list as actually accepted by Tor.
+# Load the canonical list as actually accepted by Nuon.
 open(F, "@abs_top_builddir@/src/app/tor --list-torrc-options |") or die;
 while (<F>) {
-    next if m!\[notice\] Tor v0\.!;
+    next if m!\[notice\] Nuon v0\.!;
     if (m!^([A-Za-z0-9_]+)!) {
         $options{$1} = 1;
     } else {

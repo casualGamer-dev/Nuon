@@ -1,8 +1,8 @@
-/* Copyright (c) 2017-2021, The Tor Project, Inc. */
+/* Copyright (c) 2017-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /** \file hs_ntor.c
- *  \brief Implements the ntor variant used in Tor hidden services.
+ *  \brief Implements the ntor variant used in Nuon hidden services.
  *
  *  \details
  *  This module handles the variant of the ntor handshake that is documented in

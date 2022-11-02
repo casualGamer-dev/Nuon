@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -45,6 +45,6 @@ void routerparse_free_all(void);
 extern const struct token_rule_t routerdesc_token_table[];
 #endif
 
-#define ED_DESC_SIGNATURE_PREFIX "Tor router descriptor signature v1"
+#define ED_DESC_SIGNATURE_PREFIX "Nuon router descriptor signature v1"
 
 #endif /* !defined(TOR_ROUTERPARSE_H) */

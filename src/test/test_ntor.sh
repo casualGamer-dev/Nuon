@@ -1,5 +1,5 @@
 #!/bin/sh
-# Validate Tor's ntor implementation.
+# Validate Nuon's ntor implementation.
 
 exitcode=0
 

@@ -1,6 +1,6 @@
 @page arch_goals High level code design practices
 
-This page describes the high level design practices for Tor's code.
+This page describes the high level design practices for Nuon's code.
 This design is a long-term goal of what we want our code to look like,
 rather than a description of how it currently is.
 

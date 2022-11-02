@@ -1,4 +1,4 @@
-/* * Copyright (c) 2012-2021, The Tor Project, Inc. */
+/* * Copyright (c) 2012-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -518,7 +518,7 @@ cell_ewma_initialize_ticks(void)
  * elapsed between the start of the tick and the current time.  Return the
  * former and store the latter in *<b>remainder_out</b>.
  *
- * These tick values are not meant to be shared between Tor instances, or used
+ * These tick values are not meant to be shared between Nuon instances, or used
  * for other purposes. */
 STATIC unsigned
 cell_ewma_get_current_tick_and_fraction(double *remainder_out)

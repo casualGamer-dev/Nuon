@@ -21,7 +21,7 @@ static const char *ED25519_SECRET_KEYS[] = {
 };
 
 /**
- * Secret ed25519 keys after expansion from seeds. This is how Tor
+ * Secret ed25519 keys after expansion from seeds. This is how Nuon
  * represents them internally.
  */
 static const char *ED25519_EXPANDED_SECRET_KEYS[] = {

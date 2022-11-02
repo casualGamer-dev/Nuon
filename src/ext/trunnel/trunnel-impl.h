@@ -5,7 +5,7 @@
 /* trunnel-impl.h -- Implementation helpers for trunnel, included by
  * generated trunnel files
  *
- * Copyright 2014-2019, The Tor Project, Inc.
+ * Copyright 2014-2019, The Nuon Project, Inc.
  * See license at the end of this file for copying information.
  */
 
@@ -279,7 +279,7 @@ int trunnel_string_setlen(trunnel_string_t *str, size_t newlen,
 
 
 /*
-Copyright 2014  The Tor Project, Inc.
+Copyright 2014  The Nuon Project, Inc.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are

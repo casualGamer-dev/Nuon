@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright 2018 The Tor Project, Inc.  See LICENSE file for licensing info.
+# Copyright 2018 The Nuon Project, Inc.  See LICENSE file for licensing info.
 
 # This file is no longer here; see practracker/includes.py for this
 # functionality.  This is a stub file that exists so that older git

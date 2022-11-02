@@ -1,14 +1,14 @@
 /* Copyright (c) 2001, Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file pubsub_macros.h
  * \brief Macros to help with the publish/subscribe dispatch API.
  *
- * The dispatch API allows different subsystems of Tor to communicate with
+ * The dispatch API allows different subsystems of Nuon to communicate with
  * another asynchronously via a shared "message" system.  Some subsystems
  * declare that they publish a given message, and others declare that they
  * subscribe to it.  Both subsystems depend on the message, but not upon one
@@ -183,7 +183,7 @@
  * C identifier.
  *
  * "typename" is a unique identifier for the type of the auxiliary data.
- * It needs to be defined somewhere in Tor, using
+ * It needs to be defined somewhere in Nuon, using
  * "DISPATCH_REGISTER_TYPE."
  *
  * "c_ptr_type" is a C pointer type (like "char *" or "struct foo *").
@@ -211,7 +211,7 @@
  * C identifier.
  *
  * "typename" is a unique identifier for the type of the auxiliary data.  It
- * needs to be defined somewhere in Tor, using "DISPATCH_REGISTER_TYPE."
+ * needs to be defined somewhere in Nuon, using "DISPATCH_REGISTER_TYPE."
  *
  * "c_type" is a C integer type, like "int" or "bool".  It needs to fit inside
  * a uint64_t.

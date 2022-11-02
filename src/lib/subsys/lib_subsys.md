@@ -1,12 +1,12 @@
 @dir /lib/subsys
 @brief lib/subsys: Types for declaring a "subsystem".
 
-## Subsystems in Tor
+## Subsystems in Nuon
 
 A subsystem is a module with support for initialization, shutdown,
 configuration, and so on.
 
-Many parts of Tor can be initialized, cleaned up, and configured somewhat
+Many parts of Nuon can be initialized, cleaned up, and configured somewhat
 independently through a table-driven mechanism.  Each such part is called a
 "subsystem".
 
@@ -23,7 +23,7 @@ will need to occupy a position corresponding to its level.
 At this point, your subsystem will be handled like the others: it will get
 initialized at startup, torn down at exit, and so on.
 
-Historical note: Not all of Tor's code is currently handled as
+Historical note: Not all of Nuon's code is currently handled as
 subsystems. As you work with older code, you may see some parts of the code
 that are initialized from `tor_init()` or `run_tor_main_loop()` or
 `tor_run_main()`; and torn down from `tor_cleanup()`.  We aim to migrate

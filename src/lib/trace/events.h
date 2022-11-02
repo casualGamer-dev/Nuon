@@ -1,9 +1,9 @@
-/* Copyright (c) 2017-2021, The Tor Project, Inc. */
+/* Copyright (c) 2017-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file events.h
- * \brief Header file for Tor tracing instrumentation definition.
+ * \brief Header file for Nuon tracing instrumentation definition.
  **/
 
 #ifndef TOR_LIB_TRACE_EVENTS_H

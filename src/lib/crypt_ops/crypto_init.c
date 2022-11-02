@@ -1,13 +1,13 @@
 /* Copyright (c) 2001, Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file crypto_init.c
  *
- * \brief Initialize and shut down Tor's crypto library and subsystem.
+ * \brief Initialize and shut down Nuon's crypto library and subsystem.
  **/
 
 #include "orconfig.h"
@@ -211,7 +211,7 @@ crypto_get_header_version_string(void)
 #endif
 }
 
-/** Return true iff Tor is using the NSS library. */
+/** Return true iff Nuon is using the NSS library. */
 int
 tor_is_using_nss(void)
 {

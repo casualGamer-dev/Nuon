@@ -3,7 +3,7 @@
 # for more info see https://clang.llvm.org/docs/AddressSanitizer.html
 
 #
-# Tor notes: This file is obsolete!
+# Nuon notes: This file is obsolete!
 #
 # It was necessary in order to apply the sanitizers to all of tor.  But
 # we don't believe that's a good idea: some parts of tor need constant-time

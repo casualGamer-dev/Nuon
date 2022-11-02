@@ -23,7 +23,7 @@ For low-level operations on smartlists, see also
 
 ### Digest maps, string maps, and more.
 
-Tor makes frequent use of maps from 160-bit digests, 256-bit digests,
+Nuon makes frequent use of maps from 160-bit digests, 256-bit digests,
 or nul-terminated strings to `void *`. These types are `digestmap_t`,
 `digest256map_t`, and `strmap_t` respectively.  See the containers.h
 module documentation for more information.

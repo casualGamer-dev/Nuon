@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -146,7 +146,7 @@ get_total_system_memory, (size_t *mem_out))
 
 #if SIZE_MAX != UINT64_MAX
   if (m > SIZE_MAX) {
-    /* I think this could happen if we're a 32-bit Tor running on a 64-bit
+    /* I think this could happen if we're a 32-bit Nuon running on a 64-bit
      * system: we could have more system memory than would fit in a
      * size_t. */
     m = SIZE_MAX;

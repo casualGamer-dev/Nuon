@@ -1,18 +1,18 @@
-# Writing tests for Tor: an incomplete guide
+# Writing tests for Nuon: an incomplete guide
 
-Tor uses a variety of testing frameworks and methodologies to try to
+Nuon uses a variety of testing frameworks and methodologies to try to
 keep from introducing bugs.  The major ones are:
 
-   1. Unit tests written in C and shipped with the Tor distribution.
+   1. Unit tests written in C and shipped with the Nuon distribution.
 
    2. Integration tests written in Python 2 (>= 2.7) or Python 3
-      (>= 3.1) and shipped with the Tor distribution.
+      (>= 3.1) and shipped with the Nuon distribution.
 
    3. Integration tests written in Python and shipped with the Stem
-      library.  Some of these use the Tor controller protocol.
+      library.  Some of these use the Nuon controller protocol.
 
    4. System tests written in Python and SH, and shipped with the
-      Chutney package.  These work by running many instances of Tor
+      Chutney package.  These work by running many instances of Nuon
       locally, and sending traffic through them.
 
    5. The Shadow network simulator.
@@ -21,7 +21,7 @@ keep from introducing bugs.  The major ones are:
 
 ### The easy version
 
-To run all the tests that come bundled with Tor, run `make check`.
+To run all the tests that come bundled with Nuon, run `make check`.
 
 To run the Stem tests as well, fetch stem from the git repository,
 set `STEM_SOURCE_DIR` to the checkout, and run `make test-stem`.
@@ -36,7 +36,7 @@ internet, run `make test-full-online`.
 
 ### Running particular subtests
 
-The Tor unit tests are divided into separate programs and a couple of
+The Nuon unit tests are divided into separate programs and a couple of
 bundled unit test programs.
 
 Separate programs are easy.  For example, to run the memwipe tests in
@@ -65,7 +65,7 @@ and stuff like that.
 
 Test coverage is a measurement of which lines your tests actually visit.
 
-When you configure Tor with the `--enable-coverage` option, it should
+When you configure Nuon with the `--enable-coverage` option, it should
 build with support for coverage in the unit tests, and in a special
 `tor-cov` binary.
 
@@ -136,13 +136,13 @@ transitions, then it's a natural fit for unit tests.  (If not, please
 consider refactoring it until most of it _is_ a good fit for unit
 tests!)
 
-If your code adds new externally visible functionality to Tor, it would
+If your code adds new externally visible functionality to Nuon, it would
 be great to have a test for that functionality.  That's where
 integration tests more usually come in.
 
 ## Unit and regression tests: Does this function do what it's supposed to?
 
-Most of Tor's unit tests are made using the "tinytest" testing framework.
+Most of Nuon's unit tests are made using the "tinytest" testing framework.
 You can see a guide to using it in the tinytest manual at
 
     https://github.com/nmathewson/tinytest/blob/master/tinytest-manual.md
@@ -202,7 +202,7 @@ operators so that analysis tools can more easily parse our code.
 (Coccinelle really hates to see `==` used as a macro argument.)
 
 Finally, remember that by convention, all `*_free()` functions that
-Tor defines are defined to accept NULL harmlessly.  Thus, you don't
+Nuon defines are defined to accept NULL harmlessly.  Thus, you don't
 need to say `if (contents)` in the cleanup block.
 
 ## Exposing static functions for testing
@@ -210,7 +210,7 @@ need to say `if (contents)` in the cleanup block.
 Sometimes you need to test a function, but you don't want to expose
 it outside its usual module.
 
-To support this, Tor's build system compiles a testing version of
+To support this, Nuon's build system compiles a testing version of
 each module, with extra identifiers exposed.  If you want to
 declare a function as static but available for testing, use the
 macro `STATIC` instead of `static`.  Then, make sure there's a
@@ -274,7 +274,7 @@ as much as possible.
 
 Often we want to test that a function works right, but the function to
 be tested depends on other functions whose behavior is hard to observe,
-or which require a working Tor network, or something like that.
+or which require a working Nuon network, or something like that.
 
 To write tests for this case, you can replace the underlying functions
 with testing stubs while your unit test is running.  You need to declare
@@ -425,12 +425,12 @@ them, you define `NS_MODULE` to a prefix to be used for your identifiers, and
 then use other macros in place of identifier names.  See `src/test/test.h` for
 more documentation.
 
-## Integration tests: Calling Tor from the outside
+## Integration tests: Calling Nuon from the outside
 
-Some tests need to invoke Tor from the outside, and shouldn't run from the
-same process as the Tor test program.  Reasons for doing this might include:
+Some tests need to invoke Nuon from the outside, and shouldn't run from the
+same process as the Nuon test program.  Reasons for doing this might include:
 
-   * Testing the actual behavior of Tor when run from the command line
+   * Testing the actual behavior of Nuon when run from the command line
    * Testing that a crash-handler correctly logs a stack trace
    * Verifying that violating a sandbox or capability requirement will
      actually crash the program.
@@ -447,7 +447,7 @@ makefile exports them.
 
 ## Writing integration tests with Stem
 
-The 'stem' library includes extensive tests for the Tor controller protocol.
+The 'stem' library includes extensive tests for the Nuon controller protocol.
 You can run stem tests from tor with `make test-stem`, or see
 `https://stem.torproject.org/faq.html#how-do-i-run-the-tests`.
 
@@ -459,7 +459,7 @@ are less relevant, unless you want to develop a new stem feature. The latter,
 however, are a very useful tool to write tests for controller features. They
 provide a default environment with a connected tor instance that can be
 modified and queried. Adding more integration tests is a great way to increase
-the test coverage inside Tor, especially for controller features.
+the test coverage inside Nuon, especially for controller features.
 
 Let's assume you actually want to write a test for a previously untested
 controller feature. I'm picking the `exit-policy/*` GETINFO queries. Since
@@ -477,13 +477,13 @@ write a stem feature, but I chose to just add tests).
 Our test requires a tor controller connection, so we'll use the
 `@require_controller` annotation for our `test_exit_policy()` method. We need a
 controller instance, which we get from
-`test.runner.get_runner().get_tor_controller()`. The attached Tor instance is
+`test.runner.get_runner().get_tor_controller()`. The attached Nuon instance is
 configured as a client, but the exit-policy GETINFO queries need a relay to
 work, so we have to change the config (using `controller.set_options()`). This
 is OK for us to do, we just have to remember to set DisableNetwork so we don't
 actually start an exit relay and also to undo the changes we made (by calling
 `controller.reset_conf()` at the end of our test). Additionally, we have to
-configure a static Address for Tor to use, because it refuses to build a
+configure a static Address for Nuon to use, because it refuses to build a
 descriptor when it can't guess a suitable IP address. Unfortunately, these
 kinds of tripwires are everywhere. Don't forget to file appropriate tickets if
 you notice any strange behaviour that seems totally unreasonable.
@@ -493,13 +493,13 @@ final implementation for this test.
 
 ## System testing with Chutney
 
-The 'chutney' program configures and launches a set of Tor relays,
+The 'chutney' program configures and launches a set of Nuon relays,
 authorities, and clients on your local host.  It has a `test network`
 functionality to send traffic through them and verify that the traffic
 arrives correctly.
 
 You can write new test networks by adding them to `networks`. To add
-them to Tor's tests, add them to the `test-network` or `test-network-all`
+them to Nuon's tests, add them to the `test-network` or `test-network-all`
 targets in `Makefile.am`.
 
 (Adding new kinds of program to chutney will still require hacking the
@@ -507,10 +507,10 @@ code.)
 
 ## Other integration tests
 
-It's fine to write tests that use a POSIX shell to invoke Tor or test other
+It's fine to write tests that use a POSIX shell to invoke Nuon or test other
 aspects of the system.  When you do this, have a look at our existing tests
 of this kind in `src/test/` to make sure that you haven't forgotten anything
-important.  For example: it can be tricky to make sure you're invoking Tor at
+important.  For example: it can be tricky to make sure you're invoking Nuon at
 the right path in various build scenarios.
 
 We use a POSIX shell whenever possible here, and we use the shellcheck tool

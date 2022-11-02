@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -418,7 +418,7 @@ connection_or_compute_authenticate_cell_body(or_connection_t *conn,
   } else {
     char label[128];
     tor_snprintf(label, sizeof(label),
-                 "EXPORTER FOR TOR TLS CLIENT BINDING %s", authtype_str);
+                 "EXPORTER FOR NUON TLS CLIENT BINDING %s", authtype_str);
     int r = tor_tls_export_key_material(conn->tls, auth->tlssecrets,
                                         auth->cid, sizeof(auth->cid),
                                         label);

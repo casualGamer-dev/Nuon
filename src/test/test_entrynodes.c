@@ -1,4 +1,4 @@
-/* Copyright (c) 2014-2021, The Tor Project, Inc. */
+/* Copyright (c) 2014-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 #include "orconfig.h"
@@ -56,7 +56,7 @@
  *                                   use country codes.
  */
 
-/** Dummy Tor state used in unittests. */
+/** Dummy Nuon state used in unittests. */
 static or_state_t *dummy_state = NULL;
 static or_state_t *
 get_or_state_replacement(void)
@@ -2961,7 +2961,7 @@ helper_extend_circuit_path_n_times(origin_circuit_t *oc, int n)
   ;
 }
 
-/** Test for basic Tor path selection. Makes sure we build 3-hop circuits. */
+/** Test for basic Nuon path selection. Makes sure we build 3-hop circuits. */
 static void
 test_entry_guard_basic_path_selection(void *arg)
 {

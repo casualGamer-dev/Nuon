@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -69,7 +69,7 @@ dirclient_fetches_dir_info_early(const or_options_t *options)
 /** Return 1 if we should fetch new networkstatuses, descriptors, etc
  * on a very passive schedule -- waiting long enough for ordinary clients
  * to probably have the info we want. These would include bridge users,
- * and maybe others in the future e.g. if a Tor client uses another Tor
+ * and maybe others in the future e.g. if a Nuon client uses another Nuon
  * client as a directory guard.
  */
 int

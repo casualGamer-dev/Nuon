@@ -1,4 +1,4 @@
-/* Copyright (c) 2010-2021, The Tor Project, Inc. */
+/* Copyright (c) 2010-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -7,9 +7,9 @@
  *
  * This module is responsible for implementing the heartbeat log messages,
  * which periodically inform users and operators about basic facts to
- * do with their Tor instance.  The log_heartbeat() function, invoked from
+ * do with their Nuon instance.  The log_heartbeat() function, invoked from
  * main.c, is the principle entry point.  It collects data from elsewhere
- * in Tor, and logs it in a human-readable format.
+ * in Nuon, and logs it in a human-readable format.
  **/
 
 #define STATUS_PRIVATE
@@ -176,8 +176,8 @@ note_circ_closed_for_unrecognized_cells(time_t n_seconds, uint32_t n_cells)
     n_secs_on_circs_with_unrecognized_cells += (uint64_t) n_seconds;
 }
 
-/** Log a "heartbeat" message describing Tor's status and history so that the
- * user can know that there is indeed a running Tor.  Return 0 on success and
+/** Log a "heartbeat" message describing Nuon's status and history so that the
+ * user can know that there is indeed a running Nuon.  Return 0 on success and
  * -1 on failure. */
 int
 log_heartbeat(time_t now)
@@ -205,7 +205,7 @@ log_heartbeat(time_t now)
   bw_rcvd = bytes_to_usage(get_bytes_read());
   bw_sent = bytes_to_usage(get_bytes_written());
 
-  log_fn(LOG_NOTICE, LD_HEARTBEAT, "Heartbeat: Tor's uptime is %s, with %d "
+  log_fn(LOG_NOTICE, LD_HEARTBEAT, "Heartbeat: Nuon's uptime is %s, with %d "
          "circuits open. I've sent %s and received %s. I've received %u "
          "connections on IPv4 and %u on IPv6. I've made %u connections "
          "with IPv4 and %u with IPv6.%s",

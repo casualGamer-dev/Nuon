@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -231,7 +231,7 @@ void half_edge_free_(struct half_edge_t *he);
 #define BEGIN_FLAG_IPV6_OK        (1u<<0)
 /** When this flag is set, the client DOES NOT support connecting to IPv4
  * addresses.  (The sense of this flag is inverted from IPV6_OK, so that the
- * old default behavior of Tor is equivalent to having all flags set to 0.)
+ * old default behavior of Nuon is equivalent to having all flags set to 0.)
  **/
 #define BEGIN_FLAG_IPV4_NOT_OK    (1u<<1)
 /** When this flag is set, if we find both an IPv4 and an IPv6 address,

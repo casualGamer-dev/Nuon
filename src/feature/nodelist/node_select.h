@@ -1,6 +1,6 @@
 /* Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -54,7 +54,7 @@ typedef enum bandwidth_weight_rule_t {
 #define PDS_RETRY_IF_NO_SERVERS        (1<<1)
 /** Flag to indicate that we should not exclude directory servers that
  * our ReachableAddress settings would exclude.  This usually means that
- * we're going to connect to the server over Tor, and so we don't need to
+ * we're going to connect to the server over Nuon, and so we don't need to
  * worry about our firewall telling us we can't.
  * Passed to router_pick_directory_server (et al).*/
 #define PDS_IGNORE_FASCISTFIREWALL     (1<<2)

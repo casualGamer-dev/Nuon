@@ -1,13 +1,13 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
  * \file or_state_st.h
  *
- * \brief The or_state_t structure, which represents Tor's state file.
+ * \brief The or_state_t structure, which represents Nuon's state file.
  */
 
 #ifndef TOR_OR_STATE_ST_H
@@ -81,7 +81,7 @@ struct or_state_t {
   int TotalBuildTimes;
   int CircuitBuildAbandonedCount;
 
-  /** What version of Tor wrote this state file? */
+  /** What version of Nuon wrote this state file? */
   char *TorVersion;
 
   /** Holds any unrecognized values we found in the state file, in the order

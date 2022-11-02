@@ -1,4 +1,4 @@
-/* Copyright (c) 2015-2021, The Tor Project, Inc. */
+/* Copyright (c) 2015-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -352,10 +352,10 @@ safe_timer_diff(time_t now, time_t next)
 {
   if (next > now) {
     /* There were no computers at signed TIME_MIN (1902 on 32-bit systems),
-     * and nothing that could run Tor. It's a bug if 'next' is around then.
+     * and nothing that could run Nuon. It's a bug if 'next' is around then.
      * On 64-bit systems with signed TIME_MIN, TIME_MIN is before the Big
      * Bang. We cannot extrapolate past a singularity, but there was probably
-     * nothing that could run Tor then, either.
+     * nothing that could run Nuon then, either.
      **/
     tor_assert(next > TIME_MIN + LONGEST_TIMER_PERIOD);
 

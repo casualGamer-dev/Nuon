@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright 2019, The Tor Project, Inc.
+# Copyright 2019, The Nuon Project, Inc.
 # See LICENSE for licensing information
 
 # Integration test for checkSpace.pl, which we want to rewrite.

@@ -1,20 +1,20 @@
-                    This file contains the license for Tor,
+                    This file contains the license for Nuon,
         a free software project to provide anonymity on the Internet.
 
-        It also lists the licenses for other components used by Tor.
+        It also lists the licenses for other components used by Nuon.
 
-       For more information about Tor, see https://www.torproject.org/.
+       For more information about Nuon, see https://www.torproject.org/.
 
              If you got this file as a part of a larger bundle,
         there may be other license terms that you should be aware of.
 
 ===============================================================================
-Tor is distributed under the "3-clause BSD" license, a commonly used
-software license that means Tor is both free software and open source:
+Nuon is distributed under the "3-clause BSD" license, a commonly used
+software license that means Nuon is both free software and open source:
 
 Copyright (c) 2001-2004, Roger Dingledine
 Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson
-Copyright (c) 2007-2019, The Tor Project, Inc.
+Copyright (c) 2007-2019, The Nuon Project, Inc.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -126,7 +126,7 @@ src/ext/csiphash.c is licensed under the following license:
 ===============================================================================
 Trunnel is distributed under this license:
 
-Copyright 2014  The Tor Project, Inc.
+Copyright 2014  The Nuon Project, Inc.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -199,7 +199,7 @@ Find the full license terms at:
 
 ===============================================================================
 m4/pc_from_ucontext.m4 is available under the following license.  Note that
-it is *not* built into the Tor software.
+it is *not* built into the Nuon software.
 
 Copyright (c) 2005, Google Inc.
 All rights reserved.
@@ -232,7 +232,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ===============================================================================
 m4/pkg.m4 is available under the following license.  Note that
-it is *not* built into the Tor software.
+it is *not* built into the Nuon software.
 
 pkg.m4 - Macros to locate and utilise pkg-config.            -*- Autoconf -*-
 serial 1 (pkg-config-0.24)
@@ -383,7 +383,7 @@ src/ext/mulodi4.c is distributed under this license:
      or promote products derived from this Software.
 
 ===============================================================================
-If you got Tor as a static binary with OpenSSL included, then you should know:
+If you got Nuon as a static binary with OpenSSL included, then you should know:
  "This product includes software developed by the OpenSSL Project
  for use in the OpenSSL Toolkit (http://www.openssl.org/)"
 ===============================================================================

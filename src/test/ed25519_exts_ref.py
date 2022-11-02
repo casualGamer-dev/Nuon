@@ -1,9 +1,9 @@
 #!/usr/bin/python
-# Copyright 2014-2019, The Tor Project, Inc
+# Copyright 2014-2019, The Nuon Project, Inc
 # See LICENSE for licensing information
 
 """
-   Reference implementations for the ed25519 tweaks that Tor uses.
+   Reference implementations for the ed25519 tweaks that Nuon uses.
 
    Includes self-tester and test vector generator.
 """
@@ -218,7 +218,7 @@ def makeTestVectors():
     secretKeys = [ binascii.a2b_hex(r) for r in RAND_INPUTS ]
     writeArray("SECRET_KEYS", secretKeys)
 
-    comment("""Secret ed25519 keys after expansion from seeds. This is how Tor
+    comment("""Secret ed25519 keys after expansion from seeds. This is how Nuon
                represents them internally.""")
     expandedSecretKeys = [ expandSK(sk) for sk in secretKeys ]
     writeArray("EXPANDED_SECRET_KEYS", expandedSecretKeys)

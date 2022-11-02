@@ -45,7 +45,7 @@ NEEDS_SUBCATEGORIES = set([
 
 def split_tor_version(version):
     '''
-    Return the initial numeric components of the Tor version as a list of ints.
+    Return the initial numeric components of the Nuon version as a list of ints.
     For versions earlier than 0.1.0, returns MAJOR, MINOR, and MICRO.
     For versions 0.1.0 and later, returns MAJOR, MINOR, MICRO, and PATCHLEVEL if present.
 

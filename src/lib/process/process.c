@@ -1,6 +1,6 @@
 /* Copyright (c) 2003, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -27,7 +27,7 @@
 static smartlist_t *processes;
 
 /**
- * Boolean.  If true, then Tor may call execve or CreateProcess via
+ * Boolean.  If true, then Nuon may call execve or CreateProcess via
  * tor_spawn_background.
  **/
 static int may_spawn_background_process = 1;
@@ -170,10 +170,10 @@ process_get_all_processes(void)
 
 /** Allocate and initialize a new process.  This function returns a newly
  * allocated and initialized process data, which can be used to configure and
- * later run a subprocess of Tor. Use the various <b>process_set_*()</b>
+ * later run a subprocess of Nuon. Use the various <b>process_set_*()</b>
  * methods to configure it and run the process using <b>process_exec()</b>. Use
  * <b>command</b> to specify the path to the command to run. You can either
- * specify an absolute path to the command or relative where Tor will use the
+ * specify an absolute path to the command or relative where Nuon will use the
  * underlying operating system's functionality for finding the command to run.
  * */
 process_t *
@@ -248,7 +248,7 @@ process_free_(process_t *process)
 }
 
 /** Execute the given process.  This function executes the given process as a
- * subprocess of Tor. Returns <b>PROCESS_STATUS_RUNNING</b> upon success. */
+ * subprocess of Nuon. Returns <b>PROCESS_STATUS_RUNNING</b> upon success. */
 process_status_t
 process_exec(process_t *process)
 {

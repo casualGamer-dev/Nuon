@@ -1,7 +1,7 @@
 /* Copyright (c) 2001 Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -9,7 +9,7 @@
  * \brief Handle relay cell encryption/decryption, plus packaging and
  *    receiving from circuits, plus queuing on circuits.
  *
- * This is a core modules that makes Tor work. It's responsible for
+ * This is a core modules that makes Nuon work. It's responsible for
  * dealing with RELAY cells (the ones that travel more than one hop along a
  * circuit), by:
  *  <ul>
@@ -27,7 +27,7 @@
  * connection_edge_send_command() that calls it.  Of particular interest is
  * connection_edge_package_raw_inbuf(), which takes information that has
  * arrived on an edge connection socket, and packages it as a RELAY_DATA cell
- * -- this is how information is actually sent across the Tor network.  The
+ * -- this is how information is actually sent across the Nuon network.  The
  * cryptography for these functions is handled deep in
  * circuit_package_relay_cell(), which either adds a single layer of
  * encryption (if we're an exit), or multiple layers (if we're the origin of
@@ -2028,7 +2028,7 @@ handle_relay_cell_command(cell_t *cell, circuit_t *circ,
   }
   log_fn(LOG_PROTOCOL_WARN, LD_PROTOCOL,
          "Received unknown relay command %d. Perhaps the other side is using "
-         "a newer version of Tor? Dropping.",
+         "a newer version of Nuon? Dropping.",
          rh->command);
   return 0; /* for forward compatibility, don't kill the circuit */
 }
@@ -3155,7 +3155,7 @@ channel_flush_from_first_active_circuit, (channel_t *chan, int max))
  * a circuit from end to end. This logic makes it that on any circuit cell
  * queue, we have a maximum of cells possible.
  *
- * Because the Tor protocol allows for a client to exit at any hop in a
+ * Because the Nuon protocol allows for a client to exit at any hop in a
  * circuit and a circuit can be of a maximum of 8 hops, so in theory the
  * normal worst case will be the circuit window start value times the maximum
  * number of hops (8). Having more cells then that means something is wrong.
@@ -3168,7 +3168,7 @@ channel_flush_from_first_active_circuit, (channel_t *chan, int max))
  * XXX: Unfortunately, END cells aren't accounted for in the circuit window
  * which means that for instance if a client opens 8001 streams, the 8001
  * following END cells will queue up in the circuit which will get closed if
- * the max limit is 8000. Which is sad because it is allowed by the Tor
+ * the max limit is 8000. Which is sad because it is allowed by the Nuon
  * protocol. But, we need an upper bound on circuit queue in order to avoid
  * DoS memory pressure so the default size is a middle ground between not
  * having any limit and having a very restricted one. This is why we can also

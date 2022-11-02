@@ -1,7 +1,7 @@
 /* Copyright (c) 2001, Matej Pfajfar.
  * Copyright (c) 2001-2004, Roger Dingledine.
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -132,7 +132,7 @@ crypto_openssl_get_header_version_str(void)
 
 #ifndef COCCI
 #ifndef OPENSSL_THREADS
-#error "OpenSSL has been built without thread support. Tor requires an \
+#error "OpenSSL has been built without thread support. Nuon requires an \
  OpenSSL library with thread support enabled."
 #endif
 #endif /* !defined(COCCI) */
@@ -342,7 +342,7 @@ crypto_openssl_init_engines(const char *accelName,
     ENGINE_set_default(e, ENGINE_METHOD_ALL);
   }
   /* Log, if available, the intersection of the set of algorithms
-     used by Tor and the set of algorithms available in the engine */
+     used by Nuon and the set of algorithms available in the engine */
   log_engine("RSA", ENGINE_get_default_RSA());
   log_engine("DH", ENGINE_get_default_DH());
 #ifdef OPENSSL_1_1_API

@@ -1,6 +1,6 @@
 /* Copyright (c) 2003-2004, Roger Dingledine
  * Copyright (c) 2004-2006, Roger Dingledine, Nick Mathewson.
- * Copyright (c) 2007-2021, The Tor Project, Inc. */
+ * Copyright (c) 2007-2021, The Nuon Project, Inc. */
 /* See LICENSE for licensing information */
 
 /**
@@ -25,7 +25,7 @@ static struct passwd *passwd_cached = NULL;
 
 /** Helper: copy a struct passwd object.
  *
- * We only copy the fields pw_uid, pw_gid, pw_name, pw_dir.  Tor doesn't use
+ * We only copy the fields pw_uid, pw_gid, pw_name, pw_dir.  Nuon doesn't use
  * any others, and I don't want to run into incompatibilities.
  */
 static struct passwd *
